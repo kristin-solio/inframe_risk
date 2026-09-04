@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InFrame Risk · Paid Search Landing Page Wireframes v1</title>
+<style>
+  :root{
+    --ink:#000;
+    --paper:#fff;
+    --rule:#000;
+    --soft:#767676;
+    --hair:#d4d4d4;
+    --fill:#f2f2f2;
+    --flag:#000;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+  }
+  .wrap{max-width:1000px;margin:0 auto;padding:0 28px 120px}
+  .mono{font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace}
+
+  /* ---------- masthead ---------- */
+  .masthead{border-bottom:3px solid var(--rule);padding:56px 0 24px;margin-bottom:0}
+  .masthead .kicker{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-bottom:18px}
+  .masthead h1{font-size:40px;line-height:1.1;letter-spacing:-.02em;margin:0 0 14px;font-weight:700}
+  .masthead .sub{font-size:17px;max-width:62ch;color:#222;margin:0}
+  .meta{display:flex;flex-wrap:wrap;gap:0;margin-top:32px;border-top:1px solid var(--hair)}
+  .meta div{flex:1 1 160px;padding:12px 16px 12px 0;border-right:1px solid var(--hair)}
+  .meta div:last-child{border-right:0}
+  .meta dt{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:4px}
+  .meta dd{margin:0;font-size:13px}
+
+  /* ---------- legend ---------- */
+  .legend{border:1px solid var(--rule);padding:24px 26px;margin:36px 0 0}
+  .legend h2{font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 16px}
+  .legend ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 32px}
+  .legend li{font-size:13px;line-height:1.45;padding-left:0}
+  .legend b{display:inline-block;min-width:0}
+
+  /* ---------- toc ---------- */
+  .toc{margin:36px 0 0;border-top:1px solid var(--hair);padding-top:20px}
+  .toc h2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin:0 0 14px}
+  .toc ol{margin:0;padding-left:20px;font-size:14px}
+  .toc li{margin-bottom:6px}
+  .toc a{color:var(--ink)}
+
+  /* ---------- page divider ---------- */
+  .pagehead{margin:96px 0 0;padding:28px 0 24px;border-top:3px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .pagehead .lp{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-bottom:10px}
+  .pagehead h2{font-size:30px;line-height:1.15;letter-spacing:-.015em;margin:0 0 12px;font-weight:700}
+  .pagehead .url{font-size:13px;margin:0 0 18px}
+  .spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0;border-top:1px solid var(--hair);margin-top:18px}
+  .spec div{padding:12px 16px 12px 0;border-right:1px solid var(--hair)}
+  .spec div:last-child{border-right:0}
+  .spec dt{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:4px}
+  .spec dd{margin:0;font-size:13px;line-height:1.4}
+
+  /* ---------- module ---------- */
+  .module{margin:44px 0 0}
+  .modhead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:0}
+  .modnum{font-size:11px;letter-spacing:.1em;font-weight:700}
+  .modname{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700}
+  .modmap{font-size:11px;color:var(--soft);margin-left:auto;letter-spacing:.04em}
+  .frame{border:1px solid var(--rule);border-top:0;padding:34px 32px}
+  .frame.dark{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .frame.dark .eyebrow{color:#9a9a9a}
+  .frame.dark .btn{border-color:var(--paper);color:var(--paper)}
+  .frame.dark .card{border-color:#4a4a4a}
+  .frame.dark .rule{background:#4a4a4a}
+
+  .eyebrow{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin:0 0 12px}
+  .h1{font-size:34px;line-height:1.12;letter-spacing:-.02em;font-weight:700;margin:0 0 16px;max-width:20ch}
+  .h2{font-size:25px;line-height:1.2;letter-spacing:-.015em;font-weight:700;margin:0 0 14px;max-width:26ch}
+  .h3{font-size:17px;line-height:1.3;font-weight:700;margin:0 0 8px}
+  .body{font-size:15px;line-height:1.6;margin:0 0 14px;max-width:64ch}
+  .lede{font-size:18px;line-height:1.5;margin:0 0 20px;max-width:56ch}
+  .small{font-size:12.5px;color:var(--soft);margin:12px 0 0}
+
+  .btn{display:inline-block;border:1.5px solid var(--ink);padding:11px 22px;font-size:13.5px;font-weight:700;margin:6px 10px 6px 0;letter-spacing:.01em}
+  .btn.ghost{border-style:dashed;font-weight:400}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:20px 0 0}
+  .card{border:1px solid var(--hair);padding:18px 18px 20px}
+  .card .h3{font-size:15px;margin-bottom:6px}
+  .card p{font-size:13.5px;line-height:1.5;margin:0}
+
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;margin:20px 0 0;border-top:1px solid var(--hair)}
+  .steps div{padding:18px 20px 18px 0;border-right:1px solid var(--hair)}
+  .steps div:last-child{border-right:0;padding-right:0}
+  .steps .n{font-size:11px;letter-spacing:.14em;color:var(--soft);margin-bottom:8px}
+  .steps p{font-size:14px;margin:0;line-height:1.5}
+
+  .twocol{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+  .twocol .row{border-top:1px solid var(--hair);padding:14px 0}
+  .twocol .row .h3{font-size:15px;margin-bottom:5px}
+  .twocol .row p{font-size:13.5px;margin:0;line-height:1.5;color:inherit;opacity:.85}
+
+  .imgbox{
+    border:1px solid var(--hair);
+    background:
+      linear-gradient(to top right,transparent calc(50% - .5px),var(--hair) 50%,transparent calc(50% + .5px)),
+      linear-gradient(to bottom right,transparent calc(50% - .5px),var(--hair) 50%,transparent calc(50% + .5px)),
+      var(--fill);
+    height:130px;display:flex;align-items:center;justify-content:center;margin:18px 0
+  }
+  .imgbox span{background:var(--paper);padding:4px 12px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);border:1px solid var(--hair)}
+
+  .formbox{border:1px dashed var(--rule);padding:22px 22px 24px;margin:20px 0 0;max-width:520px}
+  .formbox .flabel{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:14px}
+  .field{border:1px solid var(--hair);padding:9px 12px;font-size:13px;color:var(--soft);margin-bottom:8px;background:var(--fill)}
+  .field.req::after{content:" *";color:var(--ink);font-weight:700}
+
+  .faq .qrow{border-top:1px solid var(--hair);padding:14px 0}
+  .faq .qrow:last-child{border-bottom:1px solid var(--hair)}
+  .faq .q{font-size:15px;font-weight:700;margin:0 0 6px}
+  .faq .a{font-size:13.5px;margin:0;line-height:1.55;max-width:70ch}
+
+  .quote{border-left:3px solid var(--ink);padding:6px 0 6px 20px;margin:20px 0;max-width:58ch}
+  .quote p{font-size:19px;line-height:1.4;margin:0 0 8px;font-weight:700;letter-spacing:-.01em}
+  .quote cite{font-size:12.5px;font-style:normal;color:var(--soft)}
+
+  .strip{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);margin:20px 0 0}
+  .strip div{flex:1 1 150px;padding:16px 18px 16px 0;border-right:1px solid var(--hair);font-size:13px}
+  .strip div:last-child{border-right:0}
+  .strip b{display:block;font-size:20px;letter-spacing:-.01em;margin-bottom:2px}
+
+  /* ---------- annotation ---------- */
+  .note{border-left:2px solid var(--ink);background:var(--fill);padding:14px 18px;margin:0;font-size:13px;line-height:1.55}
+  .note .nlabel{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;display:block;margin-bottom:5px}
+  .note p{margin:0 0 8px}
+  .note p:last-child{margin:0}
+
+  .flag{display:inline-block;border:1.5px solid var(--flag);padding:2px 8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin:0 6px 4px 0;vertical-align:middle}
+  .flag.hollow{border-style:dashed;font-weight:400}
+
+  /* ---------- table ---------- */
+  table{width:100%;border-collapse:collapse;margin:20px 0 0;font-size:13px}
+  th{text-align:left;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);border-bottom:1.5px solid var(--rule);padding:0 14px 8px 0;vertical-align:bottom}
+  td{border-bottom:1px solid var(--hair);padding:11px 14px 11px 0;vertical-align:top;line-height:1.5}
+  td:last-child,th:last-child{padding-right:0}
+
+  .endnote{margin-top:80px;border-top:3px solid var(--rule);padding-top:28px}
+  .endnote h2{font-size:22px;margin:0 0 16px;letter-spacing:-.01em}
+  .endnote h3{font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:32px 0 10px}
+
+  @media (max-width:720px){
+    .wrap{padding:0 18px 80px}
+    .masthead h1{font-size:30px}
+    .h1{font-size:26px}
+    .h2{font-size:21px}
+    .twocol{grid-template-columns:1fr}
+    .legend ul{grid-template-columns:1fr}
+    .modmap{margin-left:0;width:100%}
+  }
+  /* ---------- commenting ---------- */
+  .cmt{border-left:2px solid var(--hair);background:var(--paper)}
+  .cmt-bar{display:flex;align-items:center;gap:12px;padding:9px 0 9px 16px}
+  .cmt-btn{border:1px solid var(--ink);background:var(--paper);color:var(--ink);font-family:inherit;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:5px 12px;cursor:pointer;line-height:1.2}
+  .cmt-btn:hover{background:var(--ink);color:var(--paper)}
+  .cmt-btn.small{font-size:10px;padding:4px 10px}
+  .cmt-count{font-size:11px;color:var(--soft);letter-spacing:.04em}
+  .cmt-form{display:none;padding:0 0 14px 16px;max-width:640px}
+  .cmt-form.open{display:block}
+  .cmt-form label{display:block;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);margin:0 0 5px}
+  .cmt-form textarea,.cmt-form input{width:100%;border:1px solid var(--hair);padding:9px 11px;font-family:inherit;font-size:13.5px;color:var(--ink);background:var(--paper);margin-bottom:10px}
+  .cmt-form textarea{min-height:78px;resize:vertical;line-height:1.5}
+  .cmt-form .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .cmt-status{font-size:11.5px;color:var(--soft)}
+  .cmt-list{padding:0 0 10px 16px;max-width:640px}
+  .cmt-item{border-left:2px solid var(--ink);padding:7px 0 7px 12px;margin:0 0 9px;font-size:13px;line-height:1.5}
+  .cmt-item .who{display:block;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:3px}
+  #cmt-dock{position:fixed;right:22px;bottom:22px;z-index:80;background:var(--paper);border:1.5px solid var(--ink);padding:12px 15px;max-width:270px;font-size:12px;line-height:1.5}
+  #cmt-dock b{display:block;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:7px}
+  #cmt-dock .row{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap}
+  @media (max-width:720px){#cmt-dock{left:14px;right:14px;bottom:14px;max-width:none}}
+
+  @media print{
+    body{font-size:11pt}
+    .module{page-break-inside:avoid}
+    .pagehead{page-break-before:always}
+    .cmt-bar,.cmt-form,#cmt-dock{display:none !important}
+    .cmt-list{padding-left:16px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ============================= MASTHEAD ============================= -->
+<header class="masthead">
+  <div class="kicker mono">Solio Growth &nbsp;·&nbsp; InFrame Risk &nbsp;·&nbsp; Search + Signal Demand Generation Program</div>
+  <h1>Paid Search Landing Pages<br>Structure, Modules &amp; Copy</h1>
+  <p class="sub">Wireframes for the three landing pages contracted under Exhibit A. Every module maps to a section in the Brightscout brand system, so these pages feel native when the main site ships and can migrate later without a rewrite.</p>
+  <dl class="meta">
+    <div><dt class="mono">Version</dt><dd>v1, for client review</dd></div>
+    <div><dt class="mono">Date</dt><dd>September 4, 2026</dd></div>
+    <div><dt class="mono">Pages</dt><dd>3 of 3 in scope</dd></div>
+    <div><dt class="mono">Host</dt><dd>go.inframerisk.com</dd></div>
+    <div><dt class="mono">Status</dt><dd>Copy draft, not approved</dd></div>
+  </dl>
+</header>
+
+<!-- ============================= LEGEND ============================= -->
+<section class="legend">
+  <h2 class="mono">How to read this document</h2>
+  <ul>
+    <li><b>Black text inside a bordered frame</b> is proposed live copy. Read it as what the visitor sees.</li>
+    <li><b>Grey boxes with an X</b> are image or video placeholders. Art direction sits with Brightscout.</li>
+    <li><b>Shaded notes below each module</b> are rationale for you, not copy. They do not ship.</li>
+    <li><b>Dashed outlines</b> mark forms and interactive elements.</li>
+    <li><span class="flag">Approval</span> flags copy needing affirmative written sign-off under SOW §5: pricing, savings, comparative claims, or a new offer.</li>
+    <li><span class="flag hollow">Verify</span> flags a factual claim Solio cannot confirm. Confirm or cut before launch.</li>
+    <li><b>Every module has a Comment button</b> under it. Leave your notes there rather than in email, so each one stays attached to the copy it refers to.</li>
+  </ul>
+</section>
+
+<nav class="toc">
+  <h2 class="mono">Contents</h2>
+  <ol>
+    <li><a href="#lp1">Landing Page 1 · Specialty Trade Contractor</a></li>
+    <li><a href="#lp2">Landing Page 2 · Counterparty Compliance</a></li>
+    <li><a href="#lp3">Landing Page 3 · Counterparty Gap Report</a></li>
+    <li><a href="#register">Approval Register &amp; Open Questions</a></li>
+  </ol>
+</nav>
+
+<!-- ============================================================= -->
+<!-- =========================== LP 1 ============================ -->
+<!-- ============================================================= -->
+<div class="pagehead" id="lp1">
+  <div class="lp mono">Landing Page 1 of 3</div>
+  <h2>Specialty Trade Contractor</h2>
+  <p class="url mono">go.inframerisk.com/contractor-insurance</p>
+  <dl class="spec">
+    <div><dt class="mono">Traffic</dt><dd>Campaign 1, all seven ad groups · Campaign 3.1 · 3.3 · roughly 62% of media</dd></div>
+    <div><dt class="mono">Who lands here</dt><dd>Owner, CFO or fractional CFO at a $15–50M commercial trade contractor</dd></div>
+    <div><dt class="mono">They typed</dt><dd>"electrical contractor insurance," "hvac contractor insurance," "general liability insurance for contractors"</dd></div>
+    <div><dt class="mono">Primary action</dt><dd>Qualified form submit, or a call over 60 seconds</dd></div>
+  </dl>
+</div>
+
+<div class="note" style="margin-top:20px">
+  <span class="nlabel mono">Audience thinking</span>
+  <p>Daniel's own read decides the shape of this page: <em>"the ICP are insanely the subcontractor is more important than the GC… the flooring contractor, they install floors on the 27th floor of a building. The GC just sits down on the ground and makes sure they show up on the right day. But the flooring contractor takes on more risk. So they pay more in insurance."</em></p>
+  <p>This buyer does not think about insurance as coverage. They think about it as whether they can bid, get on site, and get paid. Every headline on this page is written in that frame, not in an insurance frame.</p>
+</div>
+
+<!-- LP1 · 01 HERO -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">01</span><span class="modname">Hero</span><span class="modmap mono">Brightscout module: Hero</span></div>
+  <div class="frame">
+    <div class="imgbox"><span class="mono">Background: trade crew on an active commercial site</span></div>
+    <p class="h1">Insurance built around how your business actually operates.</p>
+    <p class="lede">InFrame is a specialist insurance broker for commercial trade contractors. We read your contracts and your policies against each other, so your coverage matches the work you actually bid.</p>
+    <span class="btn">Request a program review</span>
+    <p class="small mono">Licensed in all 50 states · InFrame Insurance Services LLC</p>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>The H1 is Brightscout's approved value proposition, adapted from <em>"Risk and insurance built around the business you're growing."</em> "Operates" beats "growing" here because the searcher arrived with an operational problem, not an ambition.</p>
+    <p><span class="flag">Approval</span> The original CTA was <em>"Request a no-cost program review."</em> "No-cost" is an offer claim requiring affirmative written approval under SOW §5. It is cut from this draft. If Daniel approves it, add it back. It lifts click-through and it is the single most testable word on the page.</p>
+    <p><span class="flag hollow">Verify</span> "150+ insurers" and years-of-experience figures were in the intro deck. They are not in any source I can confirm, so they are held out of the hero and parked in module 08 pending confirmation.</p>
+    <p><b>Single CTA, by request.</b> The secondary "Get the Counterparty Gap Report" button is gone. One action makes the conversion rate readable, where two competing buttons split intent and tell you less. The trade-off is that a visitor who is interested but not ready to talk now has nowhere to go, so watch bounce rate and time on page. If the page converts below plan, a soft second CTA is the first experiment to run.</p>
+  </div>
+</section>
+
+<!-- LP1 · 02 TRADE BAR -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">02</span><span class="modname">Qualification strip</span><span class="modmap mono">Brightscout module: Trusted-by bar (repurposed)</span></div>
+  <div class="frame" style="padding-top:26px;padding-bottom:26px">
+    <p class="eyebrow mono">Specialist programs for</p>
+    <p class="body" style="font-size:17px;font-weight:700;max-width:none;margin:0">Electrical &nbsp;·&nbsp; HVAC &amp; Mechanical &nbsp;·&nbsp; Plumbing &nbsp;·&nbsp; Concrete &amp; Masonry &nbsp;·&nbsp; Drywall &nbsp;·&nbsp; Painting &nbsp;·&nbsp; Flooring</p>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>This strip does the self-identification work in under two seconds. Someone who searched "hvac contractor insurance" needs to see their own trade above the fold or they bounce.</p>
+    <p>It is also the qualification gate doing quiet work: roofing is absent by design, per the August 17 decision to deprioritize it as high-risk. No negative statement required. Omission is enough.</p>
+    <p>This module is the target of the dynamic headline insertion experiment in the roadmap. Ad group determines which trade leads the list. That is an experiment, not seven separate pages.</p>
+  </div>
+</section>
+
+<!-- LP1 · 03 TENSION -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">03</span><span class="modname">Problem / Tension</span><span class="modmap mono">Brightscout module: Tension band</span></div>
+  <div class="frame">
+    <p class="h2">Your broker should understand the business behind the policy.</p>
+    <p class="body">Insurance decides how you bid, how you staff, and how fast you get paid. Most brokers process the renewal, issue the certificate and repeat, which keeps it a cost you absorb. A broker who understands the work can turn it into something you compete on.</p>
+    <p class="body">Most trade contractors are getting the first version. That is rarely carelessness. Specialist teams are expensive to run, so brokers point them at their largest accounts.</p>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>First line is verbatim from the Brightscout homepage build, so this page and the main site say the same thing in the same words.</p>
+    <p>Second paragraph challenges the traditional brokerage model without naming a broker, which is the guardrail from the POV memo. It also gives the reader an honest reason their current broker is underserving them. That is more persuasive than implying incompetence and safer than implying bad faith.</p>
+  </div>
+</section>
+
+<!-- LP1 · 04 FOUR QUESTIONS -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">04</span><span class="modname">Four questions</span><span class="modmap mono">Brightscout module: Question tiles over image</span></div>
+  <div class="frame">
+    <div class="imgbox"><span class="mono">Background: cutting / demolition, dust, active work</span></div>
+    <div class="cards">
+      <div class="card"><p class="h3">Can I bid the job?</p><p>Owners and GCs set coverage requirements before you can quote. If your program does not meet them, you are not eligible, and nobody calls to tell you why you lost.</p></div>
+      <div class="card"><p class="h3">Can I get on site?</p><p>A certificate that takes four days to issue costs you work with a three-day bid window.</p></div>
+      <div class="card"><p class="h3">Am I covered when it goes wrong?</p><p>Completed operations that end at substantial completion. A per-project limit another job already spent. The contract says one thing and the policy says another.</p></div>
+      <div class="card"><p class="h3">Can I stay on and get paid?</p><p>Lapsed subs, missing endorsements and waiver gaps stall pay applications and hold up funds you have already earned.</p></div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>These four cards are Daniel's own framing, near-verbatim: <em>"can I fund the job, can I get the job, cover."</em> His shorthand for questions that <em>"explain things about the business and not about insurance."</em></p>
+    <p>Every card names a business consequence rather than a coverage feature. No competitor page in this auction does that.</p>
+    <p><span class="flag hollow">Verify</span> The completed-operations and per-project-limit examples come from the GC one-pager. Confirm both are accurate as stated before publishing. They are technical claims about how a policy behaves.</p>
+  </div>
+</section>
+
+<!-- LP1 · 05 SOLUTION -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">05</span><span class="modname">Solution / Why us</span><span class="modmap mono">Brightscout module: Dark outcomes grid</span></div>
+  <div class="frame dark">
+    <p class="eyebrow mono">What changes</p>
+    <p class="h2" style="max-width:30ch">How your business operates should shape every insurance and risk decision.</p>
+    <div class="twocol" style="margin-top:26px">
+      <div class="row"><p class="h3">Show up prepared</p><p>We read your program from the inside and collect market data from the outside before the first real meeting.</p></div>
+      <div class="row"><p class="h3">Bid more of the work you want</p><p>We check your program against what GCs in your counties actually require, so you find out you are ineligible before you lose the job, not after.</p></div>
+      <div class="row"><p class="h3">Move faster on certificates</p><p>Requests get read by someone who understands what the GC is asking for, instead of joining a queue.</p></div>
+      <div class="row"><p class="h3">Go to market with a real story</p><p>Your operations translated into a submission underwriters can price properly, instead of a form that makes you look like everyone else.</p></div>
+      <div class="row"><p class="h3">Align your renewals</p><p>Thirteen policies renewing across five different months is a service problem, not a coverage problem. We fix the calendar.</p></div>
+      <div class="row"><p class="h3">Know what you are actually paying for</p><p>Costs allocated to the vehicles, crews and projects that generate them, so the annual audit is not the first time you see it.</p></div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>Headline is verbatim from the Brightscout homepage. The dark treatment matches their design system, and the two-column outcome grid is their module.</p>
+    <p>Every one of the six outcomes comes from a real client or prospect situation in the September 3 call: the flooring contractor with thirteen misaligned policies, the landscaping company that cannot attribute $500K of fleet premium to individual vehicles, the contractor losing bids on requirements they never saw. None of it is invented.</p>
+    <p>"Bid more of the work you want" is the strongest differentiator on the page. Daniel: <em>"what we put in front of you is not just like here's a better commercial auto insurance policy, but hey, here's a way for you to be more competitive when you bid work."</em> No traditional broker offers this. Consider testing it in the hero.</p>
+  </div>
+</section>
+
+<!-- LP1 · 06 PLAN -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">06</span><span class="modname">The plan</span><span class="modmap mono">Brightscout module: How it works</span></div>
+  <div class="frame">
+    <p class="h2">Three steps. No commitment until you have seen the work.</p>
+    <div class="steps">
+      <div><p class="n mono">Step 01</p><p><b>Send us your contracts and current policies.</b> Whatever you have. We do not need it organized.</p></div>
+      <div><p class="n mono">Step 02</p><p><b>We read both, against each other.</b> Line by line: what your contracts require and what your policies actually deliver.</p></div>
+      <div><p class="n mono">Step 03</p><p><b>You get a written picture.</b> Where the two diverge, what it exposes, and what it would take to close it.</p></div>
+    </div>
+    <p class="small">Most reviews come back within three business days.<span class="flag hollow" style="margin-left:8px">Verify</span></p>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>Low-commitment and concrete. With the secondary CTA gone, this module is the only thing on the page catching a visitor who is interested but not ready to hand over their details, so it is carrying more weight than it was designed to. Worth watching.</p>
+    <p><span class="flag hollow">Verify</span> Three business days is carried over from the fulfillment target in the plan. Confirm InFrame can hold it at volume before it goes on a public page. A missed turnaround on the first offer is expensive.</p>
+  </div>
+</section>
+
+<!-- LP1 · 07 PROOF -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">07</span><span class="modname">Social proof</span><span class="modmap mono">Brightscout module: Case study / testimonial</span></div>
+  <div class="frame">
+    <p class="eyebrow mono">Client story</p>
+    <div class="quote">
+      <p>"The first request took us a full day. The next one took five seconds, because the person handling it understood what the GC was actually asking for."</p>
+      <cite>Commercial flooring contractor · national footprint<span class="flag" style="margin-left:10px">Approval</span></cite>
+    </div>
+    <p class="body">They came to us mid-bid-season needing certificates across dozens of jobs, split across four owners with different requirements. Thirteen policies, renewing in different months, none of them aligned. We rebuilt the calendar and took over issuance.</p>
+    <div class="imgbox" style="height:96px"><span class="mono">Client logo row: pending case study approval</span></div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p><b>Read this before anything else in the document.</b> I checked the call notes for Valley Oak, Northstar Construction and Staples Construction, the case study names carried in the plan and shown in the Brightscout comp. <b>None of them appear anywhere in the source material.</b> Every client story in the September 3 call is anonymous. The logos in the design comp are placeholder.</p>
+    <p><span class="flag">Approval</span> The story above is real and comes from Daniel directly, but it is client-specific and anonymized. It cannot publish without the client's permission and Daniel's written sign-off. Until then this module ships as a placeholder, or the page launches without it.</p>
+    <p>One number needs settling. Daniel said 150 certificates in one place and 100 in another. Pick one, or drop the count entirely. The "full day to five seconds" contrast carries the story without it.</p>
+    <p>Launching without proof is survivable on this page for four to six weeks. It is not survivable indefinitely. Social proof does more work than any other module on a cold-traffic insurance page, and the two written case studies are already a contracted InFrame deliverable.</p>
+  </div>
+</section>
+
+<!-- LP1 · 08 CREDIBILITY -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">08</span><span class="modname">Credibility strip</span><span class="modmap mono">Brightscout module: 50-state map band</span></div>
+  <div class="frame">
+    <div class="strip">
+      <div><b>50</b>States licensed</div>
+      <div><b>150+</b>Insurer relationships <span class="flag hollow">Verify</span></div>
+      <div><b>7</b>Specialty trades served</div>
+      <div><b>Licensed</b>Commercial insurance brokerage · InFrame Insurance Services LLC</div>
+    </div>
+    <div class="imgbox" style="height:110px"><span class="mono">US map: states filled</span></div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>Regulatory credibility matters disproportionately here. The Iowa prospect asked it outright: <em>"how do we know that we're in good hands and good service… how do we trust you guys as this newer company versus the big big traditional players."</em> Naming the licensed entity answers the unspoken half of that question.</p>
+    <p><b>Flagging a real conflict.</b> The brand site says "licensed in all 50 states." Paid targeting runs Midwest and West only, excluding New York and Florida. Both are true and they do not contradict each other, but a visitor in Georgia who lands here from an organic path and cannot be served will notice. Keep the 50-state claim, which is factual and trust-building, and handle geography in campaign settings rather than on the page.</p>
+  </div>
+</section>
+
+<!-- LP1 · 09 FAQ -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">09</span><span class="modname">FAQ</span><span class="modmap mono">Brightscout module: Questions accordion</span></div>
+  <div class="frame faq">
+    <p class="h2">Questions about working with InFrame</p>
+    <div class="qrow"><p class="q">We already have a broker. Why would we switch?</p><p class="a">Most people do not switch on price. They switch after a claim gets handled badly, a certificate arrives too late to bid, or a renewal comes back with a number nobody warned them about. If none of that has happened, a review still tells you where you stand. If it has, you already know why you are here.</p></div>
+    <div class="qrow"><p class="q">Do we have to wait until renewal?</p><p class="a">No. The review works at any point in the year, and knowing where your gaps are six months out is more useful than finding out three weeks before renewal.</p></div>
+    <div class="qrow"><p class="q">How is this different from a large national broker?</p><p class="a">Specialist attention at your size. The largest brokers have deep construction expertise and they point it at their largest accounts, which is a rational way to run their business. We built ours around companies in the $5M to $50M range and we do not do anything else.</p></div>
+    <div class="qrow"><p class="q">Are you selling us software?</p><p class="a">No. We are a licensed brokerage and you are hiring people. Technology sits behind what we do, collecting documents, tracking expirations and flagging changes, and that is where it belongs. You should notice the service, not the system.</p></div>
+    <div class="qrow"><p class="q">What size company do you work with?</p><p class="a">Commercial trade contractors from roughly $5M to $50M in annual revenue. Below that, a specialist program is usually more than the business needs.</p></div>
+    <div class="qrow"><p class="q">What happens on the first call?</p><p class="a">We ask how you actually run: trade mix, contract requirements, fleet, payroll, project schedule. Then we tell you what we would look at first. It takes about thirty minutes.</p></div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>"Are you selling us software?" is the most important question on this page and it is here on purpose. From the call: prospects <em>"want to set it and forget it, they don't want impressive AI bells and whistles"</em> and are <em>"almost worried that we're coming in with all this technology… it's too much, it's all exploding."</em> The answer neutralizes it without ever saying AI, which satisfies the guardrail from both directions.</p>
+    <p>"How is this different from a large national broker?" is written to be generous about the incumbent. Attacking Gallagher by name would violate the guardrail and would also read as insecure to a buyer who probably respects them.</p>
+    <p>Mark these up as FAQPage schema. This page will pick up organic long-tail traffic on the same questions.</p>
+  </div>
+</section>
+
+<!-- LP1 · 10 CTA -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">10</span><span class="modname">Conversion</span><span class="modmap mono">Brightscout module: Closing CTA</span></div>
+  <div class="frame">
+    <p class="h2">See what a specialist notices about your business.</p>
+    <p class="body">Send us what you have. We will tell you what we see.</p>
+    <div class="formbox">
+      <p class="flabel mono">Form · 7 fields</p>
+      <div class="field req">Company name</div>
+      <div class="field req">Full name</div>
+      <div class="field req">Work email</div>
+      <div class="field req">Phone</div>
+      <div class="field req">Trade &nbsp;▾</div>
+      <div class="field req">Annual revenue &nbsp;▾</div>
+      <div class="field">Month your policies renew &nbsp;▾</div>
+      <span class="btn" style="margin-top:10px">Request a program review</span>
+    </div>
+    <p class="small">Or call <span class="mono">[dynamic tracking number]</span>. You will reach a risk advisor, not a call center.</p>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>Headline is verbatim from the Brightscout homepage close.</p>
+    <p>Seven fields is deliberate friction, per the August 17 decision to verify company size and revenue on the page rather than on the phone. Revenue band is the disqualifier. Renewal month drives follow-up sequencing against the January / April / July / October renewal concentration.</p>
+    <p>Only submissions at or above the revenue floor feed Smart Bidding. Below-floor submissions record as a separate conversion action and are excluded, or Google optimizes toward exactly the leads you do not want.</p>
+  </div>
+</section>
+
+
+<!-- ============================================================= -->
+<!-- =========================== LP 2 ============================ -->
+<!-- ============================================================= -->
+<div class="pagehead" id="lp2">
+  <div class="lp mono">Landing Page 2 of 3</div>
+  <h2>Counterparty Compliance</h2>
+  <p class="url mono">go.inframerisk.com/counterparty-compliance</p>
+  <dl class="spec">
+    <div><dt class="mono">Traffic</dt><dd>Campaign 2, all five ad groups · Campaign 3.2 · roughly 36% of media</dd></div>
+    <div><dt class="mono">Who lands here</dt><dd>Risk manager, controller or ops lead at a $25–150M regional GC, or a developer-owner</dd></div>
+    <div><dt class="mono">They typed</dt><dd>"certificate of insurance tracking," "subcontractor prequalification," "COI compliance software"</dd></div>
+    <div><dt class="mono">Primary action</dt><dd>Gap report request</dd></div>
+  </dl>
+</div>
+
+<div class="note" style="margin-top:20px">
+  <span class="nlabel mono">Audience thinking, and the biggest risk on this page</span>
+  <p>This visitor is usually shopping for <em>software</em>. They typed a tool category and they expect to land on a product page with a pricing table. InFrame is not that, and the brand guardrail is explicit: present a solution, not a platform.</p>
+  <p>So the page has one job before any other: reframe <b>tracking</b> as <b>reviewing</b>. If it reads as a tool, InFrame loses to funded COI software on features and price. If it reads as expert judgment, the comparison stops being a comparison.</p>
+  <p>Worth knowing before you sell this page internally: at $58.24, "certificate of insurance tracking" is the most expensive click in the entire plan. This page has to earn it.</p>
+</div>
+
+<!-- LP2 · 01 HERO -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">01</span><span class="modname">Hero</span><span class="modmap mono">Brightscout module: Hero</span></div>
+  <div class="frame">
+    <div class="imgbox"><span class="mono">Background: site trailer / plan table, documents in use</span></div>
+    <p class="h1">A certificate is a summary. We read the policies behind it.</p>
+    <p class="lede">InFrame qualifies and monitors your subcontractors and tenants against what your contracts actually require, reviewed by risk specialists rather than collected and filed.</p>
+    <span class="btn">Get a Counterparty Gap Report</span>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>This is the sharpest line available anywhere in the source material and it should be the hero. It states the category gap in nine words, and it separates InFrame from every tracking tool in the auction without naming one.</p>
+    <p>Daniel's version: <em>"certificates are not enough. You have a lot of risk that requires us to see what they have in their policies."</em></p>
+    <p>"Reviewed by risk specialists rather than collected and filed" is the anti-software move, made in the subhead where a software shopper will hit it within the first three seconds.</p>
+    <p><b>Single CTA, by request.</b> The secondary "Talk to a risk advisor" button is gone, so every page in this set now asks for one thing. Read the note on LP1 module 01 for the trade-off, which applies here too.</p>
+  </div>
+</section>
+
+<!-- LP2 · 02 TENSION -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">02</span><span class="modname">Problem / Tension</span><span class="modmap mono">Brightscout module: Tension band</span></div>
+  <div class="frame">
+    <p class="h2">The certificate is in the folder. That is the whole problem.</p>
+    <p class="body">Most compliance programs are two people, a shared inbox, and a spreadsheet with a tab for every project. Certificates get collected at signing and never looked at again. Financials get filed, not read. Requests go out, and out, and out.</p>
+    <p class="body">The people doing it are careful and organized. They were also never trained as risk advisors, so what they can confirm is that a document arrived, not that it protects you.</p>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>Built from the Southern California GC in the September 3 call. Daniel asked their compliance lead what she did with subcontractor financials: <em>"And the woman says I just put it in the folder. I'm like no no no what do you do with the financials? She's like I put it in the right folder."</em></p>
+    <p>The second paragraph is doing careful political work. The person reading this page is very often the person running that spreadsheet, or their direct manager. The copy has to indict the <b>system</b> without insulting the <b>reader</b>. His own framing gives us the out: <em>"they're not risk advisors. They're not specialists. So they don't understand most of what they're reviewing."</em> That is a staffing reality, not a failing.</p>
+  </div>
+</section>
+
+<!-- LP2 · 03 WHAT GETS MISSED -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">03</span><span class="modname">What gets missed</span><span class="modmap mono">Brightscout module: Question tiles / checklist</span></div>
+  <div class="frame">
+    <p class="eyebrow mono">Four things a certificate will not tell you</p>
+    <div class="cards">
+      <div class="card"><p class="h3">The entity does not match</p><p>The company that signed your contract is not the named insured on the policy. Close name, different entity. On paper you are covered. In practice you are not.</p></div>
+      <div class="card"><p class="h3">The policy expired eight months in</p><p>A two-year project outlasts a twelve-month policy. If nobody chases the renewal, you are carrying the risk and you will not know until you need it.</p></div>
+      <div class="card"><p class="h3">The endorsement points at last year</p><p>Additional insured and waiver language that no longer attaches to anything current.</p></div>
+      <div class="card"><p class="h3">The financials were filed, not read</p><p>A subcontractor's numbers have been getting worse for three years. Somebody collected them every year. Nobody looked.</p></div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>All four are findings InFrame actually surfaced in a free sample review, in Daniel's words: <em>"We looked at tiny things that they would never find themselves. Like the person that signed the agreement with them from the subcontractor is different than the person on the insurance policy for that subcontractor. Like the entity name is different… it's not in the contract. It's just completely different entity."</em></p>
+    <p>These are specific enough to be disprovable, which is what makes them credible. Generic "gaps in coverage" language would land as marketing. "The signer is not the named insured" lands as someone who has done this.</p>
+    <p>Guardrail check: informed confidence, not dramatized consequence. Each card states the mechanism and stops. The card that <em>could</em> have carried the seven-figure bankruptcy story does not. See module 07.</p>
+  </div>
+</section>
+
+<!-- LP2 · 04 SOLUTION -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">04</span><span class="modname">Solution / Why us</span><span class="modmap mono">Brightscout module: Dark outcomes grid</span></div>
+  <div class="frame dark">
+    <p class="eyebrow mono">What we do</p>
+    <p class="h2" style="max-width:30ch">We read what you signed and what they bought.</p>
+    <p class="body" style="opacity:.9;max-width:60ch">You owe requirements upward to owners and lenders, and you set them downward to your subcontractors and tenants. Most programs only look one way.</p>
+    <div class="twocol" style="margin-top:26px">
+      <div class="row"><p class="h3">Requirements extracted from your contracts</p><p>Not a generic checklist. What your agreements actually say, including the ones your largest counterparties made you rewrite.</p></div>
+      <div class="row"><p class="h3">Policies reviewed, not just certificates</p><p>We read the underlying coverage behind every certificate you collect.</p></div>
+      <div class="row"><p class="h3">Continuous, not at signing</p><p>Expirations, cancellations and mid-term changes tracked against your project schedule.</p></div>
+      <div class="row"><p class="h3">Every flag verified by a person</p><p>You get judgment about what matters, not an inbox full of exceptions to triage yourself.</p></div>
+      <div class="row"><p class="h3">Both directions covered</p><p>What you owe the city, the owner and the lender, and what your subs owe you.</p></div>
+      <div class="row"><p class="h3">One place for the documents</p><p>Contracts, certificates, policies, waivers and schedules, tied to the project and the counterparty.</p></div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>"Both directions" is straight from Daniel: <em>"even the general contractor, they are also hired by an owner like the city of San Jose or LA… they need to meet the city's requirements in that contract, but now they create contract for all the subs… we want to help them in both directions, both up and down."</em> No COI tool positions this way and it is genuinely differentiated.</p>
+    <p>"Every flag verified by a person" satisfies the let-technology-assist-not-lead guardrail without saying AI, automation or platform anywhere on the page.</p>
+  </div>
+</section>
+
+<!-- LP2 · 05 ANTI-PLATFORM -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">05</span><span class="modname">Service, not software</span><span class="modmap mono">New module · recommend adding to the system</span></div>
+  <div class="frame">
+    <p class="h2">This is a service, not a seat license.</p>
+    <p class="body">You do not need another dashboard to check. Technology sits underneath this, collecting documents, chasing renewals and watching expirations, and underneath is where it belongs. What you get is a specialist who tells you what needs your attention and why.</p>
+    <div class="quote"><p>Intelligence should work in the background. You should notice the outcome.</p></div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>This module exists because of the traffic, and it is the single most important thing on the page. Ad group 2.2 deliberately bids on COI <em>software</em> terms. Real demand, wrong expectation. Without this module those visitors compare InFrame to a product and leave.</p>
+    <p>The pull quote is adapted from the call. Daniel's own analogy was Uber: <em>"How do you pay for Uber? You don't. You just get in the car and then you get out of the car and just some magical way things happen in the background."</em> I cut the consumer-tech reference because it undercuts a specialist brokerage, but the idea is right for buyers who told him they <em>"love intelligence if it operates in the background."</em></p>
+    <p>This module is not in Brightscout's current system. Recommend adding it: the same objection will hit their solution page the moment it exists.</p>
+  </div>
+</section>
+
+<!-- LP2 · 06 PLAN -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">06</span><span class="modname">The plan</span><span class="modmap mono">Brightscout module: How it works</span></div>
+  <div class="frame">
+    <p class="h2">Start with one project.</p>
+    <div class="steps">
+      <div><p class="n mono">Step 01</p><p><b>Send your contracts and current certificates.</b> One project is enough to start.</p></div>
+      <div><p class="n mono">Step 02</p><p><b>We extract the requirements and read the policies.</b> Against each other, counterparty by counterparty.</p></div>
+      <div><p class="n mono">Step 03</p><p><b>You get an ongoing picture.</b> What is compliant, what is not, what changed this week, with every flag checked by a specialist.</p></div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>"Start with one project" is the lowest-friction entry point available and it mirrors how InFrame actually won the SoCal GC: <em>"we told them we're going to do a demo. Give us one project."</em> It is also the exact shape of the LP3 offer, so the two pages reinforce each other instead of competing.</p>
+  </div>
+</section>
+
+<!-- LP2 · 07 PROOF -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">07</span><span class="modname">Social proof</span><span class="modmap mono">Brightscout module: Case study / testimonial</span></div>
+  <div class="frame">
+    <p class="eyebrow mono">Client story</p>
+    <p class="h2" style="max-width:34ch">Four subcontractors. One project. Issues on every one.</p>
+    <p class="body">A regional general contractor running dozens of concurrent projects gave us a single job as a test. Four subs, the ones they were least worried about. We found problems with all four. Entity mismatches, an expired policy nobody had chased, and financials that had been collected every year and never read.</p>
+    <div class="imgbox" style="height:96px"><span class="mono">Client logo or portrait: pending case study approval</span></div>
+    <p class="small"><span class="flag">Approval</span> Client-specific. Requires the client's permission and written sign-off before publication.</p>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>"The ones they were least worried about" is the line that makes this land. It is faithful to what happened and it converts a statistic into an argument the reader applies to themselves.</p>
+    <p><b>What I deliberately left out.</b> The same account had a subcontractor go bankrupt mid-project: a replacement that cost more than twice as much, four months of delay, $1.4M against a thin margin. It is the most dramatic story in the source material and I am not recommending it for this page. It dramatizes consequence, which the guardrail rules out. The margin figure is garbled in the transcript and cannot be published as recorded. And a fear frame invites the reader to argue with you instead of with their own program. Save it for a sales conversation, where someone can respond in real time.</p>
+    <p>If the two contracted case studies are not ready at launch, this module ships as a placeholder rather than being cut. An empty proof slot is better than a page that quietly teaches visitors nobody has hired them.</p>
+  </div>
+</section>
+
+<!-- LP2 · 08 SCALE -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">08</span><span class="modname">Scale strip</span><span class="modmap mono">Brightscout module: Stat band</span></div>
+  <div class="frame">
+    <div class="strip">
+      <div><b>50 or 500</b>Subcontractors monitored</div>
+      <div><b>Up &amp; down</b>Owner requirements and sub requirements</div>
+      <div><b>Subs or tenants</b>Contractors and property owners</div>
+      <div><b>50 states</b>Licensed commercial brokerage</div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>"Subs or tenants" is carrying Campaign 3.2 real-estate traffic on this page rather than in a fourth page, which would be out of scope. The full real-estate variant of the hero and tension modules is a scheduled experiment, not a new build.</p>
+  </div>
+</section>
+
+<!-- LP2 · 09 FAQ -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">09</span><span class="modname">FAQ</span><span class="modmap mono">Brightscout module: Questions accordion</span></div>
+  <div class="frame faq">
+    <p class="h2">Questions about counterparty compliance</p>
+    <div class="qrow"><p class="q">We already use COI tracking software. How is this different?</p><p class="a">Tracking software confirms a certificate exists and the dates are current. That is useful and it is not the same as knowing you are covered. We read the policies behind the certificates and tell you where they do not match what your contracts require. Most clients keep their software. We are the judgment layer on top of it.</p></div>
+    <div class="qrow"><p class="q">Do we have to move our insurance to you?</p><p class="a">No. We handle counterparty risk management as its own engagement, whether or not we place your insurance. Plenty of clients start here and never move their program.</p></div>
+    <div class="qrow"><p class="q">Who actually does the reviewing?</p><p class="a">Licensed risk specialists. Documents get collected and organized systematically, which should be automatic, but every flag that reaches you has been checked by a person who can explain it.</p></div>
+    <div class="qrow"><p class="q">We manage tenants, not subcontractors. Does this apply?</p><p class="a">Yes, and the mechanics are close to identical. Lease requirements instead of subcontract requirements, certificates from tenants instead of subs. We also review the lease language itself, which is where we most often find exposure.</p></div>
+    <div class="qrow"><p class="q">How long does onboarding take?</p><p class="a">You can start with one project in a few days. A full program depends on how many counterparties you carry and what condition the documents are in.</p></div>
+    <div class="qrow"><p class="q">What happens to the documents we send you?</p><p class="a">They stay confidential and are used only for your review. We will sign your NDA if you have one.</p></div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>Question two is the most valuable on the page and it is the answer most likely to get edited into something weaker. Daniel was unambiguous: <em>"I charge the GC money to do the risk management for their subs regardless of the insurance."</em> Removing the fear of a bait-and-switch on their whole insurance program is what makes a compliance buyer willing to talk.</p>
+    <p>Question one concedes that their existing software is useful. Attacking it would insult a purchase the reader personally made and defended internally. Positioning as the layer above it is both more accurate and easier to say yes to.</p>
+  </div>
+</section>
+
+<!-- LP2 · 10 CTA -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">10</span><span class="modname">Conversion</span><span class="modmap mono">Brightscout module: Closing CTA</span></div>
+  <div class="frame">
+    <p class="h2">Give us one project. We will show you what is in it.</p>
+    <div class="formbox">
+      <p class="flabel mono">Form · 7 fields</p>
+      <div class="field req">Company name</div>
+      <div class="field req">Full name</div>
+      <div class="field req">Work email</div>
+      <div class="field req">Phone</div>
+      <div class="field req">Your role &nbsp;▾</div>
+      <div class="field req">Subcontractors or tenants monitored &nbsp;▾</div>
+      <div class="field">Active projects &nbsp;▾</div>
+      <span class="btn" style="margin-top:10px">Get a Counterparty Gap Report</span>
+    </div>
+    <p class="small">Or call <span class="mono">[dynamic tracking number]</span>.</p>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>Counterparty count is the qualification gate and it maps to InFrame's own tier structure, so a submission arrives pre-sorted.</p>
+    <p>Primary CTA is the report rather than a call, on purpose. Compliance buyers want evidence before a conversation. Pushing "talk to an advisor" as the primary action on this page suppresses conversion from exactly the audience worth the $58 click.</p>
+  </div>
+</section>
+
+
+<!-- ============================================================= -->
+<!-- =========================== LP 3 ============================ -->
+<!-- ============================================================= -->
+<div class="pagehead" id="lp3">
+  <div class="lp mono">Landing Page 3 of 3</div>
+  <h2>Counterparty Gap Report</h2>
+  <p class="url mono">go.inframerisk.com/gap-report</p>
+  <dl class="spec">
+    <div><dt class="mono">Traffic</dt><dd>Primary CTA from LP2, plus research-intent keywords · roughly 2% of media direct</dd></div>
+    <div><dt class="mono">Who lands here</dt><dd>Compliance buyers from LP2 who want evidence before a conversation</dd></div>
+    <div><dt class="mono">Job of the page</dt><dd>Convert a cold visitor into a documented, specific problem</dd></div>
+    <div><dt class="mono">Primary action</dt><dd>Report request <em>with</em> document upload</dd></div>
+  </dl>
+</div>
+
+<div class="note" style="margin-top:20px">
+  <span class="nlabel mono">Source gap you should know about</span>
+  <p>The Counterparty Gap Report is a contracted deliverable, but <b>it does not exist yet in any source material I can find</b>. No name, no contents, no fulfillment spec, no cost to produce. The call notes never mention it.</p>
+  <p>What I built this page from is the thing InFrame already does manually and successfully: the free sample review that won the Southern California GC. That review <em>is</em> the gap report, unproductized. The contents below are reverse-engineered from what they actually found. Treat this page as a specification proposal as much as a wireframe. Approving it also decides what the report contains.</p>
+</div>
+
+<!-- LP3 · 01 HERO -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">01</span><span class="modname">Hero</span><span class="modmap mono">Brightscout module: Hero (compact)</span></div>
+  <div class="frame">
+    <p class="h1">Send us one project. We will tell you what is wrong with it.</p>
+    <p class="lede">Pick a single job and a handful of subcontractors. We review their coverage against what your contract actually requires and send you a written report in three business days.</p>
+    <span class="btn">Request your report</span>
+    <p class="small">No software to install. No sales call required to get the report.</p>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>The headline is confident to the edge of cocky, and it should stay that way. It works because it is nearly guaranteed to be true. In the sample review InFrame ran, they found issues on all four subs. Daniel's own line: <em>"we can always find gaps."</em></p>
+    <p><span class="flag">Approval</span> This page originally read "at no cost." That is an offer claim requiring affirmative written approval under SOW §5, so it is cut from this draft. "No sales call required to get the report" carries most of the same reassurance and is a process statement rather than a price claim. If Daniel approves the free framing, restore it. It will materially lift conversion.</p>
+    <p><span class="flag hollow">Verify</span> Three business days. Confirm InFrame can hold this under paid-search volume before it goes live.</p>
+  </div>
+</section>
+
+<!-- LP3 · 02 CONTENTS -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">02</span><span class="modname">What is in the report</span><span class="modmap mono">Brightscout module: Checklist</span></div>
+  <div class="frame">
+    <p class="h2">Five things we check, on every counterparty.</p>
+    <div class="twocol" style="margin-top:20px">
+      <div class="row"><p class="h3">Entity match</p><p>Whether the company that signed your contract is the company named on the policy.</p></div>
+      <div class="row"><p class="h3">Limits against your requirements</p><p>Coverage and limits measured against what your agreement actually demands, not a generic standard.</p></div>
+      <div class="row"><p class="h3">Additional insured and waiver status</p><p>Whether the endorsements exist, and whether they attach to the current policy.</p></div>
+      <div class="row"><p class="h3">Expiry against your schedule</p><p>Which policies run out before the work does.</p></div>
+      <div class="row"><p class="h3">A prioritized action list</p><p>What to fix, in what order, and what can wait.</p></div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>These five are exactly what InFrame surfaced in the real sample review. Publishing the checklist raises the perceived value of the report and pre-frames the sales conversation, because now the prospect is reading their own findings against a rubric they already accepted.</p>
+    <p>Every item is verifiable from documents the prospect uploads, which means the report can be produced consistently and the promise can be kept at volume.</p>
+  </div>
+</section>
+
+<!-- LP3 · 03 HOW IT WORKS -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">03</span><span class="modname">How it works</span><span class="modmap mono">Brightscout module: How it works</span></div>
+  <div class="frame">
+    <div class="steps">
+      <div><p class="n mono">Step 01</p><p><b>Upload one contract and the certificates.</b> One project, three to five counterparties.</p></div>
+      <div><p class="n mono">Step 02</p><p><b>A specialist reviews it.</b> Documents are organized automatically. The findings are written by a person.</p></div>
+      <div><p class="n mono">Step 03</p><p><b>You get the report in three business days.</b> Written, specific, yours to keep.</p></div>
+    </div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>"The findings are written by a person" appears on all three pages in some form. It is the load-bearing sentence of the whole positioning and it should survive every round of edits.</p>
+  </div>
+</section>
+
+<!-- LP3 · 04 AFTER -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">04</span><span class="modname">What happens next</span><span class="modmap mono">Brightscout module: Tension band (inverted)</span></div>
+  <div class="frame">
+    <p class="h2">Then nothing happens, unless you want it to.</p>
+    <p class="body">A specialist will offer to walk you through the findings. If you want us to take the work on, we will tell you what that looks like. If you do not, the report is still yours and you can hand it to your current broker.</p>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>Explicit permission to walk away is what makes a stranger upload a contract. "Hand it to your current broker" is the strongest trust signal available and it costs almost nothing in practice. A prospect who takes findings to an incumbent who missed them is generally on their way to switching anyway.</p>
+  </div>
+</section>
+
+<!-- LP3 · 05 FORM -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">05</span><span class="modname">Conversion</span><span class="modmap mono">Brightscout module: Closing CTA</span></div>
+  <div class="frame">
+    <p class="h2">Request your Counterparty Gap Report</p>
+    <div class="formbox">
+      <p class="flabel mono">Form · 6 fields + upload</p>
+      <div class="field req">Company name</div>
+      <div class="field req">Full name</div>
+      <div class="field req">Work email</div>
+      <div class="field req">Phone</div>
+      <div class="field req">Subcontractors or tenants monitored &nbsp;▾</div>
+      <div class="field" style="border-style:dashed;height:56px;display:flex;align-items:center">Upload: one sample contract and the certificates &nbsp; <span class="mono" style="font-size:11px">[drag &amp; drop]</span></div>
+      <span class="btn" style="margin-top:10px">Send my documents</span>
+      <p class="small" style="margin-top:14px">Your documents stay confidential and are used only for your review. We will sign your NDA.</p>
+    </div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p>The upload is heavy friction and it is the entire point. Anyone who uploads a real contract is qualified and has already invested in the outcome, and the advisor arrives at the first call holding something specific.</p>
+    <p>Two conversion actions, tracked separately: request <b>with</b> upload is the primary and the only one that feeds bidding. Request without upload is recorded at lower value and routed to a nurture sequence.</p>
+    <p>The confidentiality line is not optional. You are asking a stranger to upload an executed contract from a live project. Legal should confirm the wording, and the page needs a privacy link next to the button.</p>
+  </div>
+</section>
+
+<!-- LP3 · 06 FAQ -->
+<section class="module">
+  <div class="modhead"><span class="modnum mono">06</span><span class="modname">FAQ</span><span class="modmap mono">Brightscout module: Questions accordion</span></div>
+  <div class="frame faq">
+    <div class="qrow"><p class="q">What does the report cost?</p><p class="a">[Pending. See approval register.]<span class="flag" style="margin-left:8px">Approval</span></p></div>
+    <div class="qrow"><p class="q">Will you sign an NDA?</p><p class="a">Yes. Send it with your documents or ask and we will send ours.</p></div>
+    <div class="qrow"><p class="q">What if you do not find anything?</p><p class="a">Then you have written confirmation that one project is in order, which is worth having. In practice we have not run a review that came back empty.<span class="flag" style="margin-left:8px">Approval</span></p></div>
+    <div class="qrow"><p class="q">How many counterparties should I send?</p><p class="a">Three to five from a single project is the right size. Enough to be representative, small enough to turn around quickly.</p></div>
+    <div class="qrow"><p class="q">Do we need to be an InFrame client?</p><p class="a">No.</p></div>
+  </div>
+  <div class="note">
+    <span class="nlabel mono">Note</span>
+    <p><span class="flag">Approval</span> "We have not run a review that came back empty" is a comparative performance claim and needs affirmative written approval. It is also the most persuasive sentence on the page. It is defensible if it is literally true across every review InFrame has run. Daniel's <em>"we can always find gaps"</em> suggests it is, but he needs to confirm it as a factual record and not a figure of speech. If he cannot, cut it entirely rather than softening it.</p>
+  </div>
+</section>
+
+
+<!-- ============================================================= -->
+<!-- ======================== REGISTER =========================== -->
+<!-- ============================================================= -->
+<section class="endnote" id="register">
+  <h2>Approval Register &amp; Open Questions</h2>
+  <p class="body" style="max-width:70ch">Under SOW §5, copy not rejected within two business days is deemed approved, <b>except</b> copy containing pricing, savings, or comparative claims, or a new offer, which requires affirmative written approval. Everything in the table below falls under that exception and cannot publish on silence.</p>
+
+  <h3 class="mono">Requires affirmative written approval</h3>
+  <table>
+    <thead><tr><th style="width:16%">Where</th><th style="width:34%">Copy</th><th style="width:22%">Why it is flagged</th><th>Recommendation</th></tr></thead>
+    <tbody>
+      <tr><td>LP1 hero, LP3 hero</td><td>"No-cost" / "at no cost" program review and report</td><td>New offer claim</td><td>Cut from this draft. Approve and restore. It is the highest-impact single word on either page.</td></tr>
+      <tr><td>LP1 module 07</td><td>Flooring contractor quote and story</td><td>Client-specific, anonymized</td><td>Needs client permission. Settle the 150 vs 100 certificate discrepancy or drop the count.</td></tr>
+      <tr><td>LP2 module 07</td><td>"Four subcontractors. Issues on every one."</td><td>Client-specific, anonymized</td><td>Needs client permission. Strongest proof point in the whole set.</td></tr>
+      <tr><td>LP3 FAQ</td><td>"We have not run a review that came back empty."</td><td>Comparative performance claim</td><td>Approve only if literally true across all reviews to date. Otherwise cut it. Do not soften it.</td></tr>
+      <tr><td>LP3 FAQ</td><td>Report pricing answer</td><td>Pricing claim</td><td>Blank pending the free/paid decision above.</td></tr>
+      <tr><td>All pages</td><td>"Three business days"</td><td>Service-level commitment</td><td>Confirm it holds under paid volume, or change to "within a week."</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="mono">Deliberately excluded by Solio</h3>
+  <table>
+    <thead><tr><th style="width:34%">Excluded</th><th>Reasoning</th></tr></thead>
+    <tbody>
+      <tr><td>Sub bankruptcy story: 2x replacement cost, 4-month delay, $1.4M loss</td><td>Dramatizes consequence, against the brand guardrail. The margin figure is also garbled in the transcript ("56%" is almost certainly 5 to 6%) and cannot be published as recorded. Keep it for live sales conversations.</td></tr>
+      <tr><td>Fatality and catastrophic-claim examples</td><td>Same guardrail. Fear is the wrong register for a page whose job is informed confidence.</td></tr>
+      <tr><td>Exposure and premium figures from the GC one-pager</td><td>Comparative and savings claims. None are currently approved, and none are needed. The mechanism arguments are doing the work.</td></tr>
+      <tr><td>Accuracy benchmark vs. general-purpose AI models</td><td>Comparative claim, and it puts technology on the face of the brand. Wrong audience, wrong page, wrong guardrail.</td></tr>
+      <tr><td>Named competitors</td><td>The guardrail permits challenging the traditional brokerage model, never a named broker.</td></tr>
+      <tr><td>"Built environment" in any headline or subhead</td><td>1,900 US searches a month, and 1,070 of those are people asking what the phrase means. No insurance-qualified variant registers any volume at all. It stays in the brand narrative and off the paid pages.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="mono">Open questions for InFrame</h3>
+  <table>
+    <thead><tr><th style="width:30%">Question</th><th>Why it matters</th></tr></thead>
+    <tbody>
+      <tr><td>Are Valley Oak, Northstar Construction and Staples Construction real case studies?</td><td>None appear in any source material available to Solio. The logos in the Brightscout comp read as placeholder. The two written case studies are a contracted InFrame deliverable and both proof modules are blocked without them.</td></tr>
+      <tr><td>Is the gap report free, and what does it contain?</td><td>The offer does not exist in any source. LP3 proposes a specification. Approving the page approves the product.</td></tr>
+      <tr><td>Can InFrame confirm "150+ insurers" and the advisory experience figures?</td><td>Carried from the intro deck, unverified elsewhere. Held out of the hero until confirmed.</td></tr>
+      <tr><td>Should "no-cost" survive?</td><td>Affects both hero CTAs, the LP3 offer framing, and likely conversion rate more than any other single decision in this document.</td></tr>
+      <tr><td>Does Brightscout want the "service, not software" module in the system?</td><td>It is new. The same objection will hit their solution page as soon as it exists, and it would be better solved once.</td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="mono">Scope note</h3>
+  <p class="body" style="max-width:74ch">Three pages, matching the SOW allowance exactly: two conversion-built landing pages plus the Counterparty Gap Report offer page. Nothing in this document proposes work outside Exhibit A. Per-trade pages, a real-estate-specific page, and any fourth page are handled as on-page experiments within the contracted two-per-month cadence, not as new builds.</p>
+
+  <p class="small mono" style="margin-top:44px">Solio Growth · Prepared for InFrame Insurance Services LLC · September 4, 2026 · v1, for review</p>
+</section>
+
+</div>
+
+<script>
+/* =====================================================================
+   COMMENTING
+   ---------------------------------------------------------------------
+   Paste your Google Apps Script Web App URL between the quotes below.
+   Setup instructions are in COMMENTING-SETUP.md.
+   Until you paste it, comments still save in the reviewer's browser and
+   can be exported with the Download button. Nothing is lost.
+   ===================================================================== */
+var COMMENT_ENDPOINT = "https://script.googleusercontent.com/a/macros/soliogrowth.com/echo?user_content_key=AUkAhnR3dD4ZV1QlMvlG8kOtvzIcHJ7qYyeK2AERgpaayffgrPYAYIIjKU4l93iU6WRWJw13eL79qxvrU2vkdt1KKCVAeJic2WuQ7k8Y0QdhwDQmEQOmVkHZVa2W2LbtcSjmi-6HFpJ4F5tlfZO1qflkPjluvMt0z86IY-qdzbwVoJde9_ojJfU4EYGp4yQi54zCB0hpn4DIJKwRbqI6JuIycPjuOt9I1Z0ZU3txWpLpHGFNKC7pFID-jJWcrC-gScQt-CEzM4KcyIMbmZUzsO5sMW9GEJwloykVRD46z_CpSEg5Wrv_L6g&lib=MIv-Oznj80yB-6gyFC3t0bUd3Trmbe3TI";
+
+(function () {
+  var KEY = "inframe-lp-comments-v1";
+  var NAMEKEY = "inframe-lp-reviewer-v1";
+  var memStore = [];
+  var memName = "";
+
+  function load() {
+    try { var r = window.localStorage.getItem(KEY); return r ? JSON.parse(r) : []; }
+    catch (e) { return memStore; }
+  }
+  function save(list) {
+    memStore = list;
+    try { window.localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
+  }
+  function getName() {
+    try { return window.localStorage.getItem(NAMEKEY) || memName; } catch (e) { return memName; }
+  }
+  function setName(v) {
+    memName = v;
+    try { window.localStorage.setItem(NAMEKEY, v); } catch (e) {}
+  }
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  function endpointReady() {
+    return COMMENT_ENDPOINT && COMMENT_ENDPOINT.indexOf("PASTE_") !== 0;
+  }
+  function post(payload, done) {
+    if (!endpointReady()) { done(false, "nokey"); return; }
+    try {
+      fetch(COMMENT_ENDPOINT, { method: "POST", body: JSON.stringify(payload) })
+        .then(function () { done(true); })
+        .catch(function () { done(false, "net"); });
+    } catch (e) { done(false, "net"); }
+  }
+
+  /* ---- find every module and give it a comment block ---- */
+  var currentPage = "Front matter";
+  var nodes = document.querySelectorAll(".pagehead, .module, #register");
+  var blocks = [];
+
+  for (var i = 0; i < nodes.length; i++) {
+    var n = nodes[i];
+
+    if (n.classList.contains("pagehead")) {
+      var lp = n.querySelector(".lp");
+      var h = n.querySelector("h2");
+      currentPage = (lp ? lp.textContent.trim() + " · " : "") + (h ? h.textContent.trim() : "");
+      continue;
+    }
+
+    var page = currentPage, id, snippet;
+
+    if (n.id === "register") {
+      page = "Approval Register";
+      id = "Register · Open questions";
+      snippet = "";
+    } else {
+      var num = n.querySelector(".modnum");
+      var nm = n.querySelector(".modname");
+      id = (num ? num.textContent.trim() : "") + " · " + (nm ? nm.textContent.trim() : "Module");
+      var head = n.querySelector(".frame .h1, .frame .h2, .frame .eyebrow, .frame .q");
+      snippet = head ? head.textContent.trim() : "";
+    }
+
+    blocks.push(build(n, page, id, snippet));
+  }
+
+  function build(section, page, moduleId, snippet) {
+    var wrap = document.createElement("div");
+    wrap.className = "cmt";
+    wrap.innerHTML =
+      '<div class="cmt-list"></div>' +
+      '<div class="cmt-bar">' +
+        '<button type="button" class="cmt-btn">Comment</button>' +
+        '<span class="cmt-count"></span>' +
+      '</div>' +
+      '<div class="cmt-form">' +
+        '<label>Your comment on ' + esc(moduleId) + '</label>' +
+        '<textarea placeholder="What would you change, and why?"></textarea>' +
+        '<label>Your name</label>' +
+        '<input type="text" placeholder="e.g. Daniel">' +
+        '<div class="row">' +
+          '<button type="button" class="cmt-btn cmt-send">Send</button>' +
+          '<button type="button" class="cmt-btn small cmt-cancel">Cancel</button>' +
+          '<span class="cmt-status"></span>' +
+        '</div>' +
+      '</div>';
+    section.appendChild(wrap);
+
+    var list = wrap.querySelector(".cmt-list");
+    var count = wrap.querySelector(".cmt-count");
+    var form = wrap.querySelector(".cmt-form");
+    var text = wrap.querySelector("textarea");
+    var who = wrap.querySelector("input");
+    var status = wrap.querySelector(".cmt-status");
+
+    wrap.querySelector(".cmt-btn").addEventListener("click", function () {
+      form.classList.toggle("open");
+      if (form.classList.contains("open")) { who.value = getName(); text.focus(); }
+    });
+    wrap.querySelector(".cmt-cancel").addEventListener("click", function () {
+      form.classList.remove("open"); status.textContent = "";
+    });
+    wrap.querySelector(".cmt-send").addEventListener("click", function () {
+      var body = text.value.trim();
+      if (!body) { status.textContent = "Nothing to send yet."; return; }
+      var reviewer = who.value.trim() || "Anonymous";
+      setName(reviewer);
+
+      var entry = {
+        ts: new Date().toISOString(),
+        reviewer: reviewer,
+        page: page,
+        module: moduleId,
+        snippet: snippet,
+        comment: body
+      };
+
+      var all = load();
+      all.push(entry);
+      save(all);
+      text.value = "";
+      form.classList.remove("open");
+      render();
+      refreshDock();
+
+      status.textContent = "Saving…";
+      post(entry, function (ok, why) {
+        status.textContent = ok
+          ? "Sent."
+          : (why === "nokey"
+              ? "Saved on this page. Use Download when you are done."
+              : "Saved on this page, but could not reach the server. Use Download when you are done.");
+        setTimeout(function () { status.textContent = ""; }, 6000);
+      });
+    });
+
+    function render() {
+      var mine = load().filter(function (c) { return c.module === moduleId && c.page === page; });
+      count.textContent = mine.length ? mine.length + (mine.length === 1 ? " comment" : " comments") : "";
+      list.innerHTML = mine.map(function (c) {
+        return '<div class="cmt-item"><span class="who">' + esc(c.reviewer) + " · " +
+          esc(new Date(c.ts).toLocaleString()) + '</span>' + esc(c.comment) + '</div>';
+      }).join("");
+    }
+
+    render();
+    return { render: render };
+  }
+
+  /* ---- floating dock ---- */
+  var dock = document.createElement("div");
+  dock.id = "cmt-dock";
+  dock.innerHTML =
+    '<b>Comments</b>' +
+    '<span class="dcount"></span>' +
+    '<div class="row">' +
+      '<button type="button" class="cmt-btn small dl">Download</button>' +
+      '<button type="button" class="cmt-btn small clr">Clear</button>' +
+    '</div>';
+  document.body.appendChild(dock);
+
+  var dcount = dock.querySelector(".dcount");
+
+  function refreshDock() {
+    var n = load().length;
+    dcount.textContent = n === 0
+      ? "None yet. Use the Comment button under any module."
+      : n + (n === 1 ? " comment saved" : " comments saved") +
+        (endpointReady() ? " and sent." : " on this device.");
+  }
+
+  dock.querySelector(".dl").addEventListener("click", function () {
+    var all = load();
+    if (!all.length) { return; }
+    var out = "# InFrame Risk · Landing page copy feedback\n\n" +
+      all.length + " comments · exported " + new Date().toLocaleString() + "\n\n";
+    var lastPage = "";
+    all.forEach(function (c) {
+      if (c.page !== lastPage) { out += "\n---\n\n## " + c.page + "\n\n"; lastPage = c.page; }
+      out += "**" + c.module + "**" + (c.snippet ? "  \n_" + c.snippet + "_" : "") + "\n\n" +
+             c.comment + "\n\n" + "Left by " + c.reviewer + ", " + new Date(c.ts).toLocaleString() + "\n\n";
+    });
+    var blob = new Blob([out], { type: "text/markdown" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "inframe-lp-feedback.md";
+    a.click();
+  });
+
+  dock.querySelector(".clr").addEventListener("click", function () {
+    if (!window.confirm("Clear all comments saved on this device? Download them first if you have not sent them.")) { return; }
+    save([]);
+    blocks.forEach(function (b) { b.render(); });
+    refreshDock();
+  });
+
+  refreshDock();
+})();
+</script>
+
+</body>
+</html>
