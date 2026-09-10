@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="theme-color" content="#222F3E">
+<title>Specialty Trade Contractor Insurance · InFrame Risk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   InFrame Risk · brand system
+   Palette, type scale and module styles shared by all three
+   paid search landing page mockups.
+   ============================================================ */
+:root{
+  --slate-05:#222F3E;
+  --slate-04:#37485A;
+  --slate-03:#526477;
+  --steel:#8394A5;
+  --steel-02:#C9CFE1;
+  --steel-01:#E1E5F0;
+  --slate-01:#F4F6FB;
+  --amber-05:#EFB921;
+  --amber-04:#F5CA52;
+  --amber-03:#FDDC80;
+  --amber-02:#FAE4A9;
+  --amber-01:#FFF3D2;
+  --white:#FFFFFF;
+
+  /* fluid type, anchored to the brand desktop scale */
+  --t-headline:clamp(2.375rem,1.45rem + 3.9vw,4rem);      /* 38 -> 64 */
+  --t-subline:clamp(1.625rem,1.2rem + 1.8vw,2.25rem);     /* 26 -> 36 */
+  --t-h3:clamp(1.0625rem,1rem + .28vw,1.1875rem);         /* 17 -> 19 */
+  --t-lede:clamp(1.0625rem,.98rem + .42vw,1.25rem);       /* 17 -> 20 */
+  --t-body:1rem;                                          /* 16 */
+  --t-small:.875rem;                                      /* 14 */
+  --t-legal:.75rem;                                       /* 12 */
+  --t-eyebrow:.6875rem;                                   /* 11 */
+
+  --gutter:clamp(1.25rem,5vw,3.5rem);
+  --band:clamp(3.5rem,8vw,7rem);
+  --maxw:1160px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--slate-01);
+  color:var(--slate-05);
+  font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:var(--t-body);
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+
+/* ---------- shared layout ---------- */
+.shell{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+.band{padding-block:var(--band)}
+.band--light{background:var(--slate-01);color:var(--slate-05)}
+.band--white{background:var(--white);color:var(--slate-05)}
+.band--dark{background:var(--slate-05);color:var(--white)}
+.band--steel{background:var(--steel-02);color:var(--slate-05)}
+.band--amber{background:var(--amber-02);color:var(--slate-05)}
+.band--tight{padding-block:clamp(2rem,4vw,3rem)}
+
+/* ---------- type ---------- */
+h1,h2,h3{font-weight:600;letter-spacing:-.02em;margin:0}
+h1{font-size:var(--t-headline);line-height:1.06}
+h2{font-size:var(--t-subline);line-height:1.15}
+h3{font-size:var(--t-h3);line-height:1.3;letter-spacing:-.01em}
+p{margin:0}
+.eyebrow{
+  font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--slate-03);margin:0 0 1.25rem;
+}
+.band--dark .eyebrow{color:var(--amber-05)}
+.lede{font-size:var(--t-lede);line-height:1.5;font-weight:400}
+.copy{font-size:var(--t-body);line-height:1.65}
+.small{font-size:var(--t-small);line-height:1.55}
+.legal{font-size:var(--t-legal);line-height:1.6}
+.measure{max-width:26ch}
+.measure-l{max-width:34ch}
+.measure-p{max-width:64ch}
+
+/* ---------- accent rule ---------- */
+.rule-amber{display:block;width:34px;height:3px;background:var(--amber-05);border:0;margin:0 0 1.125rem}
+
+/* ---------- button ---------- */
+.btn{
+  display:inline-block;
+  background:var(--amber-05);
+  color:var(--slate-05);
+  font-family:inherit;font-size:1rem;font-weight:700;line-height:1.2;
+  letter-spacing:.005em;
+  padding:1.0625rem 2rem;
+  border:0;border-radius:2px;
+  text-decoration:none;cursor:pointer;
+  transition:background .15s ease;
+}
+.btn:hover{background:var(--amber-04)}
+.btn:active{background:var(--amber-03)}
+
+/* ---------- focus ---------- */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
+summary:focus-visible,textarea:focus-visible{
+  outline:3px solid var(--amber-05);
+  outline-offset:3px;
+}
+.band--dark a:focus-visible,.band--dark button:focus-visible,
+.band--dark summary:focus-visible,.hero a:focus-visible{
+  outline-color:var(--amber-05);
+}
+
+/* ---------- skip link ---------- */
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--amber-05);color:var(--slate-05);
+  font-weight:700;font-size:var(--t-small);padding:.75rem 1.25rem;
+}
+.skip:focus{left:0}
+
+/* ---------- masthead ---------- */
+.masthead{background:var(--slate-05);padding-block:1.5rem}
+.masthead .shell{display:flex;align-items:center}
+.masthead img{height:30px;width:auto}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--slate-05);color:var(--white);overflow:hidden}
+.hero__img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;
+}
+.hero__scrim{position:absolute;inset:0;background:var(--slate-05);opacity:.7}
+.hero__inner{position:relative;padding-block:clamp(4rem,10vw,8.5rem)}
+.hero h1{max-width:17ch}
+.hero .hl{
+  background:var(--amber-05);
+  color:var(--slate-05);
+  padding:0 .18em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+.hero .lede{color:var(--steel-02);max-width:56ch;margin-top:1.75rem}
+.hero .btn{margin-top:2.5rem}
+.hero .licensing{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-small)}
+
+/* ---------- qualification strip ---------- */
+.qualstrip{background:var(--steel-01);color:var(--slate-05);padding-block:clamp(1.75rem,4vw,2.5rem)}
+.qualstrip .eyebrow{margin-bottom:.875rem}
+.trades{
+  display:flex;flex-wrap:wrap;
+  gap:.5rem clamp(1rem,2.4vw,2rem);
+  font-size:clamp(.75rem,.66rem + .35vw,.875rem);
+  font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  line-height:1.5;
+}
+.trades li{list-style:none}
+.trades ul{display:contents}
+.trade-list{margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem 0}
+.trade-list li{display:flex;align-items:center}
+.trade-list li::after{
+  content:"\00b7";color:var(--steel);font-weight:400;
+  margin:0 clamp(.6rem,1.6vw,1.15rem);
+}
+.trade-list li:last-child::after{content:none}
+
+/* ---------- tension ---------- */
+.tension h2{max-width:24ch}
+.tension .copy{max-width:62ch;margin-top:1.75rem}
+.tension .copy + .copy{margin-top:1.25rem}
+
+/* ---------- image placeholder ---------- */
+.imgslot{
+  background:var(--steel-01);
+  border:1px solid var(--steel);
+  border-radius:2px;
+  min-height:clamp(180px,26vw,300px);
+  display:flex;align-items:center;justify-content:center;
+  padding:1.5rem;text-align:center;
+}
+.imgslot span{
+  font-size:var(--t-legal);font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--slate-03);line-height:1.7;max-width:34ch;
+}
+.imgslot--short{min-height:clamp(120px,16vw,180px)}
+
+/* ---------- question tiles ---------- */
+.tiles{
+  display:grid;gap:clamp(1rem,2vw,1.5rem);
+  grid-template-columns:1fr;
+  margin-top:clamp(2rem,4vw,3rem);
+}
+@media (min-width:660px){ .tiles{grid-template-columns:1fr 1fr} }
+.tile{
+  background:var(--white);
+  border:1px solid var(--steel-01);
+  border-radius:2px;
+  padding:clamp(1.5rem,2.4vw,2rem);
+}
+.tile h3{margin-bottom:.75rem}
+.tile p{font-size:var(--t-small);line-height:1.6;color:var(--slate-04)}
+
+/* ---------- dark outcomes grid ---------- */
+.outcomes{
+  display:grid;gap:clamp(2rem,3.4vw,2.75rem) clamp(2rem,4vw,3.5rem);
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  margin-top:clamp(2.5rem,5vw,3.5rem);
+}
+.outcome h3{margin-bottom:.625rem}
+.outcome p{font-size:var(--t-small);line-height:1.6;color:var(--steel-02)}
+.band--dark h2{max-width:28ch}
+.band--dark .intro{color:var(--steel-02);max-width:60ch;margin-top:1.5rem;font-size:var(--t-body)}
+
+/* ---------- how it works ---------- */
+.steps{
+  display:grid;gap:clamp(2rem,3vw,2.5rem);
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  margin-top:clamp(2.5rem,5vw,3.5rem);
+}
+.step{border-top:2px solid var(--steel-02);padding-top:1.25rem}
+.step .n{
+  display:block;margin-bottom:.875rem;
+  font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--slate-03);
+}
+.step .n b{
+  display:block;font-size:clamp(2.75rem,5vw,3.75rem);line-height:1;
+  letter-spacing:-.03em;color:var(--steel-02);font-weight:700;margin-top:.25rem;
+}
+.step p{font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
+.step p b{color:var(--slate-05);font-weight:700}
+.turnaround{margin-top:clamp(2rem,3.5vw,2.75rem);color:var(--slate-03);font-size:var(--t-small)}
+
+/* ---------- case study ---------- */
+.casestudy blockquote{margin:0}
+.casestudy blockquote p{
+  font-size:var(--t-subline);line-height:1.2;font-weight:600;letter-spacing:-.02em;
+}
+.casestudy cite{
+  display:block;margin-top:1.5rem;font-style:normal;
+  font-size:var(--t-small);font-weight:600;letter-spacing:.06em;color:var(--slate-04);
+}
+.casestudy .copy{max-width:56ch;color:var(--slate-04)}
+.case-grid{
+  display:grid;gap:clamp(2rem,4vw,3.5rem);
+  grid-template-columns:1fr;
+  align-items:start;margin-top:clamp(2rem,4vw,2.75rem);
+}
+@media (min-width:820px){ .case-grid{grid-template-columns:1.1fr .9fr} }
+
+/* ---------- stat band ---------- */
+.stats{
+  display:grid;gap:clamp(2rem,3.5vw,3rem);
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+}
+.stat b{
+  display:block;font-size:clamp(2.25rem,4.4vw,3.25rem);line-height:1.05;
+  letter-spacing:-.03em;font-weight:600;color:var(--amber-05);margin-bottom:.625rem;
+}
+.stat--word b{font-size:clamp(1.5rem,2.6vw,2.125rem)}
+.stat span{display:block;font-size:var(--t-small);line-height:1.5;color:var(--steel-02)}
+
+/* ---------- FAQ ---------- */
+.faq{margin-top:clamp(2rem,4vw,3rem);max-width:78ch}
+.faq details{border-top:1px solid var(--steel-02)}
+.faq details:last-of-type{border-bottom:1px solid var(--steel-02)}
+.faq summary{
+  list-style:none;cursor:pointer;
+  padding:1.375rem 3rem 1.375rem 0;
+  position:relative;
+  font-size:var(--t-h3);font-weight:600;line-height:1.35;letter-spacing:-.01em;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"";position:absolute;right:.5rem;top:50%;
+  width:12px;height:12px;margin-top:-8px;
+  border-right:2px solid var(--slate-03);border-bottom:2px solid var(--slate-03);
+  transform:rotate(45deg);transition:transform .18s ease;
+}
+.faq details[open] summary::after{transform:rotate(-135deg);margin-top:-3px}
+.faq summary:hover{color:var(--slate-03)}
+.faq .a{padding:0 3rem 1.625rem 0;font-size:var(--t-body);line-height:1.65;color:var(--slate-04);max-width:70ch}
+
+/* ---------- form ---------- */
+.cta-grid{
+  display:grid;gap:clamp(2.5rem,5vw,4.5rem);
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  align-items:start;
+}
+.cta-copy h2{max-width:18ch}
+.cta-copy .copy{margin-top:1.5rem;color:var(--steel-02);max-width:40ch}
+.form{background:var(--white);border-radius:2px;padding:clamp(1.5rem,3vw,2.25rem)}
+.field{margin-bottom:1rem}
+.field label{
+  display:block;margin-bottom:.4375rem;
+  font-size:var(--t-legal);font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--slate-03);
+}
+.field label .req{color:var(--slate-05)}
+.field input,.field select{
+  width:100%;font-family:inherit;font-size:var(--t-body);font-weight:400;
+  color:var(--slate-05);background:var(--slate-01);
+  border:1px solid var(--steel-02);border-radius:2px;
+  padding:.8125rem .875rem;line-height:1.4;
+}
+.field select{
+  appearance:none;-webkit-appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--slate-03) 50%),linear-gradient(135deg,var(--slate-03) 50%,transparent 50%);
+  background-position:calc(100% - 19px) calc(50% + 2px),calc(100% - 13px) calc(50% + 2px);
+  background-size:6px 6px,6px 6px;background-repeat:no-repeat;
+  padding-right:2.5rem;
+}
+.field input:hover,.field select:hover{border-color:var(--steel)}
+.form .btn{width:100%;margin-top:.75rem}
+.form .after{margin-top:1.25rem;color:var(--slate-03);font-size:var(--t-small)}
+.form .after .token{
+  font-weight:600;color:var(--slate-04);
+  background:var(--steel-01);padding:.1em .45em;border-radius:2px;
+}
+.upload{
+  border:1px dashed var(--steel);background:var(--slate-01);border-radius:2px;
+  padding:1.125rem .875rem;color:var(--slate-03);font-size:var(--t-small);
+  display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;
+}
+
+/* ---------- footer ---------- */
+.foot{background:var(--slate-05);color:var(--steel-02);padding-block:clamp(2.5rem,5vw,3.5rem)}
+.foot img{height:26px;width:auto;margin-bottom:1.5rem}
+.foot p{font-size:var(--t-legal);line-height:1.9}
+.foot a{color:var(--steel-02)}
+.foot .sep{color:var(--steel);padding:0 .35rem}
+
+/* ============================================================
+   Review commenting layer
+   ============================================================ */
+.cmt{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+.cmt-inner{border-left:2px solid var(--steel-02);padding-left:1rem;margin:1.25rem 0}
+.cmt-bar{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+.cmt-btn{
+  background:transparent;color:var(--slate-03);
+  border:1px solid var(--steel-02);border-radius:2px;
+  font-family:inherit;font-size:.625rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;padding:.4375rem .75rem;cursor:pointer;line-height:1.2;
+}
+.cmt-btn:hover{background:var(--slate-05);border-color:var(--slate-05);color:var(--white)}
+.cmt-count{font-size:var(--t-legal);color:var(--slate-03);letter-spacing:.04em}
+.cmt-form{display:none;max-width:560px;padding-top:.875rem}
+.cmt-form.open{display:block}
+.cmt-form label{
+  display:block;font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:600;color:var(--slate-03);margin:0 0 .375rem;
+}
+.cmt-form textarea,.cmt-form input{
+  width:100%;font-family:inherit;font-size:var(--t-small);color:var(--slate-05);
+  background:var(--white);border:1px solid var(--steel-02);border-radius:2px;
+  padding:.625rem .75rem;margin-bottom:.75rem;line-height:1.5;
+}
+.cmt-form textarea{min-height:84px;resize:vertical}
+.cmt-form .row{display:flex;gap:.625rem;align-items:center;flex-wrap:wrap}
+.cmt-status{font-size:var(--t-legal);color:var(--slate-03)}
+.cmt-list{max-width:560px}
+.cmt-item{
+  border-left:2px solid var(--amber-05);padding:.375rem 0 .375rem .75rem;
+  margin:0 0 .625rem;font-size:var(--t-small);line-height:1.55;color:var(--slate-04);
+}
+.cmt-item .who{
+  display:block;font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:600;color:var(--slate-03);margin-bottom:.25rem;
+}
+/* comment layer sitting on a dark or steel band */
+.band--dark .cmt-inner,.hero .cmt-inner{border-left-color:var(--slate-04)}
+.band--dark .cmt-btn,.hero .cmt-btn{color:var(--steel-02);border-color:var(--steel)}
+.band--dark .cmt-btn:hover,.hero .cmt-btn:hover{background:var(--white);border-color:var(--white);color:var(--slate-05)}
+.band--dark .cmt-count,.band--dark .cmt-form label,.band--dark .cmt-status,
+.hero .cmt-count,.hero .cmt-form label,.hero .cmt-status{color:var(--steel-02)}
+.band--dark .cmt-item,.hero .cmt-item{color:var(--steel-02)}
+.band--dark .cmt-item .who,.hero .cmt-item .who{color:var(--steel)}
+.band--steel .cmt-inner{border-left-color:var(--slate-03)}
+.band--steel .cmt-btn{border-color:var(--slate-03)}
+.band--amber .cmt-inner{border-left-color:var(--slate-03)}
+.band--amber .cmt-btn{border-color:var(--slate-03)}
+
+#cmt-dock{
+  position:fixed;right:1rem;bottom:1rem;z-index:90;
+  background:var(--slate-05);color:var(--steel-02);
+  border-radius:2px;padding:.875rem 1rem;max-width:255px;
+  font-size:var(--t-legal);line-height:1.55;
+}
+#cmt-dock .dtoggle{
+  display:flex;align-items:center;gap:.5rem;width:100%;
+  background:none;border:0;padding:0;cursor:pointer;
+  font-family:inherit;font-size:.625rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--white);font-weight:700;text-align:left;
+}
+#cmt-dock .dtoggle::after{
+  content:"";margin-left:auto;width:7px;height:7px;
+  border-right:2px solid var(--steel);border-bottom:2px solid var(--steel);
+  transform:rotate(45deg) translateY(-2px);
+}
+#cmt-dock.min .dtoggle::after{transform:rotate(-135deg) translateY(-2px)}
+#cmt-dock .dbody{margin-top:.5rem}
+#cmt-dock.min .dbody{display:none}
+#cmt-dock .row{display:flex;gap:.5rem;margin-top:.75rem;flex-wrap:wrap}
+#cmt-dock .cmt-btn{color:var(--steel-02);border-color:var(--steel)}
+#cmt-dock .cmt-btn:hover{background:var(--white);border-color:var(--white);color:var(--slate-05)}
+@media (max-width:640px){
+  #cmt-dock{left:auto;right:.75rem;bottom:.75rem;max-width:min(255px,calc(100vw - 1.5rem))}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="shell">
+    <img src="https://inframerisk.com/assets/inframe-logo.svg" alt="InFrame" width="140" height="30" onerror="this.remove()">
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 01 HERO -->
+<section class="hero" data-cmt-module="01 · Hero" data-cmt-snippet="Insurance built around how your business actually operates.">
+  <img class="hero__img" src="https://inframerisk.com/assets/hero-images/01inframe-hero.webp" alt="Trade crew on an active commercial site" onerror="this.remove()">
+  <div class="hero__scrim"></div>
+  <div class="hero__inner">
+    <div class="shell">
+      <h1>Insurance built around how your business actually <span class="hl">operates.</span></h1>
+      <p class="lede">InFrame is a specialist insurance broker for commercial trade contractors. We read your contracts and your policies against each other, so your coverage matches the work you actually bid.</p>
+      <p><a class="btn" href="#request">Request a program review</a></p>
+      <p class="licensing">Licensed in all 50 states &middot; InFrame Insurance Services LLC</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 QUALIFICATION STRIP -->
+<section class="qualstrip" data-cmt-module="02 · Qualification strip" data-cmt-snippet="Specialist programs for">
+  <div class="shell">
+    <h2 class="eyebrow">Specialist programs for</h2>
+    <ul class="trade-list trades">
+      <li>Electrical</li>
+      <li>HVAC &amp; Mechanical</li>
+      <li>Plumbing</li>
+      <li>Concrete &amp; Masonry</li>
+      <li>Drywall</li>
+      <li>Painting</li>
+      <li>Flooring</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 03 TENSION -->
+<section class="band band--light tension" data-cmt-module="03 · Problem / Tension" data-cmt-snippet="Your broker should understand the business behind the policy.">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2>Your broker should understand the business behind the policy.</h2>
+    <p class="copy">Insurance decides how you bid, how you staff, and how fast you get paid. Most brokers process the renewal, issue the certificate and repeat, which keeps it a cost you absorb. A broker who understands the work can turn it into something you compete on.</p>
+    <p class="copy">Most trade contractors are getting the first version. That is rarely carelessness. Specialist teams are expensive to run, so brokers point them at their largest accounts.</p>
+  </div>
+</section>
+
+<!-- 04 FOUR QUESTIONS -->
+<section class="band band--white" data-cmt-module="04 · Four questions" data-cmt-snippet="Can I bid the job?">
+  <div class="shell">
+    <div class="imgslot"><span>Background: cutting / demolition, dust, active work</span></div>
+    <div class="tiles">
+      <article class="tile">
+        <h3>Can I bid the job?</h3>
+        <p>Owners and GCs set coverage requirements before you can quote. If your program does not meet them, you are not eligible, and nobody calls to tell you why you lost.</p>
+      </article>
+      <article class="tile">
+        <h3>Can I get on site?</h3>
+        <p>A certificate that takes four days to issue costs you work with a three-day bid window.</p>
+      </article>
+      <article class="tile">
+        <h3>Am I covered when it goes wrong?</h3>
+        <p>Completed operations that end at substantial completion. A per-project limit another job already spent. The contract says one thing and the policy says another.</p>
+      </article>
+      <article class="tile">
+        <h3>Can I stay on and get paid?</h3>
+        <p>Lapsed subs, missing endorsements and waiver gaps stall pay applications and hold up funds you have already earned.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 05 DARK OUTCOMES GRID -->
+<section class="band band--dark" data-cmt-module="05 · Solution / Why us" data-cmt-snippet="What changes">
+  <div class="shell">
+    <p class="eyebrow">What changes</p>
+    <h2>How your business operates should shape every insurance and risk decision.</h2>
+    <div class="outcomes">
+      <div class="outcome">
+        <span class="rule-amber"></span>
+        <h3>Show up prepared</h3>
+        <p>We read your program from the inside and collect market data from the outside before the first real meeting.</p>
+      </div>
+      <div class="outcome">
+        <span class="rule-amber"></span>
+        <h3>Bid more of the work you want</h3>
+        <p>We check your program against what GCs in your counties actually require, so you find out you are ineligible before you lose the job, not after.</p>
+      </div>
+      <div class="outcome">
+        <span class="rule-amber"></span>
+        <h3>Move faster on certificates</h3>
+        <p>Requests get read by someone who understands what the GC is asking for, instead of joining a queue.</p>
+      </div>
+      <div class="outcome">
+        <span class="rule-amber"></span>
+        <h3>Go to market with a real story</h3>
+        <p>Your operations translated into a submission underwriters can price properly, instead of a form that makes you look like everyone else.</p>
+      </div>
+      <div class="outcome">
+        <span class="rule-amber"></span>
+        <h3>Align your renewals</h3>
+        <p>Thirteen policies renewing across five different months is a service problem, not a coverage problem. We fix the calendar.</p>
+      </div>
+      <div class="outcome">
+        <span class="rule-amber"></span>
+        <h3>Know what you are actually paying for</h3>
+        <p>Costs allocated to the vehicles, crews and projects that generate them, so the annual audit is not the first time you see it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 THE PLAN -->
+<section class="band band--light" data-cmt-module="06 · The plan" data-cmt-snippet="Three steps. No commitment until you have seen the work.">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2 class="measure">Three steps. No commitment until you have seen the work.</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="n">Step <b>01</b></span>
+        <p><b>Send us your contracts and current policies.</b> Whatever you have. We do not need it organized.</p>
+      </div>
+      <div class="step">
+        <span class="n">Step <b>02</b></span>
+        <p><b>We read both, against each other.</b> Line by line: what your contracts require and what your policies actually deliver.</p>
+      </div>
+      <div class="step">
+        <span class="n">Step <b>03</b></span>
+        <p><b>You get a written picture.</b> Where the two diverge, what it exposes, and what it would take to close it.</p>
+      </div>
+    </div>
+    <p class="turnaround">Most reviews come back within three business days.</p>
+  </div>
+</section>
+
+<!-- 07 SOCIAL PROOF -->
+<section class="band band--steel casestudy" data-cmt-module="07 · Social proof" data-cmt-snippet="Client story">
+  <div class="shell">
+    <p class="eyebrow">Client story</p>
+    <div class="case-grid">
+      <div>
+        <blockquote>
+          <p>&ldquo;The first request took us a full day. The next one took five seconds, because the person handling it understood what the GC was actually asking for.&rdquo;</p>
+          <cite>Commercial flooring contractor &middot; national footprint</cite>
+        </blockquote>
+      </div>
+      <div>
+        <p class="copy">They came to us mid-bid-season needing certificates across dozens of jobs, split across four owners with different requirements. Thirteen policies, renewing in different months, none of them aligned. We rebuilt the calendar and took over issuance.</p>
+        <div class="imgslot imgslot--short" style="margin-top:1.75rem"><span>Client logo row: pending case study approval</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 CREDIBILITY STRIP -->
+<section class="band band--dark" data-cmt-module="08 · Credibility strip" data-cmt-snippet="States licensed">
+  <div class="shell">
+    <div class="stats">
+      <div class="stat"><b>50</b><span>States licensed</span></div>
+      <div class="stat"><b>150+</b><span>Insurer relationships</span></div>
+      <div class="stat"><b>7</b><span>Specialty trades served</span></div>
+      <div class="stat stat--word"><b>Licensed</b><span>Commercial insurance brokerage &middot; InFrame Insurance Services LLC</span></div>
+    </div>
+    <div class="imgslot imgslot--short" style="margin-top:clamp(2.5rem,5vw,3.5rem);background:var(--slate-04);border-color:var(--slate-03)">
+      <span style="color:var(--steel-02)">US map: states filled</span>
+    </div>
+  </div>
+</section>
+
+<!-- 09 FAQ -->
+<section class="band band--light" data-cmt-module="09 · FAQ" data-cmt-snippet="Questions about working with InFrame">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2>Questions about working with InFrame</h2>
+    <div class="faq">
+      <details>
+        <summary>We already have a broker. Why would we switch?</summary>
+        <p class="a">Most people do not switch on price. They switch after a claim gets handled badly, a certificate arrives too late to bid, or a renewal comes back with a number nobody warned them about. If none of that has happened, a review still tells you where you stand. If it has, you already know why you are here.</p>
+      </details>
+      <details>
+        <summary>Do we have to wait until renewal?</summary>
+        <p class="a">No. The review works at any point in the year, and knowing where your gaps are six months out is more useful than finding out three weeks before renewal.</p>
+      </details>
+      <details>
+        <summary>How is this different from a large national broker?</summary>
+        <p class="a">Specialist attention at your size. The largest brokers have deep construction expertise and they point it at their largest accounts, which is a rational way to run their business. We built ours around companies in the $5M to $50M range and we do not do anything else.</p>
+      </details>
+      <details>
+        <summary>Are you selling us software?</summary>
+        <p class="a">No. We are a licensed brokerage and you are hiring people. Technology sits behind what we do, collecting documents, tracking expirations and flagging changes, and that is where it belongs. You should notice the service, not the system.</p>
+      </details>
+      <details>
+        <summary>What size company do you work with?</summary>
+        <p class="a">Commercial trade contractors from roughly $5M to $50M in annual revenue. Below that, a specialist program is usually more than the business needs.</p>
+      </details>
+      <details>
+        <summary>What happens on the first call?</summary>
+        <p class="a">We ask how you actually run: trade mix, contract requirements, fleet, payroll, project schedule. Then we tell you what we would look at first. It takes about thirty minutes.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 10 CONVERSION -->
+<section class="band band--dark" id="request" data-cmt-module="10 · Conversion" data-cmt-snippet="See what a specialist notices about your business.">
+  <div class="shell">
+    <div class="cta-grid">
+      <div class="cta-copy">
+        <span class="rule-amber"></span>
+        <h2>See what a specialist notices about your business.</h2>
+        <p class="copy">Send us what you have. We will tell you what we see.</p>
+      </div>
+      <div>
+        <form class="form" novalidate>
+          <div class="field">
+            <label for="f-company">Company name <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-company" name="company" type="text" autocomplete="organization" required>
+          </div>
+          <div class="field">
+            <label for="f-name">Full name <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Work email <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="field">
+            <label for="f-trade">Trade <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-trade" name="trade" required>
+              <option value="" selected>Select</option>
+              <option>Electrical</option>
+              <option>HVAC &amp; Mechanical</option>
+              <option>Plumbing</option>
+              <option>Concrete &amp; Masonry</option>
+              <option>Drywall</option>
+              <option>Painting</option>
+              <option>Flooring</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-revenue">Annual revenue <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-revenue" name="revenue" required>
+              <option value="" selected>Select</option>
+              <option>Under $5M</option>
+              <option>$5M to $15M</option>
+              <option>$15M to $50M</option>
+              <option>Over $50M</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-renewal">Month your policies renew</label>
+            <select id="f-renewal" name="renewal">
+              <option value="" selected>Select</option>
+              <option>January</option><option>February</option><option>March</option>
+              <option>April</option><option>May</option><option>June</option>
+              <option>July</option><option>August</option><option>September</option>
+              <option>October</option><option>November</option><option>December</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+          <button class="btn" type="submit">Request a program review</button>
+          <p class="after">Or call <span class="token">[dynamic tracking number]</span>. You will reach a risk advisor, not a call center.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <img src="https://inframerisk.com/assets/inframe-logo.svg" alt="InFrame" width="122" height="26" onerror="this.remove()">
+    <p>
+      InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states and DC<span class="sep">&middot;</span>NPN# 22200284<span class="sep">&middot;</span><a href="tel:+18668111207">(866) 811-1207</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+   COMMENTING
+   Same endpoint, same payload shape and same localStorage key as the
+   wireframe document, so review notes left on the mockups land in the
+   same Sheet and the same export. The fetch deliberately sends no
+   custom headers: that keeps it a CORS simple request, so Google Apps
+   Script never has to answer a preflight.
+   ===================================================================== */
+var COMMENT_ENDPOINT = "https://script.googleusercontent.com/a/macros/soliogrowth.com/echo?user_content_key=AUkAhnR3dD4ZV1QlMvlG8kOtvzIcHJ7qYyeK2AERgpaayffgrPYAYIIjKU4l93iU6WRWJw13eL79qxvrU2vkdt1KKCVAeJic2WuQ7k8Y0QdhwDQmEQOmVkHZVa2W2LbtcSjmi-6HFpJ4F5tlfZO1qflkPjluvMt0z86IY-qdzbwVoJde9_ojJfU4EYGp4yQi54zCB0hpn4DIJKwRbqI6JuIycPjuOt9I1Z0ZU3txWpLpHGFNKC7pFID-jJWcrC-gScQt-CEzM4KcyIMbmZUzsO5sMW9GEJwloykVRD46z_CpSEg5Wrv_L6g&lib=MIv-Oznj80yB-6gyFC3t0bUd3Trmbe3TI";
+
+var COMMENT_PAGE = "Landing Page 1 of 3 · Specialty Trade Contractor";
+
+(function () {
+  var KEY = "inframe-lp-comments-v1";
+  var NAMEKEY = "inframe-lp-reviewer-v1";
+  var memStore = [];
+  var memName = "";
+
+  function load() {
+    try { var r = window.localStorage.getItem(KEY); return r ? JSON.parse(r) : []; }
+    catch (e) { return memStore; }
+  }
+  function save(list) {
+    memStore = list;
+    try { window.localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
+  }
+  function getName() {
+    try { return window.localStorage.getItem(NAMEKEY) || memName; } catch (e) { return memName; }
+  }
+  function setName(v) {
+    memName = v;
+    try { window.localStorage.setItem(NAMEKEY, v); } catch (e) {}
+  }
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  function endpointReady() {
+    return COMMENT_ENDPOINT && COMMENT_ENDPOINT.indexOf("PASTE_") !== 0;
+  }
+  function post(payload, done) {
+    if (!endpointReady()) { done(false, "nokey"); return; }
+    try {
+      fetch(COMMENT_ENDPOINT, { method: "POST", body: JSON.stringify(payload) })
+        .then(function () { done(true); })
+        .catch(function () { done(false, "net"); });
+    } catch (e) { done(false, "net"); }
+  }
+
+  var blocks = [];
+  var nodes = document.querySelectorAll("[data-cmt-module]");
+  for (var i = 0; i < nodes.length; i++) {
+    blocks.push(build(
+      nodes[i],
+      COMMENT_PAGE,
+      nodes[i].getAttribute("data-cmt-module"),
+      nodes[i].getAttribute("data-cmt-snippet") || ""
+    ));
+  }
+
+  function build(section, page, moduleId, snippet) {
+    var wrap = document.createElement("div");
+    wrap.className = "cmt";
+    wrap.innerHTML =
+      '<div class="cmt-inner">' +
+        '<div class="cmt-list"></div>' +
+        '<div class="cmt-bar">' +
+          '<button type="button" class="cmt-btn cmt-open">Comment</button>' +
+          '<span class="cmt-count"></span>' +
+        '</div>' +
+        '<div class="cmt-form">' +
+          '<label>Your comment on ' + esc(moduleId) + '</label>' +
+          '<textarea placeholder="What would you change, and why?"></textarea>' +
+          '<label>Your name</label>' +
+          '<input type="text" placeholder="e.g. Daniel">' +
+          '<div class="row">' +
+            '<button type="button" class="cmt-btn cmt-send">Send</button>' +
+            '<button type="button" class="cmt-btn cmt-cancel">Cancel</button>' +
+            '<span class="cmt-status"></span>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    section.appendChild(wrap);
+
+    var list = wrap.querySelector(".cmt-list");
+    var count = wrap.querySelector(".cmt-count");
+    var form = wrap.querySelector(".cmt-form");
+    var text = wrap.querySelector("textarea");
+    var who = wrap.querySelector("input");
+    var status = wrap.querySelector(".cmt-status");
+
+    wrap.querySelector(".cmt-open").addEventListener("click", function () {
+      form.classList.toggle("open");
+      if (form.classList.contains("open")) { who.value = getName(); text.focus(); }
+    });
+    wrap.querySelector(".cmt-cancel").addEventListener("click", function () {
+      form.classList.remove("open"); status.textContent = "";
+    });
+    wrap.querySelector(".cmt-send").addEventListener("click", function () {
+      var body = text.value.trim();
+      if (!body) { status.textContent = "Nothing to send yet."; return; }
+      var reviewer = who.value.trim() || "Anonymous";
+      setName(reviewer);
+
+      var entry = {
+        ts: new Date().toISOString(),
+        reviewer: reviewer,
+        page: page,
+        module: moduleId,
+        snippet: snippet,
+        comment: body
+      };
+
+      var all = load();
+      all.push(entry);
+      save(all);
+      text.value = "";
+      form.classList.remove("open");
+      render();
+      refreshDock();
+
+      status.textContent = "Saving…";
+      post(entry, function (ok, why) {
+        status.textContent = ok
+          ? "Sent."
+          : (why === "nokey"
+              ? "Saved on this page. Use Download when you are done."
+              : "Saved on this page, but could not reach the server. Use Download when you are done.");
+        setTimeout(function () { status.textContent = ""; }, 6000);
+      });
+    });
+
+    function render() {
+      var mine = load().filter(function (c) { return c.module === moduleId && c.page === page; });
+      count.textContent = mine.length ? mine.length + (mine.length === 1 ? " comment" : " comments") : "";
+      list.innerHTML = mine.map(function (c) {
+        return '<div class="cmt-item"><span class="who">' + esc(c.reviewer) + " · " +
+          esc(new Date(c.ts).toLocaleString()) + '</span>' + esc(c.comment) + '</div>';
+      }).join("");
+    }
+
+    render();
+    return { render: render };
+  }
+
+  /* ---- floating dock ---- */
+  var dock = document.createElement("div");
+  dock.id = "cmt-dock";
+  dock.innerHTML =
+    '<button type="button" class="dtoggle" aria-expanded="true">Comments</button>' +
+    '<div class="dbody">' +
+      '<span class="dcount"></span>' +
+      '<div class="row">' +
+        '<button type="button" class="cmt-btn dl">Download</button>' +
+        '<button type="button" class="cmt-btn clr">Clear</button>' +
+      '</div>' +
+    '</div>';
+  document.body.appendChild(dock);
+
+  var dtoggle = dock.querySelector(".dtoggle");
+  function setMin(min) {
+    dock.classList.toggle("min", min);
+    dtoggle.setAttribute("aria-expanded", min ? "false" : "true");
+  }
+  dtoggle.addEventListener("click", function () { setMin(!dock.classList.contains("min")); });
+  if (window.matchMedia("(max-width:640px)").matches) { setMin(true); }
+
+  var dcount = dock.querySelector(".dcount");
+
+  function refreshDock() {
+    var n = load().length;
+    dcount.textContent = n === 0
+      ? "None yet. Use the Comment button under any module."
+      : n + (n === 1 ? " comment saved" : " comments saved") +
+        (endpointReady() ? " and sent." : " on this device.");
+  }
+
+  dock.querySelector(".dl").addEventListener("click", function () {
+    var all = load();
+    if (!all.length) { return; }
+    var out = "# InFrame Risk · Landing page copy feedback\n\n" +
+      all.length + " comments · exported " + new Date().toLocaleString() + "\n\n";
+    var lastPage = "";
+    all.forEach(function (c) {
+      if (c.page !== lastPage) { out += "\n---\n\n## " + c.page + "\n\n"; lastPage = c.page; }
+      out += "**" + c.module + "**" + (c.snippet ? "  \n_" + c.snippet + "_" : "") + "\n\n" +
+             c.comment + "\n\n" + "Left by " + c.reviewer + ", " + new Date(c.ts).toLocaleString() + "\n\n";
+    });
+    var blob = new Blob([out], { type: "text/markdown" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "inframe-lp-feedback.md";
+    a.click();
+  });
+
+  dock.querySelector(".clr").addEventListener("click", function () {
+    if (!window.confirm("Clear all comments saved on this device? Download them first if you have not sent them.")) { return; }
+    save([]);
+    blocks.forEach(function (b) { b.render(); });
+    refreshDock();
+  });
+
+  refreshDock();
+})();
+
+/* Mockup only. The form does not submit anywhere. */
+document.querySelector(".form").addEventListener("submit", function (e) { e.preventDefault(); });
+</script>
+
+</body>
+</html>
