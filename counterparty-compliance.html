@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="theme-color" content="#222F3E">
-<title>Specialty Trade Contractor Insurance · InFrame Risk</title>
+<title>Counterparty Compliance · InFrame Risk</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -417,6 +417,23 @@ summary:focus-visible,textarea:focus-visible{
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
 }
+
+/* ---------- LP2: service, not software ---------- */
+.anti{
+  display:grid;gap:clamp(2rem,4vw,3.5rem);
+  grid-template-columns:1fr;align-items:start;
+}
+@media (min-width:820px){ .anti{grid-template-columns:1.05fr .95fr} }
+.anti .copy{margin-top:1.75rem;max-width:56ch}
+.pullquote{
+  background:var(--white);border-left:3px solid var(--amber-05);
+  border-radius:2px;padding:clamp(1.75rem,3vw,2.5rem);
+}
+.pullquote p{
+  font-size:var(--t-subline);line-height:1.2;font-weight:600;letter-spacing:-.02em;
+  color:var(--slate-05);margin:0;
+}
+.tiles--flush{margin-top:clamp(1.5rem,3vw,2rem)}
 </style>
 </head>
 <body>
@@ -431,130 +448,129 @@ summary:focus-visible,textarea:focus-visible{
 <main id="main">
 
 <!-- 01 HERO -->
-<section class="hero" data-cmt-module="01 · Hero" data-cmt-snippet="Insurance built around how your business actually operates.">
+<section class="hero" data-cmt-module="01 · Hero" data-cmt-snippet="A certificate is a summary. We read the policies behind it.">
   <img class="hero__img" src="https://inframerisk.com/assets/hero-images/01inframe-hero.webp" alt="Trade crew on an active commercial site" onerror="this.remove()">
   <div class="hero__scrim"></div>
   <div class="hero__inner">
     <div class="shell">
-      <h1>Insurance built around how your business actually <span class="hl">operates.</span></h1>
-      <p class="lede">InFrame is a specialist insurance broker for commercial trade contractors. We read your contracts and your policies against each other, so your coverage matches the work you actually bid.</p>
-      <p><a class="btn" href="#request">Request a program review</a></p>
-      <p class="licensing">Licensed in all 50 states &middot; InFrame Insurance Services LLC</p>
+      <h1>A certificate is a summary. We read the <span class="hl">policies</span> behind it.</h1>
+      <p class="lede">InFrame qualifies and monitors your subcontractors and tenants against what your contracts actually require, reviewed by risk specialists rather than collected and filed.</p>
+      <p><a class="btn" href="#request">Get a Counterparty Gap Report</a></p>
     </div>
   </div>
 </section>
 
-<!-- 02 QUALIFICATION STRIP -->
-<section class="qualstrip" data-cmt-module="02 · Qualification strip" data-cmt-snippet="Specialist programs for">
-  <div class="shell">
-    <h2 class="eyebrow">Specialist programs for</h2>
-    <ul class="trade-list trades">
-      <li>Electrical</li>
-      <li>HVAC &amp; Mechanical</li>
-      <li>Plumbing</li>
-      <li>Concrete &amp; Masonry</li>
-      <li>Drywall</li>
-      <li>Painting</li>
-      <li>Flooring</li>
-    </ul>
-  </div>
-</section>
-
-<!-- 03 TENSION -->
-<section class="band band--light tension" data-cmt-module="03 · Problem / Tension" data-cmt-snippet="Your broker should understand the business behind the policy.">
+<!-- 02 TENSION -->
+<section class="band band--light tension" data-cmt-module="02 · Problem / Tension" data-cmt-snippet="The certificate is in the folder. That is the whole problem.">
   <div class="shell">
     <span class="rule-amber"></span>
-    <h2>Your broker should understand the business behind the policy.</h2>
-    <p class="copy">Insurance decides how you bid, how you staff, and how fast you get paid. Most brokers process the renewal, issue the certificate and repeat, which keeps it a cost you absorb. A broker who understands the work can turn it into something you compete on.</p>
-    <p class="copy">Most trade contractors are getting the first version. That is rarely carelessness. Specialist teams are expensive to run, so brokers point them at their largest accounts.</p>
+    <h2>The certificate is in the folder. That is the whole problem.</h2>
+    <p class="copy">Most compliance programs are two people, a shared inbox, and a spreadsheet with a tab for every project. Certificates get collected at signing and never looked at again. Financials get filed, not read. Requests go out, and out, and out.</p>
+    <p class="copy">The people doing it are careful and organized. They were also never trained as risk advisors, so what they can confirm is that a document arrived, not that it protects you.</p>
   </div>
 </section>
 
-<!-- 04 FOUR QUESTIONS -->
-<section class="band band--white" data-cmt-module="04 · Four questions" data-cmt-snippet="Can I bid the job?">
+<!-- 03 WHAT GETS MISSED -->
+<section class="band band--white" data-cmt-module="03 · What gets missed" data-cmt-snippet="Four things a certificate will not tell you">
   <div class="shell">
-    <div class="imgslot"><span>Background: cutting / demolition, dust, active work</span></div>
-    <div class="tiles">
+    <h2 class="eyebrow">Four things a certificate will not tell you</h2>
+    <div class="tiles tiles--flush">
       <article class="tile">
-        <h3>Can I bid the job?</h3>
-        <p>Owners and GCs set coverage requirements before you can quote. If your program does not meet them, you are not eligible, and nobody calls to tell you why you lost.</p>
+        <h3>The entity does not match</h3>
+        <p>The company that signed your contract is not the named insured on the policy. Close name, different entity. On paper you are covered. In practice you are not.</p>
       </article>
       <article class="tile">
-        <h3>Can I get on site?</h3>
-        <p>A certificate that takes four days to issue costs you work with a three-day bid window.</p>
+        <h3>The policy expired eight months in</h3>
+        <p>A two-year project outlasts a twelve-month policy. If nobody chases the renewal, you are carrying the risk and you will not know until you need it.</p>
       </article>
       <article class="tile">
-        <h3>Am I covered when it goes wrong?</h3>
-        <p>Completed operations that end at substantial completion. A per-project limit another job already spent. The contract says one thing and the policy says another.</p>
+        <h3>The endorsement points at last year</h3>
+        <p>Additional insured and waiver language that no longer attaches to anything current.</p>
       </article>
       <article class="tile">
-        <h3>Can I stay on and get paid?</h3>
-        <p>Lapsed subs, missing endorsements and waiver gaps stall pay applications and hold up funds you have already earned.</p>
+        <h3>The financials were filed, not read</h3>
+        <p>A subcontractor's numbers have been getting worse for three years. Somebody collected them every year. Nobody looked.</p>
       </article>
     </div>
   </div>
 </section>
 
-<!-- 05 DARK OUTCOMES GRID -->
-<section class="band band--dark" data-cmt-module="05 · Solution / Why us" data-cmt-snippet="What changes">
+<!-- 04 SOLUTION -->
+<section class="band band--dark" data-cmt-module="04 · Solution / Why us" data-cmt-snippet="What we do">
   <div class="shell">
-    <p class="eyebrow">What changes</p>
-    <h2>How your business operates should shape every insurance and risk decision.</h2>
+    <p class="eyebrow">What we do</p>
+    <h2>We read what you signed and what they bought.</h2>
+    <p class="intro">You owe requirements upward to owners and lenders, and you set them downward to your subcontractors and tenants. Most programs only look one way.</p>
     <div class="outcomes">
       <div class="outcome">
         <span class="rule-amber"></span>
-        <h3>Show up prepared</h3>
-        <p>We read your program from the inside and collect market data from the outside before the first real meeting.</p>
+        <h3>Requirements extracted from your contracts</h3>
+        <p>Not a generic checklist. What your agreements actually say, including the ones your largest counterparties made you rewrite.</p>
       </div>
       <div class="outcome">
         <span class="rule-amber"></span>
-        <h3>Bid more of the work you want</h3>
-        <p>We check your program against what GCs in your counties actually require, so you find out you are ineligible before you lose the job, not after.</p>
+        <h3>Policies reviewed, not just certificates</h3>
+        <p>We read the underlying coverage behind every certificate you collect.</p>
       </div>
       <div class="outcome">
         <span class="rule-amber"></span>
-        <h3>Move faster on certificates</h3>
-        <p>Requests get read by someone who understands what the GC is asking for, instead of joining a queue.</p>
+        <h3>Continuous, not at signing</h3>
+        <p>Expirations, cancellations and mid-term changes tracked against your project schedule.</p>
       </div>
       <div class="outcome">
         <span class="rule-amber"></span>
-        <h3>Go to market with a real story</h3>
-        <p>Your operations translated into a submission underwriters can price properly, instead of a form that makes you look like everyone else.</p>
+        <h3>Every flag verified by a person</h3>
+        <p>You get judgment about what matters, not an inbox full of exceptions to triage yourself.</p>
       </div>
       <div class="outcome">
         <span class="rule-amber"></span>
-        <h3>Align your renewals</h3>
-        <p>Thirteen policies renewing across five different months is a service problem, not a coverage problem. We fix the calendar.</p>
+        <h3>Both directions covered</h3>
+        <p>What you owe the city, the owner and the lender, and what your subs owe you.</p>
       </div>
       <div class="outcome">
         <span class="rule-amber"></span>
-        <h3>Know what you are actually paying for</h3>
-        <p>Costs allocated to the vehicles, crews and projects that generate them, so the annual audit is not the first time you see it.</p>
+        <h3>One place for the documents</h3>
+        <p>Contracts, certificates, policies, waivers and schedules, tied to the project and the counterparty.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 SERVICE, NOT SOFTWARE -->
+<section class="band band--light" data-cmt-module="05 · Service, not software" data-cmt-snippet="This is a service, not a seat license.">
+  <div class="shell">
+    <div class="anti">
+      <div>
+        <span class="rule-amber"></span>
+        <h2>This is a service, not a seat license.</h2>
+        <p class="copy">You do not need another dashboard to check. Technology sits underneath this, collecting documents, chasing renewals and watching expirations, and underneath is where it belongs. What you get is a specialist who tells you what needs your attention and why.</p>
+      </div>
+      <aside class="pullquote">
+        <p>Intelligence should work in the background. You should notice the outcome.</p>
+      </aside>
     </div>
   </div>
 </section>
 
 <!-- 06 THE PLAN -->
-<section class="band band--light" data-cmt-module="06 · The plan" data-cmt-snippet="Three steps. No commitment until you have seen the work.">
+<section class="band band--white" data-cmt-module="06 · The plan" data-cmt-snippet="Start with one project.">
   <div class="shell">
     <span class="rule-amber"></span>
-    <h2 class="measure">Three steps. No commitment until you have seen the work.</h2>
+    <h2 class="measure">Start with one project.</h2>
     <div class="steps">
       <div class="step">
         <span class="n">Step <b>01</b></span>
-        <p><b>Send us your contracts and current policies.</b> Whatever you have. We do not need it organized.</p>
+        <p><b>Send your contracts and current certificates.</b> One project is enough to start.</p>
       </div>
       <div class="step">
         <span class="n">Step <b>02</b></span>
-        <p><b>We read both, against each other.</b> Line by line: what your contracts require and what your policies actually deliver.</p>
+        <p><b>We extract the requirements and read the policies.</b> Against each other, counterparty by counterparty.</p>
       </div>
       <div class="step">
         <span class="n">Step <b>03</b></span>
-        <p><b>You get a written picture.</b> Where the two diverge, what it exposes, and what it would take to close it.</p>
+        <p><b>You get an ongoing picture.</b> What is compliant, what is not, what changed this week, with every flag checked by a specialist.</p>
       </div>
     </div>
-    <p class="turnaround">Most reviews come back within three business days.</p>
   </div>
 </section>
 
@@ -564,76 +580,69 @@ summary:focus-visible,textarea:focus-visible{
     <p class="eyebrow">Client story</p>
     <div class="case-grid">
       <div>
-        <blockquote>
-          <p>&ldquo;The first request took us a full day. The next one took five seconds, because the person handling it understood what the GC was actually asking for.&rdquo;</p>
-          <cite>Commercial flooring contractor &middot; national footprint</cite>
-        </blockquote>
+        <h2 class="measure-l">Four subcontractors. One project. Issues on every one.</h2>
       </div>
       <div>
-        <p class="copy">They came to us mid-bid-season needing certificates across dozens of jobs, split across four owners with different requirements. Thirteen policies, renewing in different months, none of them aligned. We rebuilt the calendar and took over issuance.</p>
-        <div class="imgslot imgslot--short" style="margin-top:1.75rem"><span>Client logo row: pending case study approval</span></div>
+        <p class="copy">A regional general contractor running dozens of concurrent projects gave us a single job as a test. Four subs, the ones they were least worried about. We found problems with all four. Entity mismatches, an expired policy nobody had chased, and financials that had been collected every year and never read.</p>
+        <div class="imgslot imgslot--short" style="margin-top:1.75rem"><span>Client logo or portrait: pending case study approval</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 08 CREDIBILITY STRIP -->
-<section class="band band--dark" data-cmt-module="08 · Credibility strip" data-cmt-snippet="States licensed">
+<!-- 08 SCALE STRIP -->
+<section class="band band--dark" data-cmt-module="08 · Scale strip" data-cmt-snippet="Subcontractors monitored">
   <div class="shell">
     <div class="stats">
-      <div class="stat"><b>50</b><span>States licensed</span></div>
-      <div class="stat"><b>150+</b><span>Insurer relationships</span></div>
-      <div class="stat"><b>7</b><span>Specialty trades served</span></div>
-      <div class="stat stat--word"><b>Licensed</b><span>Commercial insurance brokerage &middot; InFrame Insurance Services LLC</span></div>
-    </div>
-    <div class="imgslot imgslot--short" style="margin-top:clamp(2.5rem,5vw,3.5rem);background:var(--slate-04);border-color:var(--slate-03)">
-      <span style="color:var(--steel-02)">US map: states filled</span>
+      <div class="stat stat--word"><b>50 or 500</b><span>Subcontractors monitored</span></div>
+      <div class="stat stat--word"><b>Up &amp; down</b><span>Owner requirements and sub requirements</span></div>
+      <div class="stat stat--word"><b>Subs or tenants</b><span>Contractors and property owners</span></div>
+      <div class="stat stat--word"><b>50 states</b><span>Licensed commercial brokerage</span></div>
     </div>
   </div>
 </section>
 
 <!-- 09 FAQ -->
-<section class="band band--light" data-cmt-module="09 · FAQ" data-cmt-snippet="Questions about working with InFrame">
+<section class="band band--light" data-cmt-module="09 · FAQ" data-cmt-snippet="Questions about counterparty compliance">
   <div class="shell">
     <span class="rule-amber"></span>
-    <h2>Questions about working with InFrame</h2>
+    <h2>Questions about counterparty compliance</h2>
     <div class="faq">
       <details>
-        <summary>We already have a broker. Why would we switch?</summary>
-        <p class="a">Most people do not switch on price. They switch after a claim gets handled badly, a certificate arrives too late to bid, or a renewal comes back with a number nobody warned them about. If none of that has happened, a review still tells you where you stand. If it has, you already know why you are here.</p>
+        <summary>We already use COI tracking software. How is this different?</summary>
+        <p class="a">Tracking software confirms a certificate exists and the dates are current. That is useful and it is not the same as knowing you are covered. We read the policies behind the certificates and tell you where they do not match what your contracts require. Most clients keep their software. We are the judgment layer on top of it.</p>
       </details>
       <details>
-        <summary>Do we have to wait until renewal?</summary>
-        <p class="a">No. The review works at any point in the year, and knowing where your gaps are six months out is more useful than finding out three weeks before renewal.</p>
+        <summary>Do we have to move our insurance to you?</summary>
+        <p class="a">No. We handle counterparty risk management as its own engagement, whether or not we place your insurance. Plenty of clients start here and never move their program.</p>
       </details>
       <details>
-        <summary>How is this different from a large national broker?</summary>
-        <p class="a">Specialist attention at your size. The largest brokers have deep construction expertise and they point it at their largest accounts, which is a rational way to run their business. We built ours around companies in the $5M to $50M range and we do not do anything else.</p>
+        <summary>Who actually does the reviewing?</summary>
+        <p class="a">Licensed risk specialists. Documents get collected and organized systematically, which should be automatic, but every flag that reaches you has been checked by a person who can explain it.</p>
       </details>
       <details>
-        <summary>Are you selling us software?</summary>
-        <p class="a">No. We are a licensed brokerage and you are hiring people. Technology sits behind what we do, collecting documents, tracking expirations and flagging changes, and that is where it belongs. You should notice the service, not the system.</p>
+        <summary>We manage tenants, not subcontractors. Does this apply?</summary>
+        <p class="a">Yes, and the mechanics are close to identical. Lease requirements instead of subcontract requirements, certificates from tenants instead of subs. We also review the lease language itself, which is where we most often find exposure.</p>
       </details>
       <details>
-        <summary>What size company do you work with?</summary>
-        <p class="a">Commercial trade contractors from roughly $5M to $50M in annual revenue. Below that, a specialist program is usually more than the business needs.</p>
+        <summary>How long does onboarding take?</summary>
+        <p class="a">You can start with one project in a few days. A full program depends on how many counterparties you carry and what condition the documents are in.</p>
       </details>
       <details>
-        <summary>What happens on the first call?</summary>
-        <p class="a">We ask how you actually run: trade mix, contract requirements, fleet, payroll, project schedule. Then we tell you what we would look at first. It takes about thirty minutes.</p>
+        <summary>What happens to the documents we send you?</summary>
+        <p class="a">They stay confidential and are used only for your review. We will sign your NDA if you have one.</p>
       </details>
     </div>
   </div>
 </section>
 
 <!-- 10 CONVERSION -->
-<section class="band band--dark" id="request" data-cmt-module="10 · Conversion" data-cmt-snippet="See what a specialist notices about your business.">
+<section class="band band--dark" id="request" data-cmt-module="10 · Conversion" data-cmt-snippet="Give us one project. We will show you what is in it.">
   <div class="shell">
     <div class="cta-grid">
       <div class="cta-copy">
         <span class="rule-amber"></span>
-        <h2>See what a specialist notices about your business.</h2>
-        <p class="copy">Send us what you have. We will tell you what we see.</p>
+        <h2>Give us one project. We will show you what is in it.</h2>
       </div>
       <div>
         <form class="form" novalidate>
@@ -654,41 +663,38 @@ summary:focus-visible,textarea:focus-visible{
             <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
           </div>
           <div class="field">
-            <label for="f-trade">Trade <span class="req" aria-hidden="true">*</span></label>
-            <select id="f-trade" name="trade" required>
+            <label for="f-role">Your role <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-role" name="role" required>
               <option value="" selected>Select</option>
-              <option>Electrical</option>
-              <option>HVAC &amp; Mechanical</option>
-              <option>Plumbing</option>
-              <option>Concrete &amp; Masonry</option>
-              <option>Drywall</option>
-              <option>Painting</option>
-              <option>Flooring</option>
+              <option>Risk manager</option>
+              <option>Controller</option>
+              <option>Operations lead</option>
+              <option>Owner or developer</option>
+              <option>Other</option>
             </select>
           </div>
           <div class="field">
-            <label for="f-revenue">Annual revenue <span class="req" aria-hidden="true">*</span></label>
-            <select id="f-revenue" name="revenue" required>
+            <label for="f-count">Subcontractors or tenants monitored <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-count" name="counterparties" required>
               <option value="" selected>Select</option>
-              <option>Under $5M</option>
-              <option>$5M to $15M</option>
-              <option>$15M to $50M</option>
-              <option>Over $50M</option>
+              <option>Under 50</option>
+              <option>50 to 250</option>
+              <option>250 to 500</option>
+              <option>Over 500</option>
             </select>
           </div>
           <div class="field">
-            <label for="f-renewal">Month your policies renew</label>
-            <select id="f-renewal" name="renewal">
+            <label for="f-projects">Active projects</label>
+            <select id="f-projects" name="projects">
               <option value="" selected>Select</option>
-              <option>January</option><option>February</option><option>March</option>
-              <option>April</option><option>May</option><option>June</option>
-              <option>July</option><option>August</option><option>September</option>
-              <option>October</option><option>November</option><option>December</option>
-              <option>Not sure</option>
+              <option>Under 10</option>
+              <option>10 to 25</option>
+              <option>25 to 50</option>
+              <option>Over 50</option>
             </select>
           </div>
-          <button class="btn" type="submit">Request a program review</button>
-          <p class="after">Or call <span class="token">[dynamic tracking number]</span>. You will reach a risk advisor, not a call center.</p>
+          <button class="btn" type="submit">Get a Counterparty Gap Report</button>
+          <p class="after">Or call <span class="token">[dynamic tracking number]</span>.</p>
         </form>
       </div>
     </div>
@@ -717,7 +723,7 @@ summary:focus-visible,textarea:focus-visible{
    ===================================================================== */
 var COMMENT_ENDPOINT = "https://script.googleusercontent.com/a/macros/soliogrowth.com/echo?user_content_key=AUkAhnR3dD4ZV1QlMvlG8kOtvzIcHJ7qYyeK2AERgpaayffgrPYAYIIjKU4l93iU6WRWJw13eL79qxvrU2vkdt1KKCVAeJic2WuQ7k8Y0QdhwDQmEQOmVkHZVa2W2LbtcSjmi-6HFpJ4F5tlfZO1qflkPjluvMt0z86IY-qdzbwVoJde9_ojJfU4EYGp4yQi54zCB0hpn4DIJKwRbqI6JuIycPjuOt9I1Z0ZU3txWpLpHGFNKC7pFID-jJWcrC-gScQt-CEzM4KcyIMbmZUzsO5sMW9GEJwloykVRD46z_CpSEg5Wrv_L6g&lib=MIv-Oznj80yB-6gyFC3t0bUd3Trmbe3TI";
 
-var COMMENT_PAGE = "Landing Page 1 of 3 · Specialty Trade Contractor";
+var COMMENT_PAGE = "Landing Page 2 of 3 · Counterparty Compliance";
 
 (function () {
   var KEY = "inframe-lp-comments-v1";
