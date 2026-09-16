@@ -1,0 +1,73 @@
+# InFrame Risk paid search landing pages.
+#
+# Five static sites, all from this one repo. Nothing is built: every page
+# is a single self-contained HTML file with its CSS and JS inline.
+#
+# Render > New > Blueprint > point at this repo. Make sure the branch is
+# the one carrying these pages, not the repo default.
+#
+# If the Blueprint gives you trouble, create the sites by hand instead.
+# The settings are trivial: Build Command blank, Publish Directory set to
+# the staticPublishPath below. That path is the only thing that differs
+# between them.
+
+services:
+  # Everything in one place. Serves the wireframe at /, the index of all
+  # four pages at /preview.html, and each page at its own .html path.
+  - type: web
+    name: inframe-lp-preview
+    runtime: static
+    buildCommand: echo "no build step"
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex, nofollow, noarchive, nosnippet
+
+  # One clean URL per page, for the ads.
+  - type: web
+    name: inframe-contractor-insurance
+    runtime: static
+    buildCommand: echo "no build step"
+    staticPublishPath: ./sites/contractor-insurance
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex, nofollow, noarchive, nosnippet
+
+  - type: web
+    name: inframe-general-contractor-insurance
+    runtime: static
+    buildCommand: echo "no build step"
+    staticPublishPath: ./sites/general-contractor-insurance
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex, nofollow, noarchive, nosnippet
+
+  - type: web
+    name: inframe-counterparty-compliance
+    runtime: static
+    buildCommand: echo "no build step"
+    staticPublishPath: ./sites/counterparty-compliance
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex, nofollow, noarchive, nosnippet
+
+  # Parked. The offer is now a gated PDF, so this page needs rebuilding
+  # before anyone reviews it as current.
+  - type: web
+    name: inframe-gap-report
+    runtime: static
+    buildCommand: echo "no build step"
+    staticPublishPath: ./sites/gap-report
+    pullRequestPreviewsEnabled: false
+    headers:
+      - path: /*
+        name: X-Robots-Tag
+        value: noindex, nofollow, noarchive, nosnippet
