@@ -363,87 +363,6 @@ summary:focus-visible,textarea:focus-visible{
 .foot a{color:var(--steel-02)}
 .foot .sep{color:var(--steel);padding:0 .35rem}
 
-/* ============================================================
-   Review commenting layer
-   Deliberately outside the brand type scale: this is review
-   chrome layered over the page, not part of the page itself,
-   and it is stripped before anything ships.
-   ============================================================ */
-.cmt,#cmt-dock{--t-review:.8125rem}
-.cmt{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
-.cmt-inner{border-left:2px solid var(--steel-02);padding-left:1rem;margin:1.25rem 0}
-.cmt-bar{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
-.cmt-btn{
-  background:transparent;color:var(--slate-03);
-  border:1px solid var(--steel-02);border-radius:2px;
-  font-family:inherit;font-size:.625rem;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;padding:.4375rem .75rem;cursor:pointer;line-height:1.2;
-}
-.cmt-btn:hover{background:var(--slate-05);border-color:var(--slate-05);color:var(--white)}
-.cmt-count{font-size:var(--t-legal);color:var(--slate-03);letter-spacing:.04em}
-.cmt-form{display:none;max-width:560px;padding-top:.875rem}
-.cmt-form.open{display:block}
-.cmt-form label{
-  display:block;font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;
-  font-weight:600;color:var(--slate-03);margin:0 0 .375rem;
-}
-.cmt-form textarea,.cmt-form input{
-  width:100%;font-family:inherit;font-size:var(--t-review);color:var(--slate-05);
-  background:var(--white);border:1px solid var(--steel-02);border-radius:2px;
-  padding:.625rem .75rem;margin-bottom:.75rem;line-height:1.5;
-}
-.cmt-form textarea{min-height:84px;resize:vertical}
-.cmt-form .row{display:flex;gap:.625rem;align-items:center;flex-wrap:wrap}
-.cmt-status{font-size:var(--t-legal);color:var(--slate-03)}
-.cmt-list{max-width:560px}
-.cmt-item{
-  border-left:2px solid var(--amber-05);padding:.375rem 0 .375rem .75rem;
-  margin:0 0 .625rem;font-size:var(--t-review);line-height:1.55;color:var(--slate-04);
-}
-.cmt-item .who{
-  display:block;font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;
-  font-weight:600;color:var(--slate-03);margin-bottom:.25rem;
-}
-/* comment layer sitting on a dark or steel band */
-.band--dark .cmt-inner,.hero .cmt-inner{border-left-color:var(--slate-04)}
-.band--dark .cmt-btn,.hero .cmt-btn{color:var(--steel-02);border-color:var(--steel)}
-.band--dark .cmt-btn:hover,.hero .cmt-btn:hover{background:var(--white);border-color:var(--white);color:var(--slate-05)}
-.band--dark .cmt-count,.band--dark .cmt-form label,.band--dark .cmt-status,
-.hero .cmt-count,.hero .cmt-form label,.hero .cmt-status{color:var(--steel-02)}
-.band--dark .cmt-item,.hero .cmt-item{color:var(--steel-02)}
-.band--dark .cmt-item .who,.hero .cmt-item .who{color:var(--steel)}
-.band--steel .cmt-inner{border-left-color:var(--slate-03)}
-.band--steel .cmt-btn{border-color:var(--slate-03)}
-.band--amber .cmt-inner{border-left-color:var(--slate-03)}
-.band--amber .cmt-btn{border-color:var(--slate-03)}
-
-#cmt-dock{
-  position:fixed;right:1rem;bottom:1rem;z-index:90;
-  background:var(--slate-05);color:var(--steel-02);
-  border-radius:2px;padding:.875rem 1rem;max-width:255px;
-  font-size:var(--t-legal);line-height:1.55;
-}
-#cmt-dock .dtoggle{
-  display:flex;align-items:center;gap:.5rem;width:100%;
-  background:none;border:0;padding:0;cursor:pointer;
-  font-family:inherit;font-size:.625rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--white);font-weight:700;text-align:left;
-}
-#cmt-dock .dtoggle::after{
-  content:"";margin-left:auto;width:7px;height:7px;
-  border-right:2px solid var(--steel);border-bottom:2px solid var(--steel);
-  transform:rotate(45deg) translateY(-2px);
-}
-#cmt-dock.min .dtoggle::after{transform:rotate(-135deg) translateY(-2px)}
-#cmt-dock .dbody{margin-top:.5rem}
-#cmt-dock.min .dbody{display:none}
-#cmt-dock .row{display:flex;gap:.5rem;margin-top:.75rem;flex-wrap:wrap}
-#cmt-dock .cmt-btn{color:var(--steel-02);border-color:var(--steel)}
-#cmt-dock .cmt-btn:hover{background:var(--white);border-color:var(--white);color:var(--slate-05)}
-@media (max-width:640px){
-  #cmt-dock{left:auto;right:.75rem;bottom:.75rem;max-width:min(255px,calc(100vw - 1.5rem))}
-}
-
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
@@ -455,15 +374,15 @@ summary:focus-visible,textarea:focus-visible{
 
 <header class="masthead">
   <div class="shell">
-    <img src="assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306">
+    <img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306">
   </div>
 </header>
 
 <main id="main">
 
 <!-- 01 HERO -->
-<section class="hero" data-cmt-module="01 · Hero" data-cmt-snippet="Insurance built around how your business actually operates.">
-  <img class="hero__img" src="assets/inframe-hero-city.webp" alt="Aerial wireframe view of a city, with a tower crane over a building under construction">
+<section class="hero">
+  <img class="hero__img" src="../assets/inframe-hero-city.webp" alt="Aerial wireframe view of a city, with a tower crane over a building under construction">
   <div class="hero__scrim"></div>
   <div class="hero__inner">
     <div class="shell">
@@ -477,7 +396,7 @@ summary:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- 02 QUALIFICATION STRIP -->
-<section class="qualstrip" data-cmt-module="02 · Qualification strip" data-cmt-snippet="What we handle">
+<section class="qualstrip">
   <div class="shell">
     <h2 class="eyebrow">What we handle</h2>
     <ul class="trade-list trades">
@@ -491,7 +410,7 @@ summary:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- 03 TENSION -->
-<section class="band band--light tension" data-cmt-module="03 · Problem / Tension" data-cmt-snippet="Your broker should always understand the business behind the policy.">
+<section class="band band--light tension">
   <div class="shell">
     <span class="rule-amber"></span>
     <h2>Your broker should always understand the business behind the policy.</h2>
@@ -501,7 +420,7 @@ summary:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- 04 FOUR QUESTIONS -->
-<section class="band band--white" data-cmt-module="04 · Four questions" data-cmt-snippet="Can I bid the job?">
+<section class="band band--white">
   <div class="shell">
     <div class="imgslot"><span>Background: cutting / demolition, dust, active work</span></div>
     <div class="tiles">
@@ -526,7 +445,7 @@ summary:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- 05 DARK OUTCOMES GRID -->
-<section class="band band--dark" data-cmt-module="05 · Solution / Why us" data-cmt-snippet="What changes">
+<section class="band band--dark">
   <div class="shell">
     <p class="eyebrow">What changes</p>
     <h2>How your business operates shapes every insurance and risk decision we make.</h2>
@@ -566,7 +485,7 @@ summary:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- 06 THE PLAN -->
-<section class="band band--light" data-cmt-module="06 · The plan" data-cmt-snippet="Three steps. No commitment until you have seen the work.">
+<section class="band band--light">
   <div class="shell">
     <span class="rule-amber"></span>
     <h2 class="measure">Three steps. No commitment until you have seen the work.</h2>
@@ -589,7 +508,7 @@ summary:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- 07 SOCIAL PROOF -->
-<section class="band band--steel casestudy" data-cmt-module="07 · Social proof" data-cmt-snippet="Client story">
+<section class="band band--steel casestudy">
   <div class="shell">
     <p class="eyebrow">Client story</p>
     <div class="imgslot" style="margin-top:clamp(1.5rem,3vw,2rem)"><span>Case study: pending the second contracted write-up</span></div>
@@ -597,7 +516,7 @@ summary:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- 08 CREDIBILITY STRIP -->
-<section class="band band--dark" data-cmt-module="08 · Credibility strip" data-cmt-snippet="States licensed">
+<section class="band band--dark">
   <div class="shell">
     <div class="stats">
       <div class="stat"><b>50</b><span>States licensed</span></div>
@@ -611,7 +530,7 @@ summary:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- 09 FAQ -->
-<section class="band band--light" data-cmt-module="09 · FAQ" data-cmt-snippet="Questions about working with InFrame">
+<section class="band band--light">
   <div class="shell">
     <span class="rule-amber"></span>
     <h2>Questions about working with InFrame</h2>
@@ -645,7 +564,7 @@ summary:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- 10 CONVERSION -->
-<section class="band band--dark" id="request" data-cmt-module="10 · Conversion" data-cmt-snippet="See what a specialist notices about your business.">
+<section class="band band--dark" id="request">
   <div class="shell">
     <div class="cta-grid">
       <div class="cta-copy">
@@ -704,7 +623,7 @@ summary:focus-visible,textarea:focus-visible{
 
 <footer class="foot">
   <div class="shell">
-    <img src="assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306">
+    <img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306">
     <p>
       InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states<span class="sep">&middot;</span>NPN #22200284<span class="sep">&middot;</span>CA license: 6019212<span class="sep">&middot;</span><a href="tel:+18668111207">(866) 811-1207</a>
     </p>
@@ -712,221 +631,6 @@ summary:focus-visible,textarea:focus-visible{
 </footer>
 
 <script>
-/* =====================================================================
-   COMMENTING
-   Same endpoint, same payload shape and same localStorage key as the
-   wireframe document, so review notes left on the mockups land in the
-   same Sheet and the same export. The fetch deliberately sends no
-   custom headers: that keeps it a CORS simple request, so Google Apps
-   Script never has to answer a preflight.
-   ===================================================================== */
-var COMMENT_ENDPOINT = "https://script.googleusercontent.com/a/macros/soliogrowth.com/echo?user_content_key=AUkAhnR3dD4ZV1QlMvlG8kOtvzIcHJ7qYyeK2AERgpaayffgrPYAYIIjKU4l93iU6WRWJw13eL79qxvrU2vkdt1KKCVAeJic2WuQ7k8Y0QdhwDQmEQOmVkHZVa2W2LbtcSjmi-6HFpJ4F5tlfZO1qflkPjluvMt0z86IY-qdzbwVoJde9_ojJfU4EYGp4yQi54zCB0hpn4DIJKwRbqI6JuIycPjuOt9I1Z0ZU3txWpLpHGFNKC7pFID-jJWcrC-gScQt-CEzM4KcyIMbmZUzsO5sMW9GEJwloykVRD46z_CpSEg5Wrv_L6g&lib=MIv-Oznj80yB-6gyFC3t0bUd3Trmbe3TI";
-
-/* ---------------------------------------------------------------------
-   REVIEW MODE
-   true  = the per-module Comment buttons and the floating dock render.
-           This is what the review URL is for.
-   false = the page ships clean. No review chrome, nothing posted.
-   Flip this to false before any ad traffic reaches the page.
-   --------------------------------------------------------------------- */
-var REVIEW_MODE = true;
-
-var COMMENT_PAGE = "Landing Page · General Contractor";
-
-(function () {
-  if (!REVIEW_MODE) { return; }
-
-  var KEY = "inframe-lp-comments-v1";
-  var NAMEKEY = "inframe-lp-reviewer-v1";
-  var memStore = [];
-  var memName = "";
-
-  function load() {
-    try { var r = window.localStorage.getItem(KEY); return r ? JSON.parse(r) : []; }
-    catch (e) { return memStore; }
-  }
-  function save(list) {
-    memStore = list;
-    try { window.localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
-  }
-  function getName() {
-    try { return window.localStorage.getItem(NAMEKEY) || memName; } catch (e) { return memName; }
-  }
-  function setName(v) {
-    memName = v;
-    try { window.localStorage.setItem(NAMEKEY, v); } catch (e) {}
-  }
-  function esc(s) {
-    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  }
-  function endpointReady() {
-    return COMMENT_ENDPOINT && COMMENT_ENDPOINT.indexOf("PASTE_") !== 0;
-  }
-  function post(payload, done) {
-    if (!endpointReady()) { done(false, "nokey"); return; }
-    try {
-      fetch(COMMENT_ENDPOINT, { method: "POST", body: JSON.stringify(payload) })
-        .then(function () { done(true); })
-        .catch(function () { done(false, "net"); });
-    } catch (e) { done(false, "net"); }
-  }
-
-  var blocks = [];
-  var nodes = document.querySelectorAll("[data-cmt-module]");
-  for (var i = 0; i < nodes.length; i++) {
-    blocks.push(build(
-      nodes[i],
-      COMMENT_PAGE,
-      nodes[i].getAttribute("data-cmt-module"),
-      nodes[i].getAttribute("data-cmt-snippet") || ""
-    ));
-  }
-
-  function build(section, page, moduleId, snippet) {
-    var wrap = document.createElement("div");
-    wrap.className = "cmt";
-    wrap.innerHTML =
-      '<div class="cmt-inner">' +
-        '<div class="cmt-list"></div>' +
-        '<div class="cmt-bar">' +
-          '<button type="button" class="cmt-btn cmt-open">Comment</button>' +
-          '<span class="cmt-count"></span>' +
-        '</div>' +
-        '<div class="cmt-form">' +
-          '<label>Your comment on ' + esc(moduleId) + '</label>' +
-          '<textarea placeholder="What would you change, and why?"></textarea>' +
-          '<label>Your name</label>' +
-          '<input type="text" placeholder="e.g. Daniel">' +
-          '<div class="row">' +
-            '<button type="button" class="cmt-btn cmt-send">Send</button>' +
-            '<button type="button" class="cmt-btn cmt-cancel">Cancel</button>' +
-            '<span class="cmt-status"></span>' +
-          '</div>' +
-        '</div>' +
-      '</div>';
-    section.appendChild(wrap);
-
-    var list = wrap.querySelector(".cmt-list");
-    var count = wrap.querySelector(".cmt-count");
-    var form = wrap.querySelector(".cmt-form");
-    var text = wrap.querySelector("textarea");
-    var who = wrap.querySelector("input");
-    var status = wrap.querySelector(".cmt-status");
-
-    wrap.querySelector(".cmt-open").addEventListener("click", function () {
-      form.classList.toggle("open");
-      if (form.classList.contains("open")) { who.value = getName(); text.focus(); }
-    });
-    wrap.querySelector(".cmt-cancel").addEventListener("click", function () {
-      form.classList.remove("open"); status.textContent = "";
-    });
-    wrap.querySelector(".cmt-send").addEventListener("click", function () {
-      var body = text.value.trim();
-      if (!body) { status.textContent = "Nothing to send yet."; return; }
-      var reviewer = who.value.trim() || "Anonymous";
-      setName(reviewer);
-
-      var entry = {
-        ts: new Date().toISOString(),
-        reviewer: reviewer,
-        page: page,
-        module: moduleId,
-        snippet: snippet,
-        comment: body
-      };
-
-      var all = load();
-      all.push(entry);
-      save(all);
-      text.value = "";
-      form.classList.remove("open");
-      render();
-      refreshDock();
-
-      status.textContent = "Saving…";
-      post(entry, function (ok, why) {
-        status.textContent = ok
-          ? "Sent."
-          : (why === "nokey"
-              ? "Saved on this page. Use Download when you are done."
-              : "Saved on this page, but could not reach the server. Use Download when you are done.");
-        setTimeout(function () { status.textContent = ""; }, 6000);
-      });
-    });
-
-    function render() {
-      var mine = load().filter(function (c) { return c.module === moduleId && c.page === page; });
-      count.textContent = mine.length ? mine.length + (mine.length === 1 ? " comment" : " comments") : "";
-      list.innerHTML = mine.map(function (c) {
-        return '<div class="cmt-item"><span class="who">' + esc(c.reviewer) + " · " +
-          esc(new Date(c.ts).toLocaleString()) + '</span>' + esc(c.comment) + '</div>';
-      }).join("");
-    }
-
-    render();
-    return { render: render };
-  }
-
-  /* ---- floating dock ---- */
-  var dock = document.createElement("div");
-  dock.id = "cmt-dock";
-  dock.innerHTML =
-    '<button type="button" class="dtoggle" aria-expanded="true">Comments</button>' +
-    '<div class="dbody">' +
-      '<span class="dcount"></span>' +
-      '<div class="row">' +
-        '<button type="button" class="cmt-btn dl">Download</button>' +
-        '<button type="button" class="cmt-btn clr">Clear</button>' +
-      '</div>' +
-    '</div>';
-  document.body.appendChild(dock);
-
-  var dtoggle = dock.querySelector(".dtoggle");
-  function setMin(min) {
-    dock.classList.toggle("min", min);
-    dtoggle.setAttribute("aria-expanded", min ? "false" : "true");
-  }
-  dtoggle.addEventListener("click", function () { setMin(!dock.classList.contains("min")); });
-  if (window.matchMedia("(max-width:640px)").matches) { setMin(true); }
-
-  var dcount = dock.querySelector(".dcount");
-
-  function refreshDock() {
-    var n = load().length;
-    dcount.textContent = n === 0
-      ? "None yet. Use the Comment button under any module."
-      : n + (n === 1 ? " comment saved" : " comments saved") +
-        (endpointReady() ? " and sent." : " on this device.");
-  }
-
-  dock.querySelector(".dl").addEventListener("click", function () {
-    var all = load();
-    if (!all.length) { return; }
-    var out = "# InFrame Risk · Landing page copy feedback\n\n" +
-      all.length + " comments · exported " + new Date().toLocaleString() + "\n\n";
-    var lastPage = "";
-    all.forEach(function (c) {
-      if (c.page !== lastPage) { out += "\n---\n\n## " + c.page + "\n\n"; lastPage = c.page; }
-      out += "**" + c.module + "**" + (c.snippet ? "  \n_" + c.snippet + "_" : "") + "\n\n" +
-             c.comment + "\n\n" + "Left by " + c.reviewer + ", " + new Date(c.ts).toLocaleString() + "\n\n";
-    });
-    var blob = new Blob([out], { type: "text/markdown" });
-    var a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = "inframe-lp-feedback.md";
-    a.click();
-  });
-
-  dock.querySelector(".clr").addEventListener("click", function () {
-    if (!window.confirm("Clear all comments saved on this device? Download them first if you have not sent them.")) { return; }
-    save([]);
-    blocks.forEach(function (b) { b.render(); });
-    refreshDock();
-  });
-
-  refreshDock();
-})();
-
 /* Mockup only. The form does not submit anywhere. */
 document.querySelector(".form").addEventListener("submit", function (e) { e.preventDefault(); });
 </script>
