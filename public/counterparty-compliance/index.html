@@ -200,21 +200,6 @@ summary:focus-visible,textarea:focus-visible{
 .tension .copy{max-width:62ch;margin-top:1.75rem}
 .tension .copy + .copy{margin-top:1.25rem}
 
-/* ---------- image placeholder ---------- */
-.imgslot{
-  background:var(--steel-01);
-  border:1px solid var(--steel);
-  border-radius:2px;
-  min-height:clamp(180px,26vw,300px);
-  display:flex;align-items:center;justify-content:center;
-  padding:1.5rem;text-align:center;
-}
-.imgslot span{
-  font-size:var(--t-legal);font-weight:600;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--slate-03);line-height:1.7;max-width:34ch;
-}
-.imgslot--short{min-height:clamp(120px,16vw,180px)}
-
 /* ---------- question tiles ---------- */
 .tiles{
   display:grid;gap:clamp(1rem,2vw,1.5rem);
@@ -362,6 +347,27 @@ summary:focus-visible,textarea:focus-visible{
 .foot a{color:var(--steel-02)}
 .foot .sep{color:var(--steel);padding:0 .35rem}
 
+/* ---------- dotted band + icon tiles (matches the live homepage) ---------- */
+.band--dots{
+  background-color:var(--steel-01);
+  color:var(--slate-05);
+  background-image:radial-gradient(circle,rgba(82,100,119,.30) 1px,transparent 1px);
+  background-size:22px 22px;
+  background-position:0 0;
+}
+.band--dots .tile{
+  background:transparent;
+  border-color:var(--steel-02);
+}
+.tiles--bare{margin-top:0}
+.tile-icon{
+  display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:2px;
+  background:var(--amber-05);color:var(--slate-05);
+  margin-bottom:1.125rem;
+}
+.tile-icon svg{width:22px;height:22px;display:block}
+
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
@@ -420,23 +426,27 @@ summary:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- 03 WHAT GETS MISSED -->
-<section class="band band--white">
+<section class="band band--dots">
   <div class="shell">
     <h2 class="eyebrow">Four things a certificate will not tell you</h2>
     <div class="tiles tiles--flush">
       <article class="tile">
+        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
         <h3>The entity does not match</h3>
         <p>The company that signed your contract is not the named insured on the policy. Close name, different entity. On paper you are covered. In practice you are not.</p>
       </article>
       <article class="tile">
+        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M3 11h18"/><path d="m10 15 4 4"/><path d="m14 15-4 4"/></svg></div>
         <h3>The policy expired eight months in</h3>
         <p>A two-year project outlasts a twelve-month policy. If nobody chases the renewal, you are carrying the risk and you will not know until you need it.</p>
       </article>
       <article class="tile">
+        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 8v4l3 2"/></svg></div>
         <h3>The endorsement points at last year</h3>
         <p>Additional insured and waiver language that no longer attaches to anything current.</p>
       </article>
       <article class="tile">
+        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></div>
         <h3>The financials were filed, not read</h3>
         <p>A subcontractor's numbers have been getting worse for three years. Somebody collected them every year. Nobody looked.</p>
       </article>
@@ -533,7 +543,6 @@ summary:focus-visible,textarea:focus-visible{
       </div>
       <div>
         <p class="copy">A regional general contractor running dozens of concurrent projects gave us a single job as a test. Four subs, the ones they were least worried about. We found problems with all four. Entity mismatches, an expired policy nobody had chased, and financials that had been collected every year and never read.</p>
-        <div class="imgslot imgslot--short" style="margin-top:1.75rem"><span>Client logo or portrait: pending case study approval</span></div>
       </div>
     </div>
   </div>

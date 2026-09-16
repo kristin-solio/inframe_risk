@@ -27,7 +27,6 @@ inline. The only external request is Google Fonts.
 | `/contractor-insurance` | Subcontractor |
 | `/general-contractor-insurance` | General contractor |
 | `/counterparty-compliance` | Counterparty compliance |
-| `/gap-report` | Parked. Written as a bespoke review, but the offer is a gated PDF |
 | `/wireframe.html` | The source review document |
 
 These match the paths in the Google Ads plan's Landing Page Map, so the
@@ -45,8 +44,7 @@ right on staging looks the same in production.
    page. It is there because the copy is unapproved, not as a strategy, and
    the plan expects these pages to earn organic long-tail traffic.
 2. Clear the outstanding approval register items. Several claims are still
-   unapproved, most of them on the gap report page.
-3. Point `/gap-report` at the real offer, or take it out of the ad map.
+   unapproved.
 
 ## Editing
 

@@ -200,21 +200,6 @@ summary:focus-visible,textarea:focus-visible{
 .tension .copy{max-width:62ch;margin-top:1.75rem}
 .tension .copy + .copy{margin-top:1.25rem}
 
-/* ---------- image placeholder ---------- */
-.imgslot{
-  background:var(--steel-01);
-  border:1px solid var(--steel);
-  border-radius:2px;
-  min-height:clamp(180px,26vw,300px);
-  display:flex;align-items:center;justify-content:center;
-  padding:1.5rem;text-align:center;
-}
-.imgslot span{
-  font-size:var(--t-legal);font-weight:600;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--slate-03);line-height:1.7;max-width:34ch;
-}
-.imgslot--short{min-height:clamp(120px,16vw,180px)}
-
 /* ---------- question tiles ---------- */
 .tiles{
   display:grid;gap:clamp(1rem,2vw,1.5rem);
@@ -362,6 +347,41 @@ summary:focus-visible,textarea:focus-visible{
 .foot a{color:var(--steel-02)}
 .foot .sep{color:var(--steel);padding:0 .35rem}
 
+/* ---------- dotted band + icon tiles (matches the live homepage) ---------- */
+.band--dots{
+  background-color:var(--steel-01);
+  color:var(--slate-05);
+  background-image:radial-gradient(circle,rgba(82,100,119,.30) 1px,transparent 1px);
+  background-size:22px 22px;
+  background-position:0 0;
+}
+.band--dots .tile{
+  background:transparent;
+  border-color:var(--steel-02);
+}
+.tiles--bare{margin-top:0}
+.tile-icon{
+  display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:2px;
+  background:var(--amber-05);color:var(--slate-05);
+  margin-bottom:1.125rem;
+}
+.tile-icon svg{width:22px;height:22px;display:block}
+
+/* ---------- national licensing band (matches the live homepage) ---------- */
+.licensing-band h2{max-width:42ch;margin-bottom:1.75rem}
+.licensing-band .npn{font-size:var(--t-body);color:var(--white)}
+.licensing-band .npn a{
+  color:var(--amber-05);text-decoration:underline;text-underline-offset:3px;
+}
+.licensing-band .npn a:hover{color:var(--amber-04)}
+.licensing-band .chev{
+  display:inline-block;vertical-align:middle;width:14px;height:14px;
+  margin-left:.4rem;color:var(--amber-05);
+}
+.licensing-band .usmap{margin-top:clamp(2.5rem,6vw,4.5rem)}
+.licensing-band .usmap svg{width:100%;height:auto;display:block}
+
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
@@ -420,23 +440,26 @@ summary:focus-visible,textarea:focus-visible{
 </section>
 
 <!-- 04 FOUR QUESTIONS -->
-<section class="band band--white">
+<section class="band band--dots">
   <div class="shell">
-    <div class="imgslot"><span>Background: cutting / demolition, dust, active work</span></div>
-    <div class="tiles">
+    <div class="tiles tiles--bare">
       <article class="tile">
+        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></div>
         <h3>Can I bid the job?</h3>
         <p>Owners and GCs set coverage requirements before you can quote. If your program does not meet them, you are not eligible, and nobody calls to tell you why you lost.</p>
       </article>
       <article class="tile">
+        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
         <h3>Can I get on site?</h3>
         <p>A certificate that takes four days to issue costs you work with a three-day bid window.</p>
       </article>
       <article class="tile">
+        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
         <h3>Am I covered when it goes wrong?</h3>
         <p>Completed operations that end at substantial completion. A per-project limit another job already spent. The contract says one thing and the policy says another.</p>
       </article>
       <article class="tile">
+        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01"/><path d="M18 12h.01"/></svg></div>
         <h3>Can I stay on and get paid?</h3>
         <p>Lapsed subs, missing endorsements and waiver gaps stall pay applications and hold up funds you have already earned.</p>
       </article>
@@ -520,24 +543,17 @@ summary:focus-visible,textarea:focus-visible{
       </div>
       <div>
         <p class="copy">They came to us mid-bid-season needing certificates across dozens of jobs, split across four owners with different requirements. Thirteen policies, renewing in different months, none of them aligned. We rebuilt the calendar and took over issuance.</p>
-        <div class="imgslot imgslot--short" style="margin-top:1.75rem"><span>Client logo row: pending case study approval</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 08 CREDIBILITY STRIP -->
-<section class="band band--dark">
+<!-- 08 NATIONAL LICENSING -->
+<section class="band band--dark licensing-band">
   <div class="shell">
-    <div class="stats">
-      <div class="stat"><b>50</b><span>States licensed</span></div>
-      <div class="stat"><b>150+</b><span>Insurer relationships</span></div>
-      <div class="stat"><b>7</b><span>Specialty trades served</span></div>
-      <div class="stat stat--word"><b>Licensed</b><span>Commercial insurance brokerage &middot; InFrame Insurance Services LLC</span></div>
-    </div>
-    <div class="imgslot imgslot--short" style="margin-top:clamp(2.5rem,5vw,3.5rem);background:var(--slate-04);border-color:var(--slate-03)">
-      <span style="color:var(--steel-02)">US map: states filled</span>
-    </div>
+    <p class="eyebrow">Licensed in 50 states</p>
+    <h2>InFrame Insurance Services LLC is a national licensed insurance brokerage.</h2>
+    <p class="npn">NPN# 22200284. <a href="#licenses">See our licenses here.</a><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></p>
   </div>
 </section>
 
