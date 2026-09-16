@@ -382,6 +382,23 @@ summary:focus-visible,textarea:focus-visible{
 .licensing-band .usmap{margin-top:clamp(2.5rem,6vw,4.5rem)}
 .licensing-band .usmap svg{width:100%;height:auto;display:block}
 
+/* ---------- repeated CTA pair ---------- */
+.cta-pair{margin-top:clamp(2rem,4vw,2.75rem)}
+.cta-pair .row{display:flex;flex-wrap:wrap;gap:.875rem}
+.cta-pair .btn{margin:0}
+/* The brand book rules out outlined buttons, so the secondary is a solid
+   approved pairing instead: Slate 05 on light ground, Slate 03 on dark. */
+.btn--secondary{background:var(--slate-05);color:var(--white)}
+.btn--secondary:hover{background:var(--slate-04)}
+.band--dark .btn--secondary,.hero .btn--secondary{background:var(--slate-03)}
+.band--dark .btn--secondary:hover,.hero .btn--secondary:hover{background:var(--slate-04)}
+.cta-phone{
+  margin-top:1rem;font-size:var(--t-body);color:var(--slate-04);
+}
+.cta-phone a{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.band--dark .cta-phone,.hero .cta-phone{color:var(--steel-02)}
+.band--steel .cta-phone{color:var(--slate-04)}
+
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
@@ -407,7 +424,13 @@ summary:focus-visible,textarea:focus-visible{
     <div class="shell">
       <h1>Insurance built around how your business actually <span class="hl">operates.</span></h1>
       <p class="lede">InFrame is a specialist insurance broker for commercial trade contractors. We read your contracts and your policies against each other, so your coverage matches the work you actually bid.</p>
-      <p><a class="btn" href="#request">Get a free insurance review</a></p>
+      <div class="cta-pair" style="margin-top:2rem">
+        <div class="row">
+          <a class="btn" href="#request">Get a free insurance review</a>
+          <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+        </div>
+        <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+      </div>
       <p class="licensing">Licensed in all 50 states &middot; InFrame Insurance Services LLC</p>
     </div>
   </div>
@@ -436,6 +459,14 @@ summary:focus-visible,textarea:focus-visible{
     <h2>Your broker should always understand the business behind the policy.</h2>
     <p class="copy">Insurance decides how you bid, how you staff, and how fast you get paid. Most brokers process the renewal, issue the certificate and repeat, which keeps it a cost you absorb. A broker who understands the work can turn it into something you compete on.</p>
     <p class="copy">Most trade contractors are getting the first version. That is rarely carelessness. Specialist teams are expensive to run, so brokers point them at their largest accounts.</p>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Get a free insurance review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
   </div>
 </section>
 
@@ -504,6 +535,14 @@ summary:focus-visible,textarea:focus-visible{
         <p>Costs allocated to the vehicles, crews and projects that generate them, so the annual audit is not the first time you see it.</p>
       </div>
     </div>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Get a free insurance review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
   </div>
 </section>
 
@@ -545,6 +584,14 @@ summary:focus-visible,textarea:focus-visible{
         <p class="copy">They came to us mid-bid-season needing certificates across dozens of jobs, split across four owners with different requirements. Thirteen policies, renewing in different months, none of them aligned. We rebuilt the calendar and took over issuance.</p>
       </div>
     </div>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Get a free insurance review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
   </div>
 </section>
 
@@ -588,6 +635,14 @@ summary:focus-visible,textarea:focus-visible{
         <p class="a">We ask how you actually run: trade mix, contract requirements, fleet, payroll, project schedule. Then we tell you what we would look at first. It takes about thirty minutes.</p>
       </details>
     </div>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Get a free insurance review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
   </div>
 </section>
 
@@ -653,6 +708,7 @@ summary:focus-visible,textarea:focus-visible{
             </select>
           </div>
           <button class="btn" type="submit">Get a free insurance review</button>
+          <a class="btn btn--secondary" href="tel:+18668111207" style="width:100%;text-align:center;margin-top:.75rem">Talk to a risk advisor</a>
           <p class="after">Or call <a class="telno" href="tel:+18668111207">(866) 811-1207</a>. You will reach a risk advisor, not a call center.</p>
         </form>
       </div>

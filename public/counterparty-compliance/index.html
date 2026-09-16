@@ -368,6 +368,23 @@ summary:focus-visible,textarea:focus-visible{
 }
 .tile-icon svg{width:22px;height:22px;display:block}
 
+/* ---------- repeated CTA pair ---------- */
+.cta-pair{margin-top:clamp(2rem,4vw,2.75rem)}
+.cta-pair .row{display:flex;flex-wrap:wrap;gap:.875rem}
+.cta-pair .btn{margin:0}
+/* The brand book rules out outlined buttons, so the secondary is a solid
+   approved pairing instead: Slate 05 on light ground, Slate 03 on dark. */
+.btn--secondary{background:var(--slate-05);color:var(--white)}
+.btn--secondary:hover{background:var(--slate-04)}
+.band--dark .btn--secondary,.hero .btn--secondary{background:var(--slate-03)}
+.band--dark .btn--secondary:hover,.hero .btn--secondary:hover{background:var(--slate-04)}
+.cta-phone{
+  margin-top:1rem;font-size:var(--t-body);color:var(--slate-04);
+}
+.cta-phone a{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.band--dark .cta-phone,.hero .cta-phone{color:var(--steel-02)}
+.band--steel .cta-phone{color:var(--slate-04)}
+
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
@@ -410,7 +427,13 @@ summary:focus-visible,textarea:focus-visible{
     <div class="shell">
       <h1>A certificate is a summary. We read the <span class="hl">policies</span> behind it.</h1>
       <p class="lede">InFrame qualifies and monitors your subcontractors and tenants against what your contracts actually require, reviewed by risk specialists rather than collected and filed.</p>
-      <p><a class="btn" href="#request">Check one project for gaps</a></p>
+      <div class="cta-pair" style="margin-top:2rem">
+        <div class="row">
+          <a class="btn" href="#request">Check one project for gaps</a>
+          <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+        </div>
+        <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+      </div>
     </div>
   </div>
 </section>
@@ -422,6 +445,14 @@ summary:focus-visible,textarea:focus-visible{
     <h2>The certificate is in the folder. That is the whole problem.</h2>
     <p class="copy">Most compliance programs are two people, a shared inbox, and a spreadsheet with a tab for every project. Certificates get collected at signing and never looked at again. Financials get filed, not read. Requests go out, and out, and out.</p>
     <p class="copy">The people doing it are careful and organized. They were also never trained as risk advisors, so what they can confirm is that a document arrived, not that it protects you.</p>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Check one project for gaps</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
   </div>
 </section>
 
@@ -492,6 +523,14 @@ summary:focus-visible,textarea:focus-visible{
         <p>Contracts, certificates, policies, waivers and schedules, tied to the project and the counterparty.</p>
       </div>
     </div>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Check one project for gaps</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
   </div>
 </section>
 
@@ -530,6 +569,14 @@ summary:focus-visible,textarea:focus-visible{
         <p><b>You get an ongoing picture.</b> What is compliant, what is not, what changed this week, with every flag checked by a specialist.</p>
       </div>
     </div>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Check one project for gaps</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
   </div>
 </section>
 
@@ -591,6 +638,14 @@ summary:focus-visible,textarea:focus-visible{
         <p class="a">They stay confidential and are used only for your review. We will sign your NDA if you have one.</p>
       </details>
     </div>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Check one project for gaps</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
   </div>
 </section>
 
@@ -652,6 +707,7 @@ summary:focus-visible,textarea:focus-visible{
             </select>
           </div>
           <button class="btn" type="submit">Check one project for gaps</button>
+          <a class="btn btn--secondary" href="tel:+18668111207" style="width:100%;text-align:center;margin-top:.75rem">Talk to a risk advisor</a>
           <p class="after">Or call <a class="telno" href="tel:+18668111207">(866) 811-1207</a>.</p>
         </form>
       </div>
