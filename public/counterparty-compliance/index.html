@@ -130,7 +130,8 @@ summary:focus-visible,textarea:focus-visible{
 /* ---------- masthead ---------- */
 .masthead{background:var(--slate-05);padding-block:1.5rem}
 .masthead .shell{display:flex;align-items:center}
-.masthead img{height:clamp(26px,2.4vw,34px);width:auto}
+.masthead .logo-link{display:inline-flex;line-height:0}
+.masthead img{height:clamp(26px,2.4vw,34px);width:auto;display:block}
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:var(--slate-05);color:var(--white);overflow:hidden}
@@ -342,7 +343,8 @@ summary:focus-visible,textarea:focus-visible{
 
 /* ---------- footer ---------- */
 .foot{background:var(--slate-05);color:var(--steel-02);padding-block:clamp(2.5rem,5vw,3.5rem)}
-.foot img{height:24px;width:auto;margin-bottom:1.5rem}
+.foot .logo-link{display:inline-flex;line-height:0;margin-bottom:1.5rem}
+.foot img{height:24px;width:auto;display:block}
 .foot p{font-size:var(--t-legal);line-height:1.9}
 .foot a{color:var(--steel-02)}
 .foot .sep{color:var(--steel);padding:0 .35rem}
@@ -457,7 +459,7 @@ summary:focus-visible,textarea:focus-visible{
 
 <header class="masthead">
   <div class="shell">
-    <img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306">
+    <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
   </div>
 </header>
 
@@ -523,7 +525,7 @@ summary:focus-visible,textarea:focus-visible{
 <section class="band band--dark">
   <div class="shell">
     <p class="eyebrow">What we do</p>
-    <h2>We read what you signed and what they bought.</h2>
+    <h2>We read what you signed and what your subcontractors bought.</h2>
     <p class="intro">You owe requirements upward to owners and lenders, and you set them downward to your subcontractors and tenants. Most programs only look one way.</p>
     <div class="outcomes">
       <div class="outcome">
@@ -767,7 +769,7 @@ summary:focus-visible,textarea:focus-visible{
 
 <footer class="foot">
   <div class="shell">
-    <img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306">
+    <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
     <p>
       InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states<span class="sep">&middot;</span>NPN #22200284<span class="sep">&middot;</span>CA license: 6019212<span class="sep">&middot;</span><a href="tel:+18668111207">(866) 811-1207</a>
     </p>
