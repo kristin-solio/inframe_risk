@@ -344,10 +344,11 @@ summary:focus-visible,textarea:focus-visible{
 .field input:hover,.field select:hover{border-color:var(--steel)}
 .form .btn{width:100%;margin-top:.75rem}
 .form .after{margin-top:1.25rem;color:var(--slate-04);font-size:var(--t-body);line-height:1.6}
-.form .after .token{
-  font-weight:600;color:var(--slate-04);
-  background:var(--steel-01);padding:.1em .45em;border-radius:2px;
+.form .after .telno{
+  font-weight:600;color:var(--slate-05);
+  text-decoration:underline;text-underline-offset:2px;
 }
+.form .after .telno:hover{color:var(--slate-03)}
 .upload{
   border:1px dashed var(--steel);background:var(--slate-01);border-radius:2px;
   padding:1.125rem .875rem;color:var(--slate-03);font-size:var(--t-legal);
@@ -484,7 +485,7 @@ summary:focus-visible,textarea:focus-visible{
     <div class="shell">
       <h1>A certificate is a summary. We read the <span class="hl">policies</span> behind it.</h1>
       <p class="lede">InFrame qualifies and monitors your subcontractors and tenants against what your contracts actually require, reviewed by risk specialists rather than collected and filed.</p>
-      <p><a class="btn" href="#request">Get a Counterparty Gap Report</a></p>
+      <p><a class="btn" href="#request">Check one project for gaps</a></p>
     </div>
   </div>
 </section>
@@ -722,8 +723,8 @@ summary:focus-visible,textarea:focus-visible{
               <option>Over 50</option>
             </select>
           </div>
-          <button class="btn" type="submit">Get a Counterparty Gap Report</button>
-          <p class="after">Or call <span class="token">[dynamic tracking number]</span>.</p>
+          <button class="btn" type="submit">Check one project for gaps</button>
+          <p class="after">Or call <a class="telno" href="tel:+18668111207">(866) 811-1207</a>.</p>
         </form>
       </div>
     </div>
@@ -736,7 +737,7 @@ summary:focus-visible,textarea:focus-visible{
   <div class="shell">
     <img src="assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306">
     <p>
-      InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states and DC<span class="sep">&middot;</span>NPN# 22200284<span class="sep">&middot;</span><a href="tel:+18668111207">(866) 811-1207</a>
+      InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states<span class="sep">&middot;</span>NPN #22200284<span class="sep">&middot;</span>CA license: 6019212<span class="sep">&middot;</span><a href="tel:+18668111207">(866) 811-1207</a>
     </p>
   </div>
 </footer>
