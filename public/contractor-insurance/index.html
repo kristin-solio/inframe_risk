@@ -356,15 +356,17 @@ summary:focus-visible,textarea:focus-visible{
   background-position:0 0;
 }
 .band--dots .tile{
-  background:transparent;
+  background:var(--steel-01);
   border-color:var(--steel-02);
 }
+.tile-head{display:flex;align-items:center;gap:.875rem;margin-bottom:.875rem}
+.tile-head h3{margin:0}
 .tiles--bare{margin-top:0}
 .tile-icon{
   display:flex;align-items:center;justify-content:center;
   width:44px;height:44px;border-radius:2px;
   background:var(--amber-05);color:var(--slate-05);
-  margin-bottom:1.125rem;
+  flex:0 0 auto;
 }
 .tile-icon svg{width:22px;height:22px;display:block}
 
@@ -484,26 +486,22 @@ summary:focus-visible,textarea:focus-visible{
   <div class="shell">
     <span class="rule-amber"></span>
     <h2>Your broker should always understand the business behind the policy.</h2>
-    <p class="copy">Insurance affects operations and finance, yet it is usually handled as a transaction. Without a deep understanding of your day-to-day operations, your market and the businesses you contract with, your broker cannot adequately represent you to insurers, and over time work gets held up or lost as a result.</p>
+    <p class="copy">Insurance affects operations and finance, yet it is usually handled as a transaction. Your broker needs to understand how you operate, the market you work in, and the businesses you contract with. Without that, they cannot represent you properly to insurers, and work gets held up or lost.</p>
     <div class="tiles">
       <article class="tile">
-        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01"/><path d="M18 12h.01"/></svg></div>
-        <h3>Can I fund the work?</h3>
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01"/><path d="M18 12h.01"/></svg></div><h3>Can I fund the work?</h3></div>
         <p>Insurance requirements connected to contracts and financing should be understood before they become an obstacle.</p>
       </article>
       <article class="tile">
-        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></div>
-        <h3>Can I start the work?</h3>
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></div><h3>Can I start the work?</h3></div>
         <p>Missing certificates, endorsements or required coverage can cause delays when work begins.</p>
       </article>
       <article class="tile">
-        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3>Am I covered when things go wrong?</h3>
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Am I covered when things go wrong?</h3></div>
         <p>Having insurance does not always mean your business is protected when things go wrong.</p>
       </article>
       <article class="tile">
-        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-        <h3>Can I keep working and get paid?</h3>
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Can I keep working and get paid?</h3></div>
         <p>Insurance paperwork and compliance can affect whether work moves forward and payment is released.</p>
       </article>
     </div>
@@ -570,7 +568,7 @@ summary:focus-visible,textarea:focus-visible{
 <section class="band band--light">
   <div class="shell">
     <span class="rule-amber"></span>
-    <h2 class="measure">Three steps. No commitment until you have seen the work.</h2>
+    <h2 class="measure">Three steps. No commitment until you&rsquo;ve seen the work.</h2>
     <div class="steps">
       <div class="step">
         <span class="n">Step <b>01</b></span>
@@ -586,6 +584,14 @@ summary:focus-visible,textarea:focus-visible{
       </div>
     </div>
     <p class="turnaround">Most reviews come back within three business days.</p>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Get a free insurance review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
   </div>
 </section>
 
@@ -596,7 +602,7 @@ summary:focus-visible,textarea:focus-visible{
     <div class="case-grid">
       <div>
         <blockquote>
-          <p>&ldquo;The first request took us a full day. The next one took five seconds, because the person handling it understood what the GC was actually asking for.&rdquo;</p>
+          <p>&ldquo;The first certificate request took us a full day. The next one took five seconds, because the person handling it understood what the GC was actually asking for.&rdquo;</p>
           <cite>Commercial flooring contractor &middot; national footprint</cite>
         </blockquote>
       </div>
@@ -640,28 +646,36 @@ summary:focus-visible,textarea:focus-visible{
     <h2>Questions about working with InFrame</h2>
     <div class="faq">
       <details>
-        <summary>We already have a broker. Why would we switch?</summary>
-        <p class="a">Most people do not switch on price. They switch after a claim gets handled badly, a certificate arrives too late to bid, or a renewal comes back with a number nobody warned them about. If none of that has happened, a review still tells you where you stand. If it has, you already know why you are here.</p>
+        <summary>What insurance does a specialty trade contractor need?</summary>
+        <p class="a">Most specialty trade contractors carry general liability, workers&rsquo; compensation, commercial auto, and umbrella or excess coverage. Many also need tools and equipment coverage, and some need pollution or professional liability. Your contracts usually set the rest: limits, additional insured status, and the endorsements a GC requires before you start work.</p>
       </details>
       <details>
-        <summary>Do we have to wait until renewal?</summary>
-        <p class="a">No. The review works at any point in the year, and knowing where your gaps are six months out is more useful than finding out three weeks before renewal.</p>
+        <summary>How much does insurance cost for a specialty trade contractor?</summary>
+        <p class="a">It depends on payroll and revenue, the type of work (residential or commercial, new construction or service), claims history, experience mod, limits and deductibles, and how much you sub out. Mid-market programs are priced account by account, so the fastest way to a real number is a review of your current policies and contracts.</p>
       </details>
       <details>
-        <summary>How is this different from a large national broker?</summary>
-        <p class="a">Specialist attention at your size. The largest brokers have deep construction expertise and they point it at their largest accounts, which is a rational way to run their business. We built ours around companies in the $5M to $50M range and we do not do anything else.</p>
+        <summary>Why use a construction insurance broker instead of buying online?</summary>
+        <p class="a">Online quote tools are built for small contractors buying one policy at a time. Once you&rsquo;re running crews, a fleet, and dozens of contracts, the details decide the outcome: which carriers want your trade, how your contracts shift risk onto you, and whether your coverage will respond. A specialist broker handles all of it.</p>
       </details>
       <details>
-        <summary>Are you selling us software?</summary>
-        <p class="a">No. We are a licensed brokerage and you are hiring people. Technology sits behind what we do, collecting documents, tracking expirations and flagging changes, and that is where it belongs. You should notice the service, not the system.</p>
+        <summary>How fast can you turn around certificates of insurance for bids?</summary>
+        <p class="a">Standard certificates go out [same day]. Our system learns each client&rsquo;s requirements, so repeat requests for bids and new jobs take minutes. When the GC needs your certs by Thursday, you shouldn&rsquo;t be waiting on your broker.</p>
       </details>
       <details>
-        <summary>What size company do you work with?</summary>
-        <p class="a">Commercial trade contractors from roughly $5M to $50M in annual revenue. Below that, a specialist program is usually more than the business needs.</p>
+        <summary>Will our coverage meet the GC&rsquo;s contract requirements?</summary>
+        <p class="a">Send us the contract. We pull out every insurance requirement, compare it against your actual policies (not just your certificate), and tell you what&rsquo;s missing and how to fix it, ideally before you sign. A licensed advisor reviews every finding.</p>
       </details>
       <details>
-        <summary>What happens on the first call?</summary>
-        <p class="a">We ask how you actually run: trade mix, contract requirements, fleet, payroll, project schedule. Then we tell you what we would look at first. It takes about thirty minutes.</p>
+        <summary>What is an additional insured endorsement, and why do GCs require it?</summary>
+        <p class="a">An additional insured endorsement extends your liability coverage to another party, usually the GC or owner, for claims arising from your work. GCs require it so your policy responds when your work causes a loss. Contracts often name specific forms, including completed operations coverage that continues after the job ends.</p>
+      </details>
+      <details>
+        <summary>What does &ldquo;primary and noncontributory&rdquo; mean?</summary>
+        <p class="a">Primary means your policy pays first for claims tied to your work. Noncontributory means the GC&rsquo;s or owner&rsquo;s policy doesn&rsquo;t have to share the loss. Without a matching endorsement, you can be out of compliance with the contract even when your certificate looks fine.</p>
+      </details>
+      <details>
+        <summary>Is InFrame a fit for our company?</summary>
+        <p class="a">We focus on commercial electrical, HVAC, plumbing, flooring, painting, drywall, and concrete contractors. If that&rsquo;s you, we&rsquo;ll start with a review of your current program and contracts.</p>
       </details>
     </div>
     <div class="cta-pair">

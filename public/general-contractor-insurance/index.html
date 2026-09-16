@@ -357,15 +357,17 @@ summary:focus-visible,textarea:focus-visible{
   background-position:0 0;
 }
 .band--dots .tile{
-  background:transparent;
+  background:var(--steel-01);
   border-color:var(--steel-02);
 }
+.tile-head{display:flex;align-items:center;gap:.875rem;margin-bottom:.875rem}
+.tile-head h3{margin:0}
 .tiles--bare{margin-top:0}
 .tile-icon{
   display:flex;align-items:center;justify-content:center;
   width:44px;height:44px;border-radius:2px;
   background:var(--amber-05);color:var(--slate-05);
-  margin-bottom:1.125rem;
+  flex:0 0 auto;
 }
 .tile-icon svg{width:22px;height:22px;display:block}
 
@@ -484,26 +486,22 @@ summary:focus-visible,textarea:focus-visible{
   <div class="shell">
     <span class="rule-amber"></span>
     <h2>Your broker should always understand the business behind the policy.</h2>
-    <p class="copy">Insurance affects operations and finance, yet it is usually handled as a transaction. Without a deep understanding of your day-to-day operations, your market and the businesses you contract with, your broker cannot adequately represent you to insurers, and over time work gets held up or lost as a result.</p>
+    <p class="copy">Insurance affects operations and finance, yet it is usually handled as a transaction. Your broker needs to understand how you operate, the market you work in, and the businesses you contract with. Without that, they cannot represent you properly to insurers, and work gets held up or lost.</p>
     <div class="tiles">
       <article class="tile">
-        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01"/><path d="M18 12h.01"/></svg></div>
-        <h3>Can I fund the work?</h3>
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01"/><path d="M18 12h.01"/></svg></div><h3>Can I fund the work?</h3></div>
         <p>Insurance requirements connected to contracts and financing should be understood before they become an obstacle.</p>
       </article>
       <article class="tile">
-        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></div>
-        <h3>Can I start the work?</h3>
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></div><h3>Can I start the work?</h3></div>
         <p>Missing certificates, endorsements or required coverage can cause delays when work begins.</p>
       </article>
       <article class="tile">
-        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
-        <h3>Am I covered when things go wrong?</h3>
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Am I covered when things go wrong?</h3></div>
         <p>Having insurance does not always mean your business is protected when things go wrong.</p>
       </article>
       <article class="tile">
-        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-        <h3>Can I keep working and get paid?</h3>
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Can I keep working and get paid?</h3></div>
         <p>Insurance paperwork and compliance can affect whether work moves forward and payment is released.</p>
       </article>
     </div>
@@ -570,7 +568,7 @@ summary:focus-visible,textarea:focus-visible{
 <section class="band band--light">
   <div class="shell">
     <span class="rule-amber"></span>
-    <h2 class="measure">Three steps. No commitment until you have seen the work.</h2>
+    <h2 class="measure">Three steps. No commitment until you&rsquo;ve seen the work.</h2>
     <div class="steps">
       <div class="step">
         <span class="n">Step <b>01</b></span>
@@ -586,6 +584,14 @@ summary:focus-visible,textarea:focus-visible{
       </div>
     </div>
     <p class="turnaround">Most reviews come back within three business days.</p>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Get a free insurance review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
   </div>
 </section>
 
@@ -622,28 +628,24 @@ summary:focus-visible,textarea:focus-visible{
     <h2>Questions about working with InFrame</h2>
     <div class="faq">
       <details>
-        <summary>We already have a broker. Why would we switch?</summary>
-        <p class="a">Most people do not switch on price. They switch after a claim gets handled badly, a certificate arrives too late to bid, or a renewal comes back with a number nobody warned them about. If none of that has happened, a review still tells you where you stand. If it has, you already know why you are here.</p>
+        <summary>What does InFrame Risk do?</summary>
+        <p class="a">InFrame Risk is a construction and real estate insurance broker. We place and service insurance programs for specialty contractors, general contractors, and property owners, and we read the contracts, leases, and policies behind every certificate so you know what you&rsquo;re covered for and who else you&rsquo;re on the hook for.</p>
       </details>
       <details>
-        <summary>Do we have to wait until renewal?</summary>
-        <p class="a">No. The review works at any point in the year, and knowing where your gaps are six months out is more useful than finding out three weeks before renewal.</p>
+        <summary>What does a construction insurance broker do?</summary>
+        <p class="a">A construction insurance broker represents your business, not an insurance company. They assess your risk, take your program to multiple carriers, negotiate coverage and price, and service the account all year: certificates, endorsements, audits, and claims. A specialist broker also reviews the contracts that drive your insurance requirements.</p>
       </details>
       <details>
-        <summary>How is this different from a large national broker?</summary>
-        <p class="a">Specialist attention at your size. The largest brokers have deep construction expertise and they point it at their largest accounts, which is a rational way to run their business.</p>
+        <summary>How is InFrame different from a traditional insurance broker?</summary>
+        <p class="a">Most brokers focus on the renewal and treat certificates as paperwork. We start with how your business actually operates, including your contracts, subs, tenants, and entities, and build your program around that. Compliance tracking runs all year, and a licensed advisor checks the work.</p>
       </details>
       <details>
-        <summary>Are you selling us software?</summary>
-        <p class="a">No. We are a licensed brokerage and you are hiring people. Technology sits behind what we do, collecting documents, tracking expirations and flagging changes, and that is where it belongs. You should notice the service, not the system.</p>
+        <summary>Is InFrame an insurance broker or a software company?</summary>
+        <p class="a">A licensed insurance broker first. Our construction risk management platform is how we deliver the service: it collects and reviews contracts, certificates, and policies so problems surface before a claim does. You work with experienced construction insurance advisors, and the technology does the reading.</p>
       </details>
       <details>
-        <summary>Do you handle risk management as well as placement?</summary>
-        <p class="a">Yes. Placement is one part of it. We read your contracts against your policies, track requirements and expirations across your projects, and stay involved between renewals rather than appearing once a year.</p>
-      </details>
-      <details>
-        <summary>What happens on the first call?</summary>
-        <p class="a">We ask how you actually run: trade mix, contract requirements, fleet, payroll, project schedule. Then we tell you what we would look at first. It takes about thirty minutes.</p>
+        <summary>When is the right time to switch insurance brokers?</summary>
+        <p class="a">Four to six months before renewal is ideal, since complex programs take time to underwrite. If a claim, a compliance miss, or a premium spike has you questioning your current setup, you don&rsquo;t have to wait: a broker of record letter can move servicing to InFrame mid-term without canceling your policies.</p>
       </details>
     </div>
     <div class="cta-pair">

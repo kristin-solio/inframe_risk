@@ -356,17 +356,61 @@ summary:focus-visible,textarea:focus-visible{
   background-position:0 0;
 }
 .band--dots .tile{
-  background:transparent;
+  background:var(--steel-01);
   border-color:var(--steel-02);
 }
+.tile-head{display:flex;align-items:center;gap:.875rem;margin-bottom:.875rem}
+.tile-head h3{margin:0}
 .tiles--bare{margin-top:0}
+.tiles-label{margin:clamp(2rem,4vw,2.75rem) 0 0}
 .tile-icon{
   display:flex;align-items:center;justify-content:center;
   width:44px;height:44px;border-radius:2px;
   background:var(--amber-05);color:var(--slate-05);
-  margin-bottom:1.125rem;
+  flex:0 0 auto;
 }
 .tile-icon svg{width:22px;height:22px;display:block}
+
+/* ---------- national licensing band ---------- */
+.licensing-band h2{max-width:42ch;margin-bottom:1.75rem}
+.licensing-band .npn{font-size:var(--t-body);color:var(--white)}
+.license-toggle{
+  background:none;border:0;padding:0;cursor:pointer;font:inherit;
+  color:var(--amber-05);display:inline-flex;align-items:center;gap:.35rem;
+}
+.license-toggle__label{text-decoration:underline;text-underline-offset:3px}
+.license-toggle__chevron{width:15px;height:15px;transition:transform .2s ease}
+.license-toggle[aria-expanded="true"] .license-toggle__chevron{transform:rotate(180deg)}
+.license-toggle:hover{color:var(--amber-04)}
+
+.license-panel{margin-top:clamp(1.75rem,3vw,2.5rem);max-width:78ch}
+.license-panel__hint{
+  font-size:var(--t-legal);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:1rem;
+}
+.license-list{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:0 clamp(1.5rem,3vw,3rem);
+}
+.license-row{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  padding:.5rem 0;border-bottom:1px solid var(--slate-04);
+}
+.license-row__state{font-size:var(--t-body);color:var(--steel-02)}
+.license-row__number{
+  background:none;border:0;padding:0;cursor:pointer;font:inherit;
+  font-weight:600;color:var(--amber-05);position:relative;white-space:nowrap;
+}
+.license-row__number:hover{color:var(--amber-03)}
+.license-row__copied{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;
+  background:var(--slate-05);color:var(--steel-02);opacity:0;pointer-events:none;
+}
+.license-row__number.is-copied .license-row__copied{opacity:1}
+
+.licensed-map{margin-top:clamp(2.5rem,6vw,4.5rem)}
+.licensed-map img{width:100%;max-width:1017px;height:auto;display:block;margin-inline:auto}
 
 /* ---------- repeated CTA pair ---------- */
 .cta-pair{margin-top:clamp(2rem,4vw,2.75rem)}
@@ -438,13 +482,32 @@ summary:focus-visible,textarea:focus-visible{
   </div>
 </section>
 
-<!-- 02 TENSION -->
-<section class="band band--light tension">
+<!-- 02 TENSION + WHAT GETS MISSED -->
+<section class="band band--dots tension">
   <div class="shell">
     <span class="rule-amber"></span>
     <h2>The certificate is in the folder. That is the whole problem.</h2>
     <p class="copy">Most compliance programs are two people, a shared inbox, and a spreadsheet with a tab for every project. Certificates get collected at signing and never looked at again. Financials get filed, not read. Requests go out, and out, and out.</p>
     <p class="copy">The people doing it are careful and organized. They were also never trained as risk advisors, so what they can confirm is that a document arrived, not that it protects you.</p>
+    <p class="eyebrow tiles-label">Four things a certificate will not tell you</p>
+    <div class="tiles tiles--flush">
+      <article class="tile">
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div><h3>The entity does not match</h3></div>
+        <p>The company that signed your contract is not the named insured on the policy. Close name, different entity. On paper you are covered. In practice you are not.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M3 11h18"/><path d="m10 15 4 4"/><path d="m14 15-4 4"/></svg></div><h3>The policy expired eight months in</h3></div>
+        <p>A two-year project outlasts a twelve-month policy. If nobody chases the renewal, you are carrying the risk and you will not know until you need it.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 8v4l3 2"/></svg></div><h3>The endorsement points at last year</h3></div>
+        <p>Additional insured and waiver language that no longer attaches to anything current.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></div><h3>The financials were filed, not read</h3></div>
+        <p>A subcontractor's numbers have been getting worse for three years. Somebody collected them every year. Nobody looked.</p>
+      </article>
+    </div>
     <div class="cta-pair">
       <div class="row">
         <a class="btn" href="#request">Check one project for gaps</a>
@@ -453,35 +516,6 @@ summary:focus-visible,textarea:focus-visible{
       <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
     </div>
 
-  </div>
-</section>
-
-<!-- 03 WHAT GETS MISSED -->
-<section class="band band--dots">
-  <div class="shell">
-    <h2 class="eyebrow">Four things a certificate will not tell you</h2>
-    <div class="tiles tiles--flush">
-      <article class="tile">
-        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
-        <h3>The entity does not match</h3>
-        <p>The company that signed your contract is not the named insured on the policy. Close name, different entity. On paper you are covered. In practice you are not.</p>
-      </article>
-      <article class="tile">
-        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4"/><path d="M8 3v4"/><path d="M3 11h18"/><path d="m10 15 4 4"/><path d="m14 15-4 4"/></svg></div>
-        <h3>The policy expired eight months in</h3>
-        <p>A two-year project outlasts a twelve-month policy. If nobody chases the renewal, you are carrying the risk and you will not know until you need it.</p>
-      </article>
-      <article class="tile">
-        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 8v4l3 2"/></svg></div>
-        <h3>The endorsement points at last year</h3>
-        <p>Additional insured and waiver language that no longer attaches to anything current.</p>
-      </article>
-      <article class="tile">
-        <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></div>
-        <h3>The financials were filed, not read</h3>
-        <p>A subcontractor's numbers have been getting worse for three years. Somebody collected them every year. Nobody looked.</p>
-      </article>
-    </div>
   </div>
 </section>
 
@@ -595,14 +629,20 @@ summary:focus-visible,textarea:focus-visible{
   </div>
 </section>
 
-<!-- 08 SCALE STRIP -->
-<section class="band band--dark">
+<!-- 08 NATIONAL LICENSING -->
+<section class="band band--dark licensing-band" id="licenses">
   <div class="shell">
-    <div class="stats">
-      <div class="stat stat--word"><b>50 or 500</b><span>Subcontractors monitored</span></div>
-      <div class="stat stat--word"><b>Up &amp; down</b><span>Owner requirements and sub requirements</span></div>
-      <div class="stat stat--word"><b>Subs or tenants</b><span>Contractors and property owners</span></div>
-      <div class="stat stat--word"><b>50 states</b><span>Licensed commercial brokerage</span></div>
+    <p class="eyebrow">Licensed in 50 states</p>
+    <h2>InFrame Insurance Services LLC is a national licensed insurance brokerage.</h2>
+    <p class="npn">NPN# 22200284. <button type="button" class="license-toggle" aria-expanded="false" aria-controls="licensePanel"><span class="license-toggle__label">See our licenses here.</span><svg class="license-toggle__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></p>
+
+    <div class="license-panel" id="licensePanel" hidden>
+      <p class="license-panel__hint">Click on the licence number to copy to your clipboard</p>
+      <ul class="license-list"><li class="license-row"><span class="license-row__state">Alabama</span><button type="button" class="license-row__number" data-num="3004195827" aria-label="Copy Alabama license number 3004195827"><span class="license-row__value">3004195827</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Alaska</span><button type="button" class="license-row__number" data-num="3004201695" aria-label="Copy Alaska license number 3004201695"><span class="license-row__value">3004201695</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Arizona</span><button type="button" class="license-row__number" data-num="3004195639" aria-label="Copy Arizona license number 3004195639"><span class="license-row__value">3004195639</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Arkansas</span><button type="button" class="license-row__number" data-num="3004195617" aria-label="Copy Arkansas license number 3004195617"><span class="license-row__value">3004195617</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">California</span><button type="button" class="license-row__number" data-num="6019212" aria-label="Copy California license number 6019212"><span class="license-row__value">6019212</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Colorado</span><button type="button" class="license-row__number" data-num="945106" aria-label="Copy Colorado license number 945106"><span class="license-row__value">945106</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Connecticut</span><button type="button" class="license-row__number" data-num="3004195800" aria-label="Copy Connecticut license number 3004195800"><span class="license-row__value">3004195800</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Delaware</span><button type="button" class="license-row__number" data-num="3004195666" aria-label="Copy Delaware license number 3004195666"><span class="license-row__value">3004195666</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">District of Columbia</span><button type="button" class="license-row__number" data-num="3004195675" aria-label="Copy District of Columbia license number 3004195675"><span class="license-row__value">3004195675</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Florida</span><button type="button" class="license-row__number" data-num="L137088" aria-label="Copy Florida license number L137088"><span class="license-row__value">L137088</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Georgia</span><button type="button" class="license-row__number" data-num="245620" aria-label="Copy Georgia license number 245620"><span class="license-row__value">245620</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Hawaii</span><button type="button" class="license-row__number" data-num="3004195736" aria-label="Copy Hawaii license number 3004195736"><span class="license-row__value">3004195736</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Idaho</span><button type="button" class="license-row__number" data-num="3004197992" aria-label="Copy Idaho license number 3004197992"><span class="license-row__value">3004197992</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Illinois</span><button type="button" class="license-row__number" data-num="3004195655" aria-label="Copy Illinois license number 3004195655"><span class="license-row__value">3004195655</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Indiana</span><button type="button" class="license-row__number" data-num="4215463" aria-label="Copy Indiana license number 4215463"><span class="license-row__value">4215463</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Iowa</span><button type="button" class="license-row__number" data-num="3004195762" aria-label="Copy Iowa license number 3004195762"><span class="license-row__value">3004195762</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Kansas</span><button type="button" class="license-row__number" data-num="3004195667" aria-label="Copy Kansas license number 3004195667"><span class="license-row__value">3004195667</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Kentucky</span><button type="button" class="license-row__number" data-num="DOI-1459136" aria-label="Copy Kentucky license number DOI-1459136"><span class="license-row__value">DOI-1459136</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Louisiana</span><button type="button" class="license-row__number" data-num="1254990" aria-label="Copy Louisiana license number 1254990"><span class="license-row__value">1254990</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Maine</span><button type="button" class="license-row__number" data-num="AGN547085" aria-label="Copy Maine license number AGN547085"><span class="license-row__value">AGN547085</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Maryland</span><button type="button" class="license-row__number" data-num="3004195687" aria-label="Copy Maryland license number 3004195687"><span class="license-row__value">3004195687</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Massachusetts</span><button type="button" class="license-row__number" data-num="3004198769" aria-label="Copy Massachusetts license number 3004198769"><span class="license-row__value">3004198769</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Michigan</span><button type="button" class="license-row__number" data-num="22200284" aria-label="Copy Michigan license number 22200284"><span class="license-row__value">22200284</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Minnesota</span><button type="button" class="license-row__number" data-num="41035081" aria-label="Copy Minnesota license number 41035081"><span class="license-row__value">41035081</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Mississippi</span><button type="button" class="license-row__number" data-num="15056027" aria-label="Copy Mississippi license number 15056027"><span class="license-row__value">15056027</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Missouri</span><button type="button" class="license-row__number" data-num="3004198069" aria-label="Copy Missouri license number 3004198069"><span class="license-row__value">3004198069</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Montana</span><button type="button" class="license-row__number" data-num="3004195700" aria-label="Copy Montana license number 3004195700"><span class="license-row__value">3004195700</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Nebraska</span><button type="button" class="license-row__number" data-num="3004195746" aria-label="Copy Nebraska license number 3004195746"><span class="license-row__value">3004195746</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Nevada</span><button type="button" class="license-row__number" data-num="4215472" aria-label="Copy Nevada license number 4215472"><span class="license-row__value">4215472</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">New Hampshire</span><button type="button" class="license-row__number" data-num="3004195752" aria-label="Copy New Hampshire license number 3004195752"><span class="license-row__value">3004195752</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">New Jersey</span><button type="button" class="license-row__number" data-num="3004195743" aria-label="Copy New Jersey license number 3004195743"><span class="license-row__value">3004195743</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">New Mexico</span><button type="button" class="license-row__number" data-num="3004202863" aria-label="Copy New Mexico license number 3004202863"><span class="license-row__value">3004202863</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">New York</span><button type="button" class="license-row__number" data-num="1972896" aria-label="Copy New York license number 1972896"><span class="license-row__value">1972896</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">North Carolina</span><button type="button" class="license-row__number" data-num="3004195799" aria-label="Copy North Carolina license number 3004195799"><span class="license-row__value">3004195799</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">North Dakota</span><button type="button" class="license-row__number" data-num="3004195703" aria-label="Copy North Dakota license number 3004195703"><span class="license-row__value">3004195703</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Ohio</span><button type="button" class="license-row__number" data-num="1739012" aria-label="Copy Ohio license number 1739012"><span class="license-row__value">1739012</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Oklahoma</span><button type="button" class="license-row__number" data-num="3004195723" aria-label="Copy Oklahoma license number 3004195723"><span class="license-row__value">3004195723</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Oregon</span><button type="button" class="license-row__number" data-num="3004199016" aria-label="Copy Oregon license number 3004199016"><span class="license-row__value">3004199016</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Pennsylvania</span><button type="button" class="license-row__number" data-num="1314183" aria-label="Copy Pennsylvania license number 1314183"><span class="license-row__value">1314183</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Rhode Island</span><button type="button" class="license-row__number" data-num="3004195729" aria-label="Copy Rhode Island license number 3004195729"><span class="license-row__value">3004195729</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">South Carolina</span><button type="button" class="license-row__number" data-num="3004195717" aria-label="Copy South Carolina license number 3004195717"><span class="license-row__value">3004195717</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">South Dakota</span><button type="button" class="license-row__number" data-num="22200284" aria-label="Copy South Dakota license number 22200284"><span class="license-row__value">22200284</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Tennessee</span><button type="button" class="license-row__number" data-num="3004195785" aria-label="Copy Tennessee license number 3004195785"><span class="license-row__value">3004195785</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Texas</span><button type="button" class="license-row__number" data-num="3490153" aria-label="Copy Texas license number 3490153"><span class="license-row__value">3490153</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Utah</span><button type="button" class="license-row__number" data-num="1117071" aria-label="Copy Utah license number 1117071"><span class="license-row__value">1117071</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Vermont</span><button type="button" class="license-row__number" data-num="3004195792" aria-label="Copy Vermont license number 3004195792"><span class="license-row__value">3004195792</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Virginia</span><button type="button" class="license-row__number" data-num="166489" aria-label="Copy Virginia license number 166489"><span class="license-row__value">166489</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Washington</span><button type="button" class="license-row__number" data-num="1357751" aria-label="Copy Washington license number 1357751"><span class="license-row__value">1357751</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">West Virginia</span><button type="button" class="license-row__number" data-num="3004195822" aria-label="Copy West Virginia license number 3004195822"><span class="license-row__value">3004195822</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Wisconsin</span><button type="button" class="license-row__number" data-num="3004195739" aria-label="Copy Wisconsin license number 3004195739"><span class="license-row__value">3004195739</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Wyoming</span><button type="button" class="license-row__number" data-num="666822" aria-label="Copy Wyoming license number 666822"><span class="license-row__value">666822</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li></ul>
+    </div>
+
+    <div class="licensed-map" aria-hidden="true">
+      <img src="https://inframerisk.com/assets/us-states-outline.svg" alt="" width="1017" height="639" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -614,28 +654,36 @@ summary:focus-visible,textarea:focus-visible{
     <h2>Questions about counterparty compliance</h2>
     <div class="faq">
       <details>
-        <summary>We already use COI tracking software. How is this different?</summary>
-        <p class="a">Tracking software confirms a certificate exists and the dates are current. That is useful and it is not the same as knowing you are covered. We read the policies behind the certificates and tell you where they do not match what your contracts require. Most clients keep their software. We are the judgment layer on top of it.</p>
+        <summary>What does InFrame do for general contractors?</summary>
+        <p class="a">We monitor every subcontractor on your projects for insurance and contract compliance. We collect and read subcontracts, certificates, and the policies behind them, chase what&rsquo;s missing, and flag problems before a sub steps on site. Construction insurance experts run the service, so it isn&rsquo;t another tool your team has to manage.</p>
       </details>
       <details>
-        <summary>Do we have to move our insurance to you?</summary>
-        <p class="a">No. We handle counterparty risk management as its own engagement, whether or not we place your insurance. Plenty of clients start here and never move their program.</p>
+        <summary>How is InFrame different from COI tracking software?</summary>
+        <p class="a">COI tracking software confirms a certificate exists and tracks its expiration date. Your team still has to review it, and certificates don&rsquo;t show exclusions, missing endorsements, or entity mismatches. InFrame reads the contracts and policies behind each certificate, and a licensed expert verifies every flag.</p>
       </details>
       <details>
-        <summary>Who actually does the reviewing?</summary>
-        <p class="a">Licensed risk specialists. Documents get collected and organized systematically, which should be automatic, but every flag that reaches you has been checked by a person who can explain it.</p>
+        <summary>What do you review for each subcontractor?</summary>
+        <p class="a">Subcontract insurance requirements, certificates, the policies and endorsements themselves, named entities, limits, and expiration dates. We also check your own coverage against owner and lender requirements. Common gaps we catch: the entity on the policy doesn&rsquo;t match the one that signed the subcontract, or coverage lapses mid-project and nobody follows up.</p>
       </details>
       <details>
-        <summary>We manage tenants, not subcontractors. Does this apply?</summary>
-        <p class="a">Yes, and the mechanics are close to identical. Lease requirements instead of subcontract requirements, certificates from tenants instead of subs. We also review the lease language itself, which is where we most often find exposure.</p>
+        <summary>Do our subcontractors have to use InFrame as their broker?</summary>
+        <p class="a">No. Subs keep their own brokers. When we find a gap, we send the sub a clear explanation to forward to their broker. If they want help getting the right coverage, we can place it, but that&rsquo;s their call.</p>
       </details>
       <details>
-        <summary>How long does onboarding take?</summary>
-        <p class="a">You can start with one project in a few days. A full program depends on how many counterparties you carry and what condition the documents are in.</p>
+        <summary>Do we have to move our insurance program to InFrame?</summary>
+        <p class="a">No. Our compliance service is a flat fee, separate from any insurance placement. If you also choose InFrame as your broker, that compensation is disclosed separately.</p>
       </details>
       <details>
-        <summary>What happens to the documents we send you?</summary>
-        <p class="a">They stay confidential and are used only for your review. We will sign your NDA if you have one.</p>
+        <summary>How is pricing structured?</summary>
+        <p class="a">Pricing is based on the number of active projects and subcontractors we monitor, not your revenue or number of users, so your whole team can use it. We&rsquo;ll recommend a tier after a short review of your project and sub volume.</p>
+      </details>
+      <details>
+        <summary>How much work does this add for our team and our subs?</summary>
+        <p class="a">Less than today. We send co-branded requests to subs, collect documents, follow up automatically, and chase renewals before coverage lapses. Your ops team, PMs, and supers get a daily exceptions email, and subs or their brokers upload certificates directly.</p>
+      </details>
+      <details>
+        <summary>How do we get started?</summary>
+        <p class="a">We start with one or two live projects. Share the subcontracts and certificates you already have, and we&rsquo;ll show you every gap on your own documents.</p>
       </details>
     </div>
     <div class="cta-pair">
@@ -727,6 +775,31 @@ summary:focus-visible,textarea:focus-visible{
 </footer>
 
 <script>
+/* Licence disclosure: toggle the panel, and copy a number on click. */
+(function () {
+  var toggle = document.querySelector(".license-toggle");
+  var panel = document.getElementById("licensePanel");
+  if (toggle && panel) {
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", open ? "false" : "true");
+      panel.hidden = open;
+    });
+  }
+  document.querySelectorAll(".license-row__number").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var num = btn.getAttribute("data-num");
+      var done = function () {
+        btn.classList.add("is-copied");
+        setTimeout(function () { btn.classList.remove("is-copied"); }, 1400);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(num).then(done, done);
+      } else { done(); }
+    });
+  });
+})();
+
 /* Mockup only. The form does not submit anywhere. */
 document.querySelector(".form").addEventListener("submit", function (e) { e.preventDefault(); });
 </script>
