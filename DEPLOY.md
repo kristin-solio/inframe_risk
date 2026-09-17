@@ -38,6 +38,36 @@ Merge the working branch into `main`. Production redeploys on its own.
 Nothing else differs between the two environments, so anything that looks
 right on staging looks the same in production.
 
+## Pointing go.inframerisk.com at the production site
+
+DNS for `inframerisk.com` is hosted on **AWS Route 53** (nameservers
+`ns-456.awsdns-57.com` and three siblings). The main site sits behind
+CloudFront. `go.inframerisk.com` does not resolve yet, so nothing is at
+risk of breaking: this adds a new subdomain and leaves the main site alone.
+
+1. In Render, open the **production** service, then Settings, then Custom
+   Domains, then Add Custom Domain. Enter `go.inframerisk.com`.
+2. Render shows a DNS record to create. For a subdomain it is a CNAME
+   pointing at the service's own `<name>.onrender.com` hostname. Copy that
+   hostname exactly.
+3. In the AWS console, open Route 53, then Hosted zones, then
+   `inframerisk.com`, then Create record:
+   - Record name: `go`
+   - Record type: `CNAME`
+   - Value: the `onrender.com` hostname from step 2
+   - TTL: `300`
+   - Routing policy: Simple
+   Leave Alias off. Alias records only point at AWS resources.
+4. Save, wait a few minutes, then click Verify in Render. Render issues the
+   TLS certificate on its own once the record resolves.
+
+Do not change the existing records for `inframerisk.com` or
+`www.inframerisk.com`. Those serve the main site through CloudFront.
+
+Staging can stay on its `onrender.com` URL. If it ever gets a subdomain,
+the steps are the same with a different record name, and it must keep the
+`noindex` tag so the two sites never compete in search.
+
 ## Before production takes ad traffic
 
 1. Remove the `noindex, nofollow, noarchive, nosnippet` meta tag from each
