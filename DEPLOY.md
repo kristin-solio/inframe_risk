@@ -23,11 +23,19 @@ inline. The only external request is Google Fonts.
 
 | Path | Page |
 | --- | --- |
-| `/` | Index of the set |
+| `/` | General contractor, so the root domain shows a real landing page |
 | `/contractor-insurance` | Subcontractor |
 | `/general-contractor-insurance` | General contractor |
 | `/counterparty-compliance` | Counterparty compliance |
+| `/pages` | Index of the set, with the campaign notes |
 | `/wireframe.html` | The source review document |
+
+`/` and `/general-contractor-insurance` are two copies of the same page.
+They differ only in the depth of the `assets/` path. **Edit the one in
+`public/general-contractor-insurance/` and copy it to `public/index.html`,
+changing `../assets/` to `assets/`.** Editing one and not the other leaves
+the root domain, which is the address the client visits, showing stale
+copy.
 
 These match the paths in the Google Ads plan's Landing Page Map, so the
 final ad destinations do not change when the domain is attached.
