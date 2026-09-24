@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="theme-color" content="#222F3E">
-<title>InFrame Risk · Paid Search Landing Page Mockups</title>
+<title>Construction Insurance Broker for General Contractors · InFrame Risk</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -137,18 +137,49 @@ summary:focus-visible,textarea:focus-visible{
 .hero{position:relative;background:var(--slate-05);color:var(--white);overflow:hidden}
 .hero__img{
   position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;
+  object-fit:cover;object-position:62% center;
 }
-.hero__scrim{position:absolute;inset:0;background:var(--slate-05);opacity:.7}
+.hero__scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    100deg,
+    rgba(34,47,62,.94) 0%,
+    rgba(34,47,62,.91) 38%,
+    rgba(34,47,62,.8) 58%,
+    rgba(34,47,62,.52) 78%,
+    rgba(34,47,62,.4) 100%);
+}
+@media (max-width:1024px){
+  /* the text block takes more of the width here, so fade down the page
+     instead of across it and let the artwork breathe below the button */
+  .hero__scrim{
+    background:linear-gradient(
+      168deg,
+      rgba(34,47,62,.94) 0%,
+      rgba(34,47,62,.92) 58%,
+      rgba(34,47,62,.86) 74%,
+      rgba(34,47,62,.55) 92%,
+      rgba(34,47,62,.48) 100%);
+  }
+}
+@media (max-width:700px){
+  /* text spans the full width on a phone, so the scrim has to as well.
+     Crop to the darker city blocks rather than the bright crane, which
+     lets the overlay stay lighter and keeps the drawing readable. */
+  .hero__scrim{background:rgba(34,47,62,.82)}
+  .hero__img{object-position:34% center}
+}
 .hero__inner{position:relative;padding-block:clamp(4rem,10vw,8.5rem)}
-.hero h1{max-width:20ch}
+.hero h1{max-width:24ch}
 .hero .hl{color:var(--amber-05)}
 .hero .lede{color:var(--white);max-width:56ch;margin-top:1.5rem}
+.hero .hero-eyebrow{color:var(--amber-05);margin-bottom:1rem}
 .hero .btn{margin-top:2.5rem}
-.hero .licensing{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal)}
+.hero .licensing{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
+.trustline{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
 
 /* ---------- qualification strip ---------- */
-.qualstrip{background:var(--steel-01);color:var(--slate-05);padding-block:clamp(1.75rem,4vw,2.5rem)}
+.qualstrip{background:var(--amber-02);color:var(--slate-05);padding-block:clamp(1.75rem,4vw,2.5rem)}
 .qualstrip .eyebrow{margin-bottom:.875rem}
 .trades{
   display:flex;flex-wrap:wrap;
@@ -162,7 +193,7 @@ summary:focus-visible,textarea:focus-visible{
 .trade-list{margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem 0}
 .trade-list li{display:flex;align-items:center}
 .trade-list li::after{
-  content:"\00b7";color:var(--steel);font-weight:400;
+  content:"\00b7";color:var(--slate-03);font-weight:400;
   margin:0 clamp(.6rem,1.6vw,1.15rem);
 }
 .trade-list li:last-child::after{content:none}
@@ -171,21 +202,6 @@ summary:focus-visible,textarea:focus-visible{
 .tension h2{max-width:24ch}
 .tension .copy{max-width:62ch;margin-top:1.75rem}
 .tension .copy + .copy{margin-top:1.25rem}
-
-/* ---------- image placeholder ---------- */
-.imgslot{
-  background:var(--steel-01);
-  border:1px solid var(--steel);
-  border-radius:2px;
-  min-height:clamp(180px,26vw,300px);
-  display:flex;align-items:center;justify-content:center;
-  padding:1.5rem;text-align:center;
-}
-.imgslot span{
-  font-size:var(--t-legal);font-weight:600;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--slate-03);line-height:1.7;max-width:34ch;
-}
-.imgslot--short{min-height:clamp(120px,16vw,180px)}
 
 /* ---------- question tiles ---------- */
 .tiles{
@@ -321,6 +337,11 @@ summary:focus-visible,textarea:focus-visible{
   text-decoration:underline;text-underline-offset:2px;
 }
 .form .after .telno:hover{color:var(--slate-03)}
+.field--trap{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.form__status{margin-top:1rem;font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
+.form__status--error{color:var(--slate-05);font-weight:600}
+.form__done{font-size:var(--t-body);line-height:1.6;color:var(--slate-05)}
+.form__done .telno{color:var(--slate-05);font-weight:600}
 .upload{
   border:1px dashed var(--steel);background:var(--slate-01);border-radius:2px;
   padding:1.125rem .875rem;color:var(--slate-03);font-size:var(--t-legal);
@@ -329,50 +350,108 @@ summary:focus-visible,textarea:focus-visible{
 
 /* ---------- footer ---------- */
 .foot{background:var(--slate-05);color:var(--steel-02);padding-block:clamp(2.5rem,5vw,3.5rem)}
-.foot .logo-link{display:inline-flex;line-height:0;margin-bottom:1.5rem}
+.foot .logo-link{display:inline-flex;line-height:0}
 .foot img{height:24px;width:auto;display:block}
 .foot p{font-size:var(--t-legal);line-height:1.9}
 .foot a{color:var(--steel-02)}
 .foot .sep{color:var(--steel);padding:0 .35rem}
+.foot__top{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:1.25rem;margin-bottom:1.5rem;
+}
+.foot__nav{display:flex;flex-wrap:wrap;gap:1.5rem 2rem;font-size:var(--t-legal)}
+.foot__nav a{text-decoration:none;border-bottom:1px solid transparent}
+.foot__nav a:hover{border-bottom-color:var(--steel-02)}
+.foot__id{margin-bottom:1.75rem}
+.foot__legal{color:var(--steel-02);max-width:none}
+.foot__legal p + p{margin-top:.9rem}
+.foot__copy{margin-top:1.75rem;color:var(--steel-02)}
+
+/* ---------- dotted band + icon tiles (matches the live homepage) ---------- */
+.band--dots{
+  background-color:var(--steel-01);
+  color:var(--slate-05);
+  background-image:radial-gradient(circle,rgba(82,100,119,.30) 1px,transparent 1px);
+  background-size:22px 22px;
+  background-position:0 0;
+}
+.band--dots .tile{
+  background:var(--steel-01);
+  border-color:var(--steel-02);
+}
+.tile-head{display:flex;align-items:center;gap:.875rem;margin-bottom:.875rem}
+.tile-head h3{margin:0}
+.tiles--bare{margin-top:0}
+.tile-icon{
+  display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:2px;
+  background:var(--amber-05);color:var(--slate-05);
+  flex:0 0 auto;
+}
+.tile-icon svg{width:22px;height:22px;display:block}
+
+/* ---------- national licensing band ---------- */
+.licensing-band h2{max-width:42ch;margin-bottom:1.75rem}
+.licensing-band .npn{font-size:var(--t-body);color:var(--white)}
+.license-toggle{
+  background:none;border:0;padding:0;cursor:pointer;font:inherit;
+  color:var(--amber-05);display:inline-flex;align-items:center;gap:.35rem;
+}
+.license-toggle__label{text-decoration:underline;text-underline-offset:3px}
+.license-toggle__chevron{width:15px;height:15px;transition:transform .2s ease}
+.license-toggle[aria-expanded="true"] .license-toggle__chevron{transform:rotate(180deg)}
+.license-toggle:hover{color:var(--amber-04)}
+
+.license-panel{margin-top:clamp(1.75rem,3vw,2.5rem);max-width:78ch}
+.license-panel__hint{
+  font-size:var(--t-legal);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:1rem;
+}
+.license-list{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:0 clamp(1.5rem,3vw,3rem);
+}
+.license-row{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  padding:.5rem 0;border-bottom:1px solid var(--slate-04);
+}
+.license-row__state{font-size:var(--t-body);color:var(--steel-02)}
+.license-row__number{
+  background:none;border:0;padding:0;cursor:pointer;font:inherit;
+  font-weight:600;color:var(--amber-05);position:relative;white-space:nowrap;
+}
+.license-row__number:hover{color:var(--amber-03)}
+.license-row__copied{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;
+  background:var(--slate-05);color:var(--steel-02);opacity:0;pointer-events:none;
+}
+.license-row__number.is-copied .license-row__copied{opacity:1}
+
+.licensed-map{margin-top:clamp(2.5rem,6vw,4.5rem)}
+.licensed-map img{width:100%;max-width:1017px;height:auto;display:block;margin-inline:auto}
+
+/* ---------- repeated CTA pair ---------- */
+.cta-pair{margin-top:clamp(2rem,4vw,2.75rem)}
+.cta-pair .row{display:flex;flex-wrap:wrap;gap:.875rem}
+.cta-pair .btn{margin:0}
+/* The brand book rules out outlined buttons, so the secondary is a solid
+   approved pairing instead: Slate 05 on light ground, Slate 03 on dark. */
+.btn--secondary{background:var(--slate-05);color:var(--white)}
+.btn--secondary:hover{background:var(--slate-04)}
+.band--dark .btn--secondary,.hero .btn--secondary{background:var(--slate-03)}
+.band--dark .btn--secondary:hover,.hero .btn--secondary:hover{background:var(--slate-04)}
+.cta-phone{
+  margin-top:1rem;font-size:var(--t-body);color:var(--slate-04);
+}
+.cta-phone a{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.band--dark .cta-phone,.hero .cta-phone{color:var(--steel-02)}
+.band--steel .cta-phone{color:var(--slate-04)}
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
 }
-
-/* ---------- preview index ---------- */
-.idx{padding-block:clamp(3rem,7vw,5.5rem)}
-.idx h1{max-width:18ch}
-.idx .lede{color:var(--slate-04);max-width:60ch;margin-top:1.5rem}
-.cards-idx{
-  display:grid;gap:clamp(1rem,2vw,1.5rem);
-  grid-template-columns:1fr;margin-top:clamp(2.5rem,5vw,3.5rem);
-}
-@media (min-width:760px){ .cards-idx{grid-template-columns:1fr 1fr} }
-.pcard{
-  display:block;text-decoration:none;color:inherit;
-  background:var(--white);border:1px solid var(--steel-01);border-radius:2px;
-  padding:clamp(1.5rem,2.6vw,2rem);transition:border-color .15s ease;
-}
-.pcard:hover{border-color:var(--steel)}
-.pcard .kicker{
-  display:block;font-size:var(--t-legal);font-weight:600;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--slate-03);margin-bottom:1rem;
-}
-.pcard h2{font-size:var(--t-subline);margin-bottom:.75rem}
-.pcard p{font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
-.pcard .path{
-  display:block;margin-top:1.25rem;font-size:var(--t-legal);
-  letter-spacing:.06em;color:var(--slate-03);
-}
-.pcard--wire{background:var(--steel-01);border-color:var(--steel-02)}
-.note-strip{
-  margin-top:clamp(2.5rem,5vw,3.5rem);
-  border-left:3px solid var(--amber-05);background:var(--white);
-  padding:clamp(1.25rem,2.4vw,1.75rem);border-radius:2px;max-width:74ch;
-}
-.note-strip p{font-size:var(--t-body);line-height:1.65;color:var(--slate-04);max-width:66ch}
-.note-strip p + p{margin-top:.75rem}
 </style>
 </head>
 <body>
@@ -384,57 +463,436 @@ summary:focus-visible,textarea:focus-visible{
   </div>
 </header>
 
-<main id="main" class="band band--light idx">
-  <div class="shell">
-    <span class="rule-amber"></span>
-    <h1>Paid search landing page mockups</h1>
-    <p class="lede">Paid search landing pages in the InFrame 2026 brand system. Copy is drawn from the approved wireframe and the approved homepage, and is still under client review.</p>
+<main id="main">
 
-    <div class="cards-idx">
-      <a class="pcard" href="contractor-insurance/">
-        <span class="kicker">Landing Page &middot; Subcontractor</span>
-        <h2>Specialty Trade Contractor</h2>
-        <p>Campaign 1, all seven trade ad groups. Owner or CFO at a mid-market commercial trade contractor. Eight FAQs from the subcontractor tab of the FAQ sheet. Primary CTA: Get a free insurance review. Secondary: Talk to a risk advisor.</p>
-        <span class="path">go.inframerisk.com/contractor-insurance</span>
-      </a>
-
-      <a class="pcard" href="general-contractor-insurance/">
-        <span class="kicker">Landing Page &middot; General Contractor</span>
-        <h2>General Contractor</h2>
-        <p>Campaign 3.1 Construction Broker and 3.3 Risk Advisory, moved off the subcontractor page. A mid-market general contractor buying their own program. The FAQ sheet has no tab for this page, so five of its six questions come from the homepage tab and the fit question was written for this page. Primary CTA: Get a free insurance review. Secondary: Talk to a risk advisor.</p>
-        <span class="path">go.inframerisk.com/general-contractor-insurance</span>
-      </a>
-
-      <a class="pcard" href="counterparty-compliance/">
-        <span class="kicker">Landing Page &middot; Counterparty</span>
-        <h2>Counterparty Compliance</h2>
-        <p>Campaign 2, all five ad groups, plus 3.2 Real Estate Owner. Risk manager, controller or ops lead at a mid-market GC, or a developer-owner. Eight FAQs from the sheet&rsquo;s general contractor tab, which is entirely about monitoring subcontractors, plus a fit question written for this page. Primary CTA: Check one project for gaps. Secondary: Talk to a risk advisor.</p>
-        <span class="path">go.inframerisk.com/counterparty-compliance</span>
-      </a>
-
-      <a class="pcard pcard--wire" href="wireframe.html">
-        <span class="kicker">Source document</span>
-        <h2>Wireframe, structure and copy</h2>
-        <p>The original black and white review document: all 26 modules, rationale notes, approval and verify flags, and the approval register. Untouched, so it still documents the retired gap report page and the single-CTA decision.</p>
-        <span class="path">wireframe.html</span>
-      </a>
-    </div>
-
-    <div class="note-strip">
-      <p><b>How to review.</b> These are the visitor-facing pages only. The internal rationale notes, approval and verify flags, module numbers and the approval register live in the wireframe document and are stripped from the pages by design.</p>
-      <p>Copy comes from three approved sources: the wireframe document, the homepage, and the FAQ sheet. The mid-market focus is stated in body copy only, not in any headline or hero lede, and each page answers it directly in an &ldquo;Is InFrame a fit&rdquo; FAQ, in words rather than revenue bands. Several claims are still unapproved, and every page is set to noindex until they clear.</p>
+<!-- 01 HERO -->
+<section class="hero">
+  <img class="hero__img" src="assets/inframe-hero-city.webp" alt="Aerial wireframe view of a city, with a tower crane over a building under construction">
+  <div class="hero__scrim"></div>
+  <div class="hero__inner">
+    <div class="shell">
+      <p class="eyebrow hero-eyebrow">Construction insurance and risk management</p>
+      <h1>A construction insurance broker that reads your contracts, not just your <span class="hl">renewal.</span></h1>
+      <p class="lede">InFrame is a specialist construction insurance broker for general contractors. We read your contracts, with owners above you and subs below you, against your policies, so your coverage matches the work you actually build.</p>
+      <div class="cta-pair" style="margin-top:2rem">
+        <div class="row">
+          <a class="btn" href="#request">Get a free insurance review</a>
+          <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+        </div>
+        <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+      </div>
+      <p class="licensing">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
     </div>
   </div>
+</section>
+
+<!-- 02 QUALIFICATION STRIP -->
+<section class="qualstrip">
+  <div class="shell">
+    <h2 class="eyebrow">What we handle</h2>
+    <ul class="trade-list trades">
+      <li>Insurance placement</li>
+      <li>Risk management</li>
+      <li>Contract review</li>
+      <li>Certificates</li>
+      <li>Claims support</li>
+      <li>Subcontractor compliance</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 03 TENSION + THE FOUR QUESTIONS -->
+<section class="band band--dots tension">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2>Your broker should always understand the business behind the policy.</h2>
+    <p class="copy">Insurance affects operations and finance, yet for most mid-market contractors it is still handled as a transaction. Your broker needs to understand how you operate, the market you work in, and the businesses you contract with. Without that, they cannot represent you properly to insurers, and work gets held up or lost.</p>
+    <div class="tiles">
+      <article class="tile">
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01"/><path d="M18 12h.01"/></svg></div><h3>Can I bid the job?</h3></div>
+        <p>Owners and lenders set requirements before you can bid. Your program can also be a lever, not just overhead to bake into a bid.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></div><h3>Can my subs get on site?</h3></div>
+        <p>Prevent delays and bad experiences with subs mobilizing before their paperwork clears.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Am I covered when things go wrong?</h3></div>
+        <p>Having insurance does not always mean your business is protected when things go wrong.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-head"><div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>Can I close out and get paid?</h3></div>
+        <p>Retention sits until every sub&rsquo;s closeout document lands. One missing certificate delays payment.</p>
+      </article>
+    </div>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Get a free insurance review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- 05 DARK OUTCOMES GRID -->
+<section class="band band--dark">
+  <div class="shell">
+    <p class="eyebrow">What changes</p>
+    <h2>How your business operates shapes every insurance and risk decision we make.</h2>
+    <div class="outcomes">
+      <div class="outcome">
+        <span class="rule-amber"></span>
+        <h3>Show up prepared</h3>
+        <p>We read your program from the inside and collect market data from the outside before the first real meeting.</p>
+      </div>
+      <div class="outcome">
+        <span class="rule-amber"></span>
+        <h3>Bid more of the work you want</h3>
+        <p>We check your program against what owners and developers in your counties actually require, so you find out you are ineligible before you lose the job, not after.</p>
+      </div>
+      <div class="outcome">
+        <span class="rule-amber"></span>
+        <h3>Certificates read, not filed</h3>
+        <p>Every sub certificate, and ideally the policy behind it, checked against your contract&rsquo;s requirements and the project requirements more broadly.</p>
+      </div>
+      <div class="outcome">
+        <span class="rule-amber"></span>
+        <h3>Go to market with a real story</h3>
+        <p>Your operations translated into a submission underwriters can price properly, instead of a form that makes you look like everyone else.</p>
+      </div>
+      <div class="outcome">
+        <span class="rule-amber"></span>
+        <h3>Run the renewal as a project, not a deadline</h3>
+        <p>We start working on renewals at least a quarter out to get the best terms going forward. We also make sure coverage is designed around next year&rsquo;s work and a full understanding of your obligations and requirements.</p>
+      </div>
+      <div class="outcome">
+        <span class="rule-amber"></span>
+        <h3>Know what you are actually paying for</h3>
+        <p>Costs allocated to the projects, payroll classes and entities that generate them, so the annual audit is not the first time you see it.</p>
+      </div>
+    </div>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Get a free insurance review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- 06 THE PLAN -->
+<section class="band band--light">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2 class="measure">Three steps. No commitment until you&rsquo;ve seen the work.</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="n">Step <b>01</b></span>
+        <p><b>Send us your contracts, your subcontracts from one project, and your current policies.</b> Whatever you have. We do not need it organized.</p>
+      </div>
+      <div class="step">
+        <span class="n">Step <b>02</b></span>
+        <p><b>We read both, against each other.</b> Line by line: what your contracts require and what your policies actually deliver.</p>
+      </div>
+      <div class="step">
+        <span class="n">Step <b>03</b></span>
+        <p><b>You get a written picture.</b> Where the two diverge, what it exposes, and what it would take to close it.</p>
+      </div>
+    </div>
+    <p class="turnaround">Most reviews come back within three business days.</p>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Get a free insurance review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- 08 NATIONAL LICENSING -->
+<section class="band band--dark licensing-band" id="licenses">
+  <div class="shell">
+    <p class="eyebrow">Licensed in 50 states and DC</p>
+    <h2>InFrame Insurance Services LLC is a national licensed insurance brokerage.</h2>
+    <p class="npn">NPN 22200284. <button type="button" class="license-toggle" aria-expanded="false" aria-controls="licensePanel"><span class="license-toggle__label">See our licenses here.</span><svg class="license-toggle__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></p>
+
+    <div class="license-panel" id="licensePanel" hidden>
+      <p class="license-panel__hint">Click on the license number to copy to your clipboard</p>
+      <ul class="license-list"><li class="license-row"><span class="license-row__state">Alabama</span><button type="button" class="license-row__number" data-num="3004195827" aria-label="Copy Alabama license number 3004195827"><span class="license-row__value">3004195827</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Alaska</span><button type="button" class="license-row__number" data-num="3004201695" aria-label="Copy Alaska license number 3004201695"><span class="license-row__value">3004201695</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Arizona</span><button type="button" class="license-row__number" data-num="3004195639" aria-label="Copy Arizona license number 3004195639"><span class="license-row__value">3004195639</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Arkansas</span><button type="button" class="license-row__number" data-num="3004195617" aria-label="Copy Arkansas license number 3004195617"><span class="license-row__value">3004195617</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">California</span><button type="button" class="license-row__number" data-num="6019212" aria-label="Copy California license number 6019212"><span class="license-row__value">6019212</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Colorado</span><button type="button" class="license-row__number" data-num="945106" aria-label="Copy Colorado license number 945106"><span class="license-row__value">945106</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Connecticut</span><button type="button" class="license-row__number" data-num="3004195800" aria-label="Copy Connecticut license number 3004195800"><span class="license-row__value">3004195800</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Delaware</span><button type="button" class="license-row__number" data-num="3004195666" aria-label="Copy Delaware license number 3004195666"><span class="license-row__value">3004195666</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">District of Columbia</span><button type="button" class="license-row__number" data-num="3004195675" aria-label="Copy District of Columbia license number 3004195675"><span class="license-row__value">3004195675</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Florida</span><button type="button" class="license-row__number" data-num="L137088" aria-label="Copy Florida license number L137088"><span class="license-row__value">L137088</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Georgia</span><button type="button" class="license-row__number" data-num="245620" aria-label="Copy Georgia license number 245620"><span class="license-row__value">245620</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Hawaii</span><button type="button" class="license-row__number" data-num="3004195736" aria-label="Copy Hawaii license number 3004195736"><span class="license-row__value">3004195736</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Idaho</span><button type="button" class="license-row__number" data-num="3004197992" aria-label="Copy Idaho license number 3004197992"><span class="license-row__value">3004197992</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Illinois</span><button type="button" class="license-row__number" data-num="3004195655" aria-label="Copy Illinois license number 3004195655"><span class="license-row__value">3004195655</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Indiana</span><button type="button" class="license-row__number" data-num="4215463" aria-label="Copy Indiana license number 4215463"><span class="license-row__value">4215463</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Iowa</span><button type="button" class="license-row__number" data-num="3004195762" aria-label="Copy Iowa license number 3004195762"><span class="license-row__value">3004195762</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Kansas</span><button type="button" class="license-row__number" data-num="3004195667" aria-label="Copy Kansas license number 3004195667"><span class="license-row__value">3004195667</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Kentucky</span><button type="button" class="license-row__number" data-num="DOI-1459136" aria-label="Copy Kentucky license number DOI-1459136"><span class="license-row__value">DOI-1459136</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Louisiana</span><button type="button" class="license-row__number" data-num="1254990" aria-label="Copy Louisiana license number 1254990"><span class="license-row__value">1254990</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Maine</span><button type="button" class="license-row__number" data-num="AGN547085" aria-label="Copy Maine license number AGN547085"><span class="license-row__value">AGN547085</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Maryland</span><button type="button" class="license-row__number" data-num="3004195687" aria-label="Copy Maryland license number 3004195687"><span class="license-row__value">3004195687</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Massachusetts</span><button type="button" class="license-row__number" data-num="3004198769" aria-label="Copy Massachusetts license number 3004198769"><span class="license-row__value">3004198769</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Michigan</span><button type="button" class="license-row__number" data-num="22200284" aria-label="Copy Michigan license number 22200284"><span class="license-row__value">22200284</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Minnesota</span><button type="button" class="license-row__number" data-num="41035081" aria-label="Copy Minnesota license number 41035081"><span class="license-row__value">41035081</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Mississippi</span><button type="button" class="license-row__number" data-num="15056027" aria-label="Copy Mississippi license number 15056027"><span class="license-row__value">15056027</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Missouri</span><button type="button" class="license-row__number" data-num="3004198069" aria-label="Copy Missouri license number 3004198069"><span class="license-row__value">3004198069</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Montana</span><button type="button" class="license-row__number" data-num="3004195700" aria-label="Copy Montana license number 3004195700"><span class="license-row__value">3004195700</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Nebraska</span><button type="button" class="license-row__number" data-num="3004195746" aria-label="Copy Nebraska license number 3004195746"><span class="license-row__value">3004195746</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Nevada</span><button type="button" class="license-row__number" data-num="4215472" aria-label="Copy Nevada license number 4215472"><span class="license-row__value">4215472</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">New Hampshire</span><button type="button" class="license-row__number" data-num="3004195752" aria-label="Copy New Hampshire license number 3004195752"><span class="license-row__value">3004195752</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">New Jersey</span><button type="button" class="license-row__number" data-num="3004195743" aria-label="Copy New Jersey license number 3004195743"><span class="license-row__value">3004195743</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">New Mexico</span><button type="button" class="license-row__number" data-num="3004202863" aria-label="Copy New Mexico license number 3004202863"><span class="license-row__value">3004202863</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">New York</span><button type="button" class="license-row__number" data-num="1972896" aria-label="Copy New York license number 1972896"><span class="license-row__value">1972896</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">North Carolina</span><button type="button" class="license-row__number" data-num="3004195799" aria-label="Copy North Carolina license number 3004195799"><span class="license-row__value">3004195799</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">North Dakota</span><button type="button" class="license-row__number" data-num="3004195703" aria-label="Copy North Dakota license number 3004195703"><span class="license-row__value">3004195703</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Ohio</span><button type="button" class="license-row__number" data-num="1739012" aria-label="Copy Ohio license number 1739012"><span class="license-row__value">1739012</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Oklahoma</span><button type="button" class="license-row__number" data-num="3004195723" aria-label="Copy Oklahoma license number 3004195723"><span class="license-row__value">3004195723</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Oregon</span><button type="button" class="license-row__number" data-num="3004199016" aria-label="Copy Oregon license number 3004199016"><span class="license-row__value">3004199016</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Pennsylvania</span><button type="button" class="license-row__number" data-num="1314183" aria-label="Copy Pennsylvania license number 1314183"><span class="license-row__value">1314183</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Rhode Island</span><button type="button" class="license-row__number" data-num="3004195729" aria-label="Copy Rhode Island license number 3004195729"><span class="license-row__value">3004195729</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">South Carolina</span><button type="button" class="license-row__number" data-num="3004195717" aria-label="Copy South Carolina license number 3004195717"><span class="license-row__value">3004195717</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">South Dakota</span><button type="button" class="license-row__number" data-num="22200284" aria-label="Copy South Dakota license number 22200284"><span class="license-row__value">22200284</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Tennessee</span><button type="button" class="license-row__number" data-num="3004195785" aria-label="Copy Tennessee license number 3004195785"><span class="license-row__value">3004195785</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Texas</span><button type="button" class="license-row__number" data-num="3490153" aria-label="Copy Texas license number 3490153"><span class="license-row__value">3490153</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Utah</span><button type="button" class="license-row__number" data-num="1117071" aria-label="Copy Utah license number 1117071"><span class="license-row__value">1117071</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Vermont</span><button type="button" class="license-row__number" data-num="3004195792" aria-label="Copy Vermont license number 3004195792"><span class="license-row__value">3004195792</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Virginia</span><button type="button" class="license-row__number" data-num="166489" aria-label="Copy Virginia license number 166489"><span class="license-row__value">166489</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Washington</span><button type="button" class="license-row__number" data-num="1357751" aria-label="Copy Washington license number 1357751"><span class="license-row__value">1357751</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">West Virginia</span><button type="button" class="license-row__number" data-num="3004195822" aria-label="Copy West Virginia license number 3004195822"><span class="license-row__value">3004195822</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Wisconsin</span><button type="button" class="license-row__number" data-num="3004195739" aria-label="Copy Wisconsin license number 3004195739"><span class="license-row__value">3004195739</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li><li class="license-row"><span class="license-row__state">Wyoming</span><button type="button" class="license-row__number" data-num="666822" aria-label="Copy Wyoming license number 666822"><span class="license-row__value">666822</span><span class="license-row__copied" aria-hidden="true">Copied</span></button></li></ul>
+    </div>
+
+    <div class="licensed-map" aria-hidden="true">
+      <img src="https://inframerisk.com/assets/us-states-outline.svg" alt="" width="1017" height="639" loading="lazy" decoding="async">
+    </div>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Get a free insurance review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- 09 FAQ -->
+<section class="band band--light">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2>Questions about working with InFrame</h2>
+    <div class="faq">
+      <details>
+        <summary>What does InFrame Risk do?</summary>
+        <p class="a">InFrame Risk is a construction and real estate insurance broker. We place and service insurance programs for mid-market specialty contractors, general contractors, and property owners, and we read the contracts, leases, and policies behind every certificate so you know where you stand, and where your subs do.</p>
+      </details>
+      <details>
+        <summary>What does a construction insurance broker do?</summary>
+        <p class="a">A construction insurance broker represents your business, not an insurance company. They assess your risk, take your program to multiple carriers, negotiate coverage and price, and service the account all year: certificates, endorsements, audits, and claims. A specialist broker also reviews the contracts that drive your insurance requirements.</p>
+      </details>
+      <details>
+        <summary>How is InFrame different from a traditional insurance broker?</summary>
+        <p class="a">Most brokers focus on the renewal and treat certificates as paperwork. We start with how your business actually operates, including your contracts, subs, tenants, and entities, and build your program around that. Compliance tracking runs all year, and a licensed advisor checks the work.</p>
+      </details>
+      <details>
+        <summary>Is InFrame an insurance broker or a software company?</summary>
+        <p class="a">A licensed insurance broker first. Our construction risk management platform is how we deliver the service: it collects and reviews contracts, certificates, and policies so problems surface before a claim does. You work with experienced construction insurance advisors, and the technology does the reading.</p>
+      </details>
+      <details>
+        <summary>When is the right time to switch insurance brokers?</summary>
+        <p class="a">Four to six months before renewal is ideal, since complex programs take time to underwrite. If a claim, a compliance miss, or a premium spike has you questioning your current setup, you don&rsquo;t have to wait: a broker of record letter can move servicing to InFrame mid-term without canceling your policies.</p>
+      </details>
+      <details>
+        <summary>Is InFrame a fit for our company?</summary>
+        <p class="a">We work with mid-market general contractors. Companies running enough concurrent projects that contracts, subcontractor coverage and certificates have become real operating risk, and not so large that they are a national broker&rsquo;s priority account. If that&rsquo;s you, we&rsquo;ll start with a review of your current program and contracts.</p>
+      </details>
+    </div>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Get a free insurance review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- 10 CONVERSION -->
+<section class="band band--dark" id="request">
+  <div class="shell">
+    <div class="cta-grid">
+      <div class="cta-copy">
+        <span class="rule-amber"></span>
+        <h2>See what a specialist notices about your business.</h2>
+        <p class="copy">Send us what you have. We will tell you what we see.</p>
+        <p class="trustline">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
+      </div>
+      <div>
+        <form class="form" novalidate>
+          <div class="field">
+            <label for="f-company">Company name <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-company" name="company" type="text" autocomplete="organization" required>
+          </div>
+          <div class="field">
+            <label for="f-name">Full name <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Work email <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="field">
+            <label for="f-revenue">Annual revenue <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-revenue" name="revenue" required>
+              <option value="" selected>Select</option>
+              <option>Under $10M</option>
+              <option>$10M to $25M</option>
+              <option>$25M to $75M</option>
+              <option>$75M to $150M</option>
+              <option>Over $150M</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-projects">Active projects <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-projects" name="projects" required>
+              <option value="" selected>Select</option>
+              <option>1 to 5</option>
+              <option>6 to 15</option>
+              <option>16 to 40</option>
+              <option>More than 40</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-subs">Subcontractors on your projects</label>
+            <select id="f-subs" name="subs">
+              <option value="" selected>Select</option>
+              <option>Under 25</option>
+              <option>25 to 100</option>
+              <option>100 to 300</option>
+              <option>More than 300</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-renewal">Month your policies renew</label>
+            <select id="f-renewal" name="renewal">
+              <option value="" selected>Select</option>
+              <option>January</option><option>February</option><option>March</option>
+              <option>April</option><option>May</option><option>June</option>
+              <option>July</option><option>August</option><option>September</option>
+              <option>October</option><option>November</option><option>December</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+          <div class="field field--trap" aria-hidden="true">
+            <label for="f-website">Website</label>
+            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" name="page" value="general-contractor-insurance">
+          <input type="hidden" name="gclid">
+          <input type="hidden" name="wbraid">
+          <input type="hidden" name="gbraid">
+          <input type="hidden" name="utm_source">
+          <input type="hidden" name="utm_medium">
+          <input type="hidden" name="utm_campaign">
+          <input type="hidden" name="utm_term">
+          <input type="hidden" name="utm_content">
+          <input type="hidden" name="referrer">
+          <button class="btn" type="submit">Get a free insurance review</button>
+          <a class="btn btn--secondary" href="tel:+18668111207" style="width:100%;text-align:center;margin-top:.75rem">Talk to a risk advisor</a>
+          <p class="form__status" role="status" aria-live="polite" hidden></p>
+          <p class="after">Or call <a class="telno" href="tel:+18668111207">(866) 811-1207</a>. You will reach a risk advisor, not a call center.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer class="foot">
   <div class="shell">
-    <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
-    <p>
-      InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states<span class="sep">&middot;</span>NPN #22200284<span class="sep">&middot;</span>CA license: 6019212<span class="sep">&middot;</span><a href="tel:+18668111207">(866) 811-1207</a>
+    <div class="foot__top">
+      <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
+      <nav class="foot__nav" aria-label="Legal">
+        <a href="https://inframerisk.com/privacy">Privacy</a>
+        <a href="https://inframerisk.com/terms">Terms</a>
+        <a href="https://inframerisk.com">Licenses</a>
+      </nav>
+    </div>
+    <p class="foot__id">
+      InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states and DC<span class="sep">&middot;</span>NPN 22200284<span class="sep">&middot;</span>CA license: 6019212<span class="sep">&middot;</span><a href="tel:+18668111207">(866) 811-1207</a>
     </p>
+    <div class="foot__legal">
+      <p>InFrame Insurance Services LLC (&ldquo;InFrame&rdquo;) is a licensed insurance agency and is licensed in all 50 states and the District of Columbia. InFrame is not an insurance company, does not underwrite insurance, and does not make coverage, claim, or underwriting determinations. All insurance coverage is subject to the terms, conditions, limitations, exclusions, and underwriting requirements of the applicable policy and insurer. The availability of any insurance product, quote, or coverage is not guaranteed.</p>
+      <p>The information provided on this website, through our platform, or in connection with our services is for general informational and business purposes only and does not constitute legal, tax, financial, or other professional advice. Risk mitigation tools, recommendations, assessments, and related services are designed to help users identify and manage potential risks, but they do not eliminate risk, guarantee compliance, prevent losses, or ensure that insurance coverage will apply to any particular claim or circumstance.</p>
+      <p>InFrame receives compensation from insurers based on the premiums for the insurance policies it sells. Additional information is available upon request.</p>
+    </div>
+    <p class="foot__copy">&copy; 2026 InFrame Risk Inc. All rights reserved.</p>
   </div>
 </footer>
+
+<script>
+/* License disclosure: toggle the panel, and copy a number on click. */
+(function () {
+  var toggle = document.querySelector(".license-toggle");
+  var panel = document.getElementById("licensePanel");
+  if (toggle && panel) {
+    toggle.addEventListener("click", function () {
+      var open = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", open ? "false" : "true");
+      panel.hidden = open;
+    });
+  }
+  document.querySelectorAll(".license-row__number").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var num = btn.getAttribute("data-num");
+      var done = function () {
+        btn.classList.add("is-copied");
+        setTimeout(function () { btn.classList.remove("is-copied"); }, 1400);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(num).then(done, done);
+      } else { done(); }
+    });
+  });
+})();
+
+/* ---------------------------------------------------------------
+   Lead capture. Paste the n8n webhook URL between the quotes below.
+   Everything else is already wired.
+   --------------------------------------------------------------- */
+var FORM_ENDPOINT = "";
+
+(function () {
+  var form = document.querySelector(".form");
+  if (!form) return;
+  var status = form.querySelector(".form__status");
+  var submit = form.querySelector('button[type="submit"]');
+  var label = submit.textContent;
+
+  /* Carry the paid click through with the lead. */
+  var params = new URLSearchParams(location.search);
+  ["gclid", "wbraid", "gbraid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"]
+    .forEach(function (key) {
+      var field = form.querySelector('input[name="' + key + '"]');
+      if (field) { field.value = params.get(key) || ""; }
+    });
+  var ref = form.querySelector('input[name="referrer"]');
+  if (ref) { ref.value = document.referrer || ""; }
+
+  function say(message, isError) {
+    status.textContent = message;
+    status.hidden = false;
+    status.className = "form__status" + (isError ? " form__status--error" : "");
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    /* Bots fill the hidden field. People never see it. */
+    if (form.querySelector('input[name="website"]').value) { return; }
+    if (!form.reportValidity()) { return; }
+
+    if (!FORM_ENDPOINT) {
+      say("This form is not connected yet. Please call (866) 811-1207.", true);
+      return;
+    }
+
+    var data = {};
+    new FormData(form).forEach(function (value, key) { data[key] = value; });
+    delete data.website;
+    data.submitted_at = new Date().toISOString();
+
+    submit.disabled = true;
+    submit.textContent = "Sending";
+    say("Sending your details.");
+
+    fetch(FORM_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    }).then(function (res) {
+      if (!res.ok) { throw new Error(res.status); }
+      form.innerHTML = '<p class="form__done">Thanks. We have your details and a risk advisor will be in touch. ' +
+        'If you would rather talk now, call <a class="telno" href="tel:+18668111207">(866) 811-1207</a>.</p>';
+    }).catch(function () {
+      submit.disabled = false;
+      submit.textContent = label;
+      say("Something went wrong sending that. Please call (866) 811-1207 and we will pick it up from there.", true);
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
