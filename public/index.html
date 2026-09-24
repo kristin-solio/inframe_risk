@@ -130,7 +130,8 @@ summary:focus-visible,textarea:focus-visible{
 /* ---------- masthead ---------- */
 .masthead{background:var(--slate-05);padding-block:1.5rem}
 .masthead .shell{display:flex;align-items:center}
-.masthead img{height:clamp(26px,2.4vw,34px);width:auto}
+.masthead .logo-link{display:inline-flex;line-height:0}
+.masthead img{height:clamp(26px,2.4vw,34px);width:auto;display:block}
 
 /* ---------- hero ---------- */
 .hero{position:relative;background:var(--slate-05);color:var(--white);overflow:hidden}
@@ -328,91 +329,11 @@ summary:focus-visible,textarea:focus-visible{
 
 /* ---------- footer ---------- */
 .foot{background:var(--slate-05);color:var(--steel-02);padding-block:clamp(2.5rem,5vw,3.5rem)}
-.foot img{height:24px;width:auto;margin-bottom:1.5rem}
+.foot .logo-link{display:inline-flex;line-height:0;margin-bottom:1.5rem}
+.foot img{height:24px;width:auto;display:block}
 .foot p{font-size:var(--t-legal);line-height:1.9}
 .foot a{color:var(--steel-02)}
 .foot .sep{color:var(--steel);padding:0 .35rem}
-
-/* ============================================================
-   Review commenting layer
-   Deliberately outside the brand type scale: this is review
-   chrome layered over the page, not part of the page itself,
-   and it is stripped before anything ships.
-   ============================================================ */
-.cmt,#cmt-dock{--t-review:.8125rem}
-.cmt{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
-.cmt-inner{border-left:2px solid var(--steel-02);padding-left:1rem;margin:1.25rem 0}
-.cmt-bar{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
-.cmt-btn{
-  background:transparent;color:var(--slate-03);
-  border:1px solid var(--steel-02);border-radius:2px;
-  font-family:inherit;font-size:.625rem;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;padding:.4375rem .75rem;cursor:pointer;line-height:1.2;
-}
-.cmt-btn:hover{background:var(--slate-05);border-color:var(--slate-05);color:var(--white)}
-.cmt-count{font-size:var(--t-legal);color:var(--slate-03);letter-spacing:.04em}
-.cmt-form{display:none;max-width:560px;padding-top:.875rem}
-.cmt-form.open{display:block}
-.cmt-form label{
-  display:block;font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;
-  font-weight:600;color:var(--slate-03);margin:0 0 .375rem;
-}
-.cmt-form textarea,.cmt-form input{
-  width:100%;font-family:inherit;font-size:var(--t-review);color:var(--slate-05);
-  background:var(--white);border:1px solid var(--steel-02);border-radius:2px;
-  padding:.625rem .75rem;margin-bottom:.75rem;line-height:1.5;
-}
-.cmt-form textarea{min-height:84px;resize:vertical}
-.cmt-form .row{display:flex;gap:.625rem;align-items:center;flex-wrap:wrap}
-.cmt-status{font-size:var(--t-legal);color:var(--slate-03)}
-.cmt-list{max-width:560px}
-.cmt-item{
-  border-left:2px solid var(--amber-05);padding:.375rem 0 .375rem .75rem;
-  margin:0 0 .625rem;font-size:var(--t-review);line-height:1.55;color:var(--slate-04);
-}
-.cmt-item .who{
-  display:block;font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;
-  font-weight:600;color:var(--slate-03);margin-bottom:.25rem;
-}
-/* comment layer sitting on a dark or steel band */
-.band--dark .cmt-inner,.hero .cmt-inner{border-left-color:var(--slate-04)}
-.band--dark .cmt-btn,.hero .cmt-btn{color:var(--steel-02);border-color:var(--steel)}
-.band--dark .cmt-btn:hover,.hero .cmt-btn:hover{background:var(--white);border-color:var(--white);color:var(--slate-05)}
-.band--dark .cmt-count,.band--dark .cmt-form label,.band--dark .cmt-status,
-.hero .cmt-count,.hero .cmt-form label,.hero .cmt-status{color:var(--steel-02)}
-.band--dark .cmt-item,.hero .cmt-item{color:var(--steel-02)}
-.band--dark .cmt-item .who,.hero .cmt-item .who{color:var(--steel)}
-.band--steel .cmt-inner{border-left-color:var(--slate-03)}
-.band--steel .cmt-btn{border-color:var(--slate-03)}
-.band--amber .cmt-inner{border-left-color:var(--slate-03)}
-.band--amber .cmt-btn{border-color:var(--slate-03)}
-
-#cmt-dock{
-  position:fixed;right:1rem;bottom:1rem;z-index:90;
-  background:var(--slate-05);color:var(--steel-02);
-  border-radius:2px;padding:.875rem 1rem;max-width:255px;
-  font-size:var(--t-legal);line-height:1.55;
-}
-#cmt-dock .dtoggle{
-  display:flex;align-items:center;gap:.5rem;width:100%;
-  background:none;border:0;padding:0;cursor:pointer;
-  font-family:inherit;font-size:.625rem;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--white);font-weight:700;text-align:left;
-}
-#cmt-dock .dtoggle::after{
-  content:"";margin-left:auto;width:7px;height:7px;
-  border-right:2px solid var(--steel);border-bottom:2px solid var(--steel);
-  transform:rotate(45deg) translateY(-2px);
-}
-#cmt-dock.min .dtoggle::after{transform:rotate(-135deg) translateY(-2px)}
-#cmt-dock .dbody{margin-top:.5rem}
-#cmt-dock.min .dbody{display:none}
-#cmt-dock .row{display:flex;gap:.5rem;margin-top:.75rem;flex-wrap:wrap}
-#cmt-dock .cmt-btn{color:var(--steel-02);border-color:var(--steel)}
-#cmt-dock .cmt-btn:hover{background:var(--white);border-color:var(--white);color:var(--slate-05)}
-@media (max-width:640px){
-  #cmt-dock{left:auto;right:.75rem;bottom:.75rem;max-width:min(255px,calc(100vw - 1.5rem))}
-}
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
@@ -459,7 +380,7 @@ summary:focus-visible,textarea:focus-visible{
 
 <header class="masthead">
   <div class="shell">
-    <img src="assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306">
+    <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
   </div>
 </header>
 
@@ -467,48 +388,48 @@ summary:focus-visible,textarea:focus-visible{
   <div class="shell">
     <span class="rule-amber"></span>
     <h1>Paid search landing page mockups</h1>
-    <p class="lede">Three landing pages, skinned from the approved wireframe document into the InFrame 2026 brand system. Copy is unchanged. Every module still carries a Comment button.</p>
+    <p class="lede">Paid search landing pages in the InFrame 2026 brand system. Copy is drawn from the approved wireframe and the approved homepage, and is still under client review.</p>
 
     <div class="cards-idx">
-      <a class="pcard" href="contractor-insurance.html">
-        <span class="kicker">Landing Page 1 of 3</span>
+      <a class="pcard" href="contractor-insurance/">
+        <span class="kicker">Landing Page &middot; Subcontractor</span>
         <h2>Specialty Trade Contractor</h2>
-        <p>Campaign 1 and Campaign 3.1 / 3.3 traffic. Owner or CFO at a commercial trade contractor. One call to action: Request a program review.</p>
+        <p>Campaign 1, all seven trade ad groups. Owner or CFO at a mid-market commercial trade contractor. Eight FAQs from the subcontractor tab of the FAQ sheet. Primary CTA: Get a free insurance review. Secondary: Talk to a risk advisor.</p>
         <span class="path">go.inframerisk.com/contractor-insurance</span>
       </a>
 
-      <a class="pcard" href="counterparty-compliance.html">
-        <span class="kicker">Landing Page 2 of 3</span>
+      <a class="pcard" href="general-contractor-insurance/">
+        <span class="kicker">Landing Page &middot; General Contractor</span>
+        <h2>General Contractor</h2>
+        <p>Campaign 3.1 Construction Broker and 3.3 Risk Advisory, moved off the subcontractor page. A mid-market general contractor buying their own program. The FAQ sheet has no tab for this page, so five of its six questions come from the homepage tab and the fit question was written for this page. Primary CTA: Get a free insurance review. Secondary: Talk to a risk advisor.</p>
+        <span class="path">go.inframerisk.com/general-contractor-insurance</span>
+      </a>
+
+      <a class="pcard" href="counterparty-compliance/">
+        <span class="kicker">Landing Page &middot; Counterparty</span>
         <h2>Counterparty Compliance</h2>
-        <p>Campaign 2 and Campaign 3.2 traffic. Risk manager, controller or ops lead at a regional GC. One call to action: Get a Counterparty Gap Report.</p>
+        <p>Campaign 2, all five ad groups, plus 3.2 Real Estate Owner. Risk manager, controller or ops lead at a mid-market GC, or a developer-owner. Eight FAQs from the sheet&rsquo;s general contractor tab, which is entirely about monitoring subcontractors, plus a fit question written for this page. Primary CTA: Check one project for gaps. Secondary: Talk to a risk advisor.</p>
         <span class="path">go.inframerisk.com/counterparty-compliance</span>
       </a>
 
-      <a class="pcard" href="gap-report.html">
-        <span class="kicker">Landing Page 3 of 3</span>
-        <h2>Counterparty Gap Report</h2>
-        <p>The offer page behind LP2. Converts a cold visitor into a documented problem. One call to action: Request your report.</p>
-        <span class="path">go.inframerisk.com/gap-report</span>
-      </a>
-
-      <a class="pcard pcard--wire" href="index.html">
+      <a class="pcard pcard--wire" href="wireframe.html">
         <span class="kicker">Source document</span>
         <h2>Wireframe, structure and copy</h2>
-        <p>The original black and white review document: all 26 modules, rationale notes, approval and verify flags, and the approval register. Unchanged.</p>
-        <span class="path">index.html</span>
+        <p>The original black and white review document: all 26 modules, rationale notes, approval and verify flags, and the approval register. Untouched, so it still documents the retired gap report page and the single-CTA decision.</p>
+        <span class="path">wireframe.html</span>
       </a>
     </div>
 
     <div class="note-strip">
-      <p><b>How to review.</b> The three mockups show the visitor-facing pages only. Internal rationale notes, approval and verify flags, module numbers and the approval register live in the wireframe document and are stripped from the mockups by design.</p>
-      <p>The Comment button under each module posts to the same sheet as the wireframe, so notes left here and notes left there stay together.</p>
+      <p><b>How to review.</b> These are the visitor-facing pages only. The internal rationale notes, approval and verify flags, module numbers and the approval register live in the wireframe document and are stripped from the pages by design.</p>
+      <p>Copy comes from three approved sources: the wireframe document, the homepage, and the FAQ sheet. The mid-market focus is stated in body copy only, not in any headline or hero lede, and each page answers it directly in an &ldquo;Is InFrame a fit&rdquo; FAQ, in words rather than revenue bands. Several claims are still unapproved, and every page is set to noindex until they clear.</p>
     </div>
   </div>
 </main>
 
 <footer class="foot">
   <div class="shell">
-    <img src="assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306">
+    <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
     <p>
       InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states<span class="sep">&middot;</span>NPN #22200284<span class="sep">&middot;</span>CA license: 6019212<span class="sep">&middot;</span><a href="tel:+18668111207">(866) 811-1207</a>
     </p>

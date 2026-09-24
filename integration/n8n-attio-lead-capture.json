@@ -1,0 +1,96 @@
+{
+  "name": "InFrame LP forms to Attio",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "inframe-lp",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "https://go.inframerisk.com,https://go-inframerisk-com-staging.onrender.com"
+        }
+      },
+      "id": "webhook",
+      "name": "Form submission",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 0],
+      "webhookId": "inframe-lp"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $input.first().json.body;\n\n// Work email domain becomes the company's matching key in Attio.\nconst email = (b.email || '').trim().toLowerCase();\nconst domain = email.split('@')[1] || '';\n\n// The revenue band is the qualifier. Keep this list in step with the form.\nconst BELOW_FLOOR = ['Under $5M', 'Under $10M'];\nconst qualified = !!b.revenue && !BELOW_FLOOR.includes(b.revenue);\n\nreturn [{ json: { ...b, email, domain, qualified } }];"
+      },
+      "id": "normalize",
+      "name": "Normalize and qualify",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [220, 0]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://api.attio.com/v2/objects/companies/records",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "matching_attribute", "value": "domains" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ data: { values: { name: [{ value: $json.company }], domains: [{ domain: $json.domain }] } } }) }}",
+        "options": {}
+      },
+      "id": "company",
+      "name": "Attio: upsert company",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [440, 0]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "https://api.attio.com/v2/objects/people/records",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "matching_attribute", "value": "email_addresses" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ data: { values: {\n  name: [{ full_name: $('Normalize and qualify').item.json.name }],\n  email_addresses: [{ email_address: $('Normalize and qualify').item.json.email }],\n  phone_numbers: [{ original_phone_number: $('Normalize and qualify').item.json.phone, country_code: 'US' }],\n  company: [{ target_object: 'companies', target_record_id: $json.data.id.record_id }]\n} } }) }}",
+        "options": {}
+      },
+      "id": "person",
+      "name": "Attio: upsert person",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [660, 0]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true }) }}",
+        "options": {}
+      },
+      "id": "respond",
+      "name": "Respond 200",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [880, 0]
+    }
+  ],
+  "connections": {
+    "Form submission":       { "main": [[{ "node": "Normalize and qualify", "type": "main", "index": 0 }]] },
+    "Normalize and qualify": { "main": [[{ "node": "Attio: upsert company", "type": "main", "index": 0 }]] },
+    "Attio: upsert company": { "main": [[{ "node": "Attio: upsert person",  "type": "main", "index": 0 }]] },
+    "Attio: upsert person":  { "main": [[{ "node": "Respond 200",           "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" }
+}
