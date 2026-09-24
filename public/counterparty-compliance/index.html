@@ -344,11 +344,22 @@ summary:focus-visible,textarea:focus-visible{
 
 /* ---------- footer ---------- */
 .foot{background:var(--slate-05);color:var(--steel-02);padding-block:clamp(2.5rem,5vw,3.5rem)}
-.foot .logo-link{display:inline-flex;line-height:0;margin-bottom:1.5rem}
+.foot .logo-link{display:inline-flex;line-height:0}
 .foot img{height:24px;width:auto;display:block}
 .foot p{font-size:var(--t-legal);line-height:1.9}
 .foot a{color:var(--steel-02)}
 .foot .sep{color:var(--steel);padding:0 .35rem}
+.foot__top{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:1.25rem;margin-bottom:1.5rem;
+}
+.foot__nav{display:flex;flex-wrap:wrap;gap:1.5rem 2rem;font-size:var(--t-legal)}
+.foot__nav a{text-decoration:none;border-bottom:1px solid transparent}
+.foot__nav a:hover{border-bottom-color:var(--steel-02)}
+.foot__id{margin-bottom:1.75rem}
+.foot__legal{color:var(--steel-02);max-width:none}
+.foot__legal p + p{margin-top:.9rem}
+.foot__copy{margin-top:1.75rem;color:var(--steel-02)}
 
 /* ---------- dotted band + icon tiles (matches the live homepage) ---------- */
 .band--dots{
@@ -785,10 +796,23 @@ summary:focus-visible,textarea:focus-visible{
 
 <footer class="foot">
   <div class="shell">
-    <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
-    <p>
+    <div class="foot__top">
+      <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
+      <nav class="foot__nav" aria-label="Legal">
+        <a href="https://inframerisk.com/privacy">Privacy</a>
+        <a href="https://inframerisk.com/terms">Terms</a>
+        <a href="https://inframerisk.com">Licenses</a>
+      </nav>
+    </div>
+    <p class="foot__id">
       InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states and DC<span class="sep">&middot;</span>NPN 22200284<span class="sep">&middot;</span>CA license: 6019212<span class="sep">&middot;</span><a href="tel:+18668111207">(866) 811-1207</a>
     </p>
+    <div class="foot__legal">
+      <p>InFrame Insurance Services LLC (&ldquo;InFrame&rdquo;) is a licensed insurance agency and is licensed in all 50 states and the District of Columbia. InFrame is not an insurance company, does not underwrite insurance, and does not make coverage, claim, or underwriting determinations. All insurance coverage is subject to the terms, conditions, limitations, exclusions, and underwriting requirements of the applicable policy and insurer. The availability of any insurance product, quote, or coverage is not guaranteed.</p>
+      <p>The information provided on this website, through our platform, or in connection with our services is for general informational and business purposes only and does not constitute legal, tax, financial, or other professional advice. Risk mitigation tools, recommendations, assessments, and related services are designed to help users identify and manage potential risks, but they do not eliminate risk, guarantee compliance, prevent losses, or ensure that insurance coverage will apply to any particular claim or circumstance.</p>
+      <p>InFrame receives compensation from insurers based on the premiums for the insurance policies it sells. Additional information is available upon request.</p>
+    </div>
+    <p class="foot__copy">&copy; 2026 InFrame Risk Inc. All rights reserved.</p>
   </div>
 </footer>
 
