@@ -1,3 +1,19 @@
+# Lead capture
+
+**Decision: Fillout**, using its native Attio integration. See
+`fillout-build-spec.md` for the three forms to build, the exact field
+lists, the hidden fields, the brand values and what to verify before
+launch.
+
+The native forms on the pages still work and still deliver. They stay in
+place until the Fillout embeds are ready, so there is no gap.
+
+`n8n-attio-lead-capture.json` and the notes below describe the
+alternative: a webhook into n8n that writes to Attio directly. Not in use.
+Kept in case Fillout fails one of the checks in the build spec.
+
+---
+
 # Piping the landing page forms into Attio
 
 The pages are static files on Render. They have no server, so they cannot
