@@ -308,7 +308,8 @@ summary:focus-visible,textarea:focus-visible{
 }
 .cta-copy h2{max-width:18ch}
 .cta-copy .copy{margin-top:1.5rem;color:var(--steel-02);max-width:40ch}
-.form{background:var(--white);border-radius:2px;padding:clamp(1.5rem,3vw,2.25rem)}
+.formwrap{background:var(--slate-01);border-radius:2px;padding:clamp(1.5rem,3vw,2.25rem)}
+.fillout-embed{width:100%;min-height:500px}
 .field{margin-bottom:1rem}
 .field label{
   display:block;margin-bottom:.4375rem;
@@ -331,17 +332,6 @@ summary:focus-visible,textarea:focus-visible{
 }
 .field input:hover,.field select:hover{border-color:var(--steel)}
 .form .btn{width:100%;margin-top:.75rem}
-.form .after{margin-top:1.25rem;color:var(--slate-04);font-size:var(--t-body);line-height:1.6}
-.form .after .telno{
-  font-weight:600;color:var(--slate-05);
-  text-decoration:underline;text-underline-offset:2px;
-}
-.form .after .telno:hover{color:var(--slate-03)}
-.field--trap{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
-.form__status{margin-top:1rem;font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
-.form__status--error{color:var(--slate-05);font-weight:600}
-.form__done{font-size:var(--t-body);line-height:1.6;color:var(--slate-05)}
-.form__done .telno{color:var(--slate-05);font-weight:600}
 .upload{
   border:1px dashed var(--steel);background:var(--slate-01);border-radius:2px;
   padding:1.125rem .875rem;color:var(--slate-03);font-size:var(--t-legal);
@@ -693,85 +683,12 @@ summary:focus-visible,textarea:focus-visible{
         <p class="copy">Send us what you have. We will tell you what we see.</p>
         <p class="trustline">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
       </div>
-      <div>
-        <form class="form" novalidate>
-          <div class="field">
-            <label for="f-company">Company name <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-company" name="company" type="text" autocomplete="organization" required>
-          </div>
-          <div class="field">
-            <label for="f-name">Full name <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-name" name="name" type="text" autocomplete="name" required>
-          </div>
-          <div class="field">
-            <label for="f-email">Work email <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-email" name="email" type="email" autocomplete="email" required>
-          </div>
-          <div class="field">
-            <label for="f-phone">Phone <span class="req" aria-hidden="true">*</span></label>
-            <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
-          </div>
-          <div class="field">
-            <label for="f-revenue">Annual revenue <span class="req" aria-hidden="true">*</span></label>
-            <select id="f-revenue" name="revenue" required>
-              <option value="" selected>Select</option>
-              <option>Under $10M</option>
-              <option>$10M to $25M</option>
-              <option>$25M to $75M</option>
-              <option>$75M to $150M</option>
-              <option>Over $150M</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="f-projects">Active projects <span class="req" aria-hidden="true">*</span></label>
-            <select id="f-projects" name="projects" required>
-              <option value="" selected>Select</option>
-              <option>1 to 5</option>
-              <option>6 to 15</option>
-              <option>16 to 40</option>
-              <option>More than 40</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="f-subs">Subcontractors on your projects</label>
-            <select id="f-subs" name="subs">
-              <option value="" selected>Select</option>
-              <option>Under 25</option>
-              <option>25 to 100</option>
-              <option>100 to 300</option>
-              <option>More than 300</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="f-renewal">Month your policies renew</label>
-            <select id="f-renewal" name="renewal">
-              <option value="" selected>Select</option>
-              <option>January</option><option>February</option><option>March</option>
-              <option>April</option><option>May</option><option>June</option>
-              <option>July</option><option>August</option><option>September</option>
-              <option>October</option><option>November</option><option>December</option>
-              <option>Not sure</option>
-            </select>
-          </div>
-          <div class="field field--trap" aria-hidden="true">
-            <label for="f-website">Website</label>
-            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
-          </div>
-          <input type="hidden" name="page" value="general-contractor-insurance">
-          <input type="hidden" name="gclid">
-          <input type="hidden" name="wbraid">
-          <input type="hidden" name="gbraid">
-          <input type="hidden" name="utm_source">
-          <input type="hidden" name="utm_medium">
-          <input type="hidden" name="utm_campaign">
-          <input type="hidden" name="utm_term">
-          <input type="hidden" name="utm_content">
-          <input type="hidden" name="referrer">
-          <button class="btn" type="submit">Get a free insurance review</button>
-          <a class="btn btn--secondary" href="tel:+18668111207" style="width:100%;text-align:center;margin-top:.75rem">Talk to a risk advisor</a>
-          <p class="form__status" role="status" aria-live="polite" hidden></p>
-          <p class="after">Or call <a class="telno" href="tel:+18668111207">(866) 811-1207</a>. You will reach a risk advisor, not a call center.</p>
-        </form>
+      <div class="formwrap">
+        <div class="fillout-embed"
+             data-fillout-id="fkqNiqeJmsus"
+             data-fillout-embed-type="standard"
+             data-fillout-inherit-parameters
+             data-fillout-dynamic-resize></div>
       </div>
     </div>
   </div>
@@ -827,72 +744,26 @@ summary:focus-visible,textarea:focus-visible{
   });
 })();
 
-/* ---------------------------------------------------------------
-   Lead capture. Paste the n8n webhook URL between the quotes below.
-   Everything else is already wired.
-   --------------------------------------------------------------- */
-var FORM_ENDPOINT = "";
+</script>
 
+<script>
+/* Name the landing page in the query string so Fillout's inherit-parameters
+   carries it onto the submission. Runs before the embed script loads.
+   Existing parameters, gclid and the utm values among them, are preserved. */
 (function () {
-  var form = document.querySelector(".form");
-  if (!form) return;
-  var status = form.querySelector(".form__status");
-  var submit = form.querySelector('button[type="submit"]');
-  var label = submit.textContent;
-
-  /* Carry the paid click through with the lead. */
-  var params = new URLSearchParams(location.search);
-  ["gclid", "wbraid", "gbraid", "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"]
-    .forEach(function (key) {
-      var field = form.querySelector('input[name="' + key + '"]');
-      if (field) { field.value = params.get(key) || ""; }
-    });
-  var ref = form.querySelector('input[name="referrer"]');
-  if (ref) { ref.value = document.referrer || ""; }
-
-  function say(message, isError) {
-    status.textContent = message;
-    status.hidden = false;
-    status.className = "form__status" + (isError ? " form__status--error" : "");
-  }
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    /* Bots fill the hidden field. People never see it. */
-    if (form.querySelector('input[name="website"]').value) { return; }
-    if (!form.reportValidity()) { return; }
-
-    if (!FORM_ENDPOINT) {
-      say("This form is not connected yet. Please call (866) 811-1207.", true);
-      return;
+  try {
+    var path = window.location.pathname.replace(/\/+$/, "");
+    var slug = path.split("/").pop();
+    if (!slug || slug === "index.html") { slug = "home"; }
+    var url = new URL(window.location.href);
+    if (!url.searchParams.get("page")) {
+      url.searchParams.set("page", slug);
+      window.history.replaceState(null, "", url.toString());
     }
-
-    var data = {};
-    new FormData(form).forEach(function (value, key) { data[key] = value; });
-    delete data.website;
-    data.submitted_at = new Date().toISOString();
-
-    submit.disabled = true;
-    submit.textContent = "Sending";
-    say("Sending your details.");
-
-    fetch(FORM_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    }).then(function (res) {
-      if (!res.ok) { throw new Error(res.status); }
-      form.innerHTML = '<p class="form__done">Thanks. We have your details and a risk advisor will be in touch. ' +
-        'If you would rather talk now, call <a class="telno" href="tel:+18668111207">(866) 811-1207</a>.</p>';
-    }).catch(function () {
-      submit.disabled = false;
-      submit.textContent = label;
-      say("Something went wrong sending that. Please call (866) 811-1207 and we will pick it up from there.", true);
-    });
-  });
+  } catch (e) {}
 })();
 </script>
+<script src="https://server.fillout.com/embed/v1/"></script>
 
 </body>
 </html>
