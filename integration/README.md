@@ -1,16 +1,34 @@
 # Lead capture
 
-**Decision: Fillout**, using its native Attio integration. See
-`fillout-build-spec.md` for the three forms to build, the exact field
-lists, the hidden fields, the brand values and what to verify before
-launch.
+**Live: a Fillout embed, form id `fkqNiqeJmsus`**, on all three landing
+pages and the copy of the general contractor page at the root. It writes
+to Attio through Fillout's own integration. Nothing in this repo talks to
+Attio.
 
-The native forms on the pages still work and still deliver. They stay in
-place until the Fillout embeds are ready, so there is no gap.
+The embed carries `data-fillout-inherit-parameters`, so Fillout reads the
+query string of the page it sits on. That is what puts `gclid` and the
+`utm_*` values on the submission. It only works for parameters that are
+actually in the URL, which for paid traffic they will be.
 
-`n8n-attio-lead-capture.json` and the notes below describe the
-alternative: a webhook into n8n that writes to Attio directly. Not in use.
-Kept in case Fillout fails one of the checks in the build spec.
+`fillout-build-spec.md` holds the field lists, the brand values and the
+checks to run before launch. `n8n-attio-lead-capture.json` is the unused
+alternative, kept in case Fillout falls short.
+
+## Open questions on the current embed
+
+- **One form across three pages.** The spec called for three, because the
+  questions differ: trade and renewal month for a subcontractor, active
+  projects and subcontractor count for a general contractor, role and
+  monitored counterparties for compliance. The revenue floors differ too,
+  under $5M against under $10M. A single form asks one set of questions on
+  all three pages.
+- **Nothing identifies the source page.** With one form and no `page`
+  parameter in any landing page URL, a submission does not say which page
+  produced it. Either add a `page` field in Fillout populated from the
+  parent URL, or give each page its own form.
+- **The conversion signal.** Confirm how Fillout reports a completed
+  submission to the page, and fire the Google Ads conversion on it. There
+  is no conversion tag on any page yet.
 
 ---
 
