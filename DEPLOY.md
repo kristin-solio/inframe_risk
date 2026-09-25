@@ -84,6 +84,16 @@ the steps are the same with a different record name, and it must keep the
 2. Clear the outstanding approval register items. Several claims are still
    unapproved.
 
+## If the root shows the review document
+
+There is nothing servable at the repository root any more: no HTML, no
+assets. The wireframe lives at `source/wireframe-v1.html`, outside the
+publish directory, and is served properly at `/wireframe.html`.
+
+So if `/` ever shows the wireframe again, the build being served is older
+than this change. If `/` returns 404 instead, the Publish Directory is not
+set to `public`, which is the setting to fix.
+
 ## Editing
 
 `public/` is the only copy. Edit the page in `public/<slug>/index.html`.
