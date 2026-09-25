@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="theme-color" content="#222F3E">
+<title>Thank you · InFrame Risk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   InFrame Risk · brand system
+   Palette, type scale and module styles shared by all three
+   paid search landing page mockups.
+   ============================================================ */
+:root{
+  --slate-05:#222F3E;
+  --slate-04:#37485A;
+  --slate-03:#526477;
+  --steel:#8394A5;
+  --steel-02:#C9CFE1;
+  --steel-01:#E1E5F0;
+  --slate-01:#F4F6FB;
+  --amber-05:#EFB921;
+  --amber-04:#F5CA52;
+  --amber-03:#FDDC80;
+  --amber-02:#FAE4A9;
+  --amber-01:#FFF3D2;
+  --white:#FFFFFF;
+
+  /* Brand book type scale. Five roles, nothing else:
+     Headline Semibold 64 · Subline Semibold 36 · Body Regular 16
+     · Button Bold 16 · Legal Regular 12.
+     The 64 and 36 anchors are desktop; they scale down with clamp().
+     Body, Button and Legal are fixed, so nothing on the page is ever
+     set at a size the brand book does not name. */
+  --t-headline:clamp(2.5rem,1.6rem + 3.85vw,4rem);        /* 40 -> 64 */
+  --t-subline:clamp(1.75rem,1.36rem + 1.66vw,2.25rem);    /* 28 -> 36 */
+  --t-body:1rem;                                          /* 16 */
+  --t-button:1rem;                                        /* 16 */
+  --t-legal:.75rem;                                       /* 12 */
+
+  --gutter:clamp(1.25rem,5vw,3.5rem);
+  --band:clamp(3.5rem,8vw,7rem);
+  --maxw:1160px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--slate-01);
+  color:var(--slate-05);
+  font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:var(--t-body);
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+
+/* ---------- shared layout ---------- */
+.shell{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+.band{padding-block:var(--band)}
+.band--light{background:var(--slate-01);color:var(--slate-05)}
+.band--white{background:var(--white);color:var(--slate-05)}
+.band--dark{background:var(--slate-05);color:var(--white)}
+.band--steel{background:var(--steel-02);color:var(--slate-05)}
+.band--amber{background:var(--amber-02);color:var(--slate-05)}
+.band--tight{padding-block:clamp(2rem,4vw,3rem)}
+
+/* ---------- type ---------- */
+h1,h2,h3{font-weight:600;letter-spacing:-.02em;margin:0}
+h1{font-size:var(--t-headline);line-height:1.06}
+h2{font-size:var(--t-subline);line-height:1.15}
+h3{font-size:var(--t-body);line-height:1.35;letter-spacing:0}
+p{margin:0}
+.eyebrow{
+  font-size:var(--t-legal);font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--slate-03);margin:0 0 1.25rem;
+}
+.band--dark .eyebrow{color:var(--amber-05)}
+.lede{font-size:var(--t-body);line-height:1.6;font-weight:400}
+.copy{font-size:var(--t-body);line-height:1.65}
+.small{font-size:var(--t-legal);line-height:1.6}
+.legal{font-size:var(--t-legal);line-height:1.6}
+.measure{max-width:26ch}
+.measure-l{max-width:34ch}
+.measure-p{max-width:64ch}
+
+/* ---------- accent rule ---------- */
+.rule-amber{display:block;width:34px;height:3px;background:var(--amber-05);border:0;margin:0 0 1.125rem}
+
+/* ---------- button ---------- */
+.btn{
+  display:inline-block;
+  background:var(--amber-05);
+  color:var(--slate-05);
+  font-family:inherit;font-size:var(--t-button);font-weight:700;line-height:1.2;
+  letter-spacing:.005em;
+  padding:1.0625rem 2rem;
+  border:0;border-radius:2px;
+  text-decoration:none;cursor:pointer;
+  transition:background .15s ease;
+}
+.btn:hover{background:var(--amber-04)}
+.btn:active{background:var(--amber-03)}
+
+/* ---------- focus ---------- */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
+summary:focus-visible,textarea:focus-visible{
+  outline:3px solid var(--amber-05);
+  outline-offset:3px;
+}
+.band--dark a:focus-visible,.band--dark button:focus-visible,
+.band--dark summary:focus-visible,.hero a:focus-visible{
+  outline-color:var(--amber-05);
+}
+
+/* ---------- skip link ---------- */
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--amber-05);color:var(--slate-05);
+  font-weight:700;font-size:var(--t-legal);padding:.75rem 1.25rem;
+}
+.skip:focus{left:0}
+
+/* ---------- masthead ---------- */
+.masthead{background:var(--slate-05);padding-block:1.5rem}
+.masthead .shell{display:flex;align-items:center}
+.masthead .logo-link{display:inline-flex;line-height:0}
+.masthead img{height:clamp(26px,2.4vw,34px);width:auto;display:block}
+
+/* ---------- hero ---------- */
+.hero{position:relative;background:var(--slate-05);color:var(--white);overflow:hidden}
+.hero__img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:62% center;
+}
+.hero__scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    100deg,
+    rgba(34,47,62,.94) 0%,
+    rgba(34,47,62,.91) 38%,
+    rgba(34,47,62,.8) 58%,
+    rgba(34,47,62,.52) 78%,
+    rgba(34,47,62,.4) 100%);
+}
+@media (max-width:1024px){
+  /* the text block takes more of the width here, so fade down the page
+     instead of across it and let the artwork breathe below the button */
+  .hero__scrim{
+    background:linear-gradient(
+      168deg,
+      rgba(34,47,62,.94) 0%,
+      rgba(34,47,62,.92) 58%,
+      rgba(34,47,62,.86) 74%,
+      rgba(34,47,62,.55) 92%,
+      rgba(34,47,62,.48) 100%);
+  }
+}
+@media (max-width:700px){
+  /* text spans the full width on a phone, so the scrim has to as well.
+     Crop to the darker city blocks rather than the bright crane, which
+     lets the overlay stay lighter and keeps the drawing readable. */
+  .hero__scrim{background:rgba(34,47,62,.82)}
+  .hero__img{object-position:34% center}
+}
+.hero__inner{position:relative;padding-block:clamp(4rem,10vw,8.5rem)}
+.hero h1{max-width:24ch}
+.hero .hl{color:var(--amber-05)}
+.hero .lede{color:var(--white);max-width:56ch;margin-top:1.5rem}
+.hero .hero-eyebrow{color:var(--amber-05);margin-bottom:1rem}
+.hero .btn{margin-top:2.5rem}
+.hero .licensing{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
+.trustline{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
+
+/* ---------- qualification strip ---------- */
+.qualstrip{background:var(--amber-02);color:var(--slate-05);padding-block:clamp(1.75rem,4vw,2.5rem)}
+.qualstrip .eyebrow{margin-bottom:.875rem}
+.trades{
+  display:flex;flex-wrap:wrap;
+  gap:.5rem clamp(1rem,2.4vw,2rem);
+  font-size:var(--t-legal);
+  font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  line-height:1.5;
+}
+.trades li{list-style:none}
+.trades ul{display:contents}
+.trade-list{margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem 0}
+.trade-list li{display:flex;align-items:center}
+.trade-list li::after{
+  content:"\00b7";color:var(--slate-03);font-weight:400;
+  margin:0 clamp(.6rem,1.6vw,1.15rem);
+}
+.trade-list li:last-child::after{content:none}
+
+/* ---------- tension ---------- */
+.tension h2{max-width:24ch}
+.tension .copy{max-width:62ch;margin-top:1.75rem}
+.tension .copy + .copy{margin-top:1.25rem}
+
+/* ---------- question tiles ---------- */
+.tiles{
+  display:grid;gap:clamp(1rem,2vw,1.5rem);
+  grid-template-columns:1fr;
+  margin-top:clamp(2rem,4vw,3rem);
+}
+@media (min-width:660px){ .tiles{grid-template-columns:1fr 1fr} }
+.tile{
+  background:var(--white);
+  border:1px solid var(--steel-01);
+  border-radius:2px;
+  padding:clamp(1.5rem,2.4vw,2rem);
+}
+.tile h3{margin-bottom:.75rem}
+.tile p{font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
+
+/* ---------- dark outcomes grid ---------- */
+.outcomes{
+  display:grid;gap:clamp(2rem,3.4vw,2.75rem) clamp(2rem,4vw,3.5rem);
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  margin-top:clamp(2.5rem,5vw,3.5rem);
+}
+.outcome h3{margin-bottom:.625rem}
+.outcome p{font-size:var(--t-body);line-height:1.6;color:var(--steel-02)}
+.band--dark h2{max-width:28ch}
+.band--dark .intro{color:var(--steel-02);max-width:60ch;margin-top:1.5rem;font-size:var(--t-body)}
+
+/* ---------- how it works ---------- */
+.steps{
+  display:grid;gap:clamp(2rem,3vw,2.5rem);
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  margin-top:clamp(2.5rem,5vw,3.5rem);
+}
+.step{border-top:2px solid var(--steel-02);padding-top:1.25rem}
+.step .n{
+  display:block;margin-bottom:.875rem;
+  font-size:var(--t-legal);font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--slate-03);
+}
+.step .n b{
+  display:block;font-size:var(--t-subline);line-height:1;
+  letter-spacing:-.02em;color:var(--steel-02);font-weight:600;margin-top:.25rem;
+}
+.step p{font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
+.step p b{color:var(--slate-05);font-weight:700}
+.turnaround{margin-top:clamp(2rem,3.5vw,2.75rem);color:var(--slate-04);font-size:var(--t-body)}
+
+/* ---------- case study ---------- */
+.casestudy blockquote{margin:0}
+.casestudy blockquote p{
+  font-size:var(--t-subline);line-height:1.2;font-weight:600;letter-spacing:-.02em;
+}
+.casestudy cite{
+  display:block;margin-top:1.5rem;font-style:normal;
+  font-size:var(--t-legal);font-weight:600;letter-spacing:.06em;color:var(--slate-04);
+}
+.casestudy .copy{max-width:56ch;color:var(--slate-04)}
+.case-grid{
+  display:grid;gap:clamp(2rem,4vw,3.5rem);
+  grid-template-columns:1fr;
+  align-items:start;margin-top:clamp(2rem,4vw,2.75rem);
+}
+@media (min-width:820px){ .case-grid{grid-template-columns:1.1fr .9fr} }
+
+/* ---------- stat band ---------- */
+.stats{
+  display:grid;gap:clamp(2rem,3.5vw,3rem);
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+}
+.stat b{
+  display:block;font-size:var(--t-subline);line-height:1.05;
+  letter-spacing:-.02em;font-weight:600;color:var(--amber-05);margin-bottom:.625rem;
+}
+.stat--word b{font-size:var(--t-subline)}
+.stat span{display:block;font-size:var(--t-body);line-height:1.5;color:var(--steel-02)}
+
+/* ---------- FAQ ---------- */
+.faq{margin-top:clamp(2rem,4vw,3rem);max-width:78ch}
+.faq details{border-top:1px solid var(--steel-02)}
+.faq details:last-of-type{border-bottom:1px solid var(--steel-02)}
+.faq summary{
+  list-style:none;cursor:pointer;
+  padding:1.375rem 3rem 1.375rem 0;
+  position:relative;
+  font-size:var(--t-body);font-weight:600;line-height:1.4;letter-spacing:0;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"";position:absolute;right:.5rem;top:50%;
+  width:12px;height:12px;margin-top:-8px;
+  border-right:2px solid var(--slate-03);border-bottom:2px solid var(--slate-03);
+  transform:rotate(45deg);transition:transform .18s ease;
+}
+.faq details[open] summary::after{transform:rotate(-135deg);margin-top:-3px}
+.faq summary:hover{color:var(--slate-03)}
+.faq .a{padding:0 3rem 1.625rem 0;font-size:var(--t-body);line-height:1.65;color:var(--slate-04);max-width:70ch}
+
+/* ---------- form ---------- */
+.cta-grid{
+  display:grid;gap:clamp(2.5rem,5vw,4.5rem);
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  align-items:start;
+}
+.cta-copy h2{max-width:18ch}
+.cta-copy .copy{margin-top:1.5rem;color:var(--steel-02);max-width:40ch}
+.formwrap{background:var(--slate-01);border-radius:2px;padding:clamp(1.5rem,3vw,2.25rem)}
+.fillout-embed{width:100%;min-height:500px}
+.field{margin-bottom:1rem}
+.field label{
+  display:block;margin-bottom:.4375rem;
+  font-size:var(--t-legal);font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--slate-03);
+}
+.field label .req{color:var(--slate-05)}
+.field input,.field select{
+  width:100%;font-family:inherit;font-size:var(--t-body);font-weight:400;
+  color:var(--slate-05);background:var(--slate-01);
+  border:1px solid var(--steel-02);border-radius:2px;
+  padding:.8125rem .875rem;line-height:1.4;
+}
+.field select{
+  appearance:none;-webkit-appearance:none;
+  background-image:linear-gradient(45deg,transparent 50%,var(--slate-03) 50%),linear-gradient(135deg,var(--slate-03) 50%,transparent 50%);
+  background-position:calc(100% - 19px) calc(50% + 2px),calc(100% - 13px) calc(50% + 2px);
+  background-size:6px 6px,6px 6px;background-repeat:no-repeat;
+  padding-right:2.5rem;
+}
+.field input:hover,.field select:hover{border-color:var(--steel)}
+.form .btn{width:100%;margin-top:.75rem}
+.upload{
+  border:1px dashed var(--steel);background:var(--slate-01);border-radius:2px;
+  padding:1.125rem .875rem;color:var(--slate-03);font-size:var(--t-legal);
+  display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;
+}
+
+/* ---------- footer ---------- */
+.foot{background:var(--slate-05);color:var(--steel-02);padding-block:clamp(2.5rem,5vw,3.5rem)}
+.foot .logo-link{display:inline-flex;line-height:0}
+.foot img{height:24px;width:auto;display:block}
+.foot p{font-size:var(--t-legal);line-height:1.9}
+.foot a{color:var(--steel-02)}
+.foot .sep{color:var(--steel);padding:0 .35rem}
+.foot__top{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:1.25rem;margin-bottom:1.5rem;
+}
+.foot__nav{display:flex;flex-wrap:wrap;gap:1.5rem 2rem;font-size:var(--t-legal)}
+.foot__nav a{text-decoration:none;border-bottom:1px solid transparent}
+.foot__nav a:hover{border-bottom-color:var(--steel-02)}
+.foot__id{margin-bottom:1.75rem}
+.foot__legal{color:var(--steel-02);max-width:none}
+.foot__legal p + p{margin-top:.9rem}
+.foot__copy{margin-top:1.75rem;color:var(--steel-02)}
+
+/* ---------- dotted band + icon tiles (matches the live homepage) ---------- */
+.band--dots{
+  background-color:var(--steel-01);
+  color:var(--slate-05);
+  background-image:radial-gradient(circle,rgba(82,100,119,.30) 1px,transparent 1px);
+  background-size:22px 22px;
+  background-position:0 0;
+}
+.band--dots .tile{
+  background:var(--steel-01);
+  border-color:var(--steel-02);
+}
+.tile-head{display:flex;align-items:center;gap:.875rem;margin-bottom:.875rem}
+.tile-head h3{margin:0}
+.tiles--bare{margin-top:0}
+.tile-icon{
+  display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:2px;
+  background:var(--amber-05);color:var(--slate-05);
+  flex:0 0 auto;
+}
+.tile-icon svg{width:22px;height:22px;display:block}
+
+/* ---------- national licensing band ---------- */
+.licensing-band h2{max-width:42ch;margin-bottom:1.75rem}
+.licensing-band .npn{font-size:var(--t-body);color:var(--white)}
+.license-toggle{
+  background:none;border:0;padding:0;cursor:pointer;font:inherit;
+  color:var(--amber-05);display:inline-flex;align-items:center;gap:.35rem;
+}
+.license-toggle__label{text-decoration:underline;text-underline-offset:3px}
+.license-toggle__chevron{width:15px;height:15px;transition:transform .2s ease}
+.license-toggle[aria-expanded="true"] .license-toggle__chevron{transform:rotate(180deg)}
+.license-toggle:hover{color:var(--amber-04)}
+
+.license-panel{margin-top:clamp(1.75rem,3vw,2.5rem);max-width:78ch}
+.license-panel__hint{
+  font-size:var(--t-legal);letter-spacing:.06em;text-transform:uppercase;
+  color:var(--steel);margin-bottom:1rem;
+}
+.license-list{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:0 clamp(1.5rem,3vw,3rem);
+}
+.license-row{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  padding:.5rem 0;border-bottom:1px solid var(--slate-04);
+}
+.license-row__state{font-size:var(--t-body);color:var(--steel-02)}
+.license-row__number{
+  background:none;border:0;padding:0;cursor:pointer;font:inherit;
+  font-weight:600;color:var(--amber-05);position:relative;white-space:nowrap;
+}
+.license-row__number:hover{color:var(--amber-03)}
+.license-row__copied{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;
+  background:var(--slate-05);color:var(--steel-02);opacity:0;pointer-events:none;
+}
+.license-row__number.is-copied .license-row__copied{opacity:1}
+
+.licensed-map{margin-top:clamp(2.5rem,6vw,4.5rem)}
+.licensed-map img{width:100%;max-width:1017px;height:auto;display:block;margin-inline:auto}
+
+/* ---------- repeated CTA pair ---------- */
+.cta-pair{margin-top:clamp(2rem,4vw,2.75rem)}
+.cta-pair .row{display:flex;flex-wrap:wrap;gap:.875rem}
+.cta-pair .btn{margin:0}
+/* The brand book rules out outlined buttons, so the secondary is a solid
+   approved pairing instead: Slate 05 on light ground, Slate 03 on dark. */
+.btn--secondary{background:var(--slate-05);color:var(--white)}
+.btn--secondary:hover{background:var(--slate-04)}
+.band--dark .btn--secondary,.hero .btn--secondary{background:var(--slate-03)}
+.band--dark .btn--secondary:hover,.hero .btn--secondary:hover{background:var(--slate-04)}
+.cta-phone{
+  margin-top:1rem;font-size:var(--t-body);color:var(--slate-04);
+}
+.cta-phone a{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.band--dark .cta-phone,.hero .cta-phone{color:var(--steel-02)}
+.band--steel .cta-phone{color:var(--slate-04)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+
+/* ---------- thank you ---------- */
+.thanks{padding-block:clamp(4rem,12vw,9rem)}
+.thanks h1{max-width:18ch;margin-top:0}
+.thanks .lede{max-width:56ch;margin-top:1.5rem}
+.thanks__call{max-width:56ch;margin-top:2rem;color:var(--steel-02);line-height:1.7}
+.thanks__call .telno{color:var(--white);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.thanks__call .telno:hover{color:var(--amber-03)}
+.thanks .trustline{margin-top:2.5rem}
+</style>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5PCQ4CBV');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5PCQ4CBV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager -->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="shell">
+    <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="band band--dark thanks">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h1>Thanks. We have your details.</h1>
+    <p class="lede">A risk advisor will read what you sent and come back to you. Most reviews come back within three business days.</p>
+    <p class="thanks__call">If you would rather talk now, call <a class="telno" href="tel:+18668111207">(866) 811-1207</a>. You will reach a risk advisor, not a call center.</p>
+    <p class="trustline">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__top">
+      <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
+      <nav class="foot__nav" aria-label="Legal">
+        <a href="https://inframerisk.com/privacy">Privacy</a>
+        <a href="https://inframerisk.com/terms">Terms</a>
+        <a href="https://inframerisk.com">Licenses</a>
+      </nav>
+    </div>
+    <p class="foot__id">
+      InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states and DC<span class="sep">&middot;</span>NPN 22200284<span class="sep">&middot;</span>CA license: 6019212<span class="sep">&middot;</span><a href="tel:+18668111207">(866) 811-1207</a>
+    </p>
+    <div class="foot__legal">
+      <p>InFrame Insurance Services LLC (&ldquo;InFrame&rdquo;) is a licensed insurance agency and is licensed in all 50 states and the District of Columbia. InFrame is not an insurance company, does not underwrite insurance, and does not make coverage, claim, or underwriting determinations. All insurance coverage is subject to the terms, conditions, limitations, exclusions, and underwriting requirements of the applicable policy and insurer. The availability of any insurance product, quote, or coverage is not guaranteed.</p>
+      <p>The information provided on this website, through our platform, or in connection with our services is for general informational and business purposes only and does not constitute legal, tax, financial, or other professional advice. Risk mitigation tools, recommendations, assessments, and related services are designed to help users identify and manage potential risks, but they do not eliminate risk, guarantee compliance, prevent losses, or ensure that insurance coverage will apply to any particular claim or circumstance.</p>
+      <p>InFrame receives compensation from insurers based on the premiums for the insurance policies it sells. Additional information is available upon request.</p>
+    </div>
+    <p class="foot__copy">&copy; 2026 InFrame Risk Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5PCQ4CBV');</script>
+
+</body>
+</html>
