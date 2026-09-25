@@ -22,10 +22,15 @@ alternative, kept in case Fillout falls short.
   monitored counterparties for compliance. The revenue floors differ too,
   under $5M against under $10M. A single form asks one set of questions on
   all three pages.
-- **Nothing identifies the source page.** With one form and no `page`
-  parameter in any landing page URL, a submission does not say which page
-  produced it. Either add a `page` field in Fillout populated from the
-  parent URL, or give each page its own form.
+- **The source page arrives as `page`.** Each landing page writes a
+  `page` parameter into its own query string before the embed script
+  loads, so `inherit-parameters` carries it onto the submission. The value
+  is the URL slug: `contractor-insurance`,
+  `general-contractor-insurance`, `counterparty-compliance`, and `home`
+  for the copy at the root. A `page` already in the URL is left alone, so
+  an ad can override it. **Fillout needs a hidden field named exactly
+  `page` to receive it.** A different name there means an empty value
+  here, and the fix is to rename the field in Fillout.
 - **The conversion signal.** Confirm how Fillout reports a completed
   submission to the page, and fire the Google Ads conversion on it. There
   is no conversion tag on any page yet.

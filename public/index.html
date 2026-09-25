@@ -755,6 +755,23 @@ summary:focus-visible,textarea:focus-visible{
 
 </script>
 
+<script>
+/* Name the landing page in the query string so Fillout's inherit-parameters
+   carries it onto the submission. Runs before the embed script loads.
+   Existing parameters, gclid and the utm values among them, are preserved. */
+(function () {
+  try {
+    var path = window.location.pathname.replace(/\/+$/, "");
+    var slug = path.split("/").pop();
+    if (!slug || slug === "index.html") { slug = "home"; }
+    var url = new URL(window.location.href);
+    if (!url.searchParams.get("page")) {
+      url.searchParams.set("page", slug);
+      window.history.replaceState(null, "", url.toString());
+    }
+  } catch (e) {}
+})();
+</script>
 <script src="https://server.fillout.com/embed/v1/"></script>
 
 </body>
