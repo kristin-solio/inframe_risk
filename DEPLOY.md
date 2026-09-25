@@ -28,7 +28,12 @@ inline. The only external request is Google Fonts.
 | `/general-contractor-insurance` | General contractor |
 | `/counterparty-compliance` | Counterparty compliance |
 | `/pages` | Index of the set, with the campaign notes |
+| `/thank-you` | Confirmation, qualified lead, fires the primary conversion |
+| `/thank-you-received` | Confirmation, below the revenue floor, fires the secondary conversion |
 | `/wireframe.html` | The source review document |
+
+Both confirmation pages are identical to the visitor. The only difference
+is the URL, which is what lets Google Ads count the two apart.
 
 `/` and `/general-contractor-insurance` are two copies of the same page.
 They differ only in the depth of the `assets/` path. **Edit the one in
