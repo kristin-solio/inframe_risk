@@ -306,13 +306,23 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 }
 
 /* ---------- 02 the two-day renewal ---------- */
-.punch{list-style:none;margin:clamp(1.75rem,4vw,2.5rem) 0 0;padding:0;display:grid;gap:0;max-width:40rem}
-.punch li{
-  padding:1.125rem 0;border-top:1px solid var(--slate-04);
-  font-size:var(--t-subline);line-height:1.18;font-weight:600;letter-spacing:-.02em;
+.list-label{
+  margin:clamp(1.75rem,4vw,2.5rem) 0 0;
+  font-size:var(--t-legal);font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--steel-02);
 }
-.punch li:last-child{border-bottom:1px solid var(--slate-04)}
-.why{margin-top:1.75rem;color:var(--steel-02);max-width:62ch}
+.broker-list{list-style:none;margin:1rem 0 0;padding:0;counter-reset:bl;max-width:52ch}
+.broker-list li{
+  position:relative;padding:.8125rem 0 .8125rem 2.375rem;
+  border-top:1px solid var(--slate-04);
+  font-size:var(--t-body);line-height:1.5;
+}
+.broker-list li:last-child{border-bottom:1px solid var(--slate-04)}
+.broker-list li::before{
+  counter-increment:bl;content:counter(bl,decimal-leading-zero);
+  position:absolute;left:0;top:.9375rem;
+  font-size:var(--t-legal);font-weight:700;letter-spacing:.14em;color:var(--amber-05);
+}
 .kicker-line{
   margin-top:clamp(1.75rem,3.5vw,2.5rem);
   font-size:var(--t-subline);line-height:1.18;font-weight:600;letter-spacing:-.02em;
@@ -549,12 +559,17 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
     <span class="rule-amber"></span>
     <p class="eyebrow">The two-day policy renewal</p>
     <h2>An ultimatum, not a renewal.</h2>
-    <ul class="punch">
-      <li>You are not making a decision. You are initialling a number somebody else made for you.</li>
-      <li>Nobody can tell you why it went up, because nobody took it anywhere else.</li>
-      <li>And you will never find out what you could have had, because there was never anything to compare it to.</li>
-    </ul>
-    <p class="copy why">This is not the market and it is not bad luck. It is a calendar. A file that does not reach a carrier until 20 days out arrives too late to be shopped, too late to be argued with, and too late to check against the contracts you have already signed. By the time it reaches you, the only move left is your signature.</p>
+
+    <h3 class="list-label">How a typical broker handles your renewal</h3>
+    <ol class="broker-list">
+      <li>Sits on your file until about 20 days out.</li>
+      <li>Goes back to your current carrier, and nobody else.</li>
+      <li>Sends one number, two days before your policy expires.</li>
+      <li>Cannot tell you what changed, or why it went up.</li>
+      <li>Never checks the new policy against the contracts you have signed.</li>
+      <li>Calls you the same week next year and does it again.</li>
+    </ol>
+
     <p class="kicker-line">You are not bad at this. You were handed two days.</p>
 
     <blockquote class="pull">
