@@ -202,30 +202,37 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 /* the timeline inside the clock */
 .tl{position:relative;margin-top:1.75rem;display:flex;flex-direction:column}
 .tl-stage{
-  flex:1 1 0;min-height:58px;display:flex;align-items:center;gap:.75rem;
-  padding-left:1.75rem;position:relative;
+  flex:1 1 0;display:flex;flex-direction:column;gap:.1875rem;
+  padding:0 0 1.5rem 1.75rem;position:relative;
 }
+.tl-stage:last-child{padding-bottom:0}
 .tl-stage::before{                       /* the rail */
   content:"";position:absolute;left:5px;top:0;bottom:0;width:2px;background:var(--steel-01);
 }
-.tl-stage:first-child::before{top:50%}
-.tl-stage:last-child::before{bottom:50%}
+.tl-stage:first-child::before{top:.5rem}
+.tl-stage:last-child::before{bottom:auto;height:.5rem}
 .tl-dot{
-  position:absolute;left:0;top:50%;transform:translateY(-50%);
+  position:absolute;left:0;top:.25rem;
   width:12px;height:12px;border-radius:50%;background:var(--steel-02);
   border:2px solid var(--white);box-shadow:0 0 0 2px var(--steel-02);
 }
+.tl-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem .625rem}
 .tl-label{font-size:var(--t-legal);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-03);white-space:nowrap}
-.tl-date{font-size:var(--t-body);color:var(--slate-04);font-weight:400}
+.tl-date{font-size:var(--t-body);color:var(--slate-04);font-weight:400;white-space:nowrap}
+.tl-what{font-size:var(--t-body);font-weight:600;line-height:1.35;color:var(--slate-05);margin-top:.1875rem}
+.tl-you{font-size:var(--t-legal);line-height:1.5;color:var(--slate-03)}
 .tl-stage.is-past .tl-label,.tl-stage.is-past .tl-date{color:var(--steel);text-decoration:line-through;text-decoration-thickness:1px}
+.tl-stage.is-past .tl-what{color:var(--steel)}
+.tl-stage.is-past .tl-you{color:var(--steel)}
 .tl-stage.is-past .tl-dot{background:var(--steel-01);box-shadow:0 0 0 2px var(--steel-01)}
-.tl-stage.is-now .tl-dot{background:var(--amber-05);box-shadow:0 0 0 3px var(--amber-03);width:14px;height:14px}
+.tl-stage.is-now .tl-dot{background:var(--amber-05);box-shadow:0 0 0 3px var(--amber-03);width:14px;height:14px;left:-1px;top:.1875rem}
 .tl-stage.is-now .tl-label{color:var(--slate-05)}
 .tl-stage.is-now .tl-date{color:var(--slate-05);font-weight:700}
+.tl-stage.is-now .tl-you{color:var(--slate-04)}
 
 .tl-today{
   position:absolute;z-index:2;pointer-events:none;
-  top:var(--tlpos,0%);left:0;right:0;height:0;
+  top:var(--tlpx,0);left:0;right:0;height:0;
   border-top:2px dashed var(--slate-05);
 }
 .tl-today span{
@@ -236,20 +243,21 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 }
 
 @media (min-width:760px){
-  .tl{flex-direction:row;padding-top:2.25rem;padding-bottom:.25rem}
+  .tl{flex-direction:row;padding-top:2.25rem;padding-bottom:.25rem;gap:0}
   .tl-stage{
-    flex-direction:column;align-items:flex-start;gap:.25rem;
-    padding-left:0;padding-top:1.5rem;min-height:0;text-align:left;
+    flex-direction:column;align-items:flex-start;gap:.1875rem;
+    padding:1.5rem .5rem 0;text-align:left;
   }
+  .tl-stage:last-child{padding-bottom:0}
   .tl-stage::before{left:0;right:0;top:5px;bottom:auto;width:auto;height:2px}
   .tl-stage:first-child::before{top:5px;left:50%}
-  .tl-stage:last-child::before{top:5px;right:50%;left:0}
+  .tl-stage:last-child::before{top:5px;right:50%;left:0;height:2px}
   .tl-dot{left:50%;top:0;transform:translateX(-50%)}
-  .tl-stage.is-now .tl-dot{transform:translateX(-50%)}
-  .tl-label,.tl-date{width:100%;text-align:center}
+  .tl-stage.is-now .tl-dot{left:50%;top:-1px;transform:translateX(-50%)}
+  .tl-head{flex-direction:column;gap:.125rem}
   .tl-today{
     /* stop the marker at the rail so it does not strike through the labels */
-    top:0;bottom:auto;height:3.6rem;left:var(--tlpos,0%);right:auto;
+    top:0;bottom:auto;height:3.9rem;left:var(--tlpx,0);right:auto;
     width:0;border-top:0;border-left:2px dashed var(--slate-05);
   }
   .tl-today span{right:auto;left:50%;top:-1.6rem;transform:translateX(-50%)}
@@ -501,7 +509,7 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
       <li><span class="n">02</span><span>Certificates have to go out Monday, so nothing can wait.</span></li>
       <li><span class="n">03</span><span>You sign whatever is on the table.</span></li>
     </ol>
-    <p class="copy why">Here is why it happens: some brokers do not send the application to market until about 20 days out. Numbers that arrive that late cannot be shopped, cannot be negotiated, and cannot be checked against the contracts you have already signed.</p>
+    <p class="copy why">Here is why it happens: some brokers do not put your application in front of carriers until about 20 days out. Numbers that arrive that late cannot be shopped, cannot be negotiated, and cannot be checked against the contracts you have already signed.</p>
 
     <blockquote class="pull">
       <p>&ldquo;Placeholder pull quote on the two-day renewal, to be supplied and approved before this page goes live.&rdquo;</p>
@@ -530,13 +538,13 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
       <details class="stage" data-offset="120">
         <summary>
           <span class="day">120 days</span>
-          <span class="ttl">Build the exposure base</span>
+          <span class="ttl">Your broker gathers your numbers</span>
           <span class="yourdate" data-yourdate hidden></span>
         </summary>
         <div class="stage-body">
           <dl class="lines">
             <dt>Your broker should be</dt>
-            <dd>Building your exposure base: general liability rated on gross receipts or payroll, workers&rsquo; comp on payroll by class code, and current property and auto schedules. On larger accounts, running a pre-loss audit so nothing surfaces for the first time in front of an underwriter.</dd>
+            <dd>Pulling together the numbers a carrier prices you on: general liability rated on your gross receipts or payroll, workers&rsquo; comp on payroll by trade, and current equipment, property and vehicle lists. On larger accounts, going through your claims history first, so nothing turns up for the first time in front of a carrier.</dd>
             <dt>You hand over</dt>
             <dd>Revenue and payroll projections, your property and auto schedules, and a list of active contracts.</dd>
             <dt class="flag">Red flag</dt>
@@ -549,17 +557,17 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
       <details class="stage" data-offset="90">
         <summary>
           <span class="day">90 days</span>
-          <span class="ttl">Submission goes to market</span>
+          <span class="ttl">Your file goes out to carriers</span>
           <span class="yourdate" data-yourdate hidden></span>
         </summary>
         <div class="stage-body">
           <dl class="lines">
             <dt>Your broker should be</dt>
-            <dd>Sending your submission to market, built to answer an underwriter&rsquo;s questions before they are asked, rather than a bare application that invites them.</dd>
+            <dd>Putting your file in front of insurance carriers and collecting bids. A file built so a carrier can price you without coming back with questions, not a bare application that invites them.</dd>
             <dt>You hand over</dt>
-            <dd>Your sign-off on the submission. Read it. It is how the market sees your business.</dd>
+            <dd>Your sign-off on what goes out. Read it. It is how a carrier sees your business.</dd>
             <dt class="flag">Red flag</dt>
-            <dd class="flagtext">You cannot get a list of the markets your account went to.</dd>
+            <dd class="flagtext">You cannot get a list of the carriers your file went to.</dd>
           </dl>
         </div>
       </details>
@@ -568,17 +576,17 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
       <details class="stage" data-offset="60">
         <summary>
           <span class="day">60 days</span>
-          <span class="ttl">Follow up with every market</span>
+          <span class="ttl">Every carrier gets chased</span>
           <span class="yourdate" data-yourdate hidden></span>
         </summary>
         <div class="stage-body">
           <dl class="lines">
             <dt>Your broker should be</dt>
-            <dd>Following up with every viable market, not just the incumbent, and chasing the ones that have gone quiet.</dd>
+            <dd>Following up with every carrier that could write you, not just the one you are with now, and chasing the ones that have gone quiet.</dd>
             <dt>You hand over</dt>
-            <dd>Fast answers to underwriter questions. A question sitting in an inbox for a week is a market you lose.</dd>
+            <dd>Fast answers to carrier questions. One left sitting in an inbox for a week is a bid you lose.</dd>
             <dt class="flag">Red flag</dt>
-            <dd class="flagtext">No status update since the submission went out.</dd>
+            <dd class="flagtext">No status update since your file went out.</dd>
           </dl>
         </div>
       </details>
@@ -587,17 +595,17 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
       <details class="stage" data-offset="30">
         <summary>
           <span class="day">30 days</span>
-          <span class="ttl">Quotes in, compared, negotiated</span>
+          <span class="ttl">Bids come in and get negotiated</span>
           <span class="yourdate" data-yourdate hidden></span>
         </summary>
         <div class="stage-body">
           <dl class="lines">
             <dt>Your broker should be</dt>
-            <dd>Collecting final quotes, comparing them line by line against the expiring program, and negotiating.</dd>
+            <dd>Collecting the final bids, comparing them line by line against the policy you have now, and negotiating: the coverage first, then the price. The goal is the right cover at a fair number, not the cheapest paper on the table.</dd>
             <dt>You hand over</dt>
             <dd>Nothing yet. This one is on your broker.</dd>
             <dt class="flag">Red flag</dt>
-            <dd class="flagtext">Still no quotes.</dd>
+            <dd class="flagtext">Still no bids.</dd>
           </dl>
         </div>
       </details>
@@ -606,13 +614,13 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
       <details class="stage" data-offset="20">
         <summary>
           <span class="day">15 to 20 days</span>
-          <span class="ttl">The proposal lands</span>
+          <span class="ttl">Your options arrive in writing</span>
           <span class="yourdate" data-yourdate hidden></span>
         </summary>
         <div class="stage-body">
           <dl class="lines">
             <dt>Your broker should be</dt>
-            <dd>Delivering the proposal with enough time left for questions and changes, and walking you through what moved and why.</dd>
+            <dd>Walking you through your options in writing, with enough time left to ask questions and change things, and showing what moved since last year and why.</dd>
             <dt>You hand over</dt>
             <dd>Your attention for an hour. Run the proposal check below before you agree to anything.</dd>
             <dt class="flag">Red flag</dt>
@@ -625,17 +633,17 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
       <details class="stage" data-offset="10">
         <summary>
           <span class="day">10 days</span>
-          <span class="ttl">Bind, and get ready for day one</span>
+          <span class="ttl">Coverage gets locked in</span>
           <span class="yourdate" data-yourdate hidden></span>
         </summary>
         <div class="stage-body">
           <dl class="lines">
             <dt>Your broker should be</dt>
-            <dd>Binding coverage and getting certificates, additional insured endorsements and waivers ready to issue the morning the new term starts.</dd>
+            <dd>Locking in the coverage and getting your certificates, additional insured endorsements and waivers ready to go out the morning the new policy starts.</dd>
             <dt>You hand over</dt>
             <dd>The go-ahead, and your certificate holder list so nothing has to be rebuilt from scratch.</dd>
             <dt class="flag">Red flag</dt>
-            <dd class="flagtext">You are still waiting on a binder, or the first certificate request of the new term cannot be filled.</dd>
+            <dd class="flagtext">Nothing is locked in yet, or the first certificate request of the new policy year cannot be filled.</dd>
           </dl>
         </div>
       </details>
@@ -752,30 +760,47 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
   /* The six stages, in days before the renewal date. The fifth stage is
      a 15-to-20-day window; we anchor its date at 20, the start of it. */
   var STAGES = [
-    { offset:120, label:"120 days", short:"Exposure base",
-      status:"Your broker should be building your exposure base",
-      ics:"Renewal day 120 - exposure base",
-      icsNote:"Your broker builds the exposure base: GL on receipts or payroll, workers' comp payroll by class, property and auto schedules. You hand over revenue and payroll projections, schedules, and a list of active contracts." },
-    { offset:90, label:"90 days", short:"To market",
-      status:"Your submission should be going to market",
-      ics:"Renewal day 90 - submission goes to market",
-      icsNote:"The submission goes to market, built to answer underwriter questions before they are asked. You sign off on it. Red flag: you cannot get a list of the markets your account went to." },
-    { offset:60, label:"60 days", short:"Market follow-up",
-      status:"Your broker should be following up with every market",
-      ics:"Renewal day 60 - follow up with every market",
-      icsNote:"Your broker follows up with every viable market. You answer underwriter questions fast. Red flag: no status update since the submission went out." },
-    { offset:30, label:"30 days", short:"Quotes in",
-      status:"Final quotes should be in and under negotiation",
-      ics:"Renewal day 30 - quotes collected and negotiated",
-      icsNote:"Final quotes are collected, compared against expiring, and negotiated. Red flag: still no quotes." },
-    { offset:20, label:"15 to 20 days", short:"Proposal",
-      status:"Your proposal should be in your hands, with time to question it",
-      ics:"Renewal day 15 to 20 - proposal delivered",
-      icsNote:"The proposal is delivered with time for questions and changes. Run the proposal check. Red flag: the proposal arrives inside two weeks of expiration." },
-    { offset:10, label:"10 days", short:"Bind",
-      status:"Coverage should be bound and certificates ready to issue",
-      ics:"Renewal day 10 - bind and prepare certificates",
-      icsNote:"Coverage is bound and certificates and endorsements are ready to issue on day one. You send the certificate holder list. Red flag: still no binder." }
+    { offset:120, label:"120 days",
+      status:"your broker should be pulling together your numbers, so carriers price you on the work you actually do",
+      what:"Your broker gathers your numbers.",
+      you:"You: send revenue and payroll projections, your equipment and vehicle lists, and the contracts you have signed.",
+      ics:"Renewal day 120 - your broker gathers your numbers",
+      icsNote:"Your broker pulls together the numbers carriers price you on: revenue, payroll by trade, equipment, vehicles and property. On larger accounts they check your loss history first, so nothing surprises a carrier later. You send revenue and payroll projections, your schedules, and a list of active contracts." },
+
+    { offset:90, label:"90 days",
+      status:"your broker should be putting your file in front of insurance carriers and collecting bids",
+      what:"Your file goes out to carriers.",
+      you:"You: read what is being sent out and approve it. It is how carriers see your business.",
+      ics:"Renewal day 90 - your file goes out to carriers for bids",
+      icsNote:"Your broker sends your file to insurance carriers and starts collecting bids, with your numbers presented so a carrier can price you without guessing. You read it and approve it before it goes. Ask which carriers it went to, and keep the list." },
+
+    { offset:60, label:"60 days",
+      status:"your broker should be chasing every carrier for an answer",
+      what:"Every carrier gets chased.",
+      you:"You: answer carrier questions the same day. A question left sitting is a bid you lose.",
+      ics:"Renewal day 60 - chase every carrier for an answer",
+      icsNote:"Your broker follows up with every carrier, not just the one you are with now, and chases the ones that have gone quiet. You answer their questions fast. If you have had no update since your file went out, ask for one." },
+
+    { offset:30, label:"30 days",
+      status:"bids should be in hand, and your broker should be negotiating coverage and price",
+      what:"Bids come in and get negotiated.",
+      you:"You: nothing yet. This one is on your broker.",
+      ics:"Renewal day 30 - bids in, compared and negotiated",
+      icsNote:"Bids are in. Your broker lines them up against what you have now, line by line, and negotiates: the coverage first, then the price. Cheapest is not the goal. The right cover at a fair number is. If there are still no bids at 30 days, that is a problem." },
+
+    { offset:20, label:"15 to 20 days",
+      status:"you should have your options in writing, with time left to ask questions and change things",
+      what:"Your options arrive in writing.",
+      you:"You: sit down with it for an hour and run the proposal check further down this page.",
+      ics:"Renewal day 15 to 20 - your options arrive in writing",
+      icsNote:"Your broker walks you through the options in writing: what each carrier will cover, what it costs, and what has changed since last year. There is still time to ask questions and change things. If this lands inside two weeks of expiration, you have lost that time." },
+
+    { offset:10, label:"10 days",
+      status:"your coverage should be locked in, with certificates ready for day one",
+      what:"Coverage gets locked in.",
+      you:"You: give the go-ahead and send your certificate holder list.",
+      ics:"Renewal day 10 - coverage locked in, certificates ready",
+      icsNote:"Your broker locks in the coverage and gets your certificates and endorsements ready to go out the morning the new policy starts. You send the list of everyone who needs a certificate. If a GC asks for one on day one and you cannot produce it, crews stop at the gate." }
   ];
 
   var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -850,10 +875,14 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 
   /* ---------- rendering ---------- */
   function timingPhrase(gap, date){
-    if (gap <= 0) return "now";
+    if (gap <= 0) return "right now";
     if (gap <= 7)  return "this week";
     if (gap <= 14) return "in the next two weeks";
     return "by " + fmt(date);
+  }
+
+  function escHtml(t){
+    return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
   }
 
   function renderTimeline(){
@@ -865,23 +894,69 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
       var cls = "tl-stage";
       if (daysOut < STAGES[i].offset) cls += " is-past";
       if (i === act) cls += " is-now";
+      /* the 15-to-20 stage is a window, so show both ends of it */
+      var when = (STAGES[i].offset === 20)
+        ? fmtShort(date) + " \u2013 " + fmtShort(minus(renewal, 15))
+        : fmtShort(date);
       html += '<div class="' + cls + '">' +
                 '<span class="tl-dot" aria-hidden="true"></span>' +
-                '<span class="tl-label">' + STAGES[i].label + '</span>' +
-                '<span class="tl-date">' + fmtShort(date) + '</span>' +
+                '<span class="tl-head">' +
+                  '<span class="tl-label">' + STAGES[i].label + '</span>' +
+                  '<span class="tl-date">' + when + '</span>' +
+                '</span>' +
+                '<span class="tl-what">' + escHtml(STAGES[i].what) + '</span>' +
+                '<span class="tl-you">' + escHtml(STAGES[i].you) + '</span>' +
               '</div>';
     }
-    /* today marker: node centres sit at (i + 0.5)/n of the track */
-    var p = todayFraction(daysOut);
-    var pos = ((p * (n - 1) + 0.5) / n) * 100;
-    /* further out than day 120, sit the marker just before the first node
-       rather than on top of it */
-    if (daysOut > STAGES[0].offset) pos = 2;
-    html += '<div class="tl-today" style="--tlpos:' + pos.toFixed(2) + '%"><span>Today</span></div>';
+    html += '<div class="tl-today"><span>Today</span></div>';
 
     timeline.innerHTML = html;
     timeline.hidden = false;
+    placeToday();
   }
+
+  /* The stages are different heights now that each carries a description,
+     so the today marker is measured off the rendered dots rather than
+     assumed to sit on an evenly divided track. */
+  function placeToday(){
+    if (daysOut === null || timeline.hidden) return;
+    var marker = timeline.querySelector(".tl-today");
+    var nodes = timeline.querySelectorAll(".tl-stage");
+    if (!marker || nodes.length < 2) return;
+
+    var horiz = window.innerWidth >= 760;
+    var box = timeline.getBoundingClientRect();
+    var centre = function (stage){
+      var r = stage.querySelector(".tl-dot").getBoundingClientRect();
+      return horiz ? (r.left + r.width / 2 - box.left)
+                   : (r.top + r.height / 2 - box.top);
+    };
+
+    var pos;
+    if (daysOut > STAGES[0].offset){
+      /* earlier than day 120: sit just before the first stage */
+      pos = Math.max(0, centre(nodes[0]) - (horiz ? 26 : 18));
+    } else if (horiz){
+      /* on the rail there is open space, so place it proportionally */
+      var idx = todayFraction(daysOut) * (nodes.length - 1);
+      var i = Math.min(Math.floor(idx), nodes.length - 2);
+      var a = centre(nodes[i]), b = centre(nodes[i + 1]);
+      pos = a + (b - a) * (idx - i);
+    } else {
+      /* stacked, a proportional line would cut through a stage's own copy.
+         Sit it in the gap above the stage you are working toward: what is
+         above the line is done, what is below is ahead of you. */
+      var top = nodes[activeIndex(daysOut)].getBoundingClientRect().top - box.top;
+      pos = Math.max(0, top - 12);
+    }
+    marker.style.setProperty("--tlpx", Math.round(pos) + "px");
+  }
+
+  var placeTimer;
+  window.addEventListener("resize", function (){
+    clearTimeout(placeTimer);
+    placeTimer = setTimeout(placeToday, 120);
+  });
 
   function renderStatus(){
     var act = activeIndex(daysOut);
@@ -896,10 +971,10 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
       body = "That is early, which is the good kind of problem. Nothing has to happen yet. Here is the whole cycle so you know what to expect.";
       sub = "Your 120-day mark is " + fmt(minus(renewal, 120)) + ".";
     } else if (daysOut >= 120){
-      body = stage.status + " " + timingPhrase(gap, stageDate) + ".";
+      body = "Next up, " + timingPhrase(gap, stageDate) + ": " + stage.status + ".";
       sub = "You are ahead of the curve. Most contractors are not.";
     } else {
-      body = stage.status + " " + timingPhrase(gap, stageDate) + ".";
+      body = "Next up, " + timingPhrase(gap, stageDate) + ": " + stage.status + ".";
       if (act > 0){
         sub = "Everything before day " + STAGES[act - 1].offset + " should already be done.";
       }
