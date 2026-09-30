@@ -415,6 +415,29 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 .formfallback .copy{color:var(--slate-04)}
 .formfallback a{color:var(--slate-05);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .formfallback .small{margin-top:1rem;color:var(--slate-03)}
+
+/* stand-in form, preview frames only */
+.fp-note{
+  font-size:var(--t-legal);line-height:1.5;color:var(--slate-03);
+  border-left:3px solid var(--amber-05);padding-left:.75rem;margin-bottom:1.25rem;
+}
+.fp-note code{font-size:.95em;background:var(--steel-01);padding:.05rem .25rem;border-radius:2px}
+.fp-grid{display:grid;grid-template-columns:1fr 1fr;gap:.875rem}
+.fp-grid .fp-wide{grid-column:1 / -1}
+@media (max-width:479px){ .fp-grid{grid-template-columns:1fr} .fp-grid .fp-wide{grid-column:auto} }
+.formpreview .field label{
+  display:block;margin-bottom:.375rem;
+  font-size:var(--t-legal);font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--slate-03);
+}
+.formpreview input,.formpreview select{
+  width:100%;font-family:inherit;font-size:var(--t-body);color:var(--slate-03);
+  background:var(--white);border:1px solid var(--steel-02);border-radius:2px;
+  padding:.75rem .8125rem;line-height:1.4;min-height:48px;
+}
+.formpreview .btn{margin-top:1.25rem;opacity:.85;cursor:default}
+.fp-hidden{margin-top:1rem;font-size:var(--t-legal);line-height:1.6;color:var(--slate-03)}
+.fp-hidden b{color:var(--slate-05)}
 .cta-copy h2{max-width:20ch}
 .cta-copy .copy{margin-top:1.5rem;color:var(--steel-02);max-width:52ch}
 .cta-pair{margin-top:clamp(2rem,4vw,2.5rem)}
@@ -764,6 +787,29 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
         <!-- Shown only if the embed does not render: an ad blocker, a
              Fillout outage, or a preview frame whose policy blocks their
              script. A visitor should never meet an empty box. -->
+        <!-- A stand-in for the live Fillout form, shown ONLY inside a preview
+             frame that blocks their script, so the section can be reviewed.
+             Fields mirror the subcontractor set in
+             integration/fillout-build-spec.md. Inputs are disabled: this
+             never submits, and a real visitor never sees it. -->
+        <div class="formpreview" id="formPreview" hidden aria-hidden="true">
+          <p class="fp-note">Stand-in for the live Fillout form (id <code>fkqNiqeJmsus</code>), the same one on the paid landing pages. Their script is blocked in this preview frame, so it is drawn here from the build spec. Not interactive.</p>
+          <div class="fp-grid">
+            <div class="field"><label>Company name <span aria-hidden="true">*</span></label><input type="text" disabled></div>
+            <div class="field"><label>Full name <span aria-hidden="true">*</span></label><input type="text" disabled></div>
+            <div class="field"><label>Work email <span aria-hidden="true">*</span></label><input type="email" disabled></div>
+            <div class="field"><label>Phone <span aria-hidden="true">*</span></label><input type="tel" disabled></div>
+            <div class="field fp-wide"><label>Trade <span aria-hidden="true">*</span></label>
+              <select disabled><option>Electrical</option><option>HVAC &amp; Mechanical</option><option>Plumbing</option><option>Concrete &amp; Masonry</option><option>Drywall</option><option>Painting</option><option>Flooring</option></select></div>
+            <div class="field fp-wide"><label>Annual revenue <span aria-hidden="true">*</span></label>
+              <select disabled><option>Under $5M</option><option>$5M to $15M</option><option>$15M to $50M</option><option>Over $50M</option></select></div>
+            <div class="field fp-wide"><label>Month your policies renew</label>
+              <select disabled><option>January</option><option>February</option><option>Not sure</option></select></div>
+          </div>
+          <span class="btn btn--block" aria-hidden="true">Request my renewal audit</span>
+          <p class="fp-hidden" id="fpHidden"></p>
+        </div>
+
         <div class="formfallback" id="formFallback" hidden>
           <p class="eyebrow" style="margin-bottom:.75rem">Request a free renewal audit</p>
           <p class="copy">Our form is not loading in this browser. Call <a href="tel:+18668111207">(866) 811-1207</a> with your renewal date and we will take it from there.</p>
@@ -1330,14 +1376,30 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
   var fallback = document.getElementById("formFallback");
   setTimeout(function (){
     if (!embed || !fallback) return;
-    if (embed.childElementCount === 0){
-      embed.hidden = true;
-      fallback.hidden = false;
-      if (renewal){
-        var fd = document.getElementById("fallbackDate");
-        fd.textContent = "Your renewal date: " + fmt(renewal) + ".";
-        fd.hidden = false;
-      }
+    if (embed.childElementCount !== 0) return;
+    embed.hidden = true;
+
+    /* Inside a preview frame the script is blocked by policy, not broken,
+       so show the stand-in. Anywhere else the form is genuinely down and a
+       visitor needs a way to reach us. */
+    var inPreview = !!(window.claude && typeof window.claude.use === "function");
+    if (inPreview){
+      var prev = document.getElementById("formPreview");
+      prev.hidden = false;
+      var params = ["page=renewal"];
+      if (renewal) params.push("renewal_date=" + toISO(renewal));
+      document.getElementById("fpHidden").innerHTML =
+        "Carried onto the submission by <b>data-fillout-inherit-parameters</b>: " +
+        params.map(function (x){ return "<b>" + escHtml(x) + "</b>"; }).join(", ") +
+        (renewal ? "" : " (use the clock above to add the renewal date)") + ".";
+      return;
+    }
+
+    fallback.hidden = false;
+    if (renewal){
+      var fd = document.getElementById("fallbackDate");
+      fd.textContent = "Your renewal date: " + fmt(renewal) + ".";
+      fd.hidden = false;
     }
   }, 2500);
 
