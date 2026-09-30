@@ -155,7 +155,41 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
    ============================================================ */
 
 /* ---------- 01 hero + clock ---------- */
-.hero{background:var(--slate-05);color:var(--white);padding-block:clamp(2.75rem,7vw,5.5rem)}
+.hero{position:relative;background:var(--slate-05);color:var(--white);overflow:hidden}
+.hero__inner{position:relative;padding-block:clamp(2.75rem,7vw,5.5rem)}
+.hero__img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:68% center;
+}
+/* Navy scrim, same treatment and the same Slate 05 as the landing page
+   heroes, tuned heavier here because the renewal clock sits over it. */
+.hero__scrim{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    100deg,
+    rgba(34,47,62,.97) 0%,
+    rgba(34,47,62,.95) 44%,
+    rgba(34,47,62,.86) 64%,
+    rgba(34,47,62,.62) 84%,
+    rgba(34,47,62,.48) 100%);
+}
+@media (max-width:1024px){
+  /* the clock card takes the full width here, so fade down the page rather
+     than across it and let the artwork breathe below it */
+  .hero__scrim{
+    background:linear-gradient(
+      168deg,
+      rgba(34,47,62,.96) 0%,
+      rgba(34,47,62,.95) 62%,
+      rgba(34,47,62,.88) 78%,
+      rgba(34,47,62,.6) 93%,
+      rgba(34,47,62,.5) 100%);
+  }
+}
+@media (max-width:700px){
+  .hero__scrim{background:rgba(34,47,62,.88)}
+  .hero__img{object-position:42% center}
+}
 .hero h1{max-width:20ch}
 .hero h1 .hl{color:var(--amber-05)}
 .band--dark h2 .hl{color:var(--amber-05)}
@@ -534,6 +568,14 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
      01 HERO + RENEWAL CLOCK
      ============================================================ -->
 <section class="hero">
+  <!-- PLACEHOLDER ARTWORK. Swap in the trade photo (an electrician on a
+       residential job, or similar) as ../assets/inframe-hero-trade.webp and
+       change the src below. Shoot or licence it dark and let the subject sit
+       right of centre: the scrim below is heaviest on the left, where the
+       headline and the renewal clock sit. Update the alt text with it. -->
+  <img class="hero__img" src="../assets/inframe-hero-city.webp" alt="Aerial wireframe view of a city, with a tower crane over a building under construction">
+  <div class="hero__scrim"></div>
+  <div class="hero__inner">
   <div class="shell">
     <p class="eyebrow">Insurance renewal planner</p>
     <h1>Your insurance renewal should start <span class="hl">120 days out.</span></h1>
@@ -604,6 +646,7 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
         </div>
       </div>
     </div>
+  </div>
   </div>
 </section>
 
