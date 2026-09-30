@@ -125,7 +125,14 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 .skip:focus{left:0}
 
 /* ---------- masthead ---------- */
-.masthead{background:var(--slate-05);padding-block:1.5rem}
+/* Lifted out of the flow so the hero artwork runs to the top of the page
+   and the bar sits on it. Its own gradient guarantees the logo and phone
+   number stay legible whatever photo goes in behind them. */
+.masthead{
+  position:absolute;top:0;left:0;right:0;z-index:5;
+  padding-block:1.5rem;
+  background:linear-gradient(to bottom,rgba(34,47,62,.8) 0%,rgba(34,47,62,.45) 55%,rgba(34,47,62,0) 100%);
+}
 .masthead .shell{display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .masthead .logo-link{display:inline-flex;line-height:0}
 .masthead img{height:clamp(24px,2.4vw,34px);width:auto;display:block}
@@ -156,7 +163,12 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 
 /* ---------- 01 hero + clock ---------- */
 .hero{position:relative;background:var(--slate-05);color:var(--white);overflow:hidden}
-.hero__inner{position:relative;padding-block:clamp(2.75rem,7vw,5.5rem)}
+.hero__inner{
+  position:relative;
+  /* room for the bar now sitting over the top of this section */
+  padding-top:calc(clamp(2.75rem,7vw,5.5rem) + 4.75rem);
+  padding-bottom:clamp(2.75rem,7vw,5.5rem);
+}
 .hero__img{
   position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;object-position:68% center;
