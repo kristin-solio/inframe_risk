@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="theme-color" content="#222F3E">
-<title>The Renewal Hub &middot; InFrame Risk</title>
-<meta name="description" content="Your insurance renewal should start 120 days out. Set your renewal date and see where yours should be right now.">
+<title>Insurance Renewal Planner &middot; InFrame Risk</title>
+<meta name="description" content="Your insurance policy renewal should start 120 days out. Put in your renewal date and see which of the six stages yours should be at right now.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -167,6 +167,7 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
   margin-top:clamp(2rem,4vw,2.75rem);
   max-width:760px;
 }
+.clockcard__head{margin-bottom:1.25rem;max-width:22ch}
 .clockcard .field label{
   display:block;margin-bottom:.4375rem;
   font-size:var(--t-legal);font-weight:600;letter-spacing:.12em;
@@ -421,11 +422,12 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
      ============================================================ -->
 <section class="hero">
   <div class="shell">
-    <p class="eyebrow">The Renewal Hub</p>
-    <h1>Your renewal should start <span class="hl">120 days out.</span> Here&rsquo;s where yours should be right now.</h1>
-    <p class="lede">If the quote shows up two days before the policy expires, there is nothing left to do but sign it. Put in your renewal date and see what should already have happened.</p>
+    <p class="eyebrow">Insurance renewal planner</p>
+    <h1>Your insurance renewal should start <span class="hl">120 days out.</span></h1>
+    <p class="lede">The quote that lands two days before your policy expires is the one you have no choice but to sign.</p>
 
     <div class="clockcard">
+      <h2 class="clockcard__head">Here&rsquo;s where yours should be right now.</h2>
       <form id="clockForm" novalidate>
         <div class="clock-row">
           <div class="field">
@@ -469,6 +471,8 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
           <button class="btn btn--secondary" type="button" id="icsBtn">Add these dates to my calendar</button>
         </div>
 
+        <p class="ok" id="icsNote" hidden role="status"></p>
+
         <div class="reminder" id="reminderForm" hidden>
           <p class="small" style="color:var(--slate-03)"><strong>One email at each of the six stages.</strong> Nothing else, and no sales sequence.</p>
           <form id="remindForm" novalidate>
@@ -491,7 +495,7 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 <section class="band band--dark">
   <div class="shell">
     <span class="rule-amber"></span>
-    <h2>The two-day renewal.</h2>
+    <h2>The two-day policy renewal.</h2>
     <ol class="punch">
       <li><span class="n">01</span><span>The quote lands two days before your policy expires.</span></li>
       <li><span class="n">02</span><span>Certificates have to go out Monday, so nothing can wait.</span></li>
@@ -700,11 +704,11 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
   <div class="shell">
     <div class="cta-copy">
       <span class="rule-amber"></span>
-      <h2>Start the next one 120 days out.</h2>
-      <p class="copy">Tell us your renewal date and what you are carrying now. We will tell you what we would do with the next 120 days, before you are down to two.</p>
+      <h2>Start your next policy renewal 120 days out.</h2>
+      <p class="copy">Tell us when your policy renews and what you are carrying now. We will tell you what we would do with the next 120 days, before you are down to two.</p>
       <div class="cta-pair">
         <div class="row">
-          <a class="btn" href="#main">Set my renewal clock</a>
+          <a class="btn" href="#main">Check my renewal timeline</a>
           <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
         </div>
         <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
@@ -793,6 +797,7 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
   var reminder   = document.getElementById("reminderForm");
   var remindForm = document.getElementById("remindForm");
   var remindOk   = document.getElementById("remindOk");
+  var icsNote    = document.getElementById("icsNote");
   var stageHint  = document.getElementById("stageDateHint");
 
   var renewal = null;   /* Date, local midnight */
@@ -926,7 +931,7 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
         "Run this list, then start next year's clock today.";
     }
 
-    statusLine.innerHTML = "<b>Your renewal is " + fmt(renewal) + ".</b>" +
+    statusLine.innerHTML = "<b>Your policy renews " + fmt(renewal) + ".</b>" +
       "The 120-day mark for this cycle was " + fmt(minus(renewal, 120)) + ".";
 
     nextYearBtn.hidden = false;
@@ -966,6 +971,7 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
     icsBtn.hidden = false;
     reminder.hidden = true;
     remindOk.hidden = true;
+    icsNote.hidden = true;
     remindOk.classList.remove("is-err");
     remindForm.querySelector("button").disabled = false;
 
@@ -1126,11 +1132,25 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 
   icsBtn.addEventListener("click", function (){
     if (!renewal) return;
+    var name = "inframe-renewal-timeline-" + toISO(renewal) + ".ics";
+
+    /* Sandboxed preview frames (the claude.ai artifact viewer) drop blob
+       downloads, and .ics is not a file type they will hand over. Say so
+       rather than letting the button do nothing. Served from Render, or
+       opened straight off disk, window.claude does not exist and this
+       branch never runs. */
+    if (window.claude && typeof window.claude.use === "function"){
+      icsNote.textContent = "Calendar files cannot be saved from this preview frame. " +
+        "On the live page this button downloads " + name + " with all six stage dates.";
+      icsNote.hidden = false;
+      return;
+    }
+
     var blob = new Blob([buildICS()], { type:"text/calendar;charset=utf-8" });
     var url = URL.createObjectURL(blob);
     var a = document.createElement("a");
     a.href = url;
-    a.download = "inframe-renewal-timeline-" + toISO(renewal) + ".ics";
+    a.download = name;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
