@@ -27,6 +27,7 @@ inline. The only external request is Google Fonts.
 | `/contractor-insurance` | Subcontractor |
 | `/general-contractor-insurance` | General contractor |
 | `/counterparty-compliance` | Counterparty compliance |
+| `/renewal` | Renewal Hub, the subcontractor webinar follow-up |
 | `/pages` | Index of the set, with the campaign notes |
 | `/thank-you` | Confirmation, qualified lead, fires the primary conversion |
 | `/thank-you-received` | Confirmation, below the revenue floor, fires the secondary conversion |

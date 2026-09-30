@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="theme-color" content="#222F3E">
+<title>The Renewal Hub &middot; InFrame Risk</title>
+<meta name="description" content="Your insurance renewal should start 120 days out. Set your renewal date and see where yours should be right now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   InFrame Risk · Renewal Hub
+   Same brand system as the paid search landing pages: palette,
+   five-role type scale, band layout, masthead and footer are
+   copied from public/index.html so this page sits in the set.
+   Everything below the "renewal hub only" rule is new.
+   ============================================================ */
+:root{
+  --slate-05:#222F3E;
+  --slate-04:#37485A;
+  --slate-03:#526477;
+  --steel:#8394A5;
+  --steel-02:#C9CFE1;
+  --steel-01:#E1E5F0;
+  --slate-01:#F4F6FB;
+  --amber-05:#EFB921;
+  --amber-04:#F5CA52;
+  --amber-03:#FDDC80;
+  --amber-02:#FAE4A9;
+  --amber-01:#FFF3D2;
+  --white:#FFFFFF;
+  --red:#B3352B;
+
+  --t-headline:clamp(2.125rem,1.4rem + 3.1vw,4rem);       /* 34 -> 64 */
+  --t-subline:clamp(1.625rem,1.3rem + 1.4vw,2.25rem);     /* 26 -> 36 */
+  --t-body:1rem;
+  --t-button:1rem;
+  --t-legal:.75rem;
+
+  --gutter:clamp(1.25rem,5vw,3.5rem);
+  --band:clamp(3rem,8vw,7rem);
+  --maxw:1160px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+/* .btn, .tl and .reminder all set display, which outranks the UA rule
+   for [hidden]. Without this, hiding them from JS does nothing. */
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  overflow-x:hidden;               /* nothing bleeds past 375px */
+  background:var(--slate-01);
+  color:var(--slate-05);
+  font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:var(--t-body);
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+
+/* ---------- shared layout ---------- */
+.shell{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+.band{padding-block:var(--band)}
+.band--light{background:var(--slate-01);color:var(--slate-05)}
+.band--white{background:var(--white);color:var(--slate-05)}
+.band--dark{background:var(--slate-05);color:var(--white)}
+.band--steel{background:var(--steel-02);color:var(--slate-05)}
+.band--amber{background:var(--amber-02);color:var(--slate-05)}
+.band--tight{padding-block:clamp(2rem,4vw,3rem)}
+.band--dots{
+  background-color:var(--steel-01);color:var(--slate-05);
+  background-image:radial-gradient(circle,rgba(82,100,119,.30) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+
+/* ---------- type ---------- */
+h1,h2,h3{font-weight:600;letter-spacing:-.02em;margin:0}
+h1{font-size:var(--t-headline);line-height:1.06}
+h2{font-size:var(--t-subline);line-height:1.15}
+h3{font-size:var(--t-body);line-height:1.35;letter-spacing:0}
+p{margin:0}
+.eyebrow{
+  font-size:var(--t-legal);font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--slate-03);margin:0 0 1.25rem;
+}
+.band--dark .eyebrow{color:var(--amber-05)}
+.lede{font-size:var(--t-body);line-height:1.6;font-weight:400}
+.copy{font-size:var(--t-body);line-height:1.65}
+.small{font-size:var(--t-legal);line-height:1.6}
+.measure-p{max-width:64ch}
+.rule-amber{display:block;width:34px;height:3px;background:var(--amber-05);border:0;margin:0 0 1.125rem}
+
+/* ---------- button ---------- */
+.btn{
+  display:inline-block;
+  background:var(--amber-05);color:var(--slate-05);
+  font-family:inherit;font-size:var(--t-button);font-weight:700;line-height:1.2;
+  letter-spacing:.005em;
+  padding:1.0625rem 1.75rem;
+  border:0;border-radius:2px;
+  text-decoration:none;cursor:pointer;text-align:center;
+  transition:background .15s ease;
+}
+.btn:hover{background:var(--amber-04)}
+.btn:active{background:var(--amber-03)}
+.btn--secondary{background:var(--slate-05);color:var(--white)}
+.btn--secondary:hover{background:var(--slate-04)}
+.band--dark .btn--secondary,.hero .btn--secondary{background:var(--slate-03)}
+.band--dark .btn--secondary:hover,.hero .btn--secondary:hover{background:var(--slate-04)}
+.btn--block{display:block;width:100%}
+
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
+summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);outline-offset:3px}
+
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--amber-05);color:var(--slate-05);
+  font-weight:700;font-size:var(--t-legal);padding:.75rem 1.25rem;
+}
+.skip:focus{left:0}
+
+/* ---------- masthead ---------- */
+.masthead{background:var(--slate-05);padding-block:1.5rem}
+.masthead .shell{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.masthead .logo-link{display:inline-flex;line-height:0}
+.masthead img{height:clamp(24px,2.4vw,34px);width:auto;display:block}
+.masthead .ph{
+  color:var(--steel-02);font-size:var(--t-legal);font-weight:600;
+  letter-spacing:.06em;text-decoration:none;white-space:nowrap;
+}
+.masthead .ph:hover{color:var(--white)}
+
+/* ---------- footer ---------- */
+.foot{background:var(--slate-05);color:var(--steel-02);padding-block:clamp(2.5rem,5vw,3.5rem)}
+.foot .logo-link{display:inline-flex;line-height:0}
+.foot img{height:24px;width:auto;display:block}
+.foot p{font-size:var(--t-legal);line-height:1.9}
+.foot a{color:var(--steel-02)}
+.foot .sep{color:var(--steel);padding:0 .35rem}
+.foot__top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.25rem;margin-bottom:1.5rem}
+.foot__nav{display:flex;flex-wrap:wrap;gap:1.5rem 2rem;font-size:var(--t-legal)}
+.foot__nav a{text-decoration:none;border-bottom:1px solid transparent}
+.foot__nav a:hover{border-bottom-color:var(--steel-02)}
+.foot__id{margin-bottom:1.75rem}
+.foot__legal p + p{margin-top:.9rem}
+.foot__copy{margin-top:1.75rem}
+
+/* ============================================================
+   RENEWAL HUB ONLY
+   ============================================================ */
+
+/* ---------- 01 hero + clock ---------- */
+.hero{background:var(--slate-05);color:var(--white);padding-block:clamp(2.75rem,7vw,5.5rem)}
+.hero h1{max-width:20ch}
+.hero h1 .hl{color:var(--amber-05)}
+.hero .eyebrow{color:var(--amber-05)}
+.hero .lede{color:var(--steel-02);max-width:54ch;margin-top:1.375rem}
+
+.clockcard{
+  background:var(--white);color:var(--slate-05);border-radius:2px;
+  padding:clamp(1.25rem,3vw,2rem);
+  margin-top:clamp(2rem,4vw,2.75rem);
+  max-width:760px;
+}
+.clockcard .field label{
+  display:block;margin-bottom:.4375rem;
+  font-size:var(--t-legal);font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--slate-03);
+}
+.clockcard input[type="date"],.clockcard input[type="email"]{
+  width:100%;font-family:inherit;font-size:var(--t-body);font-weight:400;
+  color:var(--slate-05);background:var(--slate-01);
+  border:1px solid var(--steel-02);border-radius:2px;
+  padding:.8125rem .875rem;line-height:1.4;min-height:52px;
+}
+.clock-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:flex-end}
+.clock-row .field{flex:1 1 220px;margin:0;min-width:0}
+.clock-row .btn{flex:0 0 auto}
+@media (max-width:539px){ .clock-row .btn{width:100%} }
+.noform{margin-top:.875rem;color:var(--slate-03);font-size:var(--t-legal)}
+
+.err{
+  margin-top:1rem;padding:.875rem 1rem;border-left:3px solid var(--red);
+  background:var(--amber-01);color:var(--slate-05);font-size:var(--t-body);
+}
+
+/* result block */
+.result{margin-top:1.75rem;border-top:1px solid var(--steel-01);padding-top:1.75rem}
+.status{
+  font-size:var(--t-body);font-weight:600;line-height:1.45;
+  border-left:3px solid var(--amber-05);padding-left:.9375rem;
+}
+.status b{display:block;font-size:var(--t-subline);line-height:1.1;letter-spacing:-.02em;margin-bottom:.35rem}
+.status .sub{display:block;font-weight:400;color:var(--slate-04);margin-top:.4rem}
+
+/* the timeline inside the clock */
+.tl{position:relative;margin-top:1.75rem;display:flex;flex-direction:column}
+.tl-stage{
+  flex:1 1 0;min-height:58px;display:flex;align-items:center;gap:.75rem;
+  padding-left:1.75rem;position:relative;
+}
+.tl-stage::before{                       /* the rail */
+  content:"";position:absolute;left:5px;top:0;bottom:0;width:2px;background:var(--steel-01);
+}
+.tl-stage:first-child::before{top:50%}
+.tl-stage:last-child::before{bottom:50%}
+.tl-dot{
+  position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:12px;height:12px;border-radius:50%;background:var(--steel-02);
+  border:2px solid var(--white);box-shadow:0 0 0 2px var(--steel-02);
+}
+.tl-label{font-size:var(--t-legal);font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-03);white-space:nowrap}
+.tl-date{font-size:var(--t-body);color:var(--slate-04);font-weight:400}
+.tl-stage.is-past .tl-label,.tl-stage.is-past .tl-date{color:var(--steel);text-decoration:line-through;text-decoration-thickness:1px}
+.tl-stage.is-past .tl-dot{background:var(--steel-01);box-shadow:0 0 0 2px var(--steel-01)}
+.tl-stage.is-now .tl-dot{background:var(--amber-05);box-shadow:0 0 0 3px var(--amber-03);width:14px;height:14px}
+.tl-stage.is-now .tl-label{color:var(--slate-05)}
+.tl-stage.is-now .tl-date{color:var(--slate-05);font-weight:700}
+
+.tl-today{
+  position:absolute;z-index:2;pointer-events:none;
+  top:var(--tlpos,0%);left:0;right:0;height:0;
+  border-top:2px dashed var(--slate-05);
+}
+.tl-today span{
+  position:absolute;right:0;top:-.72em;
+  background:var(--slate-05);color:var(--white);
+  font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:.18rem .45rem;border-radius:2px;line-height:1.4;
+}
+
+@media (min-width:760px){
+  .tl{flex-direction:row;padding-top:2.25rem;padding-bottom:.25rem}
+  .tl-stage{
+    flex-direction:column;align-items:flex-start;gap:.25rem;
+    padding-left:0;padding-top:1.5rem;min-height:0;text-align:left;
+  }
+  .tl-stage::before{left:0;right:0;top:5px;bottom:auto;width:auto;height:2px}
+  .tl-stage:first-child::before{top:5px;left:50%}
+  .tl-stage:last-child::before{top:5px;right:50%;left:0}
+  .tl-dot{left:50%;top:0;transform:translateX(-50%)}
+  .tl-stage.is-now .tl-dot{transform:translateX(-50%)}
+  .tl-label,.tl-date{width:100%;text-align:center}
+  .tl-today{
+    /* stop the marker at the rail so it does not strike through the labels */
+    top:0;bottom:auto;height:3.6rem;left:var(--tlpos,0%);right:auto;
+    width:0;border-top:0;border-left:2px dashed var(--slate-05);
+  }
+  .tl-today span{right:auto;left:50%;top:-1.6rem;transform:translateX(-50%)}
+}
+
+/* the two actions under the result */
+.actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.75rem}
+.actions .btn{flex:1 1 240px}
+
+.reminder{margin-top:1.25rem;background:var(--slate-01);padding:1.125rem;border-radius:2px}
+.reminder .row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:.75rem}
+.reminder .row input{flex:1 1 220px;min-width:0}
+.reminder .row .btn{flex:0 0 auto}
+@media (max-width:539px){ .reminder .row .btn{width:100%} }
+.ok{
+  margin-top:.875rem;padding:.75rem .9375rem;border-left:3px solid var(--amber-05);
+  background:var(--amber-01);font-size:var(--t-body);font-weight:600;
+}
+.ok.is-err{border-left-color:var(--red)}
+
+/* late-renewal mode */
+.late{margin-top:1.5rem}
+.late h3{font-size:var(--t-subline);line-height:1.15;letter-spacing:-.02em;margin-bottom:.75rem}
+.late .urgency{
+  display:inline-block;margin-bottom:.875rem;
+  background:var(--red);color:var(--white);
+  font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  padding:.25rem .5rem;border-radius:2px;
+}
+.checklist{margin:1.25rem 0 0;padding:0;list-style:none}
+.checklist li{
+  position:relative;padding:.6875rem 0 .6875rem 1.75rem;
+  border-top:1px solid var(--steel-01);font-size:var(--t-body);line-height:1.5;color:var(--slate-04);
+}
+.checklist li:last-child{border-bottom:1px solid var(--steel-01)}
+.checklist li::before{
+  content:"";position:absolute;left:.25rem;top:1rem;
+  width:6px;height:11px;border-right:2px solid var(--amber-05);border-bottom:2px solid var(--amber-05);
+  transform:rotate(45deg);
+}
+
+/* ---------- 02 the two-day renewal ---------- */
+.punch{list-style:none;margin:clamp(1.75rem,4vw,2.5rem) 0 0;padding:0;display:grid;gap:0}
+.punch li{
+  display:flex;gap:1rem;align-items:baseline;
+  padding:1.125rem 0;border-top:1px solid var(--slate-04);
+  font-size:var(--t-subline);line-height:1.2;font-weight:600;letter-spacing:-.02em;
+}
+.punch li:last-child{border-bottom:1px solid var(--slate-04)}
+.punch .n{
+  flex:0 0 auto;font-size:var(--t-legal);font-weight:700;letter-spacing:.16em;
+  color:var(--amber-05);line-height:1.8;
+}
+.why{margin-top:1.75rem;color:var(--steel-02);max-width:62ch}
+
+.pull{
+  margin:clamp(2rem,4vw,3rem) 0 0;padding:1.5rem 0 0;border-top:3px solid var(--amber-05);
+  max-width:56ch;
+}
+.pull p{font-size:var(--t-subline);line-height:1.2;font-weight:600;letter-spacing:-.02em}
+.pull cite{display:block;margin-top:1.125rem;font-style:normal;font-size:var(--t-legal);font-weight:600;letter-spacing:.06em;color:var(--steel-02)}
+.pending{
+  display:inline-block;margin-left:.5rem;vertical-align:middle;
+  background:var(--amber-05);color:var(--slate-05);
+  font-size:10px;font-weight:700;letter-spacing:.14em;padding:.2rem .45rem;border-radius:2px;
+}
+
+.video{
+  margin-top:clamp(2rem,4vw,3rem);max-width:760px;
+  background:var(--slate-04);border:1px solid var(--slate-03);border-radius:2px;
+  aspect-ratio:16/9;width:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.875rem;
+  text-align:center;padding:1rem;
+}
+.video .play{
+  width:clamp(52px,9vw,68px);height:clamp(52px,9vw,68px);border-radius:50%;
+  background:var(--amber-05);display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+}
+.video .play svg{width:40%;height:40%;margin-left:12%}
+.video .cap{font-size:var(--t-legal);font-weight:600;letter-spacing:.06em;color:var(--steel-02);max-width:44ch}
+
+/* ---------- 03 the 120-day timeline ---------- */
+.stages{margin-top:clamp(2rem,4vw,3rem)}
+.stage{background:var(--white);border:1px solid var(--steel-01);border-radius:2px;margin-bottom:.625rem}
+.stage summary{
+  list-style:none;cursor:pointer;padding:1.125rem 3rem 1.125rem 1.125rem;position:relative;
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem .875rem;
+}
+.stage summary::-webkit-details-marker{display:none}
+.stage summary::after{
+  content:"";position:absolute;right:1.25rem;top:1.55rem;
+  width:10px;height:10px;border-right:2px solid var(--slate-03);border-bottom:2px solid var(--slate-03);
+  transform:rotate(45deg);transition:transform .18s ease;
+}
+.stage[open] summary::after{transform:rotate(-135deg);top:1.8rem}
+.stage summary:hover{background:var(--slate-01)}
+.stage .day{
+  font-size:var(--t-legal);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--slate-05);background:var(--amber-02);padding:.25rem .5rem;border-radius:2px;white-space:nowrap;
+}
+.stage .ttl{font-size:var(--t-body);font-weight:600;line-height:1.35;flex:1 1 200px;min-width:0}
+.stage .yourdate{
+  font-size:var(--t-legal);font-weight:700;letter-spacing:.06em;color:var(--slate-03);
+  white-space:nowrap;width:100%;
+}
+.stage-body{padding:0 1.125rem 1.25rem;border-top:1px solid var(--steel-01);margin-top:-1px}
+.lines{margin:0;padding:0}
+.lines dt{
+  font-size:var(--t-legal);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--slate-03);margin-top:1.125rem;
+}
+.lines dd{margin:.3125rem 0 0;font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
+.lines .flag{color:var(--red)}
+.lines dd.flagtext{color:var(--slate-05);font-weight:600}
+
+/* ---------- 04 proposal check ---------- */
+.pcheck{margin-top:clamp(2rem,4vw,2.75rem);max-width:820px}
+.pcheck-item{
+  display:flex;gap:.875rem;align-items:flex-start;
+  padding:1rem .25rem;border-top:1px solid var(--steel-02);cursor:pointer;
+}
+.pcheck-item:last-of-type{border-bottom:1px solid var(--steel-02)}
+.pcheck-item input{
+  flex:0 0 auto;width:22px;height:22px;margin:.1rem 0 0;accent-color:var(--amber-05);cursor:pointer;
+}
+.pcheck-item span{font-size:var(--t-body);line-height:1.55;color:var(--slate-04)}
+.pcheck-item input:checked + span{color:var(--slate-05)}
+.pcheck-score{
+  margin-top:1.5rem;padding:1.125rem 1.25rem;background:var(--white);
+  border-left:3px solid var(--amber-05);font-size:var(--t-body);line-height:1.5;
+}
+.pcheck-score b{display:block;font-size:var(--t-subline);line-height:1.1;letter-spacing:-.02em;margin-bottom:.35rem}
+
+/* ---------- 05 contract match ---------- */
+.matchgrid{display:grid;gap:clamp(1rem,2vw,1.5rem);grid-template-columns:1fr;margin-top:clamp(2rem,4vw,3rem)}
+@media (min-width:680px){ .matchgrid{grid-template-columns:1fr 1fr} }
+.matchcard{background:var(--steel-01);border:1px solid var(--steel-02);border-radius:2px;padding:clamp(1.25rem,2.4vw,1.75rem)}
+.matchcard h3{margin-bottom:.625rem}
+.matchcard p{font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
+
+/* ---------- 06 cta ---------- */
+.cta-copy h2{max-width:20ch}
+.cta-copy .copy{margin-top:1.5rem;color:var(--steel-02);max-width:52ch}
+.cta-pair{margin-top:clamp(2rem,4vw,2.5rem)}
+.cta-pair .row{display:flex;flex-wrap:wrap;gap:.875rem}
+.cta-phone{margin-top:1rem;font-size:var(--t-body);color:var(--steel-02)}
+.cta-phone a{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.trustline{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="shell">
+    <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
+    <a class="ph" href="tel:+18668111207">(866) 811-1207</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================
+     01 HERO + RENEWAL CLOCK
+     ============================================================ -->
+<section class="hero">
+  <div class="shell">
+    <p class="eyebrow">The Renewal Hub</p>
+    <h1>Your renewal should start <span class="hl">120 days out.</span> Here&rsquo;s where yours should be right now.</h1>
+    <p class="lede">If the quote shows up two days before the policy expires, there is nothing left to do but sign it. Put in your renewal date and see what should already have happened.</p>
+
+    <div class="clockcard">
+      <form id="clockForm" novalidate>
+        <div class="clock-row">
+          <div class="field">
+            <label for="renewalDate">When does your policy renew?</label>
+            <input type="date" id="renewalDate" name="renewalDate" autocomplete="off" required>
+          </div>
+          <button class="btn" type="submit">Show my timeline</button>
+        </div>
+        <p class="noform">No email required. Nothing is sent anywhere.</p>
+      </form>
+
+      <p class="err" id="clockError" hidden role="alert"></p>
+
+      <!-- result: on-time mode -->
+      <div class="result" id="clockResult" hidden>
+        <p class="status" id="statusLine" role="status"></p>
+
+        <div class="tl" id="timeline" hidden aria-label="Your renewal timeline">
+          <!-- stage rows and the today marker are injected here -->
+        </div>
+
+        <!-- result: late mode (under 30 days) replaces the timeline -->
+        <div class="late" id="lateBlock" hidden>
+          <span class="urgency" id="lateBadge">This year&rsquo;s renewal is late</span>
+          <h3 id="lateHead"></h3>
+          <p class="copy" id="lateCopy"></p>
+          <p class="eyebrow" style="margin:1.5rem 0 0">Check before you sign</p>
+          <ul class="checklist">
+            <li>Every line on the expiring program appears on the new one, and anything dropped is named out loud.</li>
+            <li>The limits and deductibles are the same, or you know exactly which ones moved and why.</li>
+            <li>Additional insured, waiver of subrogation, and primary and non-contributory wording still match the contracts you have already signed.</li>
+            <li>No new exclusion has been added: residential, action-over, subsidence, prior work, EIFS.</li>
+            <li>Workers&rsquo; comp class codes and the rating basis match the work your crews actually do, so the audit is not a surprise bill.</li>
+            <li>Certificates and endorsements can be issued on day one of the new term.</li>
+          </ul>
+        </div>
+
+        <div class="actions" id="clockActions">
+          <button class="btn" type="button" id="nextYearBtn" hidden>Start next year&rsquo;s clock</button>
+          <button class="btn" type="button" id="remindBtn">Email me a reminder at each stage</button>
+          <button class="btn btn--secondary" type="button" id="icsBtn">Add these dates to my calendar</button>
+        </div>
+
+        <div class="reminder" id="reminderForm" hidden>
+          <p class="small" style="color:var(--slate-03)"><strong>One email at each of the six stages.</strong> Nothing else, and no sales sequence.</p>
+          <form id="remindForm" novalidate>
+            <div class="row">
+              <label class="sr-only" for="remindEmail" style="position:absolute;left:-9999px">Email address</label>
+              <input type="email" id="remindEmail" name="email" placeholder="you@company.com" autocomplete="email" required>
+              <button class="btn" type="submit">Set my reminders</button>
+            </div>
+          </form>
+          <p class="ok" id="remindOk" hidden role="status"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     02 THE TWO-DAY RENEWAL
+     ============================================================ -->
+<section class="band band--dark">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2>The two-day renewal.</h2>
+    <ol class="punch">
+      <li><span class="n">01</span><span>The quote lands two days before your policy expires.</span></li>
+      <li><span class="n">02</span><span>Certificates have to go out Monday, so nothing can wait.</span></li>
+      <li><span class="n">03</span><span>You sign whatever is on the table.</span></li>
+    </ol>
+    <p class="copy why">Here is why it happens: some brokers do not send the application to market until about 20 days out. Numbers that arrive that late cannot be shopped, cannot be negotiated, and cannot be checked against the contracts you have already signed.</p>
+
+    <blockquote class="pull">
+      <p>&ldquo;Placeholder pull quote on the two-day renewal, to be supplied and approved before this page goes live.&rdquo;</p>
+      <cite>Paul Saich, InFrame Risk <span class="pending">Pending approval</span></cite>
+    </blockquote>
+
+    <div class="video" role="img" aria-label="Video placeholder. Episode 1: Why your renewal quote shows up two days before expiration.">
+      <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="#222F3E"><path d="M6 3.5v17l15-8.5z"/></svg></span>
+      <span class="cap">Episode 1: Why your renewal quote shows up two days before expiration</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     03 THE 120-DAY TIMELINE
+     ============================================================ -->
+<section class="band band--dots" id="timeline-detail">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2>What should be happening, and when.</h2>
+    <p class="copy measure-p" style="margin-top:1.25rem">Six stages. Tap one to see what your broker should be doing, what you need to hand over, and the red flag that says it is going wrong.</p>
+    <p class="small" id="stageDateHint" style="margin-top:.75rem;color:var(--slate-03)" hidden></p>
+
+    <div class="stages" id="stageList">
+      <!-- 120 -->
+      <details class="stage" data-offset="120">
+        <summary>
+          <span class="day">120 days</span>
+          <span class="ttl">Build the exposure base</span>
+          <span class="yourdate" data-yourdate hidden></span>
+        </summary>
+        <div class="stage-body">
+          <dl class="lines">
+            <dt>Your broker should be</dt>
+            <dd>Building your exposure base: general liability rated on gross receipts or payroll, workers&rsquo; comp on payroll by class code, and current property and auto schedules. On larger accounts, running a pre-loss audit so nothing surfaces for the first time in front of an underwriter.</dd>
+            <dt>You hand over</dt>
+            <dd>Revenue and payroll projections, your property and auto schedules, and a list of active contracts.</dd>
+            <dt class="flag">Red flag</dt>
+            <dd class="flagtext">Nobody has asked for your numbers by day 100.</dd>
+          </dl>
+        </div>
+      </details>
+
+      <!-- 90 -->
+      <details class="stage" data-offset="90">
+        <summary>
+          <span class="day">90 days</span>
+          <span class="ttl">Submission goes to market</span>
+          <span class="yourdate" data-yourdate hidden></span>
+        </summary>
+        <div class="stage-body">
+          <dl class="lines">
+            <dt>Your broker should be</dt>
+            <dd>Sending your submission to market, built to answer an underwriter&rsquo;s questions before they are asked, rather than a bare application that invites them.</dd>
+            <dt>You hand over</dt>
+            <dd>Your sign-off on the submission. Read it. It is how the market sees your business.</dd>
+            <dt class="flag">Red flag</dt>
+            <dd class="flagtext">You cannot get a list of the markets your account went to.</dd>
+          </dl>
+        </div>
+      </details>
+
+      <!-- 60 -->
+      <details class="stage" data-offset="60">
+        <summary>
+          <span class="day">60 days</span>
+          <span class="ttl">Follow up with every market</span>
+          <span class="yourdate" data-yourdate hidden></span>
+        </summary>
+        <div class="stage-body">
+          <dl class="lines">
+            <dt>Your broker should be</dt>
+            <dd>Following up with every viable market, not just the incumbent, and chasing the ones that have gone quiet.</dd>
+            <dt>You hand over</dt>
+            <dd>Fast answers to underwriter questions. A question sitting in an inbox for a week is a market you lose.</dd>
+            <dt class="flag">Red flag</dt>
+            <dd class="flagtext">No status update since the submission went out.</dd>
+          </dl>
+        </div>
+      </details>
+
+      <!-- 30 -->
+      <details class="stage" data-offset="30">
+        <summary>
+          <span class="day">30 days</span>
+          <span class="ttl">Quotes in, compared, negotiated</span>
+          <span class="yourdate" data-yourdate hidden></span>
+        </summary>
+        <div class="stage-body">
+          <dl class="lines">
+            <dt>Your broker should be</dt>
+            <dd>Collecting final quotes, comparing them line by line against the expiring program, and negotiating.</dd>
+            <dt>You hand over</dt>
+            <dd>Nothing yet. This one is on your broker.</dd>
+            <dt class="flag">Red flag</dt>
+            <dd class="flagtext">Still no quotes.</dd>
+          </dl>
+        </div>
+      </details>
+
+      <!-- 20 -->
+      <details class="stage" data-offset="20">
+        <summary>
+          <span class="day">15 to 20 days</span>
+          <span class="ttl">The proposal lands</span>
+          <span class="yourdate" data-yourdate hidden></span>
+        </summary>
+        <div class="stage-body">
+          <dl class="lines">
+            <dt>Your broker should be</dt>
+            <dd>Delivering the proposal with enough time left for questions and changes, and walking you through what moved and why.</dd>
+            <dt>You hand over</dt>
+            <dd>Your attention for an hour. Run the proposal check below before you agree to anything.</dd>
+            <dt class="flag">Red flag</dt>
+            <dd class="flagtext">The proposal arrives inside two weeks of expiration, which leaves no time to question it, change it, or take it anywhere else.</dd>
+          </dl>
+        </div>
+      </details>
+
+      <!-- 10 -->
+      <details class="stage" data-offset="10">
+        <summary>
+          <span class="day">10 days</span>
+          <span class="ttl">Bind, and get ready for day one</span>
+          <span class="yourdate" data-yourdate hidden></span>
+        </summary>
+        <div class="stage-body">
+          <dl class="lines">
+            <dt>Your broker should be</dt>
+            <dd>Binding coverage and getting certificates, additional insured endorsements and waivers ready to issue the morning the new term starts.</dd>
+            <dt>You hand over</dt>
+            <dd>The go-ahead, and your certificate holder list so nothing has to be rebuilt from scratch.</dd>
+            <dt class="flag">Red flag</dt>
+            <dd class="flagtext">You are still waiting on a binder, or the first certificate request of the new term cannot be filled.</dd>
+          </dl>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     04 THE PROPOSAL CHECK
+     ============================================================ -->
+<section class="band band--light" id="proposal-check">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2>The proposal check.</h2>
+    <p class="copy measure-p" style="margin-top:1.25rem">Eight things to confirm before you sign a renewal proposal. Tick what you can answer. Anything you cannot is a question for your broker, and you want to be asking it at 20 days out, not two.</p>
+
+    <div class="pcheck" id="pcheck">
+      <label class="pcheck-item"><input type="checkbox"><span>Every line of coverage on the expiring program is quoted, and anything that was dropped is named.</span></label>
+      <label class="pcheck-item"><input type="checkbox"><span>Limits, deductibles and retentions are shown side by side with expiring, not just as new numbers.</span></label>
+      <label class="pcheck-item"><input type="checkbox"><span>Additional insured, waiver of subrogation and primary and non-contributory wording match what your signed contracts require.</span></label>
+      <label class="pcheck-item"><input type="checkbox"><span>The general liability exclusions are listed and you have read them: residential, EIFS, subsidence, action-over, prior work.</span></label>
+      <label class="pcheck-item"><input type="checkbox"><span>Workers&rsquo; comp class codes and rates match the work your crews actually do.</span></label>
+      <label class="pcheck-item"><input type="checkbox"><span>The rating basis, receipts or payroll, matches your own projection, so the year-end audit is not a surprise bill.</span></label>
+      <label class="pcheck-item"><input type="checkbox"><span>Every carrier is named with its AM Best rating, and you can see which markets declined and why.</span></label>
+      <label class="pcheck-item"><input type="checkbox"><span>Certificates and endorsements can be issued on day one of the new term.</span></label>
+    </div>
+
+    <p class="pcheck-score" id="pcheckScore" role="status"><b>0 of 8</b>Tick the ones you can answer today.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     05 THE CONTRACTS YOU ALREADY SIGNED
+     ============================================================ -->
+<section class="band band--white">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2>A renewal is not just a price. It is a promise you already made.</h2>
+    <p class="copy measure-p" style="margin-top:1.25rem">Every contract you signed this year has insurance requirements buried in it. When the policy changes at renewal and nobody checks it against those contracts, you are out of compliance on work that is already underway, and you will find out when somebody asks for a certificate you cannot produce.</p>
+
+    <div class="matchgrid">
+      <article class="matchcard">
+        <h3>Additional insured wording</h3>
+        <p>Your contract names a form and an edition date. A new carrier&rsquo;s standard endorsement may not be the one you promised.</p>
+      </article>
+      <article class="matchcard">
+        <h3>Limits that moved</h3>
+        <p>A contract that requires $2M per occurrence does not care that the quote came in cheaper at $1M.</p>
+      </article>
+      <article class="matchcard">
+        <h3>New exclusions</h3>
+        <p>An action-over or residential exclusion added at renewal can void the exact coverage a contract was written to secure.</p>
+      </article>
+      <article class="matchcard">
+        <h3>Certificates on day one</h3>
+        <p>General contractors pull certificates the week the term turns over. If yours is not ready, crews stop at the gate.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     06 CTA
+     ============================================================ -->
+<section class="band band--dark" id="talk">
+  <div class="shell">
+    <div class="cta-copy">
+      <span class="rule-amber"></span>
+      <h2>Start the next one 120 days out.</h2>
+      <p class="copy">Tell us your renewal date and what you are carrying now. We will tell you what we would do with the next 120 days, before you are down to two.</p>
+      <div class="cta-pair">
+        <div class="row">
+          <a class="btn" href="#main">Set my renewal clock</a>
+          <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+        </div>
+        <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+      </div>
+      <p class="trustline">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__top">
+      <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
+      <nav class="foot__nav" aria-label="Legal">
+        <a href="https://inframerisk.com/privacy">Privacy</a>
+        <a href="https://inframerisk.com/terms">Terms</a>
+        <a href="https://inframerisk.com">Licenses</a>
+      </nav>
+    </div>
+    <p class="foot__id">
+      InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states and DC<span class="sep">&middot;</span>NPN 22200284<span class="sep">&middot;</span>CA license: 6019212<span class="sep">&middot;</span><a href="tel:+18668111207">(866) 811-1207</a>
+    </p>
+    <div class="foot__legal">
+      <p>InFrame Insurance Services LLC (&ldquo;InFrame&rdquo;) is a licensed insurance agency and is licensed in all 50 states and the District of Columbia. InFrame is not an insurance company, does not underwrite insurance, and does not make coverage, claim, or underwriting determinations. All insurance coverage is subject to the terms, conditions, limitations, exclusions, and underwriting requirements of the applicable policy and insurer. The availability of any insurance product, quote, or coverage is not guaranteed.</p>
+      <p>The renewal timeline on this page is general guidance for planning purposes and does not constitute legal, tax, financial, or other professional advice. It does not guarantee that any quote, coverage, or renewal terms will be available on any schedule.</p>
+    </div>
+    <p class="foot__copy">&copy; 2026 InFrame Risk Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   Renewal Hub · behaviour
+   No dependencies. Everything runs from the six stage offsets.
+   ============================================================ */
+(function () {
+  "use strict";
+
+  /* The six stages, in days before the renewal date. The fifth stage is
+     a 15-to-20-day window; we anchor its date at 20, the start of it. */
+  var STAGES = [
+    { offset:120, label:"120 days", short:"Exposure base",
+      status:"Your broker should be building your exposure base",
+      ics:"Renewal day 120 - exposure base",
+      icsNote:"Your broker builds the exposure base: GL on receipts or payroll, workers' comp payroll by class, property and auto schedules. You hand over revenue and payroll projections, schedules, and a list of active contracts." },
+    { offset:90, label:"90 days", short:"To market",
+      status:"Your submission should be going to market",
+      ics:"Renewal day 90 - submission goes to market",
+      icsNote:"The submission goes to market, built to answer underwriter questions before they are asked. You sign off on it. Red flag: you cannot get a list of the markets your account went to." },
+    { offset:60, label:"60 days", short:"Market follow-up",
+      status:"Your broker should be following up with every market",
+      ics:"Renewal day 60 - follow up with every market",
+      icsNote:"Your broker follows up with every viable market. You answer underwriter questions fast. Red flag: no status update since the submission went out." },
+    { offset:30, label:"30 days", short:"Quotes in",
+      status:"Final quotes should be in and under negotiation",
+      ics:"Renewal day 30 - quotes collected and negotiated",
+      icsNote:"Final quotes are collected, compared against expiring, and negotiated. Red flag: still no quotes." },
+    { offset:20, label:"15 to 20 days", short:"Proposal",
+      status:"Your proposal should be in your hands, with time to question it",
+      ics:"Renewal day 15 to 20 - proposal delivered",
+      icsNote:"The proposal is delivered with time for questions and changes. Run the proposal check. Red flag: the proposal arrives inside two weeks of expiration." },
+    { offset:10, label:"10 days", short:"Bind",
+      status:"Coverage should be bound and certificates ready to issue",
+      ics:"Renewal day 10 - bind and prepare certificates",
+      icsNote:"Coverage is bound and certificates and endorsements are ready to issue on day one. You send the certificate holder list. Red flag: still no binder." }
+  ];
+
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var DAY = 86400000;
+
+  var form       = document.getElementById("clockForm");
+  var input      = document.getElementById("renewalDate");
+  var errBox     = document.getElementById("clockError");
+  var result     = document.getElementById("clockResult");
+  var statusLine = document.getElementById("statusLine");
+  var timeline   = document.getElementById("timeline");
+  var lateBlock  = document.getElementById("lateBlock");
+  var lateBadge  = document.getElementById("lateBadge");
+  var lateHead   = document.getElementById("lateHead");
+  var lateCopy   = document.getElementById("lateCopy");
+  var nextYearBtn= document.getElementById("nextYearBtn");
+  var remindBtn  = document.getElementById("remindBtn");
+  var icsBtn     = document.getElementById("icsBtn");
+  var reminder   = document.getElementById("reminderForm");
+  var remindForm = document.getElementById("remindForm");
+  var remindOk   = document.getElementById("remindOk");
+  var stageHint  = document.getElementById("stageDateHint");
+
+  var renewal = null;   /* Date, local midnight */
+  var daysOut = null;
+
+  /* ---------- date helpers (all local midnight, no UTC drift) ---------- */
+  function midnight(d){ return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+  function today(){ return midnight(new Date()); }
+  function parseInput(v){
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(v || "");
+    if (!m) return null;
+    var d = new Date(+m[1], +m[2] - 1, +m[3]);
+    if (d.getFullYear() !== +m[1] || d.getMonth() !== +m[2] - 1 || d.getDate() !== +m[3]) return null;
+    return d;
+  }
+  function minus(date, days){ return midnight(new Date(date.getTime() - days * DAY)); }
+  function diffDays(a, b){ return Math.round((a.getTime() - b.getTime()) / DAY); }
+  function fmt(d){ return MONTHS[d.getMonth()] + " " + d.getDate() + ", " + d.getFullYear(); }
+  function fmtShort(d){ return MONTHS[d.getMonth()] + " " + d.getDate(); }
+  function toISO(d){
+    var mo = String(d.getMonth() + 1).padStart(2, "0");
+    var dy = String(d.getDate()).padStart(2, "0");
+    return d.getFullYear() + "-" + mo + "-" + dy;
+  }
+
+  /* ---------- which stage is live ---------- */
+  /* The active stage is the next deadline you are still working toward:
+     the first offset at or below where you are today. Past 120 days out,
+     the 120-day stage is what is coming up next. */
+  function activeIndex(d){
+    if (d >= STAGES[0].offset) return 0;
+    for (var i = 0; i < STAGES.length; i++){ if (d >= STAGES[i].offset) return i; }
+    return STAGES.length - 1;
+  }
+
+  /* Where "today" sits on an evenly spaced six-node track, 0-1. */
+  function todayFraction(d){
+    var n = STAGES.length;
+    if (d >= STAGES[0].offset) return 0;
+    if (d <= STAGES[n - 1].offset) return 1;
+    for (var i = 0; i < n - 1; i++){
+      var hi = STAGES[i].offset, lo = STAGES[i + 1].offset;
+      if (d <= hi && d > lo){
+        var frac = (hi - d) / (hi - lo);
+        return (i + frac) / (n - 1);
+      }
+    }
+    return 1;
+  }
+
+  /* ---------- rendering ---------- */
+  function timingPhrase(gap, date){
+    if (gap <= 0) return "now";
+    if (gap <= 7)  return "this week";
+    if (gap <= 14) return "in the next two weeks";
+    return "by " + fmt(date);
+  }
+
+  function renderTimeline(){
+    var n = STAGES.length;
+    var act = activeIndex(daysOut);
+    var html = "";
+    for (var i = 0; i < n; i++){
+      var date = minus(renewal, STAGES[i].offset);
+      var cls = "tl-stage";
+      if (daysOut < STAGES[i].offset) cls += " is-past";
+      if (i === act) cls += " is-now";
+      html += '<div class="' + cls + '">' +
+                '<span class="tl-dot" aria-hidden="true"></span>' +
+                '<span class="tl-label">' + STAGES[i].label + '</span>' +
+                '<span class="tl-date">' + fmtShort(date) + '</span>' +
+              '</div>';
+    }
+    /* today marker: node centres sit at (i + 0.5)/n of the track */
+    var p = todayFraction(daysOut);
+    var pos = ((p * (n - 1) + 0.5) / n) * 100;
+    /* further out than day 120, sit the marker just before the first node
+       rather than on top of it */
+    if (daysOut > STAGES[0].offset) pos = 2;
+    html += '<div class="tl-today" style="--tlpos:' + pos.toFixed(2) + '%"><span>Today</span></div>';
+
+    timeline.innerHTML = html;
+    timeline.hidden = false;
+  }
+
+  function renderStatus(){
+    var act = activeIndex(daysOut);
+    var stage = STAGES[act];
+    var stageDate = minus(renewal, stage.offset);
+    var gap = daysOut - stage.offset;
+
+    var head = "You're " + daysOut + " day" + (daysOut === 1 ? "" : "s") + " out.";
+    var body, sub = "";
+
+    if (daysOut > 365){
+      body = "That is early, which is the good kind of problem. Nothing has to happen yet. Here is the whole cycle so you know what to expect.";
+      sub = "Your 120-day mark is " + fmt(minus(renewal, 120)) + ".";
+    } else if (daysOut >= 120){
+      body = stage.status + " " + timingPhrase(gap, stageDate) + ".";
+      sub = "You are ahead of the curve. Most contractors are not.";
+    } else {
+      body = stage.status + " " + timingPhrase(gap, stageDate) + ".";
+      if (act > 0){
+        sub = "Everything before day " + STAGES[act - 1].offset + " should already be done.";
+      }
+    }
+
+    statusLine.innerHTML = "<b>" + head + "</b>" + body +
+      (sub ? '<span class="sub">' + sub + "</span>" : "");
+  }
+
+  function renderLate(){
+    timeline.hidden = true;
+    timeline.innerHTML = "";
+    lateBlock.hidden = false;
+
+    var urgent = daysOut < 10;
+    lateBadge.textContent = urgent ? "Under 10 days" : "Under 30 days";
+    lateBadge.style.background = urgent ? "var(--red)" : "var(--slate-05)";
+
+    if (urgent){
+      lateHead.textContent = "You're " + daysOut + " day" + (daysOut === 1 ? "" : "s") +
+        " out. This year's renewal is already decided.";
+      lateCopy.textContent = "There is not enough runway left to take your account to market, " +
+        "so the job now is making sure what you sign does not leave a hole. Go through this before " +
+        "anything gets bound, and do not let a certificate deadline rush the answer.";
+    } else {
+      lateHead.textContent = "You're " + daysOut + " days out. This year's renewal is late.";
+      lateCopy.textContent = "Inside 30 days there is no time to shop the account properly, " +
+        "so this year is about not signing something that breaks a contract you have already got. " +
+        "Run this list, then start next year's clock today.";
+    }
+
+    statusLine.innerHTML = "<b>Your renewal is " + fmt(renewal) + ".</b>" +
+      "The 120-day mark for this cycle was " + fmt(minus(renewal, 120)) + ".";
+
+    nextYearBtn.hidden = false;
+    icsBtn.hidden = true;
+  }
+
+  function renderStageDates(){
+    var nodes = document.querySelectorAll("#stageList .stage");
+    for (var i = 0; i < nodes.length; i++){
+      var off = parseInt(nodes[i].getAttribute("data-offset"), 10);
+      var el = nodes[i].querySelector("[data-yourdate]");
+      if (!el) continue;
+      if (renewal){
+        var d = minus(renewal, off);
+        el.textContent = (off === 20 ? "Your window: " + fmtShort(minus(renewal, 20)) + " to " + fmt(minus(renewal, 15))
+                                     : "Your date: " + fmt(d));
+        el.hidden = false;
+      } else {
+        el.hidden = true;
+      }
+    }
+    if (renewal){
+      stageHint.textContent = "Dates below are yours, counted back from " + fmt(renewal) + ".";
+      stageHint.hidden = false;
+    }
+  }
+
+  /* ---------- submit ---------- */
+  function run(date){
+    renewal = date;
+    daysOut = diffDays(renewal, today());
+
+    errBox.hidden = true;
+    result.hidden = false;
+    lateBlock.hidden = true;
+    nextYearBtn.hidden = true;
+    icsBtn.hidden = false;
+    reminder.hidden = true;
+    remindOk.hidden = true;
+    remindOk.classList.remove("is-err");
+    remindForm.querySelector("button").disabled = false;
+
+    if (daysOut < 30){
+      renderLate();
+    } else {
+      renderStatus();
+      renderTimeline();
+    }
+    renderStageDates();
+  }
+
+  function fail(msg){
+    errBox.textContent = msg;
+    errBox.hidden = false;
+    result.hidden = true;
+    input.focus();
+  }
+
+  form.addEventListener("submit", function (e){
+    e.preventDefault();
+    var date = parseInput(input.value);
+    if (!date){ return fail("Pick the date your current policy expires."); }
+    var d = diffDays(date, today());
+    if (d < 0){
+      return fail("That date has already passed. Put in next year's renewal date and we will start the clock from there.");
+    }
+    run(date);
+  });
+
+  nextYearBtn.addEventListener("click", function (){
+    var next = new Date(renewal.getFullYear() + 1, renewal.getMonth(), renewal.getDate());
+    input.value = toISO(next);
+    run(next);
+    result.scrollIntoView({ block:"nearest" });
+  });
+
+  /* ---------- reminder form (mockup only) ---------- */
+  remindBtn.addEventListener("click", function (){
+    reminder.hidden = !reminder.hidden;
+    if (!reminder.hidden) document.getElementById("remindEmail").focus();
+  });
+
+  remindForm.addEventListener("submit", function (e){
+    e.preventDefault();
+    var email = document.getElementById("remindEmail").value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      remindOk.textContent = "That email does not look right. Check it and try again.";
+      remindOk.classList.add("is-err");
+      remindOk.hidden = false;
+      return;
+    }
+
+    /* =========================================================
+       ATTIO INTEGRATION GOES HERE.
+       This is a mockup: nothing is sent anywhere.
+
+       These pages are static files on Render with no server, so an
+       Attio API key cannot live in this JavaScript (view-source would
+       expose it). Post to the n8n webhook instead, the same middle
+       layer described in integration/README.md:
+
+           landing page  ->  n8n webhook  ->  Attio API
+
+       Replace the block below with:
+
+         fetch(FORM_ENDPOINT, {
+           method: "POST",
+           headers: { "Content-Type": "application/json" },
+           body: JSON.stringify({
+             email:          email,
+             renewal_date:   toISO(renewal),
+             days_out:       daysOut,
+             stage_dates:    STAGES.map(function (s) {
+                               return { offset: s.offset, date: toISO(minus(renewal, s.offset)) };
+                             }),
+             page:           "renewal",
+             source:         "renewal-hub-clock",
+             submitted_at:   new Date().toISOString()
+           })
+         });
+
+       On the Attio side this should create or match a Person on email,
+       write renewal_date onto the linked Company, and start the
+       six-step reminder sequence off the stage dates above.
+       ========================================================= */
+
+    remindOk.classList.remove("is-err");
+    remindOk.textContent = "Done. We'll email you at each of the six stages before " + fmt(renewal) + ".";
+    remindOk.hidden = false;
+    remindForm.querySelector("button").disabled = true;
+  });
+
+  /* ---------- .ics download ---------- */
+  function icsDate(d){
+    return d.getFullYear() +
+           String(d.getMonth() + 1).padStart(2, "0") +
+           String(d.getDate()).padStart(2, "0");
+  }
+  function esc(s){
+    return String(s).replace(/\\/g, "\\\\").replace(/;/g, "\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
+  }
+  function fold(line){
+    /* RFC 5545 asks for lines of 75 octets or fewer */
+    if (line.length <= 75) return line;
+    var out = line.slice(0, 75), rest = line.slice(75);
+    while (rest.length > 74){ out += "\r\n " + rest.slice(0, 74); rest = rest.slice(74); }
+    return out + "\r\n " + rest;
+  }
+
+  function buildICS(){
+    var stamp = new Date().toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+    var uidBase = "inframe-renewal-" + icsDate(renewal) + "-" + Math.random().toString(36).slice(2, 8);
+    var lines = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//InFrame Risk//Renewal Hub//EN",
+      "CALSCALE:GREGORIAN",
+      "METHOD:PUBLISH",
+      "X-WR-CALNAME:InFrame renewal timeline"
+    ];
+    STAGES.forEach(function (s, i){
+      var start = minus(renewal, s.offset);
+      var end = new Date(start.getTime() + DAY);   /* all-day events are exclusive of DTEND */
+      lines.push(
+        "BEGIN:VEVENT",
+        "UID:" + uidBase + "-" + s.offset + "@inframerisk.com",
+        "DTSTAMP:" + stamp,
+        "DTSTART;VALUE=DATE:" + icsDate(start),
+        "DTEND;VALUE=DATE:" + icsDate(end),
+        fold("SUMMARY:" + esc(s.ics)),
+        fold("DESCRIPTION:" + esc(s.icsNote + "\n\nPolicy renews " + fmt(renewal) + ". InFrame Risk, (866) 811-1207.")),
+        "CATEGORIES:Insurance renewal",
+        "TRANSP:TRANSPARENT",
+        "BEGIN:VALARM",
+        "TRIGGER:-P2D",
+        "ACTION:DISPLAY",
+        fold("DESCRIPTION:" + esc(s.ics)),
+        "END:VALARM",
+        "END:VEVENT"
+      );
+    });
+    /* the renewal itself, so the six stages have something to count to */
+    lines.push(
+      "BEGIN:VEVENT",
+      "UID:" + uidBase + "-renewal@inframerisk.com",
+      "DTSTAMP:" + stamp,
+      "DTSTART;VALUE=DATE:" + icsDate(renewal),
+      "DTEND;VALUE=DATE:" + icsDate(new Date(renewal.getTime() + DAY)),
+      "SUMMARY:Policy renewal date",
+      fold("DESCRIPTION:" + esc("Your policy renews today. Certificates for the new term should already be ready to issue.")),
+      "TRANSP:TRANSPARENT",
+      "END:VEVENT"
+    );
+    lines.push("END:VCALENDAR");
+    return lines.join("\r\n") + "\r\n";
+  }
+
+  icsBtn.addEventListener("click", function (){
+    if (!renewal) return;
+    var blob = new Blob([buildICS()], { type:"text/calendar;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "inframe-renewal-timeline-" + toISO(renewal) + ".ics";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function (){ URL.revokeObjectURL(url); }, 1000);
+  });
+
+  /* ---------- module 4: proposal check score ---------- */
+  var boxes = document.querySelectorAll("#pcheck input[type=checkbox]");
+  var score = document.getElementById("pcheckScore");
+  function updateScore(){
+    var n = 0;
+    for (var i = 0; i < boxes.length; i++){ if (boxes[i].checked) n++; }
+    var total = boxes.length;
+    var msg;
+    if (n === total)      msg = "That is a proposal you can actually evaluate. Sign it knowing what you bought.";
+    else if (n >= 6)      msg = "Close. The blanks are the questions to put to your broker this week.";
+    else if (n >= 3)      msg = "Half a proposal. Ask for the rest before anything gets bound.";
+    else if (n > 0)       msg = "There is not enough here to make a decision on. Ask for the comparison in writing.";
+    else                  msg = "Tick the ones you can answer today.";
+    score.innerHTML = "<b>" + n + " of " + total + "</b>" + msg;
+  }
+  for (var i = 0; i < boxes.length; i++){ boxes[i].addEventListener("change", updateScore); }
+
+  /* ---------- prefill the date field with a sensible minimum ---------- */
+  input.min = toISO(today());
+})();
+</script>
+
+</body>
+</html>
