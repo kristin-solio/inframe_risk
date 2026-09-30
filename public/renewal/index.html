@@ -405,6 +405,16 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 .matchcard p{font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
 
 /* ---------- 06 cta ---------- */
+.cta-grid{
+  display:grid;gap:clamp(2.5rem,5vw,4.5rem);
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  align-items:start;
+}
+.formwrap{background:var(--slate-01);border-radius:2px;padding:clamp(1.25rem,3vw,2.25rem);min-width:0}
+.fillout-embed{width:100%;min-height:500px}
+.formfallback .copy{color:var(--slate-04)}
+.formfallback a{color:var(--slate-05);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.formfallback .small{margin-top:1rem;color:var(--slate-03)}
 .cta-copy h2{max-width:20ch}
 .cta-copy .copy{margin-top:1.5rem;color:var(--steel-02);max-width:52ch}
 .cta-pair{margin-top:clamp(2rem,4vw,2.5rem)}
@@ -745,10 +755,20 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
              query string this page builds below rides along on the
              submission via data-fillout-inherit-parameters. -->
         <div class="fillout-embed"
+             id="filloutEmbed"
              data-fillout-id="fkqNiqeJmsus"
              data-fillout-embed-type="standard"
              data-fillout-inherit-parameters
              data-fillout-dynamic-resize></div>
+
+        <!-- Shown only if the embed does not render: an ad blocker, a
+             Fillout outage, or a preview frame whose policy blocks their
+             script. A visitor should never meet an empty box. -->
+        <div class="formfallback" id="formFallback" hidden>
+          <p class="eyebrow" style="margin-bottom:.75rem">Request a free renewal audit</p>
+          <p class="copy">Our form is not loading in this browser. Call <a href="tel:+18668111207">(866) 811-1207</a> with your renewal date and we will take it from there.</p>
+          <p class="small" id="fallbackDate" hidden></p>
+        </div>
       </div>
     </div>
   </div>
@@ -1303,6 +1323,23 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
     } catch (e) {}
   }
   tagUrl();
+
+  /* If Fillout has not drawn anything into the embed, show the fallback so
+     the section still converts. */
+  var embed = document.getElementById("filloutEmbed");
+  var fallback = document.getElementById("formFallback");
+  setTimeout(function (){
+    if (!embed || !fallback) return;
+    if (embed.childElementCount === 0){
+      embed.hidden = true;
+      fallback.hidden = false;
+      if (renewal){
+        var fd = document.getElementById("fallbackDate");
+        fd.textContent = "Your renewal date: " + fmt(renewal) + ".";
+        fd.hidden = false;
+      }
+    }
+  }, 2500);
 
   /* ---------- prefill the date field with a sensible minimum ---------- */
   input.min = toISO(today());
