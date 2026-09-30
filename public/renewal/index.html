@@ -279,6 +279,12 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 .ok.is-err{border-left-color:var(--red)}
 
 /* late-renewal mode */
+.auditline{
+  margin-top:1.25rem;font-size:var(--t-body);line-height:1.5;color:var(--slate-04);
+}
+.auditline a{color:var(--slate-05);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.auditline a:hover{color:var(--slate-03)}
+
 .late{margin-top:1.5rem}
 .late h3{font-size:var(--t-subline);line-height:1.15;letter-spacing:-.02em;margin-bottom:.75rem}
 .late .urgency{
@@ -300,18 +306,18 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 }
 
 /* ---------- 02 the two-day renewal ---------- */
-.punch{list-style:none;margin:clamp(1.75rem,4vw,2.5rem) 0 0;padding:0;display:grid;gap:0}
+.punch{list-style:none;margin:clamp(1.75rem,4vw,2.5rem) 0 0;padding:0;display:grid;gap:0;max-width:40rem}
 .punch li{
-  display:flex;gap:1rem;align-items:baseline;
   padding:1.125rem 0;border-top:1px solid var(--slate-04);
-  font-size:var(--t-subline);line-height:1.2;font-weight:600;letter-spacing:-.02em;
+  font-size:var(--t-subline);line-height:1.18;font-weight:600;letter-spacing:-.02em;
 }
 .punch li:last-child{border-bottom:1px solid var(--slate-04)}
-.punch .n{
-  flex:0 0 auto;font-size:var(--t-legal);font-weight:700;letter-spacing:.16em;
-  color:var(--amber-05);line-height:1.8;
-}
 .why{margin-top:1.75rem;color:var(--steel-02);max-width:62ch}
+.kicker-line{
+  margin-top:clamp(1.75rem,3.5vw,2.5rem);
+  font-size:var(--t-subline);line-height:1.18;font-weight:600;letter-spacing:-.02em;
+  color:var(--amber-05);max-width:24ch;
+}
 
 .pull{
   margin:clamp(2rem,4vw,3rem) 0 0;padding:1.5rem 0 0;border-top:3px solid var(--amber-05);
@@ -481,6 +487,11 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 
         <p class="ok" id="icsNote" hidden role="status"></p>
 
+        <p class="auditline" id="auditLine" hidden>
+          Want somebody to look at the policy itself?
+          <a href="#request">Request a free renewal audit</a>.
+        </p>
+
         <div class="reminder" id="reminderForm" hidden>
           <p class="small" style="color:var(--slate-03)"><strong>One email at each of the six stages.</strong> Nothing else, and no sales sequence.</p>
           <form id="remindForm" novalidate>
@@ -503,13 +514,15 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 <section class="band band--dark">
   <div class="shell">
     <span class="rule-amber"></span>
-    <h2>The two-day policy renewal.</h2>
-    <ol class="punch">
-      <li><span class="n">01</span><span>The quote lands two days before your policy expires.</span></li>
-      <li><span class="n">02</span><span>Certificates have to go out Monday, so nothing can wait.</span></li>
-      <li><span class="n">03</span><span>You sign whatever is on the table.</span></li>
-    </ol>
-    <p class="copy why">Here is why it happens: some brokers do not put your application in front of carriers until about 20 days out. Numbers that arrive that late cannot be shopped, cannot be negotiated, and cannot be checked against the contracts you have already signed.</p>
+    <p class="eyebrow">The two-day policy renewal</p>
+    <h2>An ultimatum, not a renewal.</h2>
+    <ul class="punch">
+      <li>You are not making a decision. You are initialling a number somebody else made for you.</li>
+      <li>Nobody can tell you why it went up, because nobody took it anywhere else.</li>
+      <li>And you will never find out what you could have had, because there was never anything to compare it to.</li>
+    </ul>
+    <p class="copy why">This is not the market and it is not bad luck. It is a calendar. A file that does not reach a carrier until 20 days out arrives too late to be shopped, too late to be argued with, and too late to check against the contracts you have already signed. By the time it reaches you, the only move left is your signature.</p>
+    <p class="kicker-line">You are not bad at this. You were handed two days.</p>
 
     <blockquote class="pull">
       <p>&ldquo;Placeholder pull quote on the two-day renewal, to be supplied and approved before this page goes live.&rdquo;</p>
@@ -672,6 +685,14 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
     </div>
 
     <p class="pcheck-score" id="pcheckScore" role="status"><b>0 of 8</b>Tick the ones you can answer today.</p>
+
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Request a free renewal audit</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+      </div>
+      <p class="cta-phone">We read the policy and the contracts behind it, and tell you what does not line up. No charge, no obligation.</p>
+    </div>
   </div>
 </section>
 
@@ -708,20 +729,27 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 <!-- ============================================================
      06 CTA
      ============================================================ -->
-<section class="band band--dark" id="talk">
+<section class="band band--dark" id="request">
   <div class="shell">
-    <div class="cta-copy">
-      <span class="rule-amber"></span>
-      <h2>Start your next policy renewal 120 days out.</h2>
-      <p class="copy">Tell us when your policy renews and what you are carrying now. We will tell you what we would do with the next 120 days, before you are down to two.</p>
-      <div class="cta-pair">
-        <div class="row">
-          <a class="btn" href="#main">Check my renewal timeline</a>
-          <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
-        </div>
+    <div class="cta-grid">
+      <div class="cta-copy">
+        <span class="rule-amber"></span>
+        <h2>Start your next policy renewal 120 days out.</h2>
+        <p class="copy">Tell us when your policy renews and what you are carrying now. We will read it and tell you what we would do with the next 120 days, before you are down to two.</p>
         <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+        <p class="trustline">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
       </div>
-      <p class="trustline">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
+      <div class="formwrap">
+        <!-- Same Fillout form as the three landing pages (id fkqNiqeJmsus),
+             which writes to Attio through Fillout's own integration. The
+             query string this page builds below rides along on the
+             submission via data-fillout-inherit-parameters. -->
+        <div class="fillout-embed"
+             data-fillout-id="fkqNiqeJmsus"
+             data-fillout-embed-type="standard"
+             data-fillout-inherit-parameters
+             data-fillout-dynamic-resize></div>
+      </div>
     </div>
   </div>
 </section>
@@ -823,6 +851,7 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
   var remindForm = document.getElementById("remindForm");
   var remindOk   = document.getElementById("remindOk");
   var icsNote    = document.getElementById("icsNote");
+  var auditLine  = document.getElementById("auditLine");
   var stageHint  = document.getElementById("stageDateHint");
 
   var renewal = null;   /* Date, local midnight */
@@ -1047,6 +1076,8 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
     reminder.hidden = true;
     remindOk.hidden = true;
     icsNote.hidden = true;
+    auditLine.hidden = false;
+    tagUrl();
     remindOk.classList.remove("is-err");
     remindForm.querySelector("button").disabled = false;
 
@@ -1249,10 +1280,36 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
   }
   for (var i = 0; i < boxes.length; i++){ boxes[i].addEventListener("change", updateScore); }
 
+  /* ---------- hand the visitor's context to the form ---------- */
+  /* Fillout's data-fillout-inherit-parameters reads the query string of the
+     page the embed sits on, which is how gclid and the utm values reach a
+     submission. Writing "page" here matches the three landing pages;
+     "renewal_date" is new, and lets a lead arrive in Attio already carrying
+     the date the visitor typed into the clock, so nobody has to ask for it
+     again. Both need a hidden field of the same name in Fillout to land. */
+  function tagUrl(){
+    try {
+      var url = new URL(window.location.href);
+      var changed = false;
+      if (!url.searchParams.get("page")){
+        url.searchParams.set("page", "renewal");
+        changed = true;
+      }
+      if (renewal && url.searchParams.get("renewal_date") !== toISO(renewal)){
+        url.searchParams.set("renewal_date", toISO(renewal));
+        changed = true;
+      }
+      if (changed) window.history.replaceState(null, "", url.toString());
+    } catch (e) {}
+  }
+  tagUrl();
+
   /* ---------- prefill the date field with a sensible minimum ---------- */
   input.min = toISO(today());
 })();
 </script>
+
+<script src="https://server.fillout.com/embed/v1/"></script>
 
 </body>
 </html>

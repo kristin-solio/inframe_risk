@@ -14,6 +14,41 @@ actually in the URL, which for paid traffic they will be.
 checks to run before launch. `n8n-attio-lead-capture.json` is the unused
 alternative, kept in case Fillout falls short.
 
+## The Renewal Hub (`/renewal`)
+
+The same embed, same form id, in the closing section. Two things reach it
+through the query string, both via `data-fillout-inherit-parameters`:
+
+| Parameter | Value | Needs a hidden field in Fillout |
+| --- | --- | --- |
+| `page` | `renewal` | yes, named exactly `page` |
+| `renewal_date` | `YYYY-MM-DD`, the date typed into the renewal clock | yes, named exactly `renewal_date` |
+
+`renewal_date` is the point of the page. The clock asks for it with no
+form in the way, so by the time a visitor reaches the form we already
+know when their policy renews. Landing it on the Attio record means
+nobody has to ask again, and it is the field the 120-day outreach is
+scheduled from.
+
+**Open question, and it needs testing before launch.** `page` is written
+before the embed script loads, exactly as on the other pages, so it
+behaves the same. `renewal_date` cannot be: it does not exist until the
+visitor uses the clock, which is after the embed has initialised. The
+page writes it into the query string at that moment with
+`history.replaceState`, but whether Fillout re-reads the URL at
+submission time or only at init is unconfirmed. If it only reads at init,
+the options are, in order of preference:
+
+1. Fillout's own JS API, if it exposes a way to set a field on a live
+   embed. Check their embed docs.
+2. Re-initialise the embed after the clock runs.
+3. Drop the inline embed on this page and send the audit CTA to a
+   Fillout-hosted URL with `?renewal_date=...` on it, which is read at
+   load and is known to work. Costs the visitor a page change.
+
+Until that is settled, assume `renewal_date` may arrive empty and do not
+build Attio automation that depends on it.
+
 ## Open questions on the current embed
 
 - **One form across three pages.** The spec called for three, because the
