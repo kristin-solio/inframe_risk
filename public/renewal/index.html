@@ -433,6 +433,11 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
 }
 .wc-chip--gap{background:var(--red);color:var(--white)}
 .wc-chip--ok{background:var(--steel-01);color:var(--slate-04)}
+.wc-note{
+  grid-column:1 / -1;margin-top:.5rem;padding-left:.75rem;
+  border-left:2px solid var(--red);
+  font-size:var(--t-legal);line-height:1.5;color:var(--slate-04);
+}
 .wc-foot{margin-top:.875rem;font-size:var(--t-legal);color:var(--slate-03)}
 @media (max-width:399px){
   .wc-head{display:none}
@@ -786,18 +791,20 @@ summary:focus-visible,textarea:focus-visible{outline:3px solid var(--amber-05);o
         <p class="copy watch-close">You still get a broker who answers the phone. The 120 days above are how we get you a better renewal. This is how we make sure the one you sign does not quietly break something you signed months ago.</p>
       </div>
 
-      <div class="watchcard" role="img" aria-label="Example of a renewal check: a contract requiring $2M per occurrence against a renewed policy carrying $1M, flagged as a gap; a contract requiring additional insured form CG 20 10 04 13 against a policy endorsed with a different edition, flagged as a gap; and a waiver of subrogation requirement that the policy includes.">
+      <div class="watchcard" role="img" aria-label="Example of a renewal check. A contract requiring $2M per occurrence against a renewed policy carrying $1M: a gap, half the limit that contract requires. A contract requiring additional insured form CG 20 10 04 13 against a policy endorsed with the 10 01 edition: the wrong edition, which a general contractor can reject a certificate over. And a waiver of subrogation requirement across 14 contracts, which the policy meets.">
         <p class="wc-label">Example &middot; what a renewal check surfaces</p>
         <div class="wc-head"><span>Your contract requires</span><span>Renewed policy</span></div>
 
         <div class="wc-row is-gap">
           <div class="wc-req">General liability, $2M per occurrence<em>Healthcare project &middot; signed Mar 2026</em></div>
           <div class="wc-got">$1M per occurrence <span class="wc-chip wc-chip--gap">Gap</span></div>
+          <p class="wc-note">Half the limit that contract requires. You are out of compliance on a job already underway.</p>
         </div>
 
         <div class="wc-row is-gap">
           <div class="wc-req">Additional insured, CG 20 10 04 13<em>Industrial project &middot; signed Jan 2026</em></div>
           <div class="wc-got">CG 20 10 10 01 <span class="wc-chip wc-chip--gap">Wrong edition</span></div>
+          <p class="wc-note">Same endorsement, different edition. Not the one the contract names, and a GC can reject your certificate over it.</p>
         </div>
 
         <div class="wc-row">
