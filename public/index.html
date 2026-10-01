@@ -758,19 +758,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <script>
-/* Name the landing page in the query string so Fillout's inherit-parameters
+/* Put attribution in the query string so Fillout's inherit-parameters
    carries it onto the submission. Runs before the embed script loads.
-   Existing parameters, gclid and the utm values among them, are preserved. */
+
+   1. Name the landing page as `page`.
+   2. Keep the Google click id and UTMs for 90 days. Fillout only reads
+      the URL, so a visitor who clicks an ad and comes back later would
+      otherwise arrive with none of them. Values in the URL always win and
+      refresh the saved copy; saved values are only added when missing. */
 (function () {
   try {
-    var path = window.location.pathname.replace(/\/+$/, "");
+    var KEYS = ["gclid", "gbraid", "wbraid", "utm_source", "utm_medium",
+                "utm_campaign", "utm_term", "utm_content"];
+    var MAX_AGE = 90 * 24 * 60 * 60;
+    var url = new URL(window.location.href);
+    var changed = false;
+
+    var path = url.pathname.replace(/\/+$/, "");
     var slug = path.split("/").pop();
     if (!slug || slug === "index.html") { slug = "home"; }
-    var url = new URL(window.location.href);
     if (!url.searchParams.get("page")) {
       url.searchParams.set("page", slug);
-      window.history.replaceState(null, "", url.toString());
+      changed = true;
     }
+
+    var domain = /(^|\.)inframerisk\.com$/.test(url.hostname) ? ";domain=.inframerisk.com" : "";
+    function save(k, v) {
+      document.cookie = "ifr_" + k + "=" + encodeURIComponent(v) +
+        ";max-age=" + MAX_AGE + ";path=/" + domain + ";SameSite=Lax" +
+        (url.protocol === "https:" ? ";Secure" : "");
+    }
+    function saved(k) {
+      var m = document.cookie.match(new RegExp("(?:^|; )ifr_" + k + "=([^;]*)"));
+      return m ? decodeURIComponent(m[1]) : "";
+    }
+
+    /* A fresh ad click replaces the whole saved set, so a new campaign's
+       UTMs never mix with an old click id. */
+    var fresh = KEYS.some(function (k) { return url.searchParams.get(k); });
+    KEYS.forEach(function (k) {
+      var v = url.searchParams.get(k);
+      if (fresh) {
+        if (v) { save(k, v); } else { save(k, ""); }
+      } else {
+        var s = saved(k);
+        if (s) { url.searchParams.set(k, s); changed = true; }
+      }
+    });
+
+    if (changed) { window.history.replaceState(null, "", url.toString()); }
   } catch (e) {}
 })();
 </script>

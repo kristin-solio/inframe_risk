@@ -452,8 +452,24 @@ summary:focus-visible,textarea:focus-visible{
 .thanks__call .telno:hover{color:var(--amber-03)}
 .thanks .trustline{margin-top:2.5rem}
 </style>
+<script>
+/* Fillout loads this page inside its embed after a submission. In there the
+   browser hides this site's cookies, so the Google Ads tag cannot find the
+   saved ad click and the conversion goes unattributed. Reload as the full
+   page instead, and only let Tag Manager run once that has happened. If the
+   browser blocks the reload, fall back to running the tags where we are. */
+window.__ifrFramed = false;
+(function () {
+  try {
+    if (window.top !== window.self) {
+      window.__ifrFramed = true;
+      window.top.location.replace(window.location.href);
+    }
+  } catch (e) { window.__ifrFramed = false; }
+})();
+</script>
 <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<script>if (!window.__ifrFramed) (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -509,11 +525,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5PCQ4CBV');</script>
 
 </body>
 </html>

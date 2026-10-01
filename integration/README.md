@@ -14,6 +14,25 @@ actually in the URL, which for paid traffic they will be.
 checks to run before launch. `n8n-attio-lead-capture.json` is the unused
 alternative, kept in case Fillout falls short.
 
+## Conversion tracking, as fixed on Oct 1
+
+- **Thank-you pages break out of the embed.** Fillout loads its redirect
+  inside the embed, where the browser hides this site's cookies, so the
+  Ads tag fired but could not find the saved click. Both confirmation
+  pages now reload themselves as the full page and only start Tag Manager
+  once they are top level. If a browser blocks that reload, the tags run
+  in place as before.
+- **Thank-you pages load Tag Manager once.** A second copy of the
+  container sat above `</body>`; it is gone.
+- **Click ids survive a return visit.** The landing page script saves
+  `gclid`, `gbraid`, `wbraid` and the `utm_*` values in first-party
+  cookies for 90 days and writes them back into the query string when a
+  visitor returns without them, so `inherit-parameters` still carries
+  them. A new click or new UTMs replace the saved set.
+- **Fillout must have the hidden fields.** Each of those keys needs a
+  hidden field of exactly that name in Fillout, mapped to Attio, or it
+  arrives empty.
+
 ## Open questions on the current embed
 
 - **One form across three pages.** The spec called for three, because the
