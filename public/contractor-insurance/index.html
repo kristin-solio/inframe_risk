@@ -474,16 +474,17 @@ window.InFrameTrade = (function () {
 
   /* ===== APPROVED ALLOWLIST · COMPLIANCE APPROVAL REQUIRED TO EDIT =====
      key      the exact ?trade= value, case-sensitive, lowercase only
-     h1       trade name that opens the H1
+     h1       trade name that opens the H1, in sentence case: only
+              the first word is capitalised, acronyms excepted
      phrase   trade phrase inside "commercial <phrase> contractors"
      promote  "Specialist programs for" items moved to the top, in this
               order, matched against the item text already on the page  */
   var TRADES = {
     electrical: { h1: "Electrical",                   phrase: "electrical",                   promote: ["Electrical"] },
-    hvac:       { h1: "HVAC & Mechanical",            phrase: "HVAC & mechanical",            promote: ["HVAC & Mechanical"] },
+    hvac:       { h1: "HVAC & mechanical",            phrase: "HVAC & mechanical",            promote: ["HVAC & Mechanical"] },
     plumbing:   { h1: "Plumbing",                     phrase: "plumbing",                     promote: ["Plumbing"] },
-    concrete:   { h1: "Concrete & Masonry",           phrase: "concrete & masonry",           promote: ["Concrete & Masonry"] },
-    finish:     { h1: "Drywall, Painting & Flooring", phrase: "drywall, painting & flooring", promote: ["Drywall", "Painting", "Flooring"] }
+    concrete:   { h1: "Concrete & masonry",           phrase: "concrete & masonry",           promote: ["Concrete & Masonry"] },
+    finish:     { h1: "Drywall, painting & flooring", phrase: "drywall, painting & flooring", promote: ["Drywall", "Painting", "Flooring"] }
   };
   /* ===== END APPROVED ALLOWLIST ===== */
 
