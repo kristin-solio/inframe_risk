@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 <meta name="theme-color" content="#222F3E">
 <title>Specialty Trade Contractor Insurance · InFrame Risk</title>
+<link rel="canonical" href="https://go.inframerisk.com/contractor-insurance">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -442,6 +443,130 @@ summary:focus-visible,textarea:focus-visible{
   html{scroll-behavior:auto}
 }
 </style>
+<!-- ============================================================
+     TRADE-SPECIFIC HEADLINE SWAP  ·  APPROVED COPY ONLY
+     ------------------------------------------------------------
+     Google Ads appends ?trade=<key> per ad group. A value that is an
+     exact match for a key in the allowlist below swaps the trade name
+     in the H1, the trade phrase in the intro sentence, and the order of
+     the "Specialist programs for" list. Nothing else on the page is
+     touched, and every other visitor sees the page unchanged.
+
+     The page NEVER renders text taken from the URL. Only the strings
+     defined in TRADES below are ever displayed. Any other value --
+     unknown, empty, wrong case, or malformed -- leaves the page exactly
+     as it is today.
+
+     *** THE ALLOWLIST BELOW IS APPROVED COPY. ADDING, REMOVING OR
+     *** EDITING A KEY, A HEADLINE, A PHRASE OR A LIST ITEM REQUIRES
+     *** COMPLIANCE APPROVAL BEFORE IT SHIPS.
+     ============================================================ -->
+<style>
+/* Hide only the three elements about to be rewritten, and only when a
+   valid trade was matched, so the default copy never flashes first. */
+html[data-trade-pending] .hero h1,
+html[data-trade-pending] .hero .lede,
+html[data-trade-pending] .trades{visibility:hidden}
+</style>
+<script>
+window.InFrameTrade = (function () {
+  "use strict";
+
+  /* ===== APPROVED ALLOWLIST · COMPLIANCE APPROVAL REQUIRED TO EDIT =====
+     key      the exact ?trade= value, case-sensitive, lowercase only
+     h1       trade name that opens the H1, in sentence case: only
+              the first word is capitalised, acronyms excepted
+     phrase   trade phrase inside "commercial <phrase> contractors"
+     promote  "Specialist programs for" items moved to the top, in this
+              order, matched against the item text already on the page  */
+  var TRADES = {
+    electrical: { h1: "Electrical",                   phrase: "electrical",                   promote: ["Electrical"] },
+    hvac:       { h1: "HVAC & mechanical",            phrase: "HVAC & mechanical",            promote: ["HVAC & Mechanical"] },
+    plumbing:   { h1: "Plumbing",                     phrase: "plumbing",                     promote: ["Plumbing"] },
+    concrete:   { h1: "Concrete & masonry",           phrase: "concrete & masonry",           promote: ["Concrete & Masonry"] },
+    finish:     { h1: "Drywall, painting & flooring", phrase: "drywall, painting & flooring", promote: ["Drywall", "Painting", "Flooring"] }
+  };
+  /* ===== END APPROVED ALLOWLIST ===== */
+
+  /* The approved default copy, used only to locate what to replace. If
+     the page copy is ever edited and no longer matches, that part of the
+     swap is skipped rather than guessed at. */
+  var H1_LEAD    = "Insurance built around how your business actually ";
+  var H1_TAIL    = "contractor insurance built around how your business actually ";
+  var LEDE_PHRASE = "commercial trade contractors";
+
+  var entry = null;
+  try {
+    var raw = new URLSearchParams(window.location.search).get("trade");
+    if (typeof raw === "string" &&
+        /^[a-z]{1,20}$/.test(raw) &&
+        Object.prototype.hasOwnProperty.call(TRADES, raw)) {
+      entry = TRADES[raw];
+    }
+  } catch (e) { entry = null; }
+
+  /* Set before the body is parsed, so the CSS above is already in force
+     by the time the hero would otherwise paint. */
+  if (entry) { document.documentElement.setAttribute("data-trade-pending", ""); }
+
+  function swapHeadline() {
+    var h1 = document.querySelector(".hero h1");
+    /* Only the leading text node is replaced, so the highlighted
+       "operates." span is left exactly as authored. textContent on a
+       text node assigns plain text; no markup is ever parsed. */
+    if (h1 && h1.firstChild && h1.firstChild.nodeType === 3 &&
+        h1.firstChild.textContent === H1_LEAD) {
+      h1.firstChild.textContent = entry.h1 + " " + H1_TAIL;
+    }
+  }
+
+  function swapIntro() {
+    var lede = document.querySelector(".hero .lede");
+    if (!lede || lede.textContent.indexOf(LEDE_PHRASE) === -1) { return; }
+    var replacement = "commercial " + entry.phrase + " contractors";
+    /* Function replacement, so nothing in the value is read as a
+       substitution pattern. Only the first sentence's phrase changes;
+       the second sentence is untouched. */
+    lede.textContent = lede.textContent.replace(LEDE_PHRASE, function () {
+      return replacement;
+    });
+  }
+
+  function reorderPrograms() {
+    var list = document.querySelector(".qualstrip .trades");
+    if (!list) { return; }
+    var at = list.firstElementChild;
+    for (var i = 0; i < entry.promote.length; i++) {
+      var li = null, items = list.children;
+      for (var j = 0; j < items.length; j++) {
+        if (items[j].textContent.trim() === entry.promote[i]) { li = items[j]; break; }
+      }
+      if (!li) { continue; }
+      if (li === at) { at = li.nextElementSibling; }
+      else { list.insertBefore(li, at); }
+    }
+  }
+
+  /* Idempotent: each step is a no-op once applied, so the parse-time
+     call and the DOMContentLoaded safety net below cannot double up. */
+  function apply() {
+    if (!entry) { return; }
+    try {
+      swapHeadline();
+      swapIntro();
+      reorderPrograms();
+    } catch (e) {
+    } finally {
+      document.documentElement.removeAttribute("data-trade-pending");
+    }
+  }
+
+  /* Safety net: whatever happens, the hero is never left hidden. */
+  if (entry) { document.addEventListener("DOMContentLoaded", apply); }
+
+  return { apply: apply };
+})();
+</script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -502,6 +627,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
   </div>
 </section>
+
+<!-- Applies the approved trade swap. Runs during parse, so the hero and
+     the trade list are rewritten before either can paint. The allowlist
+     and all logic live in the single block in <head>. -->
+<script>if (window.InFrameTrade) { window.InFrameTrade.apply(); }</script>
 
 <!-- 03 TENSION + THE FOUR QUESTIONS -->
 <section class="band band--dots tension">
