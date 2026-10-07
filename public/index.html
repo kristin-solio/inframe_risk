@@ -812,5 +812,98 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 <script src="https://server.fillout.com/embed/v1/"></script>
 
+
+<script>
+/* Click-to-call signal.
+
+   Every page shows the same sales mainline, so a call that lands on it
+   cannot be told apart from an organic, direct or offline call. Real call
+   attribution needs a tracked number served per visitor, which is not in
+   place yet. Until it is, this reports the next best thing: the tap
+   itself, on a page whose campaign we already know.
+
+   It pushes one event, `ifr_call_click`. The name is deliberately our own.
+   Tag Manager's built-in link triggers fire `gtm.linkClick`, and its
+   all-elements trigger fires `gtm.click`, so a tag bound to this event can
+   never also be fired by either of them. Fire the Google Ads "Click to
+   call" conversion from exactly one of the two, or every tap counts twice.
+   integration/README.md says how to check which one is wired.
+
+   This measures intent to call, not a call. A tap is not an answered
+   conversation, so keep it off Smart Bidding until it has been reconciled
+   against calls the team actually took. */
+(function () {
+  "use strict";
+  window.dataLayer = window.dataLayer || [];
+
+  var CLICK_IDS = ["gclid", "gbraid", "wbraid"];
+
+  /* The Google click id, read from the query string first and the saved
+     cookie second, in the same order the attribution script uses. Empty
+     when the visitor never arrived on a Google click, which is the honest
+     answer rather than a guess. */
+  function clickId() {
+    try {
+      var q = new URLSearchParams(window.location.search);
+      for (var i = 0; i < CLICK_IDS.length; i++) {
+        var fromUrl = q.get(CLICK_IDS[i]);
+        if (fromUrl) { return { name: CLICK_IDS[i], value: fromUrl }; }
+      }
+      for (var j = 0; j < CLICK_IDS.length; j++) {
+        var m = document.cookie.match(
+          new RegExp("(?:^|; )ifr_" + CLICK_IDS[j] + "=([^;]*)"));
+        if (m && m[1]) {
+          return { name: CLICK_IDS[j], value: decodeURIComponent(m[1]) };
+        }
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  /* Which part of the page was tapped, so the hero button and the number
+     in the legal footer do not read as the same intent. A section's id is
+     used when it has one, its classes otherwise. */
+  function zone(link) {
+    var band = link.closest("section, footer, header");
+    if (!band) { return "unknown"; }
+    return band.id ||
+      (band.className || "").trim().replace(/\s+/g, " ") ||
+      band.tagName.toLowerCase();
+  }
+
+  /* The landing page slug, matching the `page` value the attribution
+     script puts on a form submission, so calls and forms group together.
+     The confirmation pages have no attribution script, so they fall back
+     to their own slug. */
+  function page() {
+    try {
+      var fromUrl = new URLSearchParams(window.location.search).get("page");
+      if (fromUrl) { return fromUrl; }
+    } catch (e) {}
+    var slug = window.location.pathname.replace(/\/+$/, "").split("/").pop();
+    return (!slug || slug === "index.html") ? "home" : slug;
+  }
+
+  /* Capture phase and delegated, so it still reports if a link is ever
+     moved or added, and does not depend on the dialer letting the page
+     finish its work. */
+  document.addEventListener("click", function (ev) {
+    var target = ev.target;
+    var link = target && target.closest ? target.closest('a[href^="tel:"]') : null;
+    if (!link) { return; }
+
+    var id = clickId();
+    window.dataLayer.push({
+      event: "ifr_call_click",
+      call_number: (link.getAttribute("href") || "").replace(/^tel:/, ""),
+      call_zone: zone(link),
+      call_label: (link.textContent || "").trim(),
+      page: page(),
+      click_id_type: id ? id.name : "",
+      click_id: id ? id.value : ""
+    });
+  }, true);
+})();
+</script>
 </body>
 </html>

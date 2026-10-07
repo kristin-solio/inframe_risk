@@ -33,6 +33,67 @@ alternative, kept in case Fillout falls short.
   hidden field of exactly that name in Fillout, mapped to Attio, or it
   arrives empty.
 
+## Call tracking, as it stands
+
+Every page shows one hardcoded number, the sales mainline
+`(866) 811-1207` — eleven to thirteen times on a landing page, twice on a
+confirmation page. There is no dynamic number insertion and no call
+tracking vendor, so a call arriving on it cannot be told apart from an
+organic, direct or offline call. This is not a reporting gap waiting to be
+found in Google Ads: no data exists anywhere that would tie such a call to
+a click.
+
+What the account shows over the first eight days of spend, Sep 29 to
+Oct 6, $919 and 59 clicks:
+
+| Conversion action | State |
+| --- | --- |
+| `Calls from ads` | 0. The account-level call asset carries the raw mainline. ~350 impressions, zero clicks, and the call detail report is empty. |
+| `Click to call` | 0. Enabled and counted as primary, but nothing on the pages was firing it. |
+| `Qualified Lead` | 1, on Sep 29, from `3 - Broker & Risk Advisory`. The thank-you redirect does work. |
+| `Below Floor Lead` | 0, and correctly excluded from bidding. |
+
+So a caller who reaches the mainline did not come through the ad's call
+button; nobody has tapped it. They either dialled from a page, or read the
+number off a desktop ad and dialled by hand. Both are invisible until a
+tracked number is in place.
+
+### What the pages now send
+
+Every live page pushes one Tag Manager event, `ifr_call_click`, when any
+`tel:` link is tapped. It carries the page slug, which part of the page was
+tapped, the link's label, and the `gclid`, `gbraid` or `wbraid` when the
+visitor arrived on a Google click — from the query string, or from the
+cookie the attribution script saved, so a return visitor still reports.
+
+**Fire the `Click to call` conversion from exactly one trigger.** Tag
+Manager's built-in link trigger fires `gtm.linkClick` and its all-elements
+trigger fires `gtm.click`, so a tag bound to `ifr_call_click` can never
+also be fired by either of them. That is the point of the custom name: a
+second tag is the only way to double count. Before adding one, open
+container `GTM-5PCQ4CBV` and check whether a tag already fires that
+conversion on a link click. If one does, either repoint it at
+`ifr_call_click` or leave it as it is — but do not run both.
+
+A tap is intent, not a conversation. Keep it out of Smart Bidding until it
+has been reconciled against calls the team actually took, or the campaign
+learns to favour people who tap and hang up.
+
+### Still missing
+
+Real call attribution needs a number that differs per visitor:
+
+- **Google forwarding numbers.** Free, built into Google Ads, and cover
+  calls that follow an ad click. An organic caller stays invisible, so this
+  does not answer "was that caller from a campaign" for all traffic.
+- **A call tracking platform** (CallRail, WhatConverts). Serves a number
+  pool with dynamic insertion, covers every source paid and organic,
+  records the call, and can pass the click id into Attio for offline
+  conversion import.
+
+Until one is chosen, the only way to answer that question is to ask on the
+call and log the answer against the date and the number dialled.
+
 ## Open questions on the current embed
 
 - **One form across three pages.** The spec called for three, because the
@@ -50,9 +111,12 @@ alternative, kept in case Fillout falls short.
   an ad can override it. **Fillout needs a hidden field named exactly
   `page` to receive it.** A different name there means an empty value
   here, and the fix is to rename the field in Fillout.
-- **The conversion signal.** Confirm how Fillout reports a completed
-  submission to the page, and fire the Google Ads conversion on it. There
-  is no conversion tag on any page yet.
+- **The conversion signal.** Settled, and this note is kept only because
+  it predates the fix. Fillout redirects to a confirmation page, and that
+  page fires the conversion; the Oct 1 section above describes it. The
+  account has recorded one `Qualified Lead` through this path, on Sep 29,
+  so it works. One in eight days on 59 clicks is a volume problem, not a
+  tracking one.
 
 ---
 
