@@ -438,6 +438,17 @@ summary:focus-visible,textarea:focus-visible{
 .band--dark .cta-phone,.hero .cta-phone{color:var(--steel-02)}
 .band--steel .cta-phone{color:var(--slate-04)}
 
+/* ---------- masthead call link ---------- */
+.masthead__call{
+  margin-left:auto;color:var(--white);text-decoration:none;
+  font-size:var(--t-button);font-weight:700;line-height:1.2;white-space:nowrap;
+}
+.masthead__call:hover{color:var(--amber-05)}
+@media (max-width:480px){
+  /* keep the whole number on one line next to the logo on a phone */
+  .masthead__call{font-size:var(--t-legal)}
+}
+
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
@@ -486,6 +497,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="masthead">
   <div class="shell">
     <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
+    <a class="masthead__call" href="tel:+18668111207">Call now: (866) 811-1207</a>
   </div>
 </header>
 
@@ -496,7 +508,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="rule-amber"></span>
     <h1>Thanks. We have your details.</h1>
     <p class="lede">A risk advisor will read what you sent and come back to you. Most reviews come back within three business days.</p>
-    <p class="thanks__call">If you would rather talk now, call <a class="telno" href="tel:+18668111207">(866) 811-1207</a>. You will reach a risk advisor, not a call center.</p>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn btn--secondary" href="tel:+18668111207">Call now: (866) 811-1207</a>
+      </div>
+    </div>
     <p class="trustline">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
   </div>
 </section>

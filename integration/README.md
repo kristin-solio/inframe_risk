@@ -5,6 +5,13 @@ pages and the copy of the general contractor page at the root. It writes
 to Attio through Fillout's own integration. Nothing in this repo talks to
 Attio.
 
+**The embed sits in the hero**, in a card carrying `id="request"`, so every
+`#request` button on the page scrolls back up to it rather than down to the
+bottom. There is exactly one embed per page: a second copy would split the
+partial submissions Fillout saves after step one. The attribution script
+still runs immediately above the Fillout script at the foot of the page, so
+the query string is complete before Fillout reads it.
+
 The embed carries `data-fillout-inherit-parameters`, so Fillout reads the
 query string of the page it sits on. That is what puts `gclid` and the
 `utm_*` values on the submission. It only works for parameters that are

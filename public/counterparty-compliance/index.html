@@ -169,7 +169,9 @@ summary:focus-visible,textarea:focus-visible{
   .hero__scrim{background:rgba(34,47,62,.82)}
   .hero__img{object-position:34% center}
 }
-.hero__inner{position:relative;padding-block:clamp(4rem,10vw,8.5rem)}
+/* The hero now carries the form, so it keeps less air above and below:
+   on a laptop the whole card lands above the fold. */
+.hero__inner{position:relative;padding-block:clamp(2.5rem,5vw,4rem)}
 .hero h1{max-width:20ch}
 .hero .hl{color:var(--amber-05)}
 .hero .lede{color:var(--white);max-width:56ch;margin-top:1.5rem}
@@ -438,6 +440,78 @@ summary:focus-visible,textarea:focus-visible{
 .band--dark .cta-phone,.hero .cta-phone{color:var(--steel-02)}
 .band--steel .cta-phone{color:var(--slate-04)}
 
+/* ---------- hero form, two columns ---------- */
+/* One column on a phone, in source order: headline and subhead, then the
+   form, then the call button and the licensing line. Two columns from
+   1000px, with the form spanning both rows of the left column. */
+.hero__grid{
+  display:grid;grid-template-columns:1fr;
+  gap:clamp(1.75rem,4vw,2.5rem);align-items:start;
+}
+.hero__head,.hero__form,.hero__tail{min-width:0}
+@media (min-width:1000px){
+  .hero__grid{
+    grid-template-columns:1.02fr .98fr;
+    grid-template-areas:"head form" "tail form";
+    column-gap:clamp(2.5rem,4vw,4rem);row-gap:1.75rem;
+  }
+  .hero__head{grid-area:head}
+  .hero__form{grid-area:form;align-self:start}
+  .hero__tail{grid-area:tail}
+}
+.hero__tail .btn{margin-top:0}
+.hero__tail .licensing{margin-top:1.25rem}
+
+/* The one form embed on the page. It carries id="request", so every
+   existing #request link lands here instead of at the bottom. The card
+   keeps the light panel treatment the old bottom section used. Nothing
+   constrains its height, so Fillout's dynamic resize can grow it for
+   step two without clipping or overlapping anything. */
+.hero__form{scroll-margin-top:clamp(1rem,4vw,1.75rem)}
+.formcard__title{color:var(--slate-05)}
+.formcard__note{margin-top:.5rem;font-size:var(--t-body);line-height:1.5;color:var(--slate-03)}
+.formcard .fillout-embed{min-height:400px;margin-top:1.25rem}
+
+/* ---------- closing CTA band ---------- */
+.closing .copy{margin-top:1.25rem;color:var(--steel-02);max-width:52ch}
+.closing .cta-pair{margin-top:clamp(1.75rem,3.5vw,2.25rem)}
+.closing .trustline{margin-top:1.5rem}
+
+/* ---------- masthead call link ---------- */
+.masthead__call{
+  margin-left:auto;color:var(--white);text-decoration:none;
+  font-size:var(--t-button);font-weight:700;line-height:1.2;white-space:nowrap;
+}
+.masthead__call:hover{color:var(--amber-05)}
+@media (max-width:480px){
+  /* keep the whole number on one line next to the logo on a phone */
+  .masthead__call{font-size:var(--t-legal)}
+}
+
+/* ---------- sticky mobile action bar ---------- */
+/* Phones only. It starts hidden because the hero form is on screen at
+   load, and stays hidden whenever the form is in view, so it never
+   covers the thing it points at. */
+.mobilebar{display:none}
+@media (max-width:767px){
+  .mobilebar{
+    display:grid;grid-template-columns:1fr 1fr;gap:.5rem;
+    position:fixed;left:0;right:0;bottom:0;z-index:150;
+    padding:.625rem clamp(.75rem,4vw,1rem);
+    background:var(--slate-05);border-top:1px solid var(--slate-04);
+    transition:transform .2s ease,visibility .2s ease;
+  }
+  .mobilebar .btn{margin:0;padding:.9375rem 1rem;text-align:center}
+  /* the bar's own ground is Slate 05, so the secondary takes the
+     approved Slate 03 pairing the dark bands use */
+  .mobilebar .btn--secondary{background:var(--slate-03);color:var(--white)}
+  .mobilebar .btn--secondary:hover{background:var(--slate-04)}
+  .mobilebar.is-hidden{transform:translateY(115%);visibility:hidden}
+  /* room for the bar at the end of the page. It goes on the footer so
+     the dark ground runs all the way down behind the bar. */
+  .foot{padding-bottom:8rem}
+}
+
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
@@ -478,6 +552,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="masthead">
   <div class="shell">
     <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
+    <a class="masthead__call" href="tel:+18668111207">Call now: (866) 811-1207</a>
   </div>
 </header>
 
@@ -488,17 +563,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <img class="hero__img" src="../assets/inframe-hero-city.webp" alt="Aerial wireframe view of a city, with a tower crane over a building under construction">
   <div class="hero__scrim"></div>
   <div class="hero__inner">
-    <div class="shell">
-      <h1>A certificate is a summary. We read the <span class="hl">policies</span> behind it.</h1>
-      <p class="lede">InFrame reviews and monitors your subcontractors, tenants or borrowers against what your contracts, leases or loan documents actually require, reviewed by risk specialists rather than collected and filed.</p>
-      <div class="cta-pair" style="margin-top:2rem">
-        <div class="row">
-          <a class="btn" href="#request">Check one project for gaps</a>
-          <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
-        </div>
-        <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
+    <div class="shell hero__grid">
+      <div class="hero__head">
+        <h1>A certificate is a summary. We read the <span class="hl">policies</span> behind it.</h1>
+        <p class="lede">InFrame reviews and monitors your subcontractors, tenants or borrowers against what your contracts, leases or loan documents actually require, reviewed by risk specialists rather than collected and filed.</p>
       </div>
-      <p class="licensing">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
+      <div class="hero__form" id="request">
+        <div class="formwrap formcard">
+          <h2 class="formcard__title">Get a quote</h2>
+          <p class="formcard__note">Takes 30 seconds. We&rsquo;ll follow up within one business day.</p>
+          <div class="fillout-embed"
+               data-fillout-id="fkqNiqeJmsus"
+               data-fillout-embed-type="standard"
+               data-fillout-inherit-parameters
+               data-fillout-dynamic-resize></div>
+        </div>
+      </div>
+      <div class="hero__tail">
+        <a class="btn btn--secondary" href="tel:+18668111207">Call now: (866) 811-1207</a>
+        <p class="licensing">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
+      </div>
     </div>
   </div>
 </section>
@@ -531,10 +615,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="cta-pair">
       <div class="row">
-        <a class="btn" href="#request">Check one project for gaps</a>
-        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+        <a class="btn" href="#request">Get a quote</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Call now: (866) 811-1207</a>
       </div>
-      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
     </div>
 
   </div>
@@ -580,10 +663,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="cta-pair">
       <div class="row">
-        <a class="btn" href="#request">Check one project for gaps</a>
-        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+        <a class="btn" href="#request">Get a quote</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Call now: (866) 811-1207</a>
       </div>
-      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
     </div>
 
   </div>
@@ -626,10 +708,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="cta-pair">
       <div class="row">
-        <a class="btn" href="#request">Check one project for gaps</a>
-        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+        <a class="btn" href="#request">Get a quote</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Call now: (866) 811-1207</a>
       </div>
-      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
     </div>
 
   </div>
@@ -721,32 +802,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="cta-pair">
       <div class="row">
-        <a class="btn" href="#request">Check one project for gaps</a>
-        <a class="btn btn--secondary" href="tel:+18668111207">Talk to a risk advisor</a>
+        <a class="btn" href="#request">Get a quote</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Call now: (866) 811-1207</a>
       </div>
-      <p class="cta-phone">Or call <a href="tel:+18668111207">(866) 811-1207</a></p>
     </div>
 
   </div>
 </section>
 
-<!-- 10 CONVERSION -->
-<section class="band band--dark" id="request">
+<!-- 10 CLOSING CTA -->
+<section class="band band--dark band--tight closing">
   <div class="shell">
-    <div class="cta-grid">
-      <div class="cta-copy">
-        <span class="rule-amber"></span>
-        <h2>Give us one project. We will show you what is in it.</h2>
-        <p class="trustline">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
-      </div>
-      <div class="formwrap">
-        <div class="fillout-embed"
-             data-fillout-id="fkqNiqeJmsus"
-             data-fillout-embed-type="standard"
-             data-fillout-inherit-parameters
-             data-fillout-dynamic-resize></div>
+    <span class="rule-amber"></span>
+    <h2>Give us one project. We will show you what is in it.</h2>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request">Get a quote</a>
+        <a class="btn btn--secondary" href="tel:+18668111207">Call now: (866) 811-1207</a>
       </div>
     </div>
+    <p class="trustline">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
   </div>
 </section>
 
@@ -773,6 +848,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="foot__copy">&copy; 2026 InFrame Risk Inc. All rights reserved.</p>
   </div>
 </footer>
+
+<nav class="mobilebar is-hidden" aria-label="Quick actions">
+  <a class="btn" href="#request">Get a quote</a>
+  <a class="btn btn--secondary" href="tel:+18668111207">Call now</a>
+</nav>
 
 <script>
 /* License disclosure: toggle the panel, and copy a number on click. */
@@ -853,6 +933,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     if (changed) { window.history.replaceState(null, "", url.toString()); }
   } catch (e) {}
+})();
+</script>
+<script>
+/* Sticky mobile bar: hide it while the hero form is on screen, show it
+   once the visitor has scrolled past. Without IntersectionObserver the
+   bar simply stays visible. */
+(function () {
+  var bar = document.querySelector(".mobilebar");
+  var form = document.getElementById("request");
+  if (!bar) { return; }
+  if (!form || !("IntersectionObserver" in window)) {
+    bar.classList.remove("is-hidden");
+    return;
+  }
+  new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      bar.classList.toggle("is-hidden", entries[i].isIntersecting);
+    }
+  }, { threshold: 0.12 }).observe(form);
 })();
 </script>
 <script src="https://server.fillout.com/embed/v1/"></script>
