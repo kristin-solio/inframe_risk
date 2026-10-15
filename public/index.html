@@ -451,9 +451,9 @@ summary:focus-visible,textarea:focus-visible{
 .hero__head,.hero__form,.hero__tail{min-width:0}
 @media (min-width:1000px){
   .hero__grid{
-    grid-template-columns:1.02fr .98fr;
+    grid-template-columns:1.2fr .8fr;
     grid-template-areas:"head form" "tail form";
-    column-gap:clamp(2.5rem,4vw,4rem);row-gap:1.75rem;
+    column-gap:clamp(2rem,3.5vw,3.25rem);row-gap:1.75rem;
   }
   .hero__head{grid-area:head}
   .hero__form{grid-area:form;align-self:start}
@@ -468,9 +468,20 @@ summary:focus-visible,textarea:focus-visible{
    constrains its height, so Fillout's dynamic resize can grow it for
    step two without clipping or overlapping anything. */
 .hero__form{scroll-margin-top:clamp(1rem,4vw,1.75rem)}
-.formcard__title{color:var(--slate-05)}
-.formcard__note{margin-top:.5rem;font-size:var(--t-body);line-height:1.5;color:var(--slate-03)}
-.formcard .fillout-embed{min-height:400px;margin-top:1.25rem}
+/* A quiet panel beside the headline, not a second hero. The title takes
+   the Body Semibold role the tiles use rather than the Subline, the note
+   takes Legal, and the card keeps to a narrow measure, so the form reads
+   as one quick step instead of filling the screen. */
+.formcard{padding:clamp(1.125rem,1.8vw,1.5rem)}
+.formcard__title{
+  color:var(--slate-05);
+  font-size:var(--t-body);line-height:1.35;letter-spacing:0;
+}
+.formcard__note{margin-top:.25rem;font-size:var(--t-legal);line-height:1.5;color:var(--slate-03)}
+.formcard .fillout-embed{min-height:300px;margin-top:.75rem}
+@media (min-width:1000px){
+  .formcard{max-width:396px;margin-left:auto}
+}
 
 /* ---------- closing CTA band ---------- */
 .closing .copy{margin-top:1.25rem;color:var(--steel-02);max-width:52ch}
