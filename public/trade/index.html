@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en" data-variant="trade">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="theme-color" content="#222F3E">
+<title>Specialty Trade Contractor Insurance &middot; InFrame Risk</title>
+<meta name="description" content="InFrame is a specialist insurance broker for commercial specialty trade contractors. We read your policies against your contracts, so your coverage matches the jobs you take.">
+<link rel="canonical" href="https://go.inframerisk.com/trade">
+
+<!-- Fonts load without blocking the first paint. See the note on the
+     broker page: same change, same reason. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap"></noscript>
+
+<style>
+/* ============================================================
+   InFrame Risk · brand system
+   Carried over from the live landing pages without change:
+   palette, the five-role type scale, buttons, masthead, hero
+   grid, form card, bands, footer and sticky mobile bar.
+   Trimmed to the modules these two pages actually use, and
+   extended with the proof strip, timeline and advisor modules.
+   ============================================================ */
+:root{
+  --slate-05:#222F3E;
+  --slate-04:#37485A;
+  --slate-03:#526477;
+  --steel:#8394A5;
+  --steel-02:#C9CFE1;
+  --steel-01:#E1E5F0;
+  --slate-01:#F4F6FB;
+  --amber-05:#EFB921;
+  --amber-04:#F5CA52;
+  --amber-03:#FDDC80;
+  --amber-02:#FAE4A9;
+  --amber-01:#FFF3D2;
+  --white:#FFFFFF;
+
+  /* Brand book type scale. Five roles, nothing else:
+     Headline Semibold 64 · Subline Semibold 36 · Body Regular 16
+     · Button Bold 16 · Legal Regular 12. */
+  --t-headline:clamp(2.25rem,1.5rem + 3.2vw,3.5rem);
+  --t-subline:clamp(1.75rem,1.36rem + 1.66vw,2.25rem);
+  --t-body:1rem;
+  --t-button:1rem;
+  --t-legal:.75rem;
+
+  --gutter:clamp(1.25rem,5vw,3.5rem);
+  --band:clamp(3rem,7vw,6rem);
+  --maxw:1160px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--slate-01);
+  color:var(--slate-05);
+  font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:var(--t-body);
+  font-weight:400;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+
+/* ---------- shared layout ---------- */
+.shell{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+.band{padding-block:var(--band)}
+.band--light{background:var(--slate-01);color:var(--slate-05)}
+.band--white{background:var(--white);color:var(--slate-05)}
+.band--dark{background:var(--slate-05);color:var(--white)}
+.band--steel{background:var(--steel-02);color:var(--slate-05)}
+.band--tight{padding-block:clamp(2rem,4vw,3rem)}
+.band--dots{
+  background-color:var(--steel-01);
+  color:var(--slate-05);
+  background-image:radial-gradient(circle,rgba(82,100,119,.30) 1px,transparent 1px);
+  background-size:22px 22px;
+}
+
+/* ---------- type ---------- */
+h1,h2,h3{font-weight:600;letter-spacing:-.02em;margin:0}
+h1{font-size:var(--t-headline);line-height:1.06}
+h2{font-size:var(--t-subline);line-height:1.15}
+h3{font-size:var(--t-body);line-height:1.35;letter-spacing:0}
+p{margin:0}
+.eyebrow{
+  font-size:var(--t-legal);font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--slate-03);margin:0 0 1.25rem;
+}
+.band--dark .eyebrow{color:var(--amber-05)}
+.lede{font-size:var(--t-body);line-height:1.6;font-weight:400}
+.copy{font-size:var(--t-body);line-height:1.65}
+.small{font-size:var(--t-legal);line-height:1.6}
+.measure-p{max-width:64ch}
+
+.rule-amber{display:block;width:34px;height:3px;background:var(--amber-05);border:0;margin:0 0 1.125rem}
+
+/* ---------- button ---------- */
+.btn{
+  display:inline-block;
+  background:var(--amber-05);
+  color:var(--slate-05);
+  font-family:inherit;font-size:var(--t-button);font-weight:700;line-height:1.2;
+  letter-spacing:.005em;
+  padding:1.0625rem 2rem;
+  border:0;border-radius:2px;
+  text-decoration:none;cursor:pointer;
+  transition:background .15s ease;
+}
+.btn:hover{background:var(--amber-04)}
+.btn:active{background:var(--amber-03)}
+/* The brand book rules out outlined buttons, so the secondary is a solid
+   approved pairing instead: Slate 05 on light ground, Slate 03 on dark. */
+.btn--secondary{background:var(--slate-05);color:var(--white)}
+.btn--secondary:hover{background:var(--slate-04)}
+.band--dark .btn--secondary,.hero .btn--secondary{background:var(--slate-03)}
+.band--dark .btn--secondary:hover,.hero .btn--secondary:hover{background:var(--slate-04)}
+
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
+summary:focus-visible,textarea:focus-visible{
+  outline:3px solid var(--amber-05);
+  outline-offset:3px;
+}
+
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--amber-05);color:var(--slate-05);
+  font-weight:700;font-size:var(--t-legal);padding:.75rem 1.25rem;
+}
+.skip:focus{left:0}
+
+/* ---------- masthead ---------- */
+.masthead{background:var(--slate-05);padding-block:1rem}
+.masthead .shell{display:flex;align-items:center}
+.masthead .logo-link{display:inline-flex;line-height:0}
+.masthead img{height:clamp(24px,2.2vw,30px);width:auto;display:block}
+.masthead__call{
+  margin-left:auto;color:var(--white);text-decoration:none;
+  font-size:var(--t-button);font-weight:700;line-height:1.2;white-space:nowrap;
+}
+.masthead__call:hover{color:var(--amber-05)}
+@media (max-width:480px){
+  .masthead__call{font-size:var(--t-legal)}
+}
+
+/* ---------- hero ---------- */
+/* No hero photograph on these two pages. The 408KB WebP on the live
+   pages was the single heaviest request and it sat behind a scrim at
+   80 to 94 per cent opacity, so almost none of it was visible. The
+   gradient below reproduces that scrim exactly, costs nothing, and
+   removes the largest contentful paint candidate that was an image. */
+.hero{
+  position:relative;color:var(--white);overflow:hidden;
+  background:
+    radial-gradient(circle,rgba(201,207,225,.10) 1px,transparent 1px) 0 0/26px 26px,
+    linear-gradient(104deg,#1B2735 0%,#222F3E 46%,#2C3C4F 100%);
+}
+.hero__inner{position:relative;padding-block:clamp(1.5rem,2.4vw,2rem)}
+.hero h1{max-width:19ch}
+.hero .hl{color:var(--amber-05)}
+.hero .lede{color:var(--white);max-width:54ch;margin-top:1.125rem}
+.hero .licensing{color:var(--steel-02);margin-top:1.125rem;font-size:var(--t-legal);max-width:64ch}
+.trustline{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
+
+.hero__grid{
+  display:grid;grid-template-columns:1fr;
+  gap:clamp(1.5rem,3vw,2rem);align-items:start;
+}
+.hero__head,.hero__form,.hero__tail{min-width:0}
+@media (min-width:1000px){
+  .hero__grid{
+    grid-template-columns:1.2fr .8fr;
+    grid-template-areas:"head form" "tail form";
+    column-gap:clamp(2rem,3.5vw,3.25rem);row-gap:1.25rem;
+  }
+  .hero__head{grid-area:head}
+  .hero__form{grid-area:form;align-self:start}
+  .hero__tail{grid-area:tail}
+}
+.hero__tail .btn{margin-top:0}
+.hero__tail .licensing{margin-top:1rem}
+.hero__form{scroll-margin-top:clamp(1rem,4vw,1.75rem)}
+
+/* ---------- the one form embed ---------- */
+.formwrap{background:var(--slate-01);border-radius:2px;padding:clamp(1.5rem,3vw,2.25rem)}
+.formcard{padding:clamp(1.125rem,1.8vw,1.5rem)}
+.formcard__title{
+  color:var(--slate-05);
+  font-size:var(--t-body);line-height:1.35;letter-spacing:0;
+}
+.formcard__note{margin-top:.25rem;font-size:var(--t-legal);line-height:1.5;color:var(--slate-03)}
+/* The embed reserves its own height before Fillout loads, so the proof
+   strip below it never shifts down when the iframe arrives. */
+.fillout-embed{width:100%;min-height:300px}
+.formcard .fillout-embed{margin-top:.75rem}
+@media (min-width:1000px){
+  .formcard{max-width:384px;margin-left:auto}
+}
+
+/* ---------- proof strip ---------- */
+/* Sits directly under the hero and is sized to land above the fold on
+   a 1440 by 900 desktop viewport. */
+.proof{background:var(--amber-02);color:var(--slate-05);padding-block:clamp(1.1rem,1.9vw,1.4rem)}
+/* Heading and, on the trade page, the swapped proof line share one row,
+   so the strip stays short enough to clear the fold on a 900px desktop
+   viewport even when the headline above it wraps to three lines. */
+.proof__head{
+  display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+  gap:.25rem 1.5rem;margin-bottom:.75rem;
+}
+.proof__head .eyebrow{margin:0}
+.proof__grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media (min-width:900px){
+  .proof__grid{grid-template-columns:1.55fr .95fr;gap:clamp(1.5rem,3vw,2.5rem);align-items:start}
+}
+.proof__stats{display:grid;grid-template-columns:1fr;gap:1rem}
+@media (min-width:560px){.proof__stats{grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.75rem)}}
+.proof__stat b{
+  display:block;font-size:1rem;line-height:1.25;font-weight:700;
+  letter-spacing:-.01em;color:var(--slate-05);
+}
+.proof__stat span{display:block;font-size:var(--t-legal);line-height:1.5;color:var(--slate-04);margin-top:.25rem}
+.proof__quote{margin:0;padding-left:clamp(0px,1.5vw,1.25rem);border-left:0}
+@media (min-width:900px){.proof__quote{border-left:2px solid var(--amber-05)}}
+.proof__quote blockquote{margin:0}
+.proof__quote blockquote p{font-size:1rem;line-height:1.3;font-weight:600;letter-spacing:-.01em}
+.proof__quote figcaption{margin-top:.4rem;font-size:var(--t-legal);line-height:1.5;color:var(--slate-04)}
+
+/* ---------- review tags ---------- */
+/* Mockup scaffolding. Both tags are removed before anything publishes. */
+.tag{
+  display:inline-block;margin-top:.3rem;
+  font-size:.625rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  line-height:1.4;padding:.15rem .4rem;border-radius:2px;white-space:nowrap;
+}
+.tag--approval{background:#FFE14D;color:#4A3B00;border:1px solid #C79A00}
+.tag--confirm{background:transparent;color:var(--slate-03);border:1px dashed var(--steel)}
+.band--dark .tag--confirm{color:var(--steel-02);border-color:var(--slate-03)}
+
+/* ---------- problem and outcome tiles ---------- */
+.tiles{
+  display:grid;gap:clamp(1rem,2vw,1.5rem);
+  grid-template-columns:1fr;
+  margin-top:clamp(2rem,4vw,3rem);
+}
+@media (min-width:660px){ .tiles{grid-template-columns:1fr 1fr} }
+@media (min-width:980px){ .tiles--3{grid-template-columns:repeat(3,1fr)} }
+.tile{
+  background:var(--white);
+  border:1px solid var(--steel-01);
+  border-radius:2px;
+  padding:clamp(1.5rem,2.4vw,2rem);
+}
+.band--dots .tile{background:var(--steel-01);border-color:var(--steel-02)}
+.tile h3{margin-bottom:.75rem}
+.tile p{font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
+.tile-head{display:flex;align-items:center;gap:.875rem;margin-bottom:.875rem}
+.tile-head h3{margin:0}
+.tile-icon{
+  display:flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:2px;
+  background:var(--amber-05);color:var(--slate-05);
+  flex:0 0 auto;
+}
+.tile-icon svg{width:22px;height:22px;display:block}
+
+/* ---------- dark outcomes grid ---------- */
+.outcomes{
+  display:grid;gap:clamp(2rem,3.4vw,2.75rem) clamp(2rem,4vw,3.5rem);
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  margin-top:clamp(2.5rem,5vw,3.5rem);
+}
+.outcome h3{margin-bottom:.625rem}
+.outcome p{font-size:var(--t-body);line-height:1.6;color:var(--steel-02)}
+.band--dark h2{max-width:28ch}
+.band--dark .intro{color:var(--steel-02);max-width:60ch;margin-top:1.5rem;font-size:var(--t-body)}
+
+/* ---------- renewal timeline ---------- */
+.steps{
+  display:grid;gap:clamp(1.75rem,3vw,2.5rem);
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  margin-top:clamp(2.5rem,5vw,3.5rem);
+}
+.step{border-top:2px solid var(--steel-02);padding-top:1.25rem}
+.step .n{
+  display:block;margin-bottom:.875rem;
+  font-size:var(--t-legal);font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--slate-03);
+}
+.step .n b{
+  display:block;font-size:var(--t-subline);line-height:1;
+  letter-spacing:-.02em;color:var(--slate-05);font-weight:600;margin-top:.25rem;
+}
+.band--dark .step{border-top-color:var(--slate-04)}
+.band--dark .step .n{color:var(--amber-05)}
+.band--dark .step .n b{color:var(--steel-02)}
+.step p{font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
+.band--dark .step p{color:var(--steel-02)}
+.step p b{color:inherit;font-weight:700}
+
+/* ---------- advisors ---------- */
+.advisors{
+  display:grid;gap:clamp(1.75rem,3.5vw,2.5rem);
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  margin-top:clamp(2.5rem,5vw,3.5rem);
+}
+.advisor img{
+  width:100%;height:auto;max-width:180px;
+  aspect-ratio:1/1;border-radius:2px;background:var(--slate-04);
+}
+.advisor h3{margin-top:1.125rem}
+.advisor .role{font-size:var(--t-legal);line-height:1.5;color:var(--slate-03);margin-top:.3rem}
+.advisor .years{font-size:var(--t-body);line-height:1.5;color:var(--slate-04);margin-top:.5rem}
+
+/* ---------- repeated CTA pair ---------- */
+.cta-pair{margin-top:clamp(2rem,4vw,2.75rem)}
+.cta-pair .row{display:flex;flex-wrap:wrap;gap:.875rem}
+.cta-pair .btn{margin:0}
+
+/* ---------- closing band ---------- */
+.closing .copy{margin-top:1.25rem;color:var(--steel-02);max-width:52ch}
+.closing .cta-pair{margin-top:clamp(1.75rem,3.5vw,2.25rem)}
+.closing .trustline{margin-top:1.5rem}
+
+/* ---------- footer ---------- */
+.foot{background:var(--slate-05);color:var(--steel-02);padding-block:clamp(2.5rem,5vw,3.5rem)}
+.foot .logo-link{display:inline-flex;line-height:0}
+.foot img{height:24px;width:auto;display:block}
+.foot p{font-size:var(--t-legal);line-height:1.9}
+.foot a{color:var(--steel-02)}
+.foot .sep{color:var(--steel);padding:0 .35rem}
+.foot__top{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:1.25rem;margin-bottom:1.5rem;
+}
+.foot__nav{display:flex;flex-wrap:wrap;gap:1.5rem 2rem;font-size:var(--t-legal)}
+.foot__nav a{text-decoration:none;border-bottom:1px solid transparent}
+.foot__nav a:hover{border-bottom-color:var(--steel-02)}
+.foot__id{margin-bottom:1.75rem}
+.foot__legal p + p{margin-top:.9rem}
+.foot__copy{margin-top:1.75rem}
+
+/* ---------- sticky mobile action bar ---------- */
+.mobilebar{display:none}
+@media (max-width:767px){
+  .mobilebar{
+    display:grid;grid-template-columns:1fr 1fr;gap:.5rem;
+    position:fixed;left:0;right:0;bottom:0;z-index:150;
+    padding:.625rem clamp(.75rem,4vw,1rem);
+    background:var(--slate-05);border-top:1px solid var(--slate-04);
+    transition:transform .2s ease,visibility .2s ease;
+  }
+  .mobilebar .btn{margin:0;padding:.9375rem .75rem;text-align:center;font-size:.9375rem}
+  .mobilebar .btn--secondary{background:var(--slate-03);color:var(--white)}
+  .mobilebar .btn--secondary:hover{background:var(--slate-04)}
+  .mobilebar.is-hidden{transform:translateY(115%);visibility:hidden}
+  .foot{padding-bottom:8rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+/* ---------- trades strip ---------- */
+.trade-list{margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem 0;list-style:none;
+  font-size:var(--t-legal);font-weight:700;letter-spacing:.16em;text-transform:uppercase;line-height:1.5}
+.trade-list li{display:flex;align-items:center}
+.trade-list li::after{content:"\00b7";color:var(--slate-03);font-weight:400;margin:0 clamp(.6rem,1.6vw,1.15rem)}
+.trade-list li:last-child::after{content:none}
+.trade-list li[aria-current="true"]{color:var(--slate-05);background:var(--amber-03);padding:0 .4rem;border-radius:2px}
+.proof__line{
+  margin:0;font-size:var(--t-legal);line-height:1.5;color:var(--slate-04);
+}
+</style>
+
+<!-- Same anti-flash guard the live trade swap uses. -->
+<style>
+html[data-trade-pending] .hero h1,
+html[data-trade-pending] .hero .lede,
+html[data-trade-pending] .proof__line{visibility:hidden}
+</style>
+
+<script>
+window.InFrameTrade = (function () {
+  "use strict";
+
+  /* ===== APPROVED ALLOWLIST · COMPLIANCE APPROVAL REQUIRED TO EDIT =====
+     One template, seven trades. The ?trade= value is never written to
+     the page. It only selects one of the approved entries below, so no
+     visitor-supplied text can reach the DOM.
+
+     key     the exact ?trade= value, lowercase
+     noun    the trade name inside the H1, "Insurance for <noun>"
+     phrase  the trade phrase inside "commercial <phrase> contractors",
+             used in the subhead and in the swapped proof line
+     label   the matching item in the trades strip, highlighted  */
+  var TRADES = {
+    electrical: { noun: "electrical contractors",            phrase: "electrical",            label: "Electrical" },
+    hvac:       { noun: "HVAC and mechanical contractors",   phrase: "HVAC and mechanical",   label: "HVAC & Mechanical" },
+    plumbing:   { noun: "plumbing contractors",              phrase: "plumbing",              label: "Plumbing" },
+    concrete:   { noun: "concrete and masonry contractors",  phrase: "concrete and masonry",  label: "Concrete & Masonry" },
+    flooring:   { noun: "flooring contractors",              phrase: "flooring",              label: "Flooring" },
+    painting:   { noun: "painting contractors",              phrase: "painting",              label: "Painting" },
+    drywall:    { noun: "drywall contractors",               phrase: "drywall",               label: "Drywall" }
+  };
+
+  /* Close variants that land on the same approved entry. */
+  var ALIAS = {
+    electric: "electrical", electrician: "electrical", electricians: "electrical",
+    mechanical: "hvac", hvacr: "hvac",
+    plumber: "plumbing", plumbers: "plumbing",
+    masonry: "concrete", mason: "concrete",
+    floor: "flooring", flooringcontractor: "flooring",
+    painter: "painting", painters: "painting",
+    drywalling: "drywall", sheetrock: "drywall"
+  };
+  /* ===== END APPROVED ALLOWLIST ===== */
+
+  var entry = null;
+  try {
+    var raw = new URLSearchParams(window.location.search).get("trade");
+    if (typeof raw === "string") {
+      var k = raw.toLowerCase().replace(/[^a-z]+/g, "");
+      if (Object.prototype.hasOwnProperty.call(ALIAS, k)) { k = ALIAS[k]; }
+      if (Object.prototype.hasOwnProperty.call(TRADES, k)) { entry = TRADES[k]; }
+    }
+  } catch (e) { entry = null; }
+
+  if (entry) { document.documentElement.setAttribute("data-trade-pending", ""); }
+
+  function apply() {
+    if (!entry) { return; }
+    try {
+      /* textContent on existing elements assigns plain text. The values
+         come from the list above, never from the URL. */
+      var noun = document.querySelector(".hero h1 .trade-noun");
+      if (noun) { noun.textContent = entry.noun; }
+
+      var phrases = document.querySelectorAll(".trade-phrase");
+      for (var i = 0; i < phrases.length; i++) {
+        phrases[i].textContent = entry.phrase;
+      }
+
+      var items = document.querySelectorAll(".trade-list li");
+      for (var j = 0; j < items.length; j++) {
+        if (items[j].textContent.trim() === entry.label) {
+          items[j].setAttribute("aria-current", "true");
+        }
+      }
+
+      document.title = entry.noun.charAt(0).toUpperCase() + entry.noun.slice(1) +
+                       ": Insurance · InFrame Risk";
+    } catch (e) {
+    } finally {
+      document.documentElement.removeAttribute("data-trade-pending");
+    }
+  }
+
+  if (entry) { document.addEventListener("DOMContentLoaded", apply); }
+  return { apply: apply };
+})();
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5PCQ4CBV');</script>
+<!-- End Google Tag Manager -->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5PCQ4CBV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager -->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="shell">
+    <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306" fetchpriority="high"></a>
+    <a class="masthead__call" href="tel:+18668111207"
+       data-cta="cta_click" data-cta-id="call_advisor" data-cta-location="header" data-cta-type="phone">Call an advisor: (866) 811-1207</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 01 HERO -->
+<section class="hero">
+  <div class="hero__inner">
+    <div class="shell hero__grid">
+      <div class="hero__head">
+        <h1>Insurance for <span class="hl trade-noun">specialty trade contractors</span>, built around the work you bid.</h1>
+        <p class="lede">InFrame is a specialist insurance broker for commercial <span class="trade-phrase">specialty trade</span> contractors. We read your policies against your contracts, so your coverage matches the jobs you take, the owners you sign with, and the sites you work on.</p>
+      </div>
+      <div class="hero__form" id="request">
+        <div class="formwrap formcard">
+          <h2 class="formcard__title">Get my review</h2>
+          <p class="formcard__note">Takes 30 seconds. We&rsquo;ll follow up within one business day.</p>
+          <div class="fillout-embed"
+               data-fillout-id="fkqNiqeJmsus"
+               data-fillout-embed-type="standard"
+               data-fillout-inherit-parameters
+               data-fillout-dynamic-resize></div>
+        </div>
+      </div>
+      <div class="hero__tail">
+        <a class="btn btn--secondary" href="tel:+18668111207"
+           data-cta="cta_click" data-cta-id="call_advisor" data-cta-location="hero" data-cta-type="phone">Call an advisor: (866) 811-1207</a>
+        <p class="licensing">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>if (window.InFrameTrade) { window.InFrameTrade.apply(); }</script>
+
+<!-- 02 PROOF STRIP · directly under the hero, above the fold on desktop -->
+<section class="proof" aria-labelledby="proof-h">
+  <div class="shell">
+    <div class="proof__head">
+      <h2 id="proof-h" class="eyebrow">What clients saw</h2>
+      <p class="proof__line">Specialist programs for commercial <span class="trade-phrase">specialty trade</span> contractors, in all 50 states and DC.
+        <span class="tag tag--confirm">[CONFIRM]</span></p>
+    </div>
+    <div class="proof__grid">
+      <div class="proof__stats">
+        <div class="proof__stat">
+          <b>164 certificates sent in our first 3 days</b>
+          <span>Southern California flooring contractor.</span>
+          <span class="tag tag--approval">[NEEDS CLIENT APPROVAL]</span>
+        </div>
+        <div class="proof__stat">
+          <b>12+ carriers shopped</b>
+          <span>Fully bound 5 days after switching. Golf course builder.</span>
+          <span class="tag tag--approval">[NEEDS CLIENT APPROVAL]</span>
+        </div>
+        <div class="proof__stat">
+          <b>25 of 26 subs had a gap</b>
+          <span>A gap their certificate did not show. California general contractor.</span>
+          <span class="tag tag--approval">[NEEDS CLIENT APPROVAL]</span>
+        </div>
+      </div>
+      <figure class="proof__quote">
+        <blockquote><p>&ldquo;This is the best renewal proposal I&rsquo;ve seen.&rdquo;</p></blockquote>
+        <figcaption>Manager, Texas commercial property owner.
+          <span class="tag tag--approval">[NEEDS CLIENT APPROVAL]</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 03 WHAT GOES WRONG ON YOUR JOBS -->
+<section class="band band--dots">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2>You carry more risk than the people who hired you.</h2>
+    <p class="copy measure-p" style="margin-top:1.5rem">You are on the site, doing the work, on someone else&rsquo;s contract. Three things get in the way, and none of them are about price.</p>
+    <div class="tiles tiles--3">
+      <article class="tile">
+        <div class="tile-head">
+          <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></div>
+          <h3>The contract asks for more than your policy gives.</h3>
+        </div>
+        <p>Additional insured wording, waivers, and limits are written into the contract you signed. Nobody checked them against your policy.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-head">
+          <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>A certificate holds up the job.</h3>
+        </div>
+        <p>The general contractor rejects the certificate, and your crew waits. The fix takes days when it should take an hour.</p>
+      </article>
+      <article class="tile">
+        <div class="tile-head">
+          <div class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h3>Your renewal arrives too late to shop.</h3>
+        </div>
+        <p>One set of numbers, a few days out, and no time to look at another carrier. You sign because the date is here.</p>
+      </article>
+    </div>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request" data-cta="cta_click" data-cta-id="get_my_review" data-cta-location="problems">Get my review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207" data-cta="cta_click" data-cta-id="call_advisor" data-cta-location="problems" data-cta-type="phone">Call an advisor: (866) 811-1207</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 WHAT WORKING WITH INFRAME LOOKS LIKE -->
+<section class="band band--dark">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2>What working with InFrame looks like.</h2>
+    <p class="intro">We start your renewal 120 days out. That is the whole difference. Everything else follows from having the time to do the work properly.</p>
+    <div class="steps">
+      <div class="step">
+        <span class="n">Day <b>120</b></span>
+        <p>We read your current policies and your contracts side by side. We write down every place the two do not match.
+          <span class="tag tag--confirm">[CONFIRM]</span></p>
+      </div>
+      <div class="step">
+        <span class="n">Day <b>90</b></span>
+        <p>We build your submission and take your program to carriers who write your trade.
+          <span class="tag tag--confirm">[CONFIRM]</span></p>
+      </div>
+      <div class="step">
+        <span class="n">Day <b>45</b></span>
+        <p>We bring back what the carriers offered, and we explain what each one actually covers.
+          <span class="tag tag--confirm">[CONFIRM]</span></p>
+      </div>
+      <div class="step">
+        <span class="n">Day <b>0</b></span>
+        <p>You renew with time to spare. Your certificates go out the same week.
+          <span class="tag tag--confirm">[CONFIRM]</span></p>
+      </div>
+    </div>
+    <div class="outcomes">
+      <article class="outcome">
+        <h3>We read your policies against your contracts.</h3>
+        <p>A specialist reads both documents, not just the renewal. Your coverage has to match the work you bid.</p>
+      </article>
+      <article class="outcome">
+        <h3>We shop your program with many carriers.</h3>
+        <p>We take your program to the carriers who write construction risk, and we tell you what each one said.</p>
+      </article>
+      <article class="outcome">
+        <h3>Certificates go out fast.</h3>
+        <p>When a general contractor asks for a certificate, you are not the reason the job waits.
+          <span class="tag tag--confirm">[CONFIRM]</span></p>
+      </article>
+    </div>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request" data-cta="cta_click" data-cta-id="get_my_review" data-cta-location="how_it_works">Get my review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207" data-cta="cta_click" data-cta-id="call_advisor" data-cta-location="how_it_works" data-cta-type="phone">Call an advisor: (866) 811-1207</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 TRADES WE WRITE -->
+<section class="band band--light band--tight">
+  <div class="shell">
+    <h2 class="eyebrow">Specialist programs for</h2>
+    <ul class="trade-list">
+      <li>Electrical</li>
+      <li>HVAC &amp; Mechanical</li>
+      <li>Plumbing</li>
+      <li>Concrete &amp; Masonry</li>
+      <li>Flooring</li>
+      <li>Painting</li>
+      <li>Drywall</li>
+      <li>and more</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 06 ADVISORS -->
+<section class="band band--white" id="advisors">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2>The specialists you will actually talk to.</h2>
+    <p class="copy measure-p" style="margin-top:1.5rem">InFrame Insurance Services LLC is a licensed insurance brokerage. These are the advisors who read your program.</p>
+    <div class="advisors">
+      <article class="advisor">
+        <img src="../assets/advisor-daniel.webp" alt="" width="480" height="480" loading="lazy" decoding="async">
+        <h3>Daniel [confirm last name]</h3>
+        <p class="role">[confirm title]</p>
+        <p class="years">[confirm] years in construction risk and insurance.</p>
+      </article>
+      <article class="advisor">
+        <img src="../assets/advisor-paul.webp" alt="" width="480" height="480" loading="lazy" decoding="async">
+        <h3>Paul [confirm last name]</h3>
+        <p class="role">[confirm title]</p>
+        <p class="years">[confirm] years in construction risk and insurance.</p>
+      </article>
+      <article class="advisor">
+        <img src="../assets/advisor-brian.webp" alt="" width="480" height="480" loading="lazy" decoding="async">
+        <h3>Brian [confirm last name]</h3>
+        <p class="role">[confirm title]</p>
+        <p class="years">[confirm] years in construction risk and insurance.</p>
+      </article>
+    </div>
+    <p class="small" style="margin-top:2rem;color:var(--slate-03)">Photographs are placeholders in this mockup. Replace with headshots before launch.</p>
+  </div>
+</section>
+
+<!-- 07 CLOSING -->
+<section class="band band--dark band--tight closing">
+  <div class="shell">
+    <span class="rule-amber"></span>
+    <h2>See what a specialist notices about your program.</h2>
+    <p class="copy">Send us what you have. We will tell you what we see.</p>
+    <div class="cta-pair">
+      <div class="row">
+        <a class="btn" href="#request" data-cta="cta_click" data-cta-id="get_my_review" data-cta-location="closing">Get my review</a>
+        <a class="btn btn--secondary" href="tel:+18668111207" data-cta="cta_click" data-cta-id="call_advisor" data-cta-location="closing" data-cta-type="phone">Call an advisor: (866) 811-1207</a>
+      </div>
+    </div>
+    <p class="trustline">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__top">
+      <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306" loading="lazy" decoding="async"></a>
+      <nav class="foot__nav" aria-label="Legal">
+        <a href="https://inframerisk.com/privacy">Privacy</a>
+        <a href="https://inframerisk.com/terms">Terms</a>
+        <a href="https://inframerisk.com">Licenses</a>
+      </nav>
+    </div>
+    <p class="foot__id">
+      InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states and DC<span class="sep">&middot;</span>NPN 22200284<span class="sep">&middot;</span>CA license: 6019212<span class="sep">&middot;</span><a href="tel:+18668111207" data-cta="cta_click" data-cta-id="call_advisor" data-cta-location="footer" data-cta-type="phone">(866) 811-1207</a>
+    </p>
+    <div class="foot__legal">
+      <p>InFrame Insurance Services LLC (&ldquo;InFrame&rdquo;) is a licensed insurance agency and is licensed in all 50 states and the District of Columbia. InFrame is not an insurance company, does not underwrite insurance, and does not make coverage, claim, or underwriting determinations. All insurance coverage is subject to the terms, conditions, limitations, exclusions, and underwriting requirements of the applicable policy and insurer. The availability of any insurance product, quote, or coverage is not guaranteed.</p>
+      <p>The information provided on this website, through our platform, or in connection with our services is for general informational and business purposes only and does not constitute legal, tax, financial, or other professional advice. Risk mitigation tools, recommendations, assessments, and related services are designed to help users identify and manage potential risks, but they do not eliminate risk, guarantee compliance, prevent losses, or ensure that insurance coverage will apply to any particular claim or circumstance.</p>
+      <p>InFrame receives compensation from insurers based on the premiums for the insurance policies it sells. Additional information is available upon request.</p>
+    </div>
+    <p class="foot__copy">&copy; 2026 InFrame Risk Inc. All rights reserved.</p>
+  </div>
+</footer>
+
+<nav class="mobilebar is-hidden" aria-label="Quick actions">
+  <a class="btn btn--secondary" href="tel:+18668111207"
+     data-cta="cta_click" data-cta-id="call_advisor" data-cta-location="mobile_bar" data-cta-type="phone">Call an advisor</a>
+  <a class="btn" href="#request"
+     data-cta="cta_click" data-cta-id="get_my_review" data-cta-location="mobile_bar">Get my review</a>
+</nav>
+<script>
+/* Put attribution in the query string so Fillout's inherit-parameters
+   carries it onto the submission. Carried over unchanged from the live
+   landing pages. Runs before the embed script loads.
+
+   1. Name the landing page as `page`.
+   2. Keep the Google click id and UTMs for 90 days. Fillout only reads
+      the URL, so a visitor who clicks an ad and comes back later would
+      otherwise arrive with none of them. Values in the URL always win and
+      refresh the saved copy; saved values are only added when missing. */
+(function () {
+  try {
+    var KEYS = ["gclid", "gbraid", "wbraid", "utm_source", "utm_medium",
+                "utm_campaign", "utm_term", "utm_content"];
+    var MAX_AGE = 90 * 24 * 60 * 60;
+    var url = new URL(window.location.href);
+    var changed = false;
+
+    var path = url.pathname.replace(/\/+$/, "");
+    var slug = path.split("/").pop();
+    if (!slug || slug === "index.html") { slug = "home"; }
+    if (!url.searchParams.get("page")) {
+      url.searchParams.set("page", slug);
+      changed = true;
+    }
+
+    var domain = /(^|\.)inframerisk\.com$/.test(url.hostname) ? ";domain=.inframerisk.com" : "";
+    function save(k, v) {
+      document.cookie = "ifr_" + k + "=" + encodeURIComponent(v) +
+        ";max-age=" + MAX_AGE + ";path=/" + domain + ";SameSite=Lax" +
+        (url.protocol === "https:" ? ";Secure" : "");
+    }
+    function saved(k) {
+      var m = document.cookie.match(new RegExp("(?:^|; )ifr_" + k + "=([^;]*)"));
+      return m ? decodeURIComponent(m[1]) : "";
+    }
+
+    /* A fresh ad click replaces the whole saved set, so a new campaign's
+       UTMs never mix with an old click id. */
+    var fresh = KEYS.some(function (k) { return url.searchParams.get(k); });
+    KEYS.forEach(function (k) {
+      var v = url.searchParams.get(k);
+      if (fresh) {
+        if (v) { save(k, v); } else { save(k, ""); }
+      } else {
+        var s = saved(k);
+        if (s) { url.searchParams.set(k, s); changed = true; }
+      }
+    });
+
+    if (changed) { window.history.replaceState(null, "", url.toString()); }
+  } catch (e) {}
+})();
+</script>
+<script>
+/* Tag Manager events for the new buttons on this page.
+
+   Nothing here replaces an existing trigger. The live pages push no
+   dataLayer events at all and call tracking is configured inside the
+   GTM container against the tel: links, so every tel: href, class and
+   link text is unchanged and those triggers keep matching. These
+   attributes are additive: each tracked element carries data-cta with
+   the event name, plus data-cta-id and data-cta-location, which GTM
+   reads as Data Layer Variables on the event.
+
+   Events pushed: cta_click, form_view, form_start. */
+(function () {
+  var dl = window.dataLayer = window.dataLayer || [];
+  var sent = {};
+
+  function push(event, el) {
+    dl.push({
+      event: event,
+      cta_id: el ? (el.getAttribute("data-cta-id") || "") : "",
+      cta_location: el ? (el.getAttribute("data-cta-location") || "") : "",
+      cta_type: el ? (el.getAttribute("data-cta-type") || "") : "",
+      cta_text: el ? el.textContent.trim().slice(0, 80) : "",
+      page_variant: document.documentElement.getAttribute("data-variant") || ""
+    });
+  }
+
+  /* Capture phase, so a click still reports even if something else
+     stops the event on its way back up. */
+  document.addEventListener("click", function (e) {
+    var el = e.target && e.target.closest ? e.target.closest("[data-cta]") : null;
+    if (el) { push(el.getAttribute("data-cta"), el); }
+  }, true);
+
+  var form = document.getElementById("request");
+  if (!form) { return; }
+
+  /* form_view: the hero form card has been at least a tenth on screen. */
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting && !sent.form_view) {
+          sent.form_view = true;
+          push("form_view", form);
+          io.disconnect();
+        }
+      }
+    }, { threshold: 0.1 });
+    io.observe(form);
+  } else {
+    sent.form_view = true;
+    push("form_view", form);
+  }
+
+  /* form_start: Fillout renders in a cross-origin iframe, so keystrokes
+     inside it are not readable from this page. What is observable is the
+     window losing focus to that iframe, which only happens once the
+     visitor has clicked or tabbed into the form. Fires at most once. */
+  window.addEventListener("blur", function () {
+    if (sent.form_start) { return; }
+    var active = document.activeElement;
+    if (active && active.tagName === "IFRAME" && form.contains(active)) {
+      sent.form_start = true;
+      push("form_start", form);
+    }
+  });
+})();
+</script>
+<script>
+/* Sticky mobile bar: hide it while the hero form is on screen, show it
+   once the visitor has scrolled past. Without IntersectionObserver the
+   bar simply stays visible. */
+(function () {
+  var bar = document.querySelector(".mobilebar");
+  var form = document.getElementById("request");
+  if (!bar) { return; }
+  if (!form || !("IntersectionObserver" in window)) {
+    bar.classList.remove("is-hidden");
+    return;
+  }
+  new IntersectionObserver(function (entries) {
+    for (var i = 0; i < entries.length; i++) {
+      bar.classList.toggle("is-hidden", entries[i].isIntersecting);
+    }
+  }, { threshold: 0.12 }).observe(form);
+})();
+</script>
+<script defer src="https://server.fillout.com/embed/v1/"></script>
+
+</body>
+</html>
