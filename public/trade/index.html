@@ -161,10 +161,10 @@ summary:focus-visible,textarea:focus-visible{
     radial-gradient(circle,rgba(201,207,225,.10) 1px,transparent 1px) 0 0/26px 26px,
     linear-gradient(104deg,#1B2735 0%,#222F3E 46%,#2C3C4F 100%);
 }
-.hero__inner{position:relative;padding-block:clamp(1.5rem,2.4vw,2rem)}
+.hero__inner{position:relative;padding-block:clamp(1.25rem,2vw,1.75rem)}
 .hero h1{max-width:19ch}
 .hero .hl{color:var(--amber-05)}
-.hero .lede{color:var(--white);max-width:54ch;margin-top:1.125rem}
+.hero .lede{color:var(--white);max-width:54ch;margin-top:1rem}
 .hero .licensing{color:var(--steel-02);margin-top:1.125rem;font-size:var(--t-legal);max-width:64ch}
 .trustline{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
 
@@ -184,7 +184,7 @@ summary:focus-visible,textarea:focus-visible{
   .hero__tail{grid-area:tail}
 }
 .hero__tail .btn{margin-top:0}
-.hero__tail .licensing{margin-top:1rem}
+.hero__tail .licensing{margin-top:.75rem}
 .hero__form{scroll-margin-top:clamp(1rem,4vw,1.75rem)}
 
 /* ---------- the one form embed ---------- */
@@ -203,43 +203,61 @@ summary:focus-visible,textarea:focus-visible{
   .formcard{max-width:384px;margin-left:auto}
 }
 
-/* ---------- proof strip ---------- */
-/* Sits directly under the hero and is sized to land above the fold on
-   a 1440 by 900 desktop viewport. */
-.proof{background:var(--amber-02);color:var(--slate-05);padding-block:clamp(1.1rem,1.9vw,1.4rem)}
-/* Heading and, on the trade page, the swapped proof line share one row,
-   so the strip stays short enough to clear the fold on a 900px desktop
-   viewport even when the headline above it wraps to three lines. */
-.proof__head{
-  display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
-  gap:.25rem 1.5rem;margin-bottom:.75rem;
+/* ---------- value strip ---------- */
+/* Sits directly under the hero, the slot Tas Bober's framework reserves
+   for immediate proof. There is no approved client proof to put in it,
+   so it carries the offer instead: what a visitor gets, in what order,
+   and what it costs them to ask. The licensing line keeps the trust
+   signal without spending the whole band on it.
+
+   The three items are a real sequence, which is why they are numbered. */
+.vstrip{
+  background:var(--white);color:var(--slate-05);
+  border-top:3px solid var(--amber-05);
+  border-bottom:1px solid var(--steel-01);
+  padding-block:clamp(1rem,1.7vw,1.25rem);
 }
-.proof__head .eyebrow{margin:0}
-.proof__grid{display:grid;grid-template-columns:1fr;gap:1rem}
-@media (min-width:900px){
-  .proof__grid{grid-template-columns:1.55fr .95fr;gap:clamp(1.5rem,3vw,2.5rem);align-items:start}
+.vstrip .eyebrow{margin-bottom:.75rem}
+.vstrip__grid{display:grid;grid-template-columns:1fr;gap:1rem;margin:0;padding:0;list-style:none}
+@media (min-width:720px){
+  .vstrip__grid{grid-template-columns:repeat(3,1fr);gap:clamp(1.25rem,3vw,2.5rem)}
 }
-.proof__stats{display:grid;grid-template-columns:1fr;gap:1rem}
-@media (min-width:560px){.proof__stats{grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.75rem)}}
-.proof__stat b{
-  display:block;font-size:1rem;line-height:1.25;font-weight:700;
-  letter-spacing:-.01em;color:var(--slate-05);
+.vstrip__item{min-width:0;display:grid;grid-template-columns:auto 1fr;gap:.25rem .625rem;align-items:start}
+.vstrip__n{
+  grid-row:1/3;
+  width:22px;height:22px;border-radius:50%;background:var(--amber-05);color:var(--slate-05);
+  font-size:.6875rem;font-weight:700;line-height:22px;text-align:center;
+  font-variant-numeric:tabular-nums;margin-top:.1rem;
 }
-.proof__stat span{display:block;font-size:var(--t-legal);line-height:1.5;color:var(--slate-04);margin-top:.25rem}
-.proof__quote{margin:0;padding-left:clamp(0px,1.5vw,1.25rem);border-left:0}
-@media (min-width:900px){.proof__quote{border-left:2px solid var(--amber-05)}}
-.proof__quote blockquote{margin:0}
-.proof__quote blockquote p{font-size:1rem;line-height:1.3;font-weight:600;letter-spacing:-.01em}
-.proof__quote figcaption{margin-top:.4rem;font-size:var(--t-legal);line-height:1.5;color:var(--slate-04)}
+.vstrip__item b{font-size:1rem;line-height:1.25;font-weight:700;letter-spacing:-.01em}
+.vstrip__item span{font-size:var(--t-legal);line-height:1.5;color:var(--slate-04)}
+.vstrip__licence{
+  margin-top:.75rem;padding-top:.6rem;border-top:1px solid var(--steel-01);
+  font-size:var(--t-legal);line-height:1.6;color:var(--slate-03);
+}
+.vstrip__licence .sep{color:var(--steel);padding:0 .35rem}
+/* An inline-block tag with a top margin stretches the line box it sits
+   in, which opens an uneven gap mid-paragraph. In this band the tags go
+   on their own line instead. */
+.vstrip__item .tag,.vstrip__licence .tag{
+  display:block;width:-moz-fit-content;width:fit-content;margin-top:.35rem;
+}
+
+/* ---------- hero eyebrow ---------- */
+/* The short line above the headline that names what this is and who it
+   is for, before the headline has to do any work. */
+.hero__eyebrow{
+  font-size:var(--t-legal);font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--amber-05);margin:0 0 .625rem;
+}
 
 /* ---------- review tags ---------- */
-/* Mockup scaffolding. Both tags are removed before anything publishes. */
+/* Mockup scaffolding. Removed before anything publishes. */
 .tag{
   display:inline-block;margin-top:.3rem;
   font-size:.625rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
   line-height:1.4;padding:.15rem .4rem;border-radius:2px;white-space:nowrap;
 }
-.tag--approval{background:#FFE14D;color:#4A3B00;border:1px solid #C79A00}
 .tag--confirm{background:transparent;color:var(--slate-03);border:1px dashed var(--steel)}
 .band--dark .tag--confirm{color:var(--steel-02);border-color:var(--slate-03)}
 
@@ -374,16 +392,14 @@ summary:focus-visible,textarea:focus-visible{
 .trade-list li::after{content:"\00b7";color:var(--slate-03);font-weight:400;margin:0 clamp(.6rem,1.6vw,1.15rem)}
 .trade-list li:last-child::after{content:none}
 .trade-list li[aria-current="true"]{color:var(--slate-05);background:var(--amber-03);padding:0 .4rem;border-radius:2px}
-.proof__line{
-  margin:0;font-size:var(--t-legal);line-height:1.5;color:var(--slate-04);
-}
 </style>
 
 <!-- Same anti-flash guard the live trade swap uses. -->
 <style>
+html[data-trade-pending] .hero__eyebrow,
 html[data-trade-pending] .hero h1,
 html[data-trade-pending] .hero .lede,
-html[data-trade-pending] .proof__line{visibility:hidden}
+html[data-trade-pending] .vstrip__licence{visibility:hidden}
 </style>
 
 <script>
@@ -497,6 +513,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero__inner">
     <div class="shell hero__grid">
       <div class="hero__head">
+        <p class="hero__eyebrow">Insurance brokerage for commercial <span class="trade-phrase">specialty trade</span> contractors</p>
         <h1>Insurance for <span class="hl trade-noun">specialty trade contractors</span>, built around the work you bid.</h1>
         <p class="lede">InFrame is a specialist insurance broker for commercial <span class="trade-phrase">specialty trade</span> contractors. We read your policies against your contracts, so your coverage matches the jobs you take, the owners you sign with, and the sites you work on.</p>
       </div>
@@ -522,38 +539,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>if (window.InFrameTrade) { window.InFrameTrade.apply(); }</script>
 
-<!-- 02 PROOF STRIP · directly under the hero, above the fold on desktop -->
-<section class="proof" aria-labelledby="proof-h">
+<!-- 02 VALUE STRIP · directly under the hero
+
+     This band used to carry five client results. None of them were
+     approved for publishing, so all five are off the page and out of
+     the repo.
+
+     Rather than leave the slot to license numbers, it now carries the
+     offer: what a visitor gets, in what order, and what it costs them
+     to ask. The third item answers the objection the wireframe calls
+     the decisive one, which is the fear that asking for a review means
+     handing over the whole program.
+
+     The licensing line underneath keeps the trust signal in the band
+     without spending the band on it.
+
+     When a client result is approved, it goes in the slot marked at the
+     foot of this section.   -->
+<section class="vstrip" aria-labelledby="vstrip-h">
   <div class="shell">
-    <div class="proof__head">
-      <h2 id="proof-h" class="eyebrow">What clients saw</h2>
-      <p class="proof__line">Specialist programs for commercial <span class="trade-phrase">specialty trade</span> contractors, in all 50 states and DC.
-        <span class="tag tag--confirm">[CONFIRM]</span></p>
-    </div>
-    <div class="proof__grid">
-      <div class="proof__stats">
-        <div class="proof__stat">
-          <b>164 certificates sent in our first 3 days</b>
-          <span>Southern California flooring contractor.</span>
-          <span class="tag tag--approval">[NEEDS CLIENT APPROVAL]</span>
-        </div>
-        <div class="proof__stat">
-          <b>12+ carriers shopped</b>
-          <span>Fully bound 5 days after switching. Golf course builder.</span>
-          <span class="tag tag--approval">[NEEDS CLIENT APPROVAL]</span>
-        </div>
-        <div class="proof__stat">
-          <b>25 of 26 subs had a gap</b>
-          <span>A gap their certificate did not show. California general contractor.</span>
-          <span class="tag tag--approval">[NEEDS CLIENT APPROVAL]</span>
-        </div>
-      </div>
-      <figure class="proof__quote">
-        <blockquote><p>&ldquo;This is the best renewal proposal I&rsquo;ve seen.&rdquo;</p></blockquote>
-        <figcaption>Manager, Texas commercial property owner.
-          <span class="tag tag--approval">[NEEDS CLIENT APPROVAL]</span></figcaption>
-      </figure>
-    </div>
+    <h2 id="vstrip-h" class="eyebrow">What you get</h2>
+    <ul class="vstrip__grid">
+      <li class="vstrip__item">
+        <span class="vstrip__n" aria-hidden="true">1</span>
+        <b>A specialist reads your program.</b>
+        <span>Your policies and your contracts, side by side, read by a licensed advisor.
+          <span class="tag tag--confirm">[CONFIRM]</span></span>
+      </li>
+      <li class="vstrip__item">
+        <span class="vstrip__n" aria-hidden="true">2</span>
+        <b>You hear back in 3 business days.</b>
+        <span>We tell you what we found, in plain words, and what we would do about it.</span>
+      </li>
+      <li class="vstrip__item">
+        <span class="vstrip__n" aria-hidden="true">3</span>
+        <b>You decide what happens next.</b>
+        <span>Nothing about your current program changes unless you ask us to move it.
+          <span class="tag tag--confirm">[CONFIRM]</span></span>
+      </li>
+    </ul>
+    <p class="vstrip__licence">InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states and DC<span class="sep">&middot;</span>NPN 22200284<span class="sep">&middot;</span>California license 6019212<span class="sep">&middot;</span>Specialist programs for commercial <span class="trade-phrase">specialty trade</span> contractors <span class="tag tag--confirm">[CONFIRM]</span></p>
+    <!-- APPROVED CLIENT RESULTS GO HERE. Empty on purpose. -->
   </div>
 </section>
 

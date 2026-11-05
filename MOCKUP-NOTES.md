@@ -63,25 +63,59 @@ through to the approved default.
 
 # Approval register
 
-Nothing below has been approved. Both tag styles are mockup scaffolding
-and come out before anything publishes.
+Nothing below has been approved. The [CONFIRM] tags are mockup
+scaffolding and come out before anything publishes. There is no longer a
+[NEEDS CLIENT APPROVAL] tag on either page, because there is no longer
+any unapproved client result to mark.
 
-## [NEEDS CLIENT APPROVAL] · client results, shown in a yellow tag
+## Client results: none on the page
 
-| # | Claim | Attributed to | On |
-| --- | --- | --- | --- |
-| 1 | 12+ carriers shopped. Fully bound 5 days after switching. | Golf course builder | `/broker`, `/trade` |
-| 2 | 18.5% more property insured for 7.8% less. | Texas shopping center | `/broker` |
-| 3 | 25 of 26 subs had a gap their certificate did not show. | California general contractor | `/broker`, `/trade` |
-| 4 | 164 certificates sent in our first 3 days. | Southern California flooring contractor | `/trade` |
-| 5 | "This is the best renewal proposal I've seen." | Manager, Texas commercial property owner | `/broker`, `/trade` |
+The two pages carried a strip of five client results under the hero. None
+of them had been approved for publishing, so **all five are off the pages
+and none of them are in the repo.** They are listed here only so the
+register is complete.
 
-**Item 2 needs a second look.** It is a price and savings claim, which is
-a different approval category from the other four. It needs the client's
-written permission and a defensible record of the figures.
+| # | Claim | Attributed to |
+| --- | --- | --- |
+| 1 | 12+ carriers shopped. Fully bound 5 days after switching. | Golf course builder |
+| 2 | 18.5% more property insured for 7.8% less. | Texas shopping center |
+| 3 | 25 of 26 subs had a gap their certificate did not show. | California general contractor |
+| 4 | 164 certificates sent in our first 3 days. | Southern California flooring contractor |
+| 5 | "This is the best renewal proposal I've seen." | Manager, Texas commercial property owner |
 
-**Items 1 to 5** are all client-specific. Each needs the named client's
-permission to publish, even anonymised.
+Item 2 is a price and savings claim, a different approval category from
+the other four, and needs the figures on record as well as the client's
+permission.
+
+In their place both pages carry a **value strip**. That band sits in the
+slot a paid B2B page normally gives to immediate proof, so filling it
+with license numbers would waste it. It carries the offer instead, as
+three numbered steps: a specialist reads your program, you hear back in
+3 business days, you decide what happens next. The third answers the
+objection the wireframe calls the decisive one, which is the fear that
+asking for a review means handing over the whole program.
+
+The licensing line underneath keeps the trust signal in the band without
+spending the band on it: brokerage name, licensed in all 50 states and
+DC, National Producer Number, California license. All of it is word for
+word from the approved footer copy or a public license record.
+
+Both pages also gained a short line above the headline naming what
+InFrame is and who it is for, which is the "eyebrow" Tas Bober's
+framework puts above the hero. On /trade it swaps with the trade.
+
+When a client result is approved, it goes in the slot marked in the
+markup:
+
+    <!-- APPROVED CLIENT RESULTS GO HERE. Empty on purpose. -->
+
+near the foot of the `<section class="trust">` block on each page.
+
+**Worth knowing:** none of this is social proof. The offer and the
+licensing both answer "can I trust you", but neither answers "has this
+worked for someone like me". One approved client result, or a row of
+carrier logos, would do more for conversion than everything now in that
+band. It is the highest-value item on this list to get signed off.
 
 ## [CONFIRM] · claims written for these pages, not supplied
 
@@ -93,6 +127,16 @@ permission to publish, even anonymised.
 | Brian | Last name, title, years of experience, headshot |
 
 Photographs on both pages are generated placeholders.
+
+### Value strip, both pages
+| Item | Note |
+| --- | --- |
+| A specialist reads your program: your policies and your contracts, side by side, read by a licensed advisor. | Describes the service. Needs Daniel to confirm it is what happens. |
+| Nothing about your current program changes unless you ask us to move it. | The most load-bearing sentence in the band. It removes the fear of a bait-and-switch, so it has to be exactly true. |
+
+"You hear back in 3 business days" carries no tag: it is already live copy
+on the thank-you page, which says reviews come back within three business
+days. Worth re-checking that it still holds.
 
 ### Renewal timeline, both pages
 The 120-day start is from the brief. The milestones inside it are not.
@@ -109,7 +153,7 @@ The 120-day start is from the brief. The milestones inside it are not.
 - A renewal plan, written down, for the whole 120 days.
 
 ### `/trade` only
-- Specialist programs for commercial [trade] contractors, in all 50 states and DC. (The "all 50 states and DC" half is approved copy already on the site. The "specialist programs for [trade] contractors" half is new.)
+- Specialist programs for commercial [trade] contractors. (On the licensing line of the value strip. This is the proof line that swaps with `?trade=`, alongside the headline, the subhead, and the eyebrow above the headline.)
 - Certificates go out fast: when a GC asks for one, you are not the reason the job waits.
 
 ## One copy-rule exception
