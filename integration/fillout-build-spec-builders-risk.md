@@ -6,9 +6,10 @@ Fillout form**, not the shared one (`fkqNiqeJmsus`). The shared form has
 no asset value, project size or financing question, and those three are
 required here.
 
-Until this form exists, the page shows a setup notice in place of the
-embed. Build the form, then paste its id into `FILLOUT_FORM_ID` near the
-foot of the page file. Nothing else on the page needs editing.
+**Built 12 Nov. The form id is `qPF4Wab4Beus`** and it is set in
+`FILLOUT_FORM_ID` at the foot of the page file, so the embed is live and
+the setup notice is gone. What remains is the testing below, which has
+not been done yet.
 
 ## Fields
 
@@ -85,8 +86,8 @@ anywhere downstream that filters on the existing page slugs.
 
 ## Before it goes live
 
-1. Build the form and paste its id into `FILLOUT_FORM_ID`. The setup
-   notice disappears on its own once a real id is set.
+1. ~~Build the form and paste its id into `FILLOUT_FORM_ID`.~~ Done
+   12 Nov, id `qPF4Wab4Beus`.
 2. Submit one test lead and confirm `gclid` and the `utm_*` values land
    in Attio, and that `page` reads `builders-risk`.
 3. Submit one test as a homeowner and confirm it ends without reaching
