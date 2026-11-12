@@ -196,13 +196,17 @@ as a conversion, which keeps Smart Bidding from learning to find more
 homeowners. If you redirect everyone to the same place, the bidding is
 trained on leads InFrame cannot write.
 
-**One decision still open.** The other pages split below-floor leads to
-`/thank-you-received`, which fires a separate, secondary conversion so
-small leads can be excluded from bidding. Builder's Risk has no agreed
-floor yet. If you want the same split, decide the project value below
-which a lead counts as secondary, and route that band to
-`/thank-you-received` instead. Until then everything commercial goes to
-`/thank-you`.
+**Decided 12 Nov: one thank-you page.** Every completed commercial
+submission goes to `/thank-you`, whatever the project value. Builder's
+Risk does not use the `/thank-you-received` split the other pages use
+for below-floor leads, because no value floor was ever agreed for it.
+
+If a floor is agreed later, the split is two changes: a condition on
+the value question routing that band to `/thank-you-received`, and a
+secondary conversion action in Google Ads excluded from bidding.
+
+This does not change the homeowner ending, which still redirects
+nowhere at all.
 
 ## Step 6 · Check the hidden fields survived
 
