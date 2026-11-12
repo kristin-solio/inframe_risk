@@ -91,3 +91,154 @@ anywhere downstream that filters on the existing page slugs.
    in Attio, and that `page` reads `builders-risk`.
 3. Submit one test as a homeowner and confirm it ends without reaching
    `/thank-you`.
+
+---
+
+# How to build it, step by step
+
+Written for someone who has not built a Fillout form before. Fillout
+renames menu items from time to time, so if a label below does not
+match what you see, look for the nearest equivalent rather than
+assuming something is missing.
+
+## Before you start
+
+You need the Fillout login that owns form `fkqNiqeJmsus`, which is the
+form running on the other four landing pages. Everything below starts
+from that form rather than from a blank one, which saves the slowest
+part of the job.
+
+## Step 1 · Duplicate the live form, do not start from scratch
+
+In Fillout, find the form `fkqNiqeJmsus` and **duplicate** it. Name the
+copy something like `Builder's Risk`.
+
+Duplicating carries over three things that are tedious to rebuild and
+easy to get subtly wrong:
+
+- the **Attio integration**, already mapped and working
+- the **nine hidden fields**, already named correctly and already set
+  to read from the URL
+- the **branding**, so the new form looks like the others
+
+Starting from a blank form means rebuilding all three by hand. Do not.
+
+## Step 2 · Delete the questions that do not apply
+
+The live form asks about trade, annual revenue and renewal month. None
+of those belong on a Builder's Risk quote. Delete them.
+
+Leave the contact questions alone: company name, full name, work email
+and phone all stay.
+
+**Do not touch anything in the hidden fields section.** That is the
+part you duplicated the form for.
+
+## Step 3 · Add the Builder's Risk questions
+
+Add the questions from the Fields table above, in that order. Put the
+project questions on **step one** and the contact questions on **step
+two**.
+
+That order matters for two reasons. Someone is more willing to answer
+"what are you building" than "what is your phone number", so the easier
+questions go first. And Fillout saves a partial submission once step
+one is done, so a visitor who abandons at the contact step still leaves
+you the project details.
+
+## Step 4 · Make the three fields required, with the friendly messages
+
+Open each of **Completed project value**, **Project size** and **Is the
+project financed?** and turn on Required.
+
+Then replace the default required message with the matching line from
+the Friendly error messages table above. In Fillout this is usually a
+per-question setting called something like "Validation" or "Error
+message". If you cannot find a per-question override, the fallback is
+to put the same sentence in the question's help text, so the visitor
+reads why it matters before they hit the error rather than after.
+
+## Step 5 · The homeowner filter and where people land
+
+Add the commercial-or-homeowner question as the **first question on
+step one**, then set up two different endings.
+
+**Commercial or multifamily:** on submit, redirect to
+`https://go.inframerisk.com/thank-you`.
+
+**My own home:** end the form on a short message pointing them to their
+own homeowners insurer or a personal lines agent. **Do not redirect
+them anywhere.**
+
+This is the part worth getting right. The Google Ads conversion does
+not fire when the form is submitted. It fires when someone loads
+`/thank-you`. So a homeowner who never reaches that page never counts
+as a conversion, which keeps Smart Bidding from learning to find more
+homeowners. If you redirect everyone to the same place, the bidding is
+trained on leads InFrame cannot write.
+
+**One decision still open.** The other pages split below-floor leads to
+`/thank-you-received`, which fires a separate, secondary conversion so
+small leads can be excluded from bidding. Builder's Risk has no agreed
+floor yet. If you want the same split, decide the project value below
+which a lead counts as secondary, and route that band to
+`/thank-you-received` instead. Until then everything commercial goes to
+`/thank-you`.
+
+## Step 6 · Check the hidden fields survived
+
+Open the hidden fields and confirm all nine are still there, still
+named exactly as in the Hidden fields table, and still set to read from
+a URL parameter:
+
+    gclid   wbraid   gbraid
+    utm_source   utm_medium   utm_campaign   utm_term   utm_content
+    page
+
+Names are case sensitive and must match exactly. A field called
+`GCLID` or `utm-source` arrives empty, and nothing on the page will
+warn you.
+
+## Step 7 · Connect it to the page
+
+Fillout gives each form an id, the short code in its share URL and in
+its embed snippet. Copy that id.
+
+Open `public/builders-risk/index.html`, scroll to the bottom, and find:
+
+    var FILLOUT_FORM_ID = "PASTE_BUILDERS_RISK_FORM_ID_HERE";
+
+Replace the placeholder with the id, keeping the quotes. That is the
+only edit the page needs. The setup notice removes itself and the embed
+appears in its place.
+
+## Step 8 · Test before any ad traffic reaches it
+
+Four tests, in this order:
+
+1. **A normal commercial submission.** Confirm it reaches Attio and
+   that it lands on `/thank-you`.
+2. **An attribution test.** Load the page with a fake click id on the
+   end of the URL:
+
+       /builders-risk/?gclid=TEST123&utm_source=google&utm_medium=cpc
+
+   Submit, then check the record in Attio carries `gclid` as `TEST123`,
+   the two UTM values, and `page` as `builders-risk`.
+3. **A homeowner submission.** Confirm it ends on the message and never
+   reaches `/thank-you`.
+4. **A required-field test.** Leave each of the three blank in turn and
+   confirm you see your sentence, not Fillout's default.
+
+Test 2 is the one people skip and the one that quietly costs money. If
+`gclid` does not arrive, you cannot import offline conversions back
+into Google Ads later, and you will not find out for months.
+
+## One thing to add downstream
+
+`page` arrives as `builders-risk`, which is a value Attio has never
+seen. Anything filtering on the existing slugs, which are
+`contractor-insurance`, `general-contractor-insurance`,
+`counterparty-compliance` and `home`, needs `builders-risk` adding, and
+`broker` and `trade` as well if that has not been done since those two
+pages went live.
