@@ -237,12 +237,6 @@ summary:focus-visible,textarea:focus-visible{
   font-size:var(--t-legal);line-height:1.6;color:var(--slate-03);
 }
 .vstrip__licence .sep{color:var(--steel);padding:0 .35rem}
-/* An inline-block tag with a top margin stretches the line box it sits
-   in, which opens an uneven gap mid-paragraph. In this band the tags go
-   on their own line instead. */
-.vstrip__item .tag,.vstrip__licence .tag{
-  display:block;width:-moz-fit-content;width:fit-content;margin-top:.35rem;
-}
 
 /* ---------- hero eyebrow ---------- */
 /* The short line above the headline that names what this is and who it
@@ -251,16 +245,6 @@ summary:focus-visible,textarea:focus-visible{
   font-size:var(--t-legal);font-weight:600;letter-spacing:.2em;text-transform:uppercase;
   color:var(--amber-05);margin:0 0 .625rem;
 }
-
-/* ---------- review tags ---------- */
-/* Mockup scaffolding. Removed before anything publishes. */
-.tag{
-  display:inline-block;margin-top:.3rem;
-  font-size:.625rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  line-height:1.4;padding:.15rem .4rem;border-radius:2px;white-space:nowrap;
-}
-.tag--confirm{background:transparent;color:var(--slate-03);border:1px dashed var(--steel)}
-.band--dark .tag--confirm{color:var(--steel-02);border-color:var(--slate-03)}
 
 /* ---------- problem and outcome tiles ---------- */
 .tiles{
@@ -554,8 +538,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="vstrip__item">
         <span class="vstrip__n" aria-hidden="true">1</span>
         <b>A specialist reads your program.</b>
-        <span>Your policies and your contracts, side by side, read by a licensed advisor.
-          <span class="tag tag--confirm">[CONFIRM]</span></span>
+        <span>Your policies and your contracts, side by side, read by a licensed advisor.</span>
       </li>
       <li class="vstrip__item">
         <span class="vstrip__n" aria-hidden="true">2</span>
@@ -565,8 +548,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li class="vstrip__item">
         <span class="vstrip__n" aria-hidden="true">3</span>
         <b>You decide what happens next.</b>
-        <span>Nothing about your current program changes unless you ask us to move it.
-          <span class="tag tag--confirm">[CONFIRM]</span></span>
+        <span>Nothing about your current program changes unless you ask us to move it.</span>
       </li>
     </ul>
     <p class="vstrip__licence">InFrame Insurance Services LLC<span class="sep">&middot;</span>Licensed in all 50 states and DC<span class="sep">&middot;</span>NPN 22200284<span class="sep">&middot;</span>California license 6019212</p>
@@ -622,23 +604,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="steps">
       <div class="step">
         <span class="n">Day <b>120</b></span>
-        <p>We read your current policies and your contracts side by side. We write down every place the two do not match.
-          <span class="tag tag--confirm">[CONFIRM]</span></p>
+        <p>We read your current policies and your contracts side by side. We write down every place the two do not match.</p>
       </div>
       <div class="step">
         <span class="n">Day <b>90</b></span>
-        <p>We build your submission and take your program to carriers. Underwriters see a business they understand, not a form.
-          <span class="tag tag--confirm">[CONFIRM]</span></p>
+        <p>We build your submission and take your program to carriers. Underwriters see a business they understand, not a form.</p>
       </div>
       <div class="step">
         <span class="n">Day <b>45</b></span>
-        <p>We bring back what the carriers offered, and we explain what each one actually covers.
-          <span class="tag tag--confirm">[CONFIRM]</span></p>
+        <p>We bring back what the carriers offered, and we explain what each one actually covers.</p>
       </div>
       <div class="step">
         <span class="n">Day <b>0</b></span>
-        <p>You renew with time to spare. Your certificates go out the same week.
-          <span class="tag tag--confirm">[CONFIRM]</span></p>
+        <p>You renew with time to spare. Your certificates go out the same week.</p>
       </div>
     </div>
 
@@ -653,8 +631,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
       <article class="outcome">
         <h3>You talk to a licensed specialist.</h3>
-        <p>You get a named risk advisor who knows your contracts, not a new person every time you call.
-          <span class="tag tag--confirm">[CONFIRM]</span></p>
+        <p>You get a named risk advisor who knows your contracts, not a new person every time you call.</p>
       </article>
     </div>
 
@@ -676,23 +653,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="tiles">
       <article class="tile">
         <h3>Contract review before you sign.</h3>
-        <p>Send us the insurance pages of a contract. We tell you what it requires, what your current program covers, and what is missing, before the job starts.
-          <span class="tag tag--confirm">[CONFIRM]</span></p>
+        <p>Send us the insurance pages of a contract. We tell you what it requires, what your current program covers, and what is missing, before the job starts.</p>
       </article>
       <article class="tile">
         <h3>Certificate and compliance tracking for your subs.</h3>
-        <p>We collect certificates from the subcontractors you hire, check them against what your contract requires, and chase the ones that fall short.
-          <span class="tag tag--confirm">[CONFIRM]</span></p>
+        <p>We collect certificates from the subcontractors you hire, check them against what your contract requires, and chase the ones that fall short.</p>
       </article>
       <article class="tile">
         <h3>Claims support from someone who read the policy.</h3>
-        <p>When a claim comes in, the person helping you already knows what your policy says and what the contract promised.
-          <span class="tag tag--confirm">[CONFIRM]</span></p>
+        <p>When a claim comes in, the person helping you already knows what your policy says and what the contract promised.</p>
       </article>
       <article class="tile">
         <h3>A renewal plan, written down.</h3>
-        <p>You know what is happening, and when, for the whole 120 days. No surprises in the last week.
-          <span class="tag tag--confirm">[CONFIRM]</span></p>
+        <p>You know what is happening, and when, for the whole 120 days. No surprises in the last week.</p>
       </article>
     </div>
     <div class="cta-pair">
