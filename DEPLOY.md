@@ -8,22 +8,24 @@ The only difference between them is the branch they track.
 | Staging | `go.inframerisk.com-staging` | `claude/inframe-risk-landing-pages-z1j9sg` | work in review |
 | Production | `go.inframerisk.com` | `main` | approved copy only |
 
-## Where each site actually answers
+## Where each site answers
 
-| | Render hostname |
+| | Address |
 | --- | --- |
-| Production | `https://go-inframerisk-com.onrender.com` |
+| Production | `https://go.inframerisk.com` |
 | Staging | `https://inframe-risk-contractor-insurance.onrender.com` |
 
-Neither hostname matches its Render service name, so neither is
-guessable from the dashboard listing. Both recorded 12 Nov after each
-took a hunt to find.
+**`go.inframerisk.com` went live on 12 Nov.** The custom domain is
+attached to the production service, and the service's own hostname,
+`go-inframerisk-com.onrender.com`, now redirects to it. Use the custom
+domain everywhere, Google Ads final URLs included. Neither Render
+hostname matches its service name, which is why both took a hunt to
+find; they are recorded here so nobody repeats it.
 
-**`go.inframerisk.com` still does not resolve.** No custom domain is
-attached to the production service yet, so production answers only at
-the `onrender.com` hostname above. The steps to attach it are further
-down this file. Until that is done, any Google Ads final URL pointing
-at `go.inframerisk.com` goes nowhere.
+Pages append `?page=<slug>` to their own URL once loaded. That is the
+attribution script naming the landing page for Fillout, not something
+to put in an ad. A `page` value already in the URL is left alone, so an
+ad can override it if a campaign ever needs to.
 
 ## Settings, identical on both
 
@@ -70,10 +72,13 @@ right on staging looks the same in production.
 
 ## Pointing go.inframerisk.com at the production site
 
+**Done on 12 Nov. Kept for reference, and for staging if it ever gets a
+subdomain.**
+
 DNS for `inframerisk.com` is hosted on **AWS Route 53** (nameservers
 `ns-456.awsdns-57.com` and three siblings). The main site sits behind
-CloudFront. `go.inframerisk.com` does not resolve yet, so nothing is at
-risk of breaking: this adds a new subdomain and leaves the main site alone.
+CloudFront. Adding `go` is a new subdomain and leaves the main site
+alone.
 
 1. In Render, open the **production** service, then Settings, then Custom
    Domains, then Add Custom Domain. Enter `go.inframerisk.com`.
