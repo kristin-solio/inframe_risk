@@ -187,6 +187,7 @@ summary:focus-visible,textarea:focus-visible{
   .hero__tail{grid-area:tail}
 }
 .hero__tail .btn{margin-top:0}
+.hero__tail .cta-pair{margin-top:0}
 .hero__tail .licensing{margin-top:.75rem}
 .hero__form{scroll-margin-top:clamp(1rem,4vw,1.75rem)}
 
@@ -514,8 +515,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="hero__tail">
-        <a class="btn btn--secondary" href="tel:+18668111207"
-           data-cta="cta_click" data-cta-id="call_advisor" data-cta-location="hero" data-cta-type="phone">Call an Advisor</a>
+        <div class="cta-pair">
+          <div class="row">
+            <a class="btn" href="#request"
+               data-cta="cta_click" data-cta-id="get_quote" data-cta-location="hero">Get a Quote</a>
+            <a class="btn btn--secondary" href="tel:+18668111207"
+               data-cta="cta_click" data-cta-id="call_advisor" data-cta-location="hero" data-cta-type="phone">Call an Advisor</a>
+          </div>
+        </div>
         <p class="licensing">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
       </div>
     </div>
