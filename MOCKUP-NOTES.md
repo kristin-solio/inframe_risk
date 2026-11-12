@@ -59,6 +59,24 @@ through to the approved default.
 - `/broker` default: `construction insurance broker`
 - `/trade` default: `specialty trade contractors`
 
+## Decisions from the 5 Nov call
+
+**CTA structure.** Every call to action is the same pair in the same
+order: **Get a Quote** first, **Call an Advisor** second. That holds in
+the masthead, the hero, every band, the closing band and the sticky
+mobile bar. No secondary carries the phone number any more; the number
+lives in the footer, and every "Call an Advisor" is still a tel: link.
+
+**Spelling: Builder's Risk,** with the apostrophe, in all situations
+from here on. In headings, page titles and meta descriptions it is
+written **Builder's Risk**; in running body copy it is **builder's
+risk**, as an ordinary noun. Flag if it should be capitalised
+everywhere as a product name instead.
+
+**California** stays as licence 6019212, confirmed correct.
+
+**Response time** is still undecided. See the options list.
+
 ---
 
 # Approval register
