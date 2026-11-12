@@ -119,14 +119,24 @@ band. It is the highest-value item on this list to get signed off.
 
 ## [CONFIRM] · claims written for these pages, not supplied
 
-### Advisor section, both pages
-| Item | Needed |
-| --- | --- |
-| Daniel | Last name, title, years of experience, headshot |
-| Paul | Last name, title, years of experience, headshot |
-| Brian | Last name, title, years of experience, headshot |
+### Leadership section: removed 12 Nov
 
-Photographs on both pages are generated placeholders.
+The advisor section is off both pages for now, along with its styles and
+its images. Nothing on either page waits on anyone's name, title,
+resident state, licence number or headshot any more.
+
+When it comes back it needs, per person: last name, title, resident
+state, licence number and a headshot of at least 360px square. Two
+things to carry forward from the 12 Nov attempt:
+
+- One of the three supplied headshots was only 200px square, below the
+  360px a 2x screen needs at this card size. It would look soft next to
+  the other two.
+- The three headshots had different backgrounds (white, grey-blue and
+  near-black), so they read as a mismatched set in a row of cards.
+  Either reshoot on a common background or crop them to circles.
+- The third name may be **Huong Ho** rather than "Hong". Confirm the
+  spelling before it goes on a page.
 
 ### Value strip, both pages
 | Item | Note |

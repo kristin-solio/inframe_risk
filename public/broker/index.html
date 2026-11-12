@@ -26,7 +26,7 @@
    palette, the five-role type scale, buttons, masthead, hero
    grid, form card, bands, footer and sticky mobile bar.
    Trimmed to the modules these two pages actually use, and
-   extended with the proof strip, timeline and advisor modules.
+   extended with the proof strip and timeline modules.
    ============================================================ */
 :root{
   --slate-05:#222F3E;
@@ -324,20 +324,6 @@ summary:focus-visible,textarea:focus-visible{
 .step p{font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
 .band--dark .step p{color:var(--steel-02)}
 .step p b{color:inherit;font-weight:700}
-
-/* ---------- advisors ---------- */
-.advisors{
-  display:grid;gap:clamp(1.75rem,3.5vw,2.5rem);
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  margin-top:clamp(2.5rem,5vw,3.5rem);
-}
-.advisor img{
-  width:100%;height:auto;max-width:180px;
-  aspect-ratio:1/1;border-radius:2px;background:var(--slate-04);
-}
-.advisor h3{margin-top:1.125rem}
-.advisor .role{font-size:var(--t-legal);line-height:1.5;color:var(--slate-03);margin-top:.3rem}
-.advisor .years{font-size:var(--t-body);line-height:1.5;color:var(--slate-04);margin-top:.5rem}
 
 /* ---------- repeated CTA pair ---------- */
 .cta-pair{margin-top:clamp(2rem,4vw,2.75rem)}
@@ -714,37 +700,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- 06 ADVISORS -->
-<section class="band band--white" id="advisors">
-  <div class="shell">
-    <span class="rule-amber"></span>
-    <h2>The specialists you will actually talk to.</h2>
-    <p class="copy measure-p" style="margin-top:1.5rem">InFrame Insurance Services LLC is a licensed insurance brokerage. These are the advisors who read your program.</p>
-    <div class="advisors">
-      <article class="advisor">
-        <img src="../assets/advisor-daniel.webp" alt="" width="480" height="480" loading="lazy" decoding="async">
-        <h3>Daniel [confirm last name]</h3>
-        <p class="role">[confirm title]</p>
-        <p class="years">[confirm] years in construction risk and insurance.</p>
-      </article>
-      <article class="advisor">
-        <img src="../assets/advisor-paul.webp" alt="" width="480" height="480" loading="lazy" decoding="async">
-        <h3>Paul [confirm last name]</h3>
-        <p class="role">[confirm title]</p>
-        <p class="years">[confirm] years in construction risk and insurance.</p>
-      </article>
-      <article class="advisor">
-        <img src="../assets/advisor-brian.webp" alt="" width="480" height="480" loading="lazy" decoding="async">
-        <h3>Brian [confirm last name]</h3>
-        <p class="role">[confirm title]</p>
-        <p class="years">[confirm] years in construction risk and insurance.</p>
-      </article>
-    </div>
-    <p class="small" style="margin-top:2rem;color:var(--slate-03)">Photographs are placeholders in this mockup. Replace with headshots before launch.</p>
-  </div>
-</section>
-
-<!-- 07 CLOSING -->
+<!-- 06 CLOSING -->
 <section class="band band--dark band--tight closing">
   <div class="shell">
     <span class="rule-amber"></span>
