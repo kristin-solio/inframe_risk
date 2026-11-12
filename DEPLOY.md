@@ -8,6 +8,18 @@ The only difference between them is the branch they track.
 | Staging | `go.inframerisk.com-staging` | `claude/inframe-risk-landing-pages-z1j9sg` | work in review |
 | Production | `go.inframerisk.com` | `main` | approved copy only |
 
+**Staging is served at
+`https://inframe-risk-contractor-insurance.onrender.com`.**
+
+That hostname does not match the Render service name, which is
+`go.inframerisk.com-staging`, so it is not guessable from the dashboard
+listing alone. Recorded here on 12 Nov after it took a hunt to find.
+
+Production has no custom domain attached yet either, so
+`go.inframerisk.com` does not resolve. Until it does, the production
+service is reachable only at its own `onrender.com` hostname, which is
+not recorded here. Add it when someone has it.
+
 ## Settings, identical on both
 
 | Setting | Value |
