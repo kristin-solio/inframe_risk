@@ -378,6 +378,17 @@ summary:focus-visible,textarea:focus-visible{
   color:var(--amber-03);max-width:48ch;
 }
 
+@media (min-width:1000px){
+  /* The Builder's Risk form asks seven questions on its first step, with
+     option labels as long as "Yes, construction loan in place", so it
+     needs more room than the short hero forms on the other pages. The
+     card grows from the shared 384px and the headline column gives up
+     the difference. Below 1000px nothing changes: the card is already
+     full width there. */
+  .hero__grid{grid-template-columns:1fr .95fr}
+  .formcard{max-width:480px}
+}
+
 /* The form card's scope line, directly under the title, where the
    visitor is deciding whether to start typing. */
 .formcard__scope{
