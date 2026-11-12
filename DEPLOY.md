@@ -8,17 +8,22 @@ The only difference between them is the branch they track.
 | Staging | `go.inframerisk.com-staging` | `claude/inframe-risk-landing-pages-z1j9sg` | work in review |
 | Production | `go.inframerisk.com` | `main` | approved copy only |
 
-**Staging is served at
-`https://inframe-risk-contractor-insurance.onrender.com`.**
+## Where each site actually answers
 
-That hostname does not match the Render service name, which is
-`go.inframerisk.com-staging`, so it is not guessable from the dashboard
-listing alone. Recorded here on 12 Nov after it took a hunt to find.
+| | Render hostname |
+| --- | --- |
+| Production | `https://go-inframerisk-com.onrender.com` |
+| Staging | `https://inframe-risk-contractor-insurance.onrender.com` |
 
-Production has no custom domain attached yet either, so
-`go.inframerisk.com` does not resolve. Until it does, the production
-service is reachable only at its own `onrender.com` hostname, which is
-not recorded here. Add it when someone has it.
+Neither hostname matches its Render service name, so neither is
+guessable from the dashboard listing. Both recorded 12 Nov after each
+took a hunt to find.
+
+**`go.inframerisk.com` still does not resolve.** No custom domain is
+attached to the production service yet, so production answers only at
+the `onrender.com` hostname above. The steps to attach it are further
+down this file. Until that is done, any Google Ads final URL pointing
+at `go.inframerisk.com` goes nowhere.
 
 ## Settings, identical on both
 
