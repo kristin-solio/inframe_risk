@@ -75,7 +75,16 @@ everywhere as a product name instead.
 
 **California** stays as licence 6019212, confirmed correct.
 
-**Response time** is still undecided. See the options list.
+**Response time: the same business day.** The hero form card on both
+pages now reads "Takes 30 seconds. We'll follow up the same business
+day." Chosen over "within 4 business hours" because it needs no
+definition of business hours: a form sent at 4pm on a Friday has an
+unambiguous answer either way.
+
+The three-business-day review turnaround is a different promise and was
+deliberately left alone. The two sit close together, so read them as a
+pair before launch: first contact the same business day, the finished
+review in three.
 
 ---
 
