@@ -152,16 +152,35 @@ Open each of **Completed project value**, **Project size** and **Is the
 project financed?** and turn on Required.
 
 Then replace the default required message with the matching line from
-the Friendly error messages table above. In Fillout this is usually a
-per-question setting called something like "Validation" or "Error
-message". If you cannot find a per-question override, the fallback is
-to put the same sentence in the question's help text, so the visitor
-reads why it matters before they hit the error rather than after.
+the Friendly error messages table above. Fillout supports a custom
+error message per question, confirmed 12 Nov, so use that rather than
+the help text.
 
 ## Step 5 · The homeowner filter and where people land
 
 Add the commercial-or-homeowner question as the **first question on
 step one**, then set up two different endings.
+
+Exact wording:
+
+> **Is this a commercial or multifamily project?**
+> - Yes
+> - No, it's a home I own and live in
+
+The second answer is the one that counts as a homeowner. Keep it that
+explicit: "No" on its own gets picked by mistake by people doing
+mixed-use or by an owner who does not think of themselves as
+commercial.
+
+Copy for the homeowner ending:
+
+> Thanks for checking. InFrame places insurance for commercial and
+> multifamily construction, so we are not the right broker for a home
+> you own and live in.
+>
+> Your own homeowners insurer or a personal lines agent is the best
+> first call. They can tell you whether your existing policy covers the
+> work, or whether you need a separate course of construction policy.
 
 **Commercial or multifamily:** on submit, redirect to
 `https://go.inframerisk.com/thank-you`.
