@@ -161,6 +161,10 @@ summary:focus-visible,textarea:focus-visible{
 .hero h1{max-width:19ch}
 .hero .hl{color:var(--amber-05)}
 .hero .lede{color:var(--white);max-width:54ch;margin-top:1rem}
+/* The hero CTA pair sits on the dark hero ground: the yellow primary first,
+   the approved Slate 03 secondary beside it carrying the phone number, and
+   one quiet line underneath pointing at the phone option. */
+.hero .cta-note{color:var(--steel-02);margin-top:.875rem;font-size:var(--t-legal);line-height:1.5}
 .hero .licensing{color:var(--steel-02);margin-top:1.125rem;font-size:var(--t-legal);max-width:64ch}
 .trustline{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
 
@@ -341,7 +345,11 @@ summary:focus-visible,textarea:focus-visible{
     background:var(--slate-05);border-top:1px solid var(--slate-04);
     transition:transform .2s ease,visibility .2s ease;
   }
-  .mobilebar .btn{margin:0;padding:.9375rem .75rem;text-align:center;font-size:.9375rem}
+  /* At least 48px tall, and laid out as a flex row so the phone icon sits
+     beside the label and both buttons centre their text. */
+  .mobilebar .btn{margin:0;padding:.9375rem .75rem;font-size:.9375rem;min-height:48px;
+    display:flex;align-items:center;justify-content:center;gap:.5rem;text-align:center}
+  .mobilebar__icon{width:1.0625rem;height:1.0625rem;flex:0 0 auto;fill:currentColor}
   .mobilebar .btn--secondary{background:var(--slate-03);color:var(--white)}
   .mobilebar .btn--secondary:hover{background:var(--slate-04)}
   .mobilebar.is-hidden{transform:translateY(115%);visibility:hidden}
@@ -622,7 +630,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="row">
             <a class="btn" href="#request"
                data-cta="cta_click" data-cta-id="get_quote" data-cta-location="hero">Get a Quote</a>
+            <a class="btn btn--secondary" href="tel:+18668111207"
+               data-cta="cta_click" data-cta-id="call_advisor" data-cta-location="hero" data-cta-type="phone">Call (866) 811-1207</a>
           </div>
+          <p class="cta-note">Prefer to talk? Call a licensed advisor.</p>
         </div>
         <p class="licensing">Access to 150+ insurers &middot; Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
       </div>
@@ -838,10 +849,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <nav class="mobilebar is-hidden" aria-label="Quick actions">
+  <a class="btn btn--secondary" href="tel:+18668111207"
+     data-cta="cta_click" data-cta-id="call_advisor" data-cta-location="mobile_bar" data-cta-type="phone"><svg class="mobilebar__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>Call now</a>
   <a class="btn" href="#request"
      data-cta="cta_click" data-cta-id="get_quote" data-cta-location="mobile_bar">Get a Quote</a>
-  <a class="btn btn--secondary" href="tel:+18668111207"
-     data-cta="cta_click" data-cta-id="call_advisor" data-cta-location="mobile_bar" data-cta-type="phone">Call an Advisor</a>
 </nav>
 
 <script>

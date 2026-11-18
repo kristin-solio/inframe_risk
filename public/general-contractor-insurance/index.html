@@ -177,6 +177,12 @@ summary:focus-visible,textarea:focus-visible{
 .hero .lede{color:var(--white);max-width:56ch;margin-top:1.5rem}
 .hero .hero-eyebrow{color:var(--amber-05);margin-bottom:1rem}
 .hero .btn{margin-top:2.5rem}
+/* The hero CTA pair sits on the dark hero ground: the yellow primary first,
+   the approved Slate 03 secondary beside it carrying the phone number, and
+   one quiet line underneath pointing at the phone option. */
+.hero .cta-note{color:var(--steel-02);margin-top:.875rem;font-size:var(--t-legal);line-height:1.5}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:.875rem}
+.hero__ctas .btn{margin-top:0}
 .hero .licensing{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
 .trustline{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
 
@@ -508,7 +514,11 @@ summary:focus-visible,textarea:focus-visible{
     background:var(--slate-05);border-top:1px solid var(--slate-04);
     transition:transform .2s ease,visibility .2s ease;
   }
-  .mobilebar .btn{margin:0;padding:.9375rem 1rem;text-align:center}
+  /* At least 48px tall, and laid out as a flex row so the phone icon sits
+     beside the label and both buttons centre their text. */
+  .mobilebar .btn{margin:0;padding:.9375rem 1rem;min-height:48px;
+    display:flex;align-items:center;justify-content:center;gap:.5rem;text-align:center}
+  .mobilebar__icon{width:1.0625rem;height:1.0625rem;flex:0 0 auto;fill:currentColor}
   /* the bar's own ground is Slate 05, so the secondary takes the
      approved Slate 03 pairing the dark bands use */
   .mobilebar .btn--secondary{background:var(--slate-03);color:var(--white)}
@@ -571,7 +581,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
       <div class="hero__tail">
-        <a class="btn" href="#request">Get a Quote</a>
+        <div class="hero__ctas">
+          <a class="btn" href="#request">Get a Quote</a>
+          <a class="btn btn--secondary" href="tel:+18668111207">Call (866) 811-1207</a>
+        </div>
+        <p class="cta-note">Prefer to talk? Call a licensed advisor.</p>
         <p class="licensing">Licensed in all 50 states and DC &middot; InFrame Insurance Services LLC</p>
       </div>
     </div>
@@ -806,8 +820,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <nav class="mobilebar is-hidden" aria-label="Quick actions">
+  <a class="btn btn--secondary" href="tel:+18668111207"><svg class="mobilebar__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>Call now</a>
   <a class="btn" href="#request">Get a Quote</a>
-  <a class="btn btn--secondary" href="tel:+18668111207">Call an Advisor</a>
 </nav>
 
 <script>

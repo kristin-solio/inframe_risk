@@ -27,8 +27,9 @@ paragraphs of legal fine print, the sticky mobile bar, the Fillout embed
 first-party cookies for 90 days, and the Tag Manager container
 `GTM-5PCQ4CBV` with its noscript iframe.
 
-Every `tel:+18668111207` href, class and link text is unchanged, so the
-click-to-call trigger configured inside the GTM container keeps matching.
+Every `tel:+18668111207` href is unchanged, so the click-to-call trigger
+configured inside the GTM container keeps matching. Two link texts did
+change on 18 Nov; see the amendment below.
 
 ## New Tag Manager events
 
@@ -66,6 +67,17 @@ order: **Get a Quote** first, **Call an Advisor** second. That holds in
 the masthead, the hero, every band, the closing band and the sticky
 mobile bar. No secondary carries the phone number any more; the number
 lives in the footer, and every "Call an Advisor" is still a tel: link.
+
+> **Amended 18 Nov, branch `phone-cta-hero-mobile`.** Calls were 70 per
+> cent of October conversions and fell to almost nothing once the number
+> left the hero, so the hero and the sticky mobile bar now carry it
+> again. The hero keeps **Get a Quote** first and adds **Call (866)
+> 811-1207** as the Slate 03 secondary, with the line "Prefer to talk?
+> Call a licensed advisor." underneath. The sticky bar puts the phone
+> first, as **Call now** with a phone icon, and **Get a Quote** second.
+> The masthead, the bands and the closing band are unchanged and still
+> read "Call an Advisor". Every phone link is still a plain
+> `<a href="tel:+18668111207">`.
 
 **Spelling: Builder's Risk,** with the apostrophe, in all situations
 from here on. In headings, page titles and meta descriptions it is
