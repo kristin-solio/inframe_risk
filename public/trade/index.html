@@ -192,11 +192,7 @@ summary:focus-visible,textarea:focus-visible{
 /* ---------- the one form embed ---------- */
 .formwrap{background:var(--slate-01);border-radius:2px;padding:clamp(1.5rem,3vw,2.25rem)}
 .formcard{padding:clamp(1.125rem,1.8vw,1.5rem)}
-.formcard__title{
-  color:var(--slate-05);
-  font-size:var(--t-body);line-height:1.35;letter-spacing:0;
-}
-.formcard__note{margin-top:.25rem;font-size:var(--t-legal);line-height:1.5;color:var(--slate-03)}
+.formcard__note{margin-top:0;font-size:var(--t-legal);line-height:1.5;color:var(--slate-03)}
 /* The embed reserves its own height before Fillout loads, so the proof
    strip below it never shifts down when the iframe arrives. */
 .fillout-embed{width:100%;min-height:300px}
@@ -640,7 +636,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="hero__form" id="request">
         <div class="formwrap formcard">
-          <h2 class="formcard__title">Get a Quote</h2>
           <p class="formcard__note">Takes 30 seconds. We&rsquo;ll follow up the same business day.</p>
           <div class="fillout-embed"
                data-fillout-id="fkqNiqeJmsus"
