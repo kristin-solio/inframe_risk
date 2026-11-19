@@ -368,6 +368,147 @@ summary:focus-visible,textarea:focus-visible{
 .trade-list li::after{content:"\00b7";color:var(--slate-03);font-weight:400;margin:0 clamp(.6rem,1.6vw,1.15rem)}
 .trade-list li:last-child::after{content:none}
 .trade-list li[aria-current="true"]{color:var(--slate-05);background:var(--amber-03);padding:0 .4rem;border-radius:2px}
+
+/* ---------- 03 INFRAME VS. A TYPICAL BROKER ----------
+   One component, two layouts. Mobile first: benefit + subline with two
+   icon columns. From 768px up it becomes the three-column table from the
+   approved design. Real <table> throughout, with explicit ARIA roles so
+   the display:grid rows keep their table semantics. */
+.cmp{
+  --cmp-tint:#FDF5DC;        /* amber tint, InFrame column */
+  --cmp-grey:#F6F7F8;        /* grey bg, typical-broker column */
+  --cmp-line:#E3E6EA;        /* rules and the typical-broker header */
+  --cmp-mute:#55606C;        /* grey text */
+  --cmp-eyebrow:#8A6400;     /* eyebrow text */
+  --cmp-statlabel:#D5DADF;
+  --cmp-dash:#D5DADF;
+  --cmp-row:1.0625rem;
+  background:var(--white);
+}
+.cmp__sr,.cmp__caption{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0;
+}
+.cmp__head{display:flex;flex-direction:column;align-items:flex-start;gap:1.25rem}
+.cmp__intro{display:flex;flex-direction:column;gap:.75rem}
+.cmp__eyebrow{
+  margin:0;font-size:var(--t-legal);font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cmp-eyebrow);line-height:1.4;
+}
+.cmp__h{margin:0;font-size:var(--t-headline);line-height:1.08;font-weight:800;letter-spacing:-.02em}
+.cmp__lede{margin:0;font-size:clamp(1.0625rem,.95rem + .5vw,1.3125rem);line-height:1.45;color:var(--cmp-mute)}
+
+.cmp__cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:.625rem;
+  padding:1rem 1.25rem;min-height:3.25rem;border-radius:6px;
+  background:var(--amber-05);color:var(--slate-05);
+  font-family:inherit;font-size:var(--t-button);font-weight:800;line-height:1.2;
+  text-decoration:none;text-align:center;
+}
+.cmp__cta:hover{background:var(--amber-04)}
+.cmp__cta:active{background:var(--amber-03)}
+.cmp__cta svg{width:1.125rem;height:1.125rem;flex:0 0 auto;stroke:var(--slate-05)}
+.cmp__cta--desk{display:none}
+.cmp__cta--band{display:flex;width:100%}
+
+.cmp__frame{
+  margin-top:1.75rem;border:1px solid var(--cmp-line);
+  border-radius:8px;overflow:hidden;
+}
+.cmp__table{width:100%;border-collapse:collapse;margin:0}
+.cmp__table tr{display:grid;grid-template-columns:minmax(0,1fr) 72px 84px}
+.cmp__table tbody tr{border-top:1px solid var(--cmp-line)}
+.cmp__corner{padding:0;border:0}
+.cmp__ch{margin:0;font-weight:800}
+.cmp__ch--typ{
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:.625rem .375rem;min-height:3.5rem;background:var(--cmp-line);
+  font-size:.6875rem;line-height:1.25;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--cmp-mute);
+}
+.cmp__ch--inf{
+  display:flex;align-items:center;justify-content:center;
+  padding:.625rem;min-height:3.5rem;
+  background:var(--slate-05);border-top:4px solid var(--amber-05);
+}
+.cmp__ch--inf img{width:64px;height:auto}
+.cmp__chd{display:none}
+.cmp__lab{
+  display:flex;align-items:center;text-align:left;font-weight:400;
+  padding:.875rem .75rem .875rem 1rem;
+}
+.cmp__labd{display:none}
+.cmp__labm{display:flex;flex-direction:column;gap:.1875rem}
+.cmp__labm-t{font-size:1rem;font-weight:800;line-height:1.3;color:var(--slate-05)}
+.cmp__labm-s{font-size:.8125rem;line-height:1.4;color:var(--cmp-mute)}
+.cmp__typ,.cmp__inf{display:flex;align-items:center;justify-content:center;padding:0}
+.cmp__typ{background:var(--cmp-grey)}
+.cmp__inf{background:var(--cmp-tint)}
+.cmp__txt{display:none}
+.cmp__ic{width:26px;height:26px;flex:0 0 auto}
+
+.cmp__band{
+  margin-top:1.75rem;padding:1.625rem 1.25rem;background:var(--slate-05);
+  border-radius:8px;display:flex;flex-direction:column;gap:1.25rem;
+}
+.cmp__band-title{margin:0;font-size:1.25rem;font-weight:700;line-height:1.3;color:var(--white)}
+.cmp__stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
+.cmp__stat{display:flex;flex-direction:column;gap:.125rem}
+.cmp__stat-n{font-size:1.375rem;font-weight:800;line-height:1.2;color:var(--amber-05)}
+.cmp__stat-l{font-size:.75rem;line-height:1.35;color:var(--cmp-statlabel)}
+
+@media (min-width:768px){
+  .cmp__head{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:clamp(1.5rem,3vw,2.5rem)}
+  .cmp__intro{gap:.875rem}
+  .cmp__eyebrow{font-size:.875rem}
+  .cmp__h{line-height:1.05}
+  .cmp__cta--desk{
+    display:inline-flex;flex:0 0 auto;
+    padding:1.125rem 1.75rem;min-height:2.75rem;
+    background:var(--slate-05);color:var(--white);
+    font-size:1.0625rem;font-weight:700;
+  }
+  .cmp__cta--desk:hover{background:var(--slate-04)}
+  .cmp__cta--desk:active{background:var(--slate-03)}
+  .cmp__cta--desk svg{stroke:var(--amber-05)}
+  .cmp__cta--band{display:none}
+
+  .cmp__frame{margin-top:3rem;border:0;border-radius:0;overflow:visible}
+  .cmp__table tr{grid-template-columns:minmax(0,240px) minmax(0,1fr) minmax(0,1.3fr)}
+  .cmp__table tbody tr:last-child{border-bottom:1px solid var(--cmp-line)}
+  .cmp__ch--typ{
+    justify-content:flex-start;text-align:left;
+    padding:1.125rem 1.75rem;min-height:4rem;
+    font-size:1.125rem;font-weight:700;letter-spacing:0;text-transform:none;
+  }
+  .cmp__chd{display:block}
+  .cmp__chm{display:none}
+  .cmp__ch--inf{justify-content:flex-start;padding:1.125rem 1.75rem;min-height:4rem;border-top-width:5px}
+  .cmp__ch--inf img{width:auto;height:24px}
+  .cmp__lab{
+    padding:1.25rem 1.5rem 1.25rem 0;
+    font-size:var(--cmp-row);font-weight:700;line-height:1.35;color:var(--slate-05);
+  }
+  .cmp__labd{display:block}
+  .cmp__labm{display:none}
+  .cmp__typ,.cmp__inf{
+    justify-content:flex-start;gap:.75rem;
+    padding:1.25rem 1.75rem;font-size:var(--cmp-row);line-height:1.35;
+  }
+  .cmp__typ{color:var(--cmp-mute)}
+  .cmp__inf{color:var(--slate-05);font-weight:700}
+  .cmp__txt{display:block}
+  .cmp__ic{width:22px;height:22px}
+
+  .cmp__band{
+    margin-top:3rem;flex-direction:row;align-items:center;justify-content:space-between;
+    gap:2.5rem;padding:1.75rem 2.5rem;border-radius:6px;
+  }
+  .cmp__band-title{font-size:1.3125rem}
+  .cmp__stats{display:flex;gap:3rem;align-items:center}
+  .cmp__stat-n{font-size:1.625rem}
+  .cmp__stat-l{font-size:.875rem}
+}
 </style>
 
 <!-- Same anti-flash guard the live trade swap uses. -->
@@ -521,6 +662,109 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <script>if (window.InFrameTrade) { window.InFrameTrade.apply(); }</script>
+
+<!-- 03 INFRAME VS. A TYPICAL BROKER - the comparison, straight after the hero -->
+<section class="band band--white cmp" aria-labelledby="cmp-h">
+  <div class="shell">
+
+    <div class="cmp__head">
+      <div class="cmp__intro">
+        <p class="cmp__eyebrow">For specialty contractors</p>
+        <h2 class="cmp__h" id="cmp-h">More than a traditional broker.</h2>
+        <p class="cmp__lede">Insurance built around how your jobs actually run.</p>
+      </div>
+      <a class="cmp__cta cmp__cta--desk" href="#request"
+         data-cta="cta_click" data-cta-id="get_quote" data-cta-location="comparison">Get a free program review <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+    </div>
+
+    <div class="cmp__frame">
+      <table class="cmp__table" role="table">
+        <caption class="cmp__caption">InFrame compared with a typical broker, point by point.</caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <td class="cmp__corner" role="cell"></td>
+            <th class="cmp__ch cmp__ch--typ" role="columnheader" scope="col">
+              <span class="cmp__chd">A typical broker</span><span class="cmp__chm">Typical broker</span>
+            </th>
+            <th class="cmp__ch cmp__ch--inf" role="columnheader" scope="col">
+              <img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306" loading="lazy" decoding="async">
+            </th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+        <tr role="row">
+          <th class="cmp__lab" role="rowheader" scope="row">
+            <span class="cmp__labd">Your contracts</span>
+            <span class="cmp__labm"><span class="cmp__labm-t">Contracts read line by line</span><span class="cmp__labm-s">Before you sign, not after a claim</span></span>
+          </th>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Rarely read</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Read line by line before you sign</span></td>
+        </tr>
+        <tr role="row">
+          <th class="cmp__lab" role="rowheader" scope="row">
+            <span class="cmp__labd">Certificates</span>
+            <span class="cmp__labm"><span class="cmp__labm-t">Fast certificates</span><span class="cmp__labm-s">The moment a GC asks</span></span>
+          </th>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Wait in a queue</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Issued fast, the moment a GC asks</span></td>
+        </tr>
+        <tr role="row">
+          <th class="cmp__lab" role="rowheader" scope="row">
+            <span class="cmp__labd">Your coverage</span>
+            <span class="cmp__labm"><span class="cmp__labm-t">Coverage that keeps up</span><span class="cmp__labm-s">Updated as your work changes</span></span>
+          </th>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Renews as-is</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Updated as your work changes</span></td>
+        </tr>
+        <tr role="row">
+          <th class="cmp__lab" role="rowheader" scope="row">
+            <span class="cmp__labd">Renewals &amp; audits</span>
+            <span class="cmp__labm"><span class="cmp__labm-t">No audit surprises</span><span class="cmp__labm-s">Flagged early, with time to plan</span></span>
+          </th>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Surprise bills</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Flagged early, with time to plan</span></td>
+        </tr>
+        <tr role="row">
+          <th class="cmp__lab" role="rowheader" scope="row">
+            <span class="cmp__labd">Your subs</span>
+            <span class="cmp__labm"><span class="cmp__labm-t">Your subs monitored</span><span class="cmp__labm-s">Real policies, not just certificates</span></span>
+          </th>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Certificates only</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Real policies, monitored all year</span></td>
+        </tr>
+        <tr role="row">
+          <th class="cmp__lab" role="rowheader" scope="row">
+            <span class="cmp__labd">Your records</span>
+            <span class="cmp__labm"><span class="cmp__labm-t">Records in one place</span><span class="cmp__labm-s">Found in minutes, years later</span></span>
+          </th>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Buried in email</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">One secure home, found in minutes</span></td>
+        </tr>
+        <tr role="row">
+          <th class="cmp__lab" role="rowheader" scope="row">
+            <span class="cmp__labd">Your team</span>
+            <span class="cmp__labm"><span class="cmp__labm-t">Construction specialists</span><span class="cmp__labm-s">Not a generalist team</span></span>
+          </th>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Generalists</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Construction risk specialists</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cmp__band">
+      <p class="cmp__band-title">A licensed broker that owns your outcome.</p>
+      <div class="cmp__stats">
+        <div class="cmp__stat"><span class="cmp__stat-n">150+</span><span class="cmp__stat-l">insurance markets</span></div>
+        <div class="cmp__stat"><span class="cmp__stat-n">50 + DC</span><span class="cmp__stat-l">states licensed</span></div>
+        <div class="cmp__stat"><span class="cmp__stat-n">$0</span><span class="cmp__stat-l">program review</span></div>
+      </div>
+      <a class="cmp__cta cmp__cta--band" href="#request"
+         data-cta="cta_click" data-cta-id="get_quote" data-cta-location="comparison_band">Get a free program review <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></a>
+    </div>
+
+  </div>
+</section>
 
 <!-- 02 WHAT GOES WRONG ON YOUR JOBS · the three risk points, straight after the hero -->
 <section class="band band--dots">
