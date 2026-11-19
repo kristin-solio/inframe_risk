@@ -10,9 +10,11 @@ nothing here touches the ads.
 | `/broker` | Broker and risk program searchers | `?kw=` |
 | `/trade` | Specialty trade searchers | `?trade=` |
 
-Neither page is deployed. Staging tracks
-`claude/inframe-risk-landing-pages-z1j9sg` and production tracks `main`,
-so this branch publishes nowhere. `go.inframerisk.com` is unchanged.
+**Both pages are on staging as of 19 Nov.** Staging tracks
+`claude/inframe-risk-landing-pages-z1j9sg`, which now carries them, and
+answers at `https://inframe-risk-contractor-insurance.onrender.com`.
+Production tracks `main` and has neither page, so
+`go.inframerisk.com` is unchanged.
 
 Both pages keep `noindex, nofollow, noarchive, nosnippet`, the same way
 the three current pages do.
@@ -60,6 +62,43 @@ through to the approved default.
 - `/broker` default: `construction insurance broker`
 - `/trade` default: `specialty trade contractors`
 
+## The comparison section on /trade
+
+Added 19 Nov on branch `claude/blissful-gauss-b4otvx`, from an approved
+design supplied as desktop and mobile exports. It sits directly after
+the hero, above "You carry more risk than the people who hired you." It
+is on `/trade` only, so all seven trades carry it and no other page
+does.
+
+One component, not two. Above 768px it is a three-column table: the row
+label, a typical broker on grey, InFrame on amber tint under a navy
+header carrying the white logo. Below 768px it becomes a check table,
+with the benefit and a subline in the first column and two narrow icon
+columns. Each breakpoint words the rows differently, so both strings sit
+in the markup and the media query chooses between them.
+
+It is a real `<table>`. The rows use `display:grid` to hold the design's
+column widths, which would otherwise drop the table semantics, so every
+element carries its ARIA role explicitly. Checked at both breakpoints:
+the rowheaders, columnheaders and cells survive, and each icon reads as
+"Included" or "Typically not included". The table has a visually hidden
+caption.
+
+Both buttons point at `#request`, the hero form, and carry
+`data-cta="cta_click"` with `data-cta-id="get_quote"`. **The locations
+`comparison` and `comparison_band` are new and nothing in GTM reads them
+yet.**
+
+Two deliberate departures from the brand book. The section heading takes
+`--t-headline` rather than `--t-subline`, because that is what produces
+the design's 56px, so this h2 is larger than every other h2 on the page.
+The lede sits between Body and Subline at 17 to 21px, a sixth size the
+five-role scale does not have.
+
+The headline wraps to two lines on desktop. The design frame allows
+1216px of content and the page shell allows 1160px, so "More than a
+traditional broker." will not fit on one line at 56px. Left as is.
+
 ## Decisions from the 5 Nov call
 
 **CTA structure.** Every call to action is the same pair in the same
@@ -78,6 +117,19 @@ lives in the footer, and every "Call an Advisor" is still a tel: link.
 > The masthead, the bands and the closing band are unchanged and still
 > read "Call an Advisor". Every phone link is still a plain
 > `<a href="tel:+18668111207">`.
+
+> **Amended 19 Nov, branch `claude/blissful-gauss-b4otvx`.** The six
+> buttons on `/broker` now read **Get a free insurance review** in place
+> of **Get a Quote**: the hero, the three band buttons, the closing band
+> and the sticky mobile bar. The hero form card heading still reads "Get
+> a Quote", the masthead still reads "Call an Advisor", and every
+> `data-cta-id` is still `get_quote`, so the GTM triggers keep matching.
+> `/trade` and the four original pages are untouched and still lead with
+> **Get a Quote**, so the single CTA standard above no longer describes
+> the whole set. The longer label wraps to two lines in the sticky mobile
+> bar, taking it to 87px tall, or 105px at 320px wide. Check that against
+> the call volume the 18 Nov amendment was protecting before this goes to
+> `main`.
 
 **Spelling: Builder's Risk,** with the apostrophe, in all situations
 from here on. In headings, page titles and meta descriptions it is
@@ -105,6 +157,39 @@ review in three.
 Every claim written for these pages was confirmed on 12 Nov and all
 [CONFIRM] tags have been removed from the markup, along with the CSS
 that styled them. Nothing on either page is now waiting on sign-off.
+
+> **Amended 19 Nov, branch `claude/blissful-gauss-b4otvx`.** The
+> comparison section on `/trade` carries copy that has not been through
+> this register, so the paragraph above no longer holds for that page.
+>
+> It was written to be more defensible than the design it came from, not
+> to be exempt from review. The left column no longer states as fact what
+> other brokers do and reads as a tendency instead: "often not reviewed",
+> "can sit in a queue", "often renews as-is", "can arrive as a surprise".
+> The InFrame column describes the work rather than promising an outcome,
+> so "issued fast, the moment a GC asks" became "treated as urgent when a
+> GC asks", and "one secure home, found in minutes" became "kept together
+> in one place". The band headline claimed the broker "owns your
+> outcome", which a broker cannot do, since carriers decide coverage and
+> claims, and now reads "stays with your program".
+>
+> The row that read "Your subs" was addressed to a general contractor,
+> the wrong party on a page written for specialty trade contractors
+> working under someone else's contract. It is now "Your general
+> contractor", about the requirements a GC writes into the contract.
+>
+> **"150+ insurance markets" was removed.** It appears nowhere else on
+> the site and is not in this register. The band carries the approved
+> 120-day renewal milestone in its place. Restore the figure if it can be
+> substantiated.
+>
+> A qualifying line under the table notes that the descriptions are
+> general, that brokers and programs vary, and that coverage is subject
+> to the policy issued, echoing the disclaimer already in the footer.
+>
+> Still to clear: every row of the table, the band headline, the eyebrow
+> "For specialty contractors", and "More than a traditional broker." as a
+> comparative claim.
 
 The five client results that once sat under the hero remain off the
 pages. They were never approved, and the band carries the offer
