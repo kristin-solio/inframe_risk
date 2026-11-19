@@ -447,6 +447,10 @@ summary:focus-visible,textarea:focus-visible{
 .cmp__txt{display:none}
 .cmp__ic{width:26px;height:26px;flex:0 0 auto}
 
+.cmp__note{
+  margin:1rem 0 0;font-size:var(--t-legal);line-height:1.5;
+  color:var(--slate-03);max-width:88ch;
+}
 .cmp__band{
   margin-top:1.75rem;padding:1.625rem 1.25rem;background:var(--slate-05);
   border-radius:8px;display:flex;flex-direction:column;gap:1.25rem;
@@ -695,67 +699,69 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <tr role="row">
           <th class="cmp__lab" role="rowheader" scope="row">
             <span class="cmp__labd">Your contracts</span>
-            <span class="cmp__labm"><span class="cmp__labm-t">Contracts read line by line</span><span class="cmp__labm-s">Before you sign, not after a claim</span></span>
+            <span class="cmp__labm"><span class="cmp__labm-t">Contract review</span><span class="cmp__labm-s">Your contracts read alongside your policies</span></span>
           </th>
-          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Rarely read</span></td>
-          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Read line by line before you sign</span></td>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Typically not included</span><span class="cmp__txt">Often not reviewed</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Read alongside your policies</span></td>
         </tr>
         <tr role="row">
           <th class="cmp__lab" role="rowheader" scope="row">
             <span class="cmp__labd">Certificates</span>
-            <span class="cmp__labm"><span class="cmp__labm-t">Fast certificates</span><span class="cmp__labm-s">The moment a GC asks</span></span>
+            <span class="cmp__labm"><span class="cmp__labm-t">Certificate support</span><span class="cmp__labm-s">Treated as urgent when your GC asks</span></span>
           </th>
-          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Wait in a queue</span></td>
-          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Issued fast, the moment a GC asks</span></td>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Typically not included</span><span class="cmp__txt">Can sit in a queue</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Treated as urgent when a GC asks</span></td>
         </tr>
         <tr role="row">
           <th class="cmp__lab" role="rowheader" scope="row">
             <span class="cmp__labd">Your coverage</span>
-            <span class="cmp__labm"><span class="cmp__labm-t">Coverage that keeps up</span><span class="cmp__labm-s">Updated as your work changes</span></span>
+            <span class="cmp__labm"><span class="cmp__labm-t">Coverage that keeps up</span><span class="cmp__labm-s">Revisited as your work changes</span></span>
           </th>
-          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Renews as-is</span></td>
-          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Updated as your work changes</span></td>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Typically not included</span><span class="cmp__txt">Often renews as-is</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Revisited as your work changes</span></td>
         </tr>
         <tr role="row">
           <th class="cmp__lab" role="rowheader" scope="row">
             <span class="cmp__labd">Renewals &amp; audits</span>
-            <span class="cmp__labm"><span class="cmp__labm-t">No audit surprises</span><span class="cmp__labm-s">Flagged early, with time to plan</span></span>
+            <span class="cmp__labm"><span class="cmp__labm-t">Renewal planning</span><span class="cmp__labm-s">Review starts 120 days out</span></span>
           </th>
-          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Surprise bills</span></td>
-          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Flagged early, with time to plan</span></td>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Typically not included</span><span class="cmp__txt">Can arrive as a surprise</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Renewal review starts 120 days out</span></td>
         </tr>
         <tr role="row">
           <th class="cmp__lab" role="rowheader" scope="row">
-            <span class="cmp__labd">Your subs</span>
-            <span class="cmp__labm"><span class="cmp__labm-t">Your subs monitored</span><span class="cmp__labm-s">Real policies, not just certificates</span></span>
+            <span class="cmp__labd">Your general contractor</span>
+            <span class="cmp__labm"><span class="cmp__labm-t">GC requirements checked</span><span class="cmp__labm-s">Compared against what your policy covers</span></span>
           </th>
-          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Certificates only</span></td>
-          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Real policies, monitored all year</span></td>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Typically not included</span><span class="cmp__txt">Requirements go unchecked</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Requirements compared to your policy</span></td>
         </tr>
         <tr role="row">
           <th class="cmp__lab" role="rowheader" scope="row">
             <span class="cmp__labd">Your records</span>
-            <span class="cmp__labm"><span class="cmp__labm-t">Records in one place</span><span class="cmp__labm-s">Found in minutes, years later</span></span>
+            <span class="cmp__labm"><span class="cmp__labm-t">Records in one place</span><span class="cmp__labm-s">Kept together, not scattered across email</span></span>
           </th>
-          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Buried in email</span></td>
-          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">One secure home, found in minutes</span></td>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Typically not included</span><span class="cmp__txt">Often spread across email</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Kept together in one place</span></td>
         </tr>
         <tr role="row">
           <th class="cmp__lab" role="rowheader" scope="row">
             <span class="cmp__labd">Your team</span>
-            <span class="cmp__labm"><span class="cmp__labm-t">Construction specialists</span><span class="cmp__labm-s">Not a generalist team</span></span>
+            <span class="cmp__labm"><span class="cmp__labm-t">Construction focus</span><span class="cmp__labm-s">Advisors who work with contractors</span></span>
           </th>
-          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Not included</span><span class="cmp__txt">Generalists</span></td>
-          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Construction risk specialists</span></td>
+          <td class="cmp__typ" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--cmp-dash)"></circle><path d="M8 12h8" stroke="var(--cmp-mute)" stroke-width="2.4" stroke-linecap="round"></path></svg><span class="cmp__sr">Typically not included</span><span class="cmp__txt">Often generalists</span></td>
+          <td class="cmp__inf" role="cell"><svg class="cmp__ic" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="11" fill="var(--amber-05)"></circle><path d="M7.5 12.5l3 3 6-6.5" stroke="var(--slate-05)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="cmp__sr">Included</span><span class="cmp__txt">Advisors who focus on construction</span></td>
         </tr>
         </tbody>
       </table>
     </div>
 
+      <p class="cmp__note">Descriptions are general and reflect experiences contractors commonly report; individual brokers and programs vary. All coverage is subject to the terms, conditions, limitations and exclusions of the policy issued.</p>
+
     <div class="cmp__band">
-      <p class="cmp__band-title">A licensed broker that owns your outcome.</p>
+      <p class="cmp__band-title">A licensed broker that stays with your program.</p>
       <div class="cmp__stats">
-        <div class="cmp__stat"><span class="cmp__stat-n">150+</span><span class="cmp__stat-l">insurance markets</span></div>
+        <div class="cmp__stat"><span class="cmp__stat-n">120</span><span class="cmp__stat-l">days before renewal</span></div>
         <div class="cmp__stat"><span class="cmp__stat-n">50 + DC</span><span class="cmp__stat-l">states licensed</span></div>
         <div class="cmp__stat"><span class="cmp__stat-n">$0</span><span class="cmp__stat-l">program review</span></div>
       </div>
