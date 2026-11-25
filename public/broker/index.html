@@ -411,16 +411,17 @@ h2,h3,h4{letter-spacing:var(--track-heading)}
 .btn:active{background:var(--iron-900);color:var(--white)}
 .skip{background:var(--iron);color:var(--white)}
 
-/* Secondary action: Black on light grounds, Teal 700 on dark.
-   The style guide's literal "White on Teal" pairing measures 3.8:1,
-   under the 4.5:1 a 16px label needs, so the darker Teal 700 carries
-   the same colour at 6.1:1. */
+/* Secondary action: Black on light grounds, Teal on dark.
+   This is the style guide's "White on Teal" pairing as written.
+   Measured, white on #698893 is 3.8:1, under the 4.5:1 a 16px label
+   needs; chosen deliberately over the darker Teal 700 (6.1:1) to keep
+   the approved colour. Hover goes to Teal 700. */
 .btn--secondary{background:var(--black);color:var(--white)}
 .btn--secondary:hover{background:#000}
 .band--dark .btn--secondary,.hero .btn--secondary,
-.mobilebar .btn--secondary{background:var(--teal-700);color:var(--white)}
+.mobilebar .btn--secondary{background:var(--teal);color:var(--white)}
 .band--dark .btn--secondary:hover,.hero .btn--secondary:hover,
-.mobilebar .btn--secondary:hover{background:var(--teal);color:var(--white)}
+.mobilebar .btn--secondary:hover{background:var(--teal-700);color:var(--white)}
 
 /* Focus: 2px Teal, 2px offset, everywhere. */
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,

@@ -75,11 +75,19 @@ solid Deep Black brand field rather than the old navy gradient.
 
 ## Two judgement calls worth a look
 
-**1. The secondary button on dark grounds is Teal 700, not Teal.** The
-guidelines list "White on Teal" as an approved pair, but white on
-`#698893` measures 3.8:1, under the 4.5:1 a 16px button label needs. The
-darker `--teal-700 #4D6872` carries the same colour at 6.1:1. Say the
-word if you'd rather have the lighter Teal and accept the measurement.
+**1. The secondary button on dark grounds is Teal, white label — the
+guidelines' "White on Teal" pair as written.** Decided 25 Nov: keep the
+approved colour. Worth knowing what it costs, because it is the one
+measurement on these pages that does not clear WCAG AA. White on
+`#698893` is **3.8:1**, against the 4.5:1 a 16px label needs. It affects
+the "Call (866) 811-1207" and "Call now" buttons on dark grounds and in
+the sticky mobile bar. Since calls were 70 per cent of October
+conversions, that button is worth watching.
+
+If it ever needs to clear AA, `--teal-700 #4D6872` is the same colour a
+step darker and measures 6.1:1 — it is already the hover state, so the
+change is one token in the `.btn--secondary` rule. Black on Teal does
+not help: it measures 4.28:1, also short.
 
 **2. The highlighted phrase in the hero headline is Teal.** It used to be
 amber, which was bright on navy. Iron is too dark to use as text on
@@ -91,11 +99,16 @@ inserted keyword covers most of the headline — worth a look there first.
 ## Checks run
 
 - Contrast audited on every rendered page against each element's actual
-  background: **no text under its WCAG AA threshold** on any of them.
-  Three failures that predate the rebrand were fixed on the way through
-  (the large step numeral at 1.3:1, the footer separator at 3.8:1, and
-  the numbered step chip, where `.vstrip__item span` out-specified
-  `.vstrip__n` and kept body grey on an Iron chip).
+  background, at 1440px and on an iPhone 13. Everything clears WCAG AA
+  **except the one known exception above**: the secondary call button at
+  3.8:1, which is the approved White-on-Teal pair and a deliberate
+  choice. Nothing else on any page is under its threshold.
+  Four failures that predate the rebrand were fixed on the way through:
+  the large step numeral at 1.3:1, the footer separator at 3.8:1, the
+  licence panel hint at 4.35:1, and the numbered step chip, where
+  `.vstrip__item span` out-specified `.vstrip__n` and kept body grey on
+  an Iron chip. The comparison section merged in from staging also had
+  its call to action at roughly 2:1 at phone widths; that is fixed.
 - Rendered at 1440px and on an iPhone 13: no horizontal overflow, sticky
   mobile bar intact.
 - `/` still mirrors `/general-contractor-insurance` exactly, bar the
