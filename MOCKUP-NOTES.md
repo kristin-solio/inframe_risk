@@ -21,6 +21,12 @@ the three current pages do.
 
 ## What carries over unchanged
 
+> **Superseded in part, Nov 2026.** The brand tokens and type scale named
+> below are the retired navy/amber Manrope system. Every page has since
+> moved to the Bright Scout iron/teal/beige palette and Switzer; see
+> BRAND.md. Everything else in this list still holds: the rebrand changed
+> no copy, no form, no tracking and no URL.
+
 The brand tokens and type scale, the masthead, the footer with its three
 paragraphs of legal fine print, the sticky mobile bar, the Fillout embed
 (`fkqNiqeJmsus`, one per page, in the hero, carrying
