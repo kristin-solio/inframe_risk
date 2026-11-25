@@ -4,57 +4,79 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
-<meta name="theme-color" content="#222F3E">
+<meta name="theme-color" content="#1F1F1F">
 <title>Specialty Trade Contractor Insurance · InFrame Risk</title>
 <link rel="canonical" href="https://go.inframerisk.com/contractor-insurance">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
+/* Switzer — the brand family, self-hosted. One weight (400) is used;
+   the variable file covers the italic face the legal copy needs. */
+@font-face{
+  font-family:"Switzer";
+  src:url("../assets/brand/fonts/Switzer-Variable.woff2") format("woff2");
+  font-weight:100 900;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"Switzer";
+  src:url("../assets/brand/fonts/Switzer-VariableItalic.woff2") format("woff2");
+  font-weight:100 900;font-style:italic;font-display:swap;
+}
 /* ============================================================
    InFrame Risk · brand system
    Palette, type scale and module styles shared by all three
    paid search landing page mockups.
    ============================================================ */
 :root{
-  --slate-05:#222F3E;
-  --slate-04:#37485A;
-  --slate-03:#526477;
-  --steel:#8394A5;
-  --steel-02:#C9CFE1;
-  --steel-01:#E1E5F0;
-  --slate-01:#F4F6FB;
-  --amber-05:#EFB921;
-  --amber-04:#F5CA52;
-  --amber-03:#FDDC80;
-  --amber-02:#FAE4A9;
-  --amber-01:#FFF3D2;
+  /* ============================================================
+     InFrame Risk brand — InFrame Style Guidelines, Bright Scout,
+     Nov 2026. Three brand colours: Iron (primary), Teal (secondary),
+     Beige (ground). Navy #222F3E and amber #EFB921 are retired and
+     appear nowhere on these pages.
+     ============================================================ */
+  --iron:#8C3014;        /* primary: CTAs, eyebrows, rules, brand bands */
+  --iron-700:#6E2510;    /* hover */
+  --iron-900:#4A190B;    /* press */
+  --iron-100:#F1E3DE;    /* tint band */
+  --iron-50:#F8F0ED;
+  --teal:#698893;        /* secondary accent, focus ring */
+  --teal-700:#4D6872;    /* secondary button on dark (white text, 6.1:1) */
+  --teal-100:#E1E8EA;
+  --beige:#F7F6F4;       /* alternating section ground */
+  --beige-200:#EDEBE7;
+  --beige-300:#E3E0DA;
+  --black:#1F1F1F;
+  --grey-600:#606060;    /* secondary text */
+  --grey-400:#838383;    /* tertiary, large sizes only */
+  --grey-200:#D9D9D9;    /* borders; muted text on dark grounds */
+  --grey-100:#DCDCDC;    /* hairlines */
   --white:#FFFFFF;
+  /* Accent that stays legible on Deep Black grounds. Iron is too dark
+     to use as text there, so small accent text takes Beige. */
+  --accent-on-dark:var(--beige);
 
-  /* Brand book type scale. Five roles, nothing else:
-     Headline Semibold 64 · Subline Semibold 36 · Body Regular 16
-     · Button Bold 16 · Legal Regular 12.
-     The 64 and 36 anchors are desktop; they scale down with clamp().
-     Body, Button and Legal are fixed, so nothing on the page is ever
-     set at a size the brand book does not name. */
-  --t-headline:clamp(2.5rem,1.6rem + 3.85vw,4rem);        /* 40 -> 64 */
-  --t-subline:clamp(1.75rem,1.36rem + 1.66vw,2.25rem);    /* 28 -> 36 */
-  --t-body:1rem;                                          /* 16 */
-  --t-button:1rem;                                        /* 16 */
-  --t-legal:.75rem;                                       /* 12 */
+  /* Type. Switzer Regular 400 is the only weight on the page; every
+     step of hierarchy is size and colour. Display 40->72, headings
+     28->36, body 16, lede 18, legal 12. */
+  --t-headline:clamp(2.5rem,1.5rem + 4.2vw,4.5rem);
+  --t-subline:clamp(1.75rem,1.36rem + 1.66vw,2.25rem);
+  --t-body:1rem;
+  --t-lede:1.125rem;
+  --t-button:1rem;
+  --t-legal:.75rem;
+  --track-display:-.035em;
+  --track-heading:-.02em;
 
-  --gutter:clamp(1.25rem,5vw,3.5rem);
+  --gutter:clamp(1.25rem,5vw,3rem);
   --band:clamp(3.5rem,8vw,7rem);
-  --maxw:1160px;
+  --maxw:1280px;
 }
 
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
   margin:0;
-  background:var(--slate-01);
-  color:var(--slate-05);
-  font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  background:var(--beige);
+  color:var(--black);
+  font-family:"Switzer",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   font-size:var(--t-body);
   font-weight:400;
   line-height:1.6;
@@ -65,24 +87,24 @@ img{max-width:100%;display:block}
 /* ---------- shared layout ---------- */
 .shell{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
 .band{padding-block:var(--band)}
-.band--light{background:var(--slate-01);color:var(--slate-05)}
-.band--white{background:var(--white);color:var(--slate-05)}
-.band--dark{background:var(--slate-05);color:var(--white)}
-.band--steel{background:var(--steel-02);color:var(--slate-05)}
-.band--amber{background:var(--amber-02);color:var(--slate-05)}
+.band--light{background:var(--beige);color:var(--black)}
+.band--white{background:var(--white);color:var(--black)}
+.band--dark{background:var(--black);color:var(--white)}
+.band--sunken{background:var(--grey-200);color:var(--black)}
+.band--tint{background:var(--iron-100);color:var(--black)}
 .band--tight{padding-block:clamp(2rem,4vw,3rem)}
 
 /* ---------- type ---------- */
-h1,h2,h3{font-weight:600;letter-spacing:-.02em;margin:0}
+h1,h2,h3{font-weight:400;letter-spacing:-.02em;margin:0}
 h1{font-size:var(--t-headline);line-height:1.06}
 h2{font-size:var(--t-subline);line-height:1.15}
 h3{font-size:var(--t-body);line-height:1.35;letter-spacing:0}
 p{margin:0}
 .eyebrow{
-  font-size:var(--t-legal);font-weight:600;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--slate-03);margin:0 0 1.25rem;
+  font-size:var(--t-legal);font-weight:400;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--grey-600);margin:0 0 1.25rem;
 }
-.band--dark .eyebrow{color:var(--amber-05)}
+.band--dark .eyebrow{color:var(--iron)}
 .lede{font-size:var(--t-body);line-height:1.6;font-weight:400}
 .copy{font-size:var(--t-body);line-height:1.65}
 .small{font-size:var(--t-legal);line-height:1.6}
@@ -92,108 +114,96 @@ p{margin:0}
 .measure-p{max-width:64ch}
 
 /* ---------- accent rule ---------- */
-.rule-amber{display:block;width:34px;height:3px;background:var(--amber-05);border:0;margin:0 0 1.125rem}
+.rule-accent{display:block;width:34px;height:3px;background:var(--iron);border:0;margin:0 0 1.125rem}
 
 /* ---------- button ---------- */
 .btn{
   display:inline-block;
-  background:var(--amber-05);
-  color:var(--slate-05);
-  font-family:inherit;font-size:var(--t-button);font-weight:700;line-height:1.2;
+  background:var(--iron);
+  color:var(--black);
+  font-family:inherit;font-size:var(--t-button);font-weight:400;line-height:1.2;
   letter-spacing:.005em;
   padding:1.0625rem 2rem;
   border:0;border-radius:2px;
   text-decoration:none;cursor:pointer;
   transition:background .15s ease;
 }
-.btn:hover{background:var(--amber-04)}
-.btn:active{background:var(--amber-03)}
+.btn:hover{background:var(--iron-700)}
+.btn:active{background:var(--iron-900)}
 
 /* ---------- focus ---------- */
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
 summary:focus-visible,textarea:focus-visible{
-  outline:3px solid var(--amber-05);
+  outline:3px solid var(--iron);
   outline-offset:3px;
 }
 .band--dark a:focus-visible,.band--dark button:focus-visible,
 .band--dark summary:focus-visible,.hero a:focus-visible{
-  outline-color:var(--amber-05);
+  outline-color:var(--iron);
 }
 
 /* ---------- skip link ---------- */
 .skip{
   position:absolute;left:-9999px;top:0;z-index:200;
-  background:var(--amber-05);color:var(--slate-05);
-  font-weight:700;font-size:var(--t-legal);padding:.75rem 1.25rem;
+  background:var(--iron);color:var(--black);
+  font-weight:400;font-size:var(--t-legal);padding:.75rem 1.25rem;
 }
 .skip:focus{left:0}
 
 /* ---------- masthead ---------- */
-.masthead{background:var(--slate-05);padding-block:1.5rem}
+.masthead{background:var(--black);padding-block:1.5rem}
 .masthead .shell{display:flex;align-items:center}
 .masthead .logo-link{display:inline-flex;line-height:0}
 .masthead img{height:clamp(26px,2.4vw,34px);width:auto;display:block}
 
 /* ---------- hero ---------- */
-.hero{position:relative;background:var(--slate-05);color:var(--white);overflow:hidden}
+.hero{position:relative;background:var(--black);color:var(--white);overflow:hidden}
 .hero__img{
   position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;object-position:62% center;
 }
 .hero__scrim{
   position:absolute;inset:0;
-  background:linear-gradient(
-    100deg,
-    rgba(34,47,62,.94) 0%,
-    rgba(34,47,62,.91) 38%,
-    rgba(34,47,62,.8) 58%,
-    rgba(34,47,62,.52) 78%,
-    rgba(34,47,62,.4) 100%);
+  background:rgba(31,31,31,.58);
 }
 @media (max-width:1024px){
   /* the text block takes more of the width here, so fade down the page
      instead of across it and let the artwork breathe below the button */
   .hero__scrim{
-    background:linear-gradient(
-      168deg,
-      rgba(34,47,62,.94) 0%,
-      rgba(34,47,62,.92) 58%,
-      rgba(34,47,62,.86) 74%,
-      rgba(34,47,62,.55) 92%,
-      rgba(34,47,62,.48) 100%);
+    background:rgba(31,31,31,.58);
   }
 }
 @media (max-width:700px){
   /* text spans the full width on a phone, so the scrim has to as well.
      Crop to the darker city blocks rather than the bright crane, which
      lets the overlay stay lighter and keeps the drawing readable. */
-  .hero__scrim{background:rgba(34,47,62,.82)}
+  .hero__scrim{background:rgba(31,31,31,.82)}
   .hero__img{object-position:34% center}
 }
 /* The hero now carries the form, so it keeps less air above and below:
    on a laptop the whole card lands above the fold. */
 .hero__inner{position:relative;padding-block:clamp(2.5rem,5vw,4rem)}
 .hero h1{max-width:20ch}
-.hero .hl{color:var(--amber-05)}
+.hero .hl{color:var(--iron)}
 .hero .lede{color:var(--white);max-width:56ch;margin-top:1.5rem}
 .hero .btn{margin-top:2.5rem}
 /* The hero CTA pair sits on the dark hero ground: the yellow primary first,
    the approved Slate 03 secondary beside it carrying the phone number, and
    one quiet line underneath pointing at the phone option. */
-.hero .cta-note{color:var(--steel-02);margin-top:.875rem;font-size:var(--t-legal);line-height:1.5}
+.hero .cta-note{color:var(--grey-200);margin-top:.875rem;font-size:var(--t-legal);line-height:1.5}
 .hero__ctas{display:flex;flex-wrap:wrap;gap:.875rem}
 .hero__ctas .btn{margin-top:0}
-.hero .licensing{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
-.trustline{color:var(--steel-02);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
+.hero .licensing{color:var(--grey-200);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
+.trustline{color:var(--grey-200);margin-top:1.5rem;font-size:var(--t-legal);max-width:64ch}
 
 /* ---------- qualification strip ---------- */
-.qualstrip{background:var(--amber-02);color:var(--slate-05);padding-block:clamp(1.75rem,4vw,2.5rem)}
+.qualstrip{background:var(--iron-100);color:var(--black);padding-block:clamp(1.75rem,4vw,2.5rem)}
 .qualstrip .eyebrow{margin-bottom:.875rem}
 .trades{
   display:flex;flex-wrap:wrap;
   gap:.5rem clamp(1rem,2.4vw,2rem);
   font-size:var(--t-legal);
-  font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:400;letter-spacing:.16em;text-transform:uppercase;
   line-height:1.5;
 }
 .trades li{list-style:none}
@@ -201,7 +211,7 @@ summary:focus-visible,textarea:focus-visible{
 .trade-list{margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.5rem 0}
 .trade-list li{display:flex;align-items:center}
 .trade-list li::after{
-  content:"\00b7";color:var(--slate-03);font-weight:400;
+  content:"\00b7";color:var(--grey-600);font-weight:400;
   margin:0 clamp(.6rem,1.6vw,1.15rem);
 }
 .trade-list li:last-child::after{content:none}
@@ -220,12 +230,12 @@ summary:focus-visible,textarea:focus-visible{
 @media (min-width:660px){ .tiles{grid-template-columns:1fr 1fr} }
 .tile{
   background:var(--white);
-  border:1px solid var(--steel-01);
+  border:1px solid var(--grey-100);
   border-radius:2px;
   padding:clamp(1.5rem,2.4vw,2rem);
 }
 .tile h3{margin-bottom:.75rem}
-.tile p{font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
+.tile p{font-size:var(--t-body);line-height:1.6;color:var(--grey-600)}
 
 /* ---------- dark outcomes grid ---------- */
 .outcomes{
@@ -234,9 +244,9 @@ summary:focus-visible,textarea:focus-visible{
   margin-top:clamp(2.5rem,5vw,3.5rem);
 }
 .outcome h3{margin-bottom:.625rem}
-.outcome p{font-size:var(--t-body);line-height:1.6;color:var(--steel-02)}
+.outcome p{font-size:var(--t-body);line-height:1.6;color:var(--grey-200)}
 .band--dark h2{max-width:28ch}
-.band--dark .intro{color:var(--steel-02);max-width:60ch;margin-top:1.5rem;font-size:var(--t-body)}
+.band--dark .intro{color:var(--grey-200);max-width:60ch;margin-top:1.5rem;font-size:var(--t-body)}
 
 /* ---------- how it works ---------- */
 .steps{
@@ -244,30 +254,30 @@ summary:focus-visible,textarea:focus-visible{
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   margin-top:clamp(2.5rem,5vw,3.5rem);
 }
-.step{border-top:2px solid var(--steel-02);padding-top:1.25rem}
+.step{border-top:2px solid var(--grey-200);padding-top:1.25rem}
 .step .n{
   display:block;margin-bottom:.875rem;
-  font-size:var(--t-legal);font-weight:600;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--slate-03);
+  font-size:var(--t-legal);font-weight:400;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--grey-600);
 }
 .step .n b{
   display:block;font-size:var(--t-subline);line-height:1;
-  letter-spacing:-.02em;color:var(--steel-02);font-weight:600;margin-top:.25rem;
+  letter-spacing:-.02em;color:var(--grey-200);font-weight:400;margin-top:.25rem;
 }
-.step p{font-size:var(--t-body);line-height:1.6;color:var(--slate-04)}
-.step p b{color:var(--slate-05);font-weight:700}
-.turnaround{margin-top:clamp(2rem,3.5vw,2.75rem);color:var(--slate-04);font-size:var(--t-body)}
+.step p{font-size:var(--t-body);line-height:1.6;color:var(--grey-600)}
+.step p b{color:var(--black);font-weight:400}
+.turnaround{margin-top:clamp(2rem,3.5vw,2.75rem);color:var(--grey-600);font-size:var(--t-body)}
 
 /* ---------- case study ---------- */
 .casestudy blockquote{margin:0}
 .casestudy blockquote p{
-  font-size:var(--t-subline);line-height:1.2;font-weight:600;letter-spacing:-.02em;
+  font-size:var(--t-subline);line-height:1.2;font-weight:400;letter-spacing:-.02em;
 }
 .casestudy cite{
   display:block;margin-top:1.5rem;font-style:normal;
-  font-size:var(--t-legal);font-weight:600;letter-spacing:.06em;color:var(--slate-04);
+  font-size:var(--t-legal);font-weight:400;letter-spacing:.06em;color:var(--grey-600);
 }
-.casestudy .copy{max-width:56ch;color:var(--slate-04)}
+.casestudy .copy{max-width:56ch;color:var(--grey-600)}
 .case-grid{
   display:grid;gap:clamp(2rem,4vw,3.5rem);
   grid-template-columns:1fr;
@@ -282,31 +292,31 @@ summary:focus-visible,textarea:focus-visible{
 }
 .stat b{
   display:block;font-size:var(--t-subline);line-height:1.05;
-  letter-spacing:-.02em;font-weight:600;color:var(--amber-05);margin-bottom:.625rem;
+  letter-spacing:-.02em;font-weight:400;color:var(--iron);margin-bottom:.625rem;
 }
 .stat--word b{font-size:var(--t-subline)}
-.stat span{display:block;font-size:var(--t-body);line-height:1.5;color:var(--steel-02)}
+.stat span{display:block;font-size:var(--t-body);line-height:1.5;color:var(--grey-200)}
 
 /* ---------- FAQ ---------- */
 .faq{margin-top:clamp(2rem,4vw,3rem);max-width:78ch}
-.faq details{border-top:1px solid var(--steel-02)}
-.faq details:last-of-type{border-bottom:1px solid var(--steel-02)}
+.faq details{border-top:1px solid var(--grey-200)}
+.faq details:last-of-type{border-bottom:1px solid var(--grey-200)}
 .faq summary{
   list-style:none;cursor:pointer;
   padding:1.375rem 3rem 1.375rem 0;
   position:relative;
-  font-size:var(--t-body);font-weight:600;line-height:1.4;letter-spacing:0;
+  font-size:var(--t-body);font-weight:400;line-height:1.4;letter-spacing:0;
 }
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{
   content:"";position:absolute;right:.5rem;top:50%;
   width:12px;height:12px;margin-top:-8px;
-  border-right:2px solid var(--slate-03);border-bottom:2px solid var(--slate-03);
+  border-right:2px solid var(--grey-600);border-bottom:2px solid var(--grey-600);
   transform:rotate(45deg);transition:transform .18s ease;
 }
 .faq details[open] summary::after{transform:rotate(-135deg);margin-top:-3px}
-.faq summary:hover{color:var(--slate-03)}
-.faq .a{padding:0 3rem 1.625rem 0;font-size:var(--t-body);line-height:1.65;color:var(--slate-04);max-width:70ch}
+.faq summary:hover{color:var(--grey-600)}
+.faq .a{padding:0 3rem 1.625rem 0;font-size:var(--t-body);line-height:1.65;color:var(--grey-600);max-width:70ch}
 
 /* ---------- form ---------- */
 .cta-grid{
@@ -315,67 +325,66 @@ summary:focus-visible,textarea:focus-visible{
   align-items:start;
 }
 .cta-copy h2{max-width:18ch}
-.cta-copy .copy{margin-top:1.5rem;color:var(--steel-02);max-width:40ch}
-.formwrap{background:var(--slate-01);border-radius:2px;padding:clamp(1.5rem,3vw,2.25rem)}
+.cta-copy .copy{margin-top:1.5rem;color:var(--grey-200);max-width:40ch}
+.formwrap{background:var(--beige);border-radius:2px;padding:clamp(1.5rem,3vw,2.25rem)}
 .fillout-embed{width:100%;min-height:500px}
 .field{margin-bottom:1rem}
 .field label{
   display:block;margin-bottom:.4375rem;
-  font-size:var(--t-legal);font-weight:600;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--slate-03);
+  font-size:var(--t-legal);font-weight:400;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--grey-600);
 }
-.field label .req{color:var(--slate-05)}
+.field label .req{color:var(--black)}
 .field input,.field select{
   width:100%;font-family:inherit;font-size:var(--t-body);font-weight:400;
-  color:var(--slate-05);background:var(--slate-01);
-  border:1px solid var(--steel-02);border-radius:2px;
+  color:var(--black);background:var(--beige);
+  border:1px solid var(--grey-200);border-radius:2px;
   padding:.8125rem .875rem;line-height:1.4;
 }
 .field select{
   appearance:none;-webkit-appearance:none;
-  background-image:linear-gradient(45deg,transparent 50%,var(--slate-03) 50%),linear-gradient(135deg,var(--slate-03) 50%,transparent 50%);
+  background-image:linear-gradient(45deg,transparent 50%,var(--grey-600) 50%),linear-gradient(135deg,var(--grey-600) 50%,transparent 50%);
   background-position:calc(100% - 19px) calc(50% + 2px),calc(100% - 13px) calc(50% + 2px);
   background-size:6px 6px,6px 6px;background-repeat:no-repeat;
   padding-right:2.5rem;
 }
-.field input:hover,.field select:hover{border-color:var(--steel)}
+.field input:hover,.field select:hover{border-color:var(--grey-400)}
 .form .btn{width:100%;margin-top:.75rem}
 .upload{
-  border:1px dashed var(--steel);background:var(--slate-01);border-radius:2px;
-  padding:1.125rem .875rem;color:var(--slate-03);font-size:var(--t-legal);
+  border:1px dashed var(--grey-400);background:var(--beige);border-radius:2px;
+  padding:1.125rem .875rem;color:var(--grey-600);font-size:var(--t-legal);
   display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;
 }
 
 /* ---------- footer ---------- */
-.foot{background:var(--slate-05);color:var(--steel-02);padding-block:clamp(2.5rem,5vw,3.5rem)}
+.foot{background:var(--black);color:var(--grey-200);padding-block:clamp(2.5rem,5vw,3.5rem)}
 .foot .logo-link{display:inline-flex;line-height:0}
 .foot img{height:24px;width:auto;display:block}
 .foot p{font-size:var(--t-legal);line-height:1.9}
-.foot a{color:var(--steel-02)}
-.foot .sep{color:var(--steel);padding:0 .35rem}
+.foot a{color:var(--grey-200)}
+.foot .sep{color:var(--grey-400);padding:0 .35rem}
 .foot__top{
   display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
   gap:1.25rem;margin-bottom:1.5rem;
 }
 .foot__nav{display:flex;flex-wrap:wrap;gap:1.5rem 2rem;font-size:var(--t-legal)}
 .foot__nav a{text-decoration:none;border-bottom:1px solid transparent}
-.foot__nav a:hover{border-bottom-color:var(--steel-02)}
+.foot__nav a:hover{border-bottom-color:var(--grey-200)}
 .foot__id{margin-bottom:1.75rem}
-.foot__legal{color:var(--steel-02);max-width:none}
+.foot__legal{color:var(--grey-200);max-width:none}
 .foot__legal p + p{margin-top:.9rem}
-.foot__copy{margin-top:1.75rem;color:var(--steel-02)}
+.foot__copy{margin-top:1.75rem;color:var(--grey-200)}
 
 /* ---------- dotted band + icon tiles (matches the live homepage) ---------- */
-.band--dots{
-  background-color:var(--steel-01);
-  color:var(--slate-05);
-  background-image:radial-gradient(circle,rgba(82,100,119,.30) 1px,transparent 1px);
+.band--subtle{
+  background-color:var(--grey-100);
+  color:var(--black);
   background-size:22px 22px;
   background-position:0 0;
 }
-.band--dots .tile{
-  background:var(--steel-01);
-  border-color:var(--steel-02);
+.band--subtle .tile{
+  background:var(--grey-100);
+  border-color:var(--grey-200);
 }
 .tile-head{display:flex;align-items:center;gap:.875rem;margin-bottom:.875rem}
 .tile-head h3{margin:0}
@@ -383,7 +392,7 @@ summary:focus-visible,textarea:focus-visible{
 .tile-icon{
   display:flex;align-items:center;justify-content:center;
   width:44px;height:44px;border-radius:2px;
-  background:var(--amber-05);color:var(--slate-05);
+  background:var(--iron);color:var(--black);
   flex:0 0 auto;
 }
 .tile-icon svg{width:22px;height:22px;display:block}
@@ -393,17 +402,17 @@ summary:focus-visible,textarea:focus-visible{
 .licensing-band .npn{font-size:var(--t-body);color:var(--white)}
 .license-toggle{
   background:none;border:0;padding:0;cursor:pointer;font:inherit;
-  color:var(--amber-05);display:inline-flex;align-items:center;gap:.35rem;
+  color:var(--iron);display:inline-flex;align-items:center;gap:.35rem;
 }
 .license-toggle__label{text-decoration:underline;text-underline-offset:3px}
 .license-toggle__chevron{width:15px;height:15px;transition:transform .2s ease}
 .license-toggle[aria-expanded="true"] .license-toggle__chevron{transform:rotate(180deg)}
-.license-toggle:hover{color:var(--amber-04)}
+.license-toggle:hover{color:var(--iron-700)}
 
 .license-panel{margin-top:clamp(1.75rem,3vw,2.5rem);max-width:78ch}
 .license-panel__hint{
   font-size:var(--t-legal);letter-spacing:.06em;text-transform:uppercase;
-  color:var(--steel);margin-bottom:1rem;
+  color:var(--grey-400);margin-bottom:1rem;
 }
 .license-list{
   list-style:none;margin:0;padding:0;
@@ -412,17 +421,17 @@ summary:focus-visible,textarea:focus-visible{
 }
 .license-row{
   display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
-  padding:.5rem 0;border-bottom:1px solid var(--slate-04);
+  padding:.5rem 0;border-bottom:1px solid var(--grey-600);
 }
-.license-row__state{font-size:var(--t-body);color:var(--steel-02)}
+.license-row__state{font-size:var(--t-body);color:var(--grey-200)}
 .license-row__number{
   background:none;border:0;padding:0;cursor:pointer;font:inherit;
-  font-weight:600;color:var(--amber-05);position:relative;white-space:nowrap;
+  font-weight:400;color:var(--iron);position:relative;white-space:nowrap;
 }
-.license-row__number:hover{color:var(--amber-03)}
+.license-row__number:hover{color:var(--iron-900)}
 .license-row__copied{
   position:absolute;inset:0;display:flex;align-items:center;justify-content:flex-end;
-  background:var(--slate-05);color:var(--steel-02);opacity:0;pointer-events:none;
+  background:var(--black);color:var(--grey-200);opacity:0;pointer-events:none;
 }
 .license-row__number.is-copied .license-row__copied{opacity:1}
 
@@ -435,16 +444,16 @@ summary:focus-visible,textarea:focus-visible{
 .cta-pair .btn{margin:0}
 /* The brand book rules out outlined buttons, so the secondary is a solid
    approved pairing instead: Slate 05 on light ground, Slate 03 on dark. */
-.btn--secondary{background:var(--slate-05);color:var(--white)}
-.btn--secondary:hover{background:var(--slate-04)}
-.band--dark .btn--secondary,.hero .btn--secondary{background:var(--slate-03)}
-.band--dark .btn--secondary:hover,.hero .btn--secondary:hover{background:var(--slate-04)}
+.btn--secondary{background:var(--black);color:var(--white)}
+.btn--secondary:hover{background:var(--grey-600)}
+.band--dark .btn--secondary,.hero .btn--secondary{background:var(--grey-600)}
+.band--dark .btn--secondary:hover,.hero .btn--secondary:hover{background:var(--grey-600)}
 .cta-phone{
-  margin-top:1rem;font-size:var(--t-body);color:var(--slate-04);
+  margin-top:1rem;font-size:var(--t-body);color:var(--grey-600);
 }
-.cta-phone a{color:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.band--dark .cta-phone,.hero .cta-phone{color:var(--steel-02)}
-.band--steel .cta-phone{color:var(--slate-04)}
+.cta-phone a{color:inherit;font-weight:400;text-decoration:underline;text-underline-offset:3px}
+.band--dark .cta-phone,.hero .cta-phone{color:var(--grey-200)}
+.band--sunken .cta-phone{color:var(--grey-600)}
 
 /* ---------- hero form, two columns ---------- */
 /* One column on a phone, in source order: headline and subhead, then the
@@ -480,26 +489,26 @@ summary:focus-visible,textarea:focus-visible{
    as one quick step instead of filling the screen. */
 .formcard{padding:clamp(1.125rem,1.8vw,1.5rem)}
 .formcard__title{
-  color:var(--slate-05);
+  color:var(--black);
   font-size:var(--t-body);line-height:1.35;letter-spacing:0;
 }
-.formcard__note{margin-top:.25rem;font-size:var(--t-legal);line-height:1.5;color:var(--slate-03)}
+.formcard__note{margin-top:.25rem;font-size:var(--t-legal);line-height:1.5;color:var(--grey-600)}
 .formcard .fillout-embed{min-height:300px;margin-top:.75rem}
 @media (min-width:1000px){
   .formcard{max-width:396px;margin-left:auto}
 }
 
 /* ---------- closing CTA band ---------- */
-.closing .copy{margin-top:1.25rem;color:var(--steel-02);max-width:52ch}
+.closing .copy{margin-top:1.25rem;color:var(--grey-200);max-width:52ch}
 .closing .cta-pair{margin-top:clamp(1.75rem,3.5vw,2.25rem)}
 .closing .trustline{margin-top:1.5rem}
 
 /* ---------- masthead call link ---------- */
 .masthead__call{
   margin-left:auto;color:var(--white);text-decoration:none;
-  font-size:var(--t-button);font-weight:700;line-height:1.2;white-space:nowrap;
+  font-size:var(--t-button);font-weight:400;line-height:1.2;white-space:nowrap;
 }
-.masthead__call:hover{color:var(--amber-05)}
+.masthead__call:hover{color:var(--iron)}
 
 /* ---------- sticky mobile action bar ---------- */
 /* Phones only. It starts hidden because the hero form is on screen at
@@ -511,7 +520,7 @@ summary:focus-visible,textarea:focus-visible{
     display:grid;grid-template-columns:1fr 1fr;gap:.5rem;
     position:fixed;left:0;right:0;bottom:0;z-index:150;
     padding:.625rem clamp(.75rem,4vw,1rem);
-    background:var(--slate-05);border-top:1px solid var(--slate-04);
+    background:var(--black);border-top:1px solid var(--grey-600);
     transition:transform .2s ease,visibility .2s ease;
   }
   /* At least 48px tall, and laid out as a flex row so the phone icon sits
@@ -521,8 +530,8 @@ summary:focus-visible,textarea:focus-visible{
   .mobilebar__icon{width:1.0625rem;height:1.0625rem;flex:0 0 auto;fill:currentColor}
   /* the bar's own ground is Slate 05, so the secondary takes the
      approved Slate 03 pairing the dark bands use */
-  .mobilebar .btn--secondary{background:var(--slate-03);color:var(--white)}
-  .mobilebar .btn--secondary:hover{background:var(--slate-04)}
+  .mobilebar .btn--secondary{background:var(--grey-600);color:var(--white)}
+  .mobilebar .btn--secondary:hover{background:var(--grey-600)}
   .mobilebar.is-hidden{transform:translateY(115%);visibility:hidden}
   /* room for the bar at the end of the page. It goes on the footer so
      the dark ground runs all the way down behind the bar. */
@@ -533,6 +542,113 @@ summary:focus-visible,textarea:focus-visible{
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
 }
+
+/* ============================================================
+   Brand 2.0 corrections.
+   The rules above are the original page modules with the palette
+   renamed. These are the places where the new brand asks for
+   something different from a like-for-like colour swap: Iron is a
+   dark primary where amber was light, so anything that used amber
+   as a *ground* now needs light text, and anything that used it as
+   *text on a dark ground* now needs Beige.
+   ============================================================ */
+
+/* Type: one family, one weight. Hierarchy is size and colour. */
+b,strong{font-weight:400}
+h1{letter-spacing:var(--track-display)}
+h2,h3,h4{letter-spacing:var(--track-heading)}
+.lede{font-size:var(--t-lede);line-height:1.55}
+
+/* Eyebrow: 12px uppercase, +0.12em, with the 6px square brand bullet. */
+.eyebrow{letter-spacing:.12em;color:var(--iron)}
+.eyebrow::before{
+  content:"";display:inline-block;width:6px;height:6px;
+  background:currentColor;margin-right:.5rem;vertical-align:.04em;
+}
+.band--dark .eyebrow,.hero .eyebrow{color:var(--accent-on-dark)}
+
+/* Primary action: Iron ground, white label. */
+.btn{background:var(--iron);color:var(--white);border-radius:2px}
+.btn:hover{background:var(--iron-700);color:var(--white)}
+.btn:active{background:var(--iron-900);color:var(--white)}
+.skip{background:var(--iron);color:var(--white)}
+
+/* Secondary action: Black on light grounds, Teal 700 on dark.
+   The style guide's literal "White on Teal" pairing measures 3.8:1,
+   under the 4.5:1 a 16px label needs, so the darker Teal 700 carries
+   the same colour at 6.1:1. */
+.btn--secondary{background:var(--black);color:var(--white)}
+.btn--secondary:hover{background:#000}
+.band--dark .btn--secondary,.hero .btn--secondary,
+.mobilebar .btn--secondary{background:var(--teal-700);color:var(--white)}
+.band--dark .btn--secondary:hover,.hero .btn--secondary:hover,
+.mobilebar .btn--secondary:hover{background:var(--teal);color:var(--white)}
+
+/* Focus: 2px Teal, 2px offset, everywhere. */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
+summary:focus-visible,textarea:focus-visible,
+.band--dark a:focus-visible,.band--dark button:focus-visible,
+.band--dark summary:focus-visible,.hero a:focus-visible{
+  outline:2px solid var(--teal);outline-offset:2px;
+}
+
+/* Accent text on Deep Black grounds. */
+.hero .hero-eyebrow,.hero .hero__eyebrow,.hero__eyebrow,
+.band--dark .step .n,.license-toggle,.license-row__number,
+.thanks__call .telno:hover,.hero__qualifier{color:var(--accent-on-dark)}
+.license-toggle:hover,.license-row__number:hover{color:var(--white)}
+.masthead__call:hover{color:var(--accent-on-dark)}
+/* The highlighted phrase in the hero headline. Teal reads as an accent
+   beside white at display size (4.3:1, large text). */
+.hero .hl{color:var(--teal)}
+
+/* Rules and markers. */
+.rule-accent{background:var(--iron)}
+.band--dark .rule-accent,.hero .rule-accent{background:var(--accent-on-dark)}
+.vstrip{border-top-color:var(--iron)}
+.vstrip__n{border-radius:2px;background:var(--iron);color:var(--white)}
+.pullquote,.note-strip{border-left-color:var(--iron)}
+.tile-icon{background:var(--iron);color:var(--white);border-radius:2px}
+.stat b{color:var(--accent-on-dark)}
+.step .n b{color:var(--iron)}
+.band--dark .step .n b{color:var(--accent-on-dark)}
+.sep{color:var(--grey-600)}
+.foot .sep,.band--dark .sep{color:var(--grey-200)}
+.vstrip__item .vstrip__n{color:var(--white)}
+.vstrip__licence .sep{color:var(--grey-600)}
+
+/* Grounds. Sections alternate White and Beige, punctuated by an Iron
+   or Black band. The old dotted steel band becomes a flat Beige one. */
+.band--light{background:var(--beige)}
+.band--sunken{background:var(--beige-200);color:var(--black)}
+.band--tint,.qualstrip{background:var(--iron-100);color:var(--black)}
+.band--subtle{background-color:var(--beige);background-image:none}
+.band--subtle .tile{background:var(--white);border-color:var(--grey-100)}
+.formsetup{background:var(--iron-50)}
+.trade-list li[aria-current="true"]{background:var(--iron-100);color:var(--black)}
+
+/* Cards and panels: flat, 1px hairline, 4px corner, no resting shadow. */
+.tile,.formwrap,.upload{border-radius:4px}
+
+/* Photography carries a flat Deep Black overlay, never a gradient. */
+.hero__scrim{background:rgba(31,31,31,.66)}
+@media (max-width:1024px){.hero__scrim{background:rgba(31,31,31,.66)}}
+@media (max-width:700px){.hero__scrim{background:rgba(31,31,31,.66)}}
+
+/* Stepped skyline edge: the section below steps up into the hero photo. */
+@supports ((mask-size:160px 32px) or (-webkit-mask-size:160px 32px)){
+  .hero{position:relative}
+  .hero + section{position:relative}
+  .hero + section::before{
+    content:"";position:absolute;left:0;right:0;top:-32px;height:32px;
+    background:inherit;pointer-events:none;
+    -webkit-mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 32" preserveAspectRatio="none"><path d="M0 32V24h40v-8h40V8h40V0h40v32z" fill="%23fff"/></svg>') repeat-x bottom left;mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 32" preserveAspectRatio="none"><path d="M0 32V24h40v-8h40V8h40V0h40v32z" fill="%23fff"/></svg>') repeat-x bottom left;
+    -webkit-mask-size:160px 32px;mask-size:160px 32px;
+  }
+}
+
+/* Motion: quiet and functional. */
+*{transition-timing-function:cubic-bezier(.2,0,0,1)}
 </style>
 <!-- ============================================================
      TRADE-SPECIFIC HEADLINE SWAP  ·  APPROVED COPY ONLY
@@ -675,7 +791,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <header class="masthead">
   <div class="shell">
-    <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
+    <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/brand/logo/logotype_white.svg" alt="InFrame" width="3952" height="1000"></a>
     <a class="masthead__call" href="tel:+18668111207">Call an Advisor</a>
   </div>
 </header>
@@ -684,7 +800,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- 01 HERO -->
 <section class="hero">
-  <img class="hero__img" src="../assets/inframe-hero-city.webp" alt="Aerial wireframe view of a city, with a tower crane over a building under construction">
+  <img class="hero__img" src="../assets/brand/photography/welding.jpg" alt="Aerial wireframe view of a city, with a tower crane over a building under construction">
   <div class="hero__scrim"></div>
   <div class="hero__inner">
     <div class="shell hero__grid">
@@ -739,9 +855,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>if (window.InFrameTrade) { window.InFrameTrade.apply(); }</script>
 
 <!-- 03 TENSION + THE FOUR QUESTIONS -->
-<section class="band band--dots tension">
+<section class="band band--subtle tension">
   <div class="shell">
-    <span class="rule-amber"></span>
+    <span class="rule-accent"></span>
     <h2>Your broker should always understand the business behind the policy.</h2>
     <p class="copy">Insurance affects operations and finance, yet for most mid-market contractors it is still handled as a transaction. Your broker needs to understand how you operate, the market you work in, and the businesses you contract with. Without that, they cannot represent you properly to insurers, and work gets held up or lost.</p>
     <div class="tiles">
@@ -778,32 +894,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2>How your business operates shapes every insurance and risk decision we make.</h2>
     <div class="outcomes">
       <div class="outcome">
-        <span class="rule-amber"></span>
+        <span class="rule-accent"></span>
         <h3>Show up prepared</h3>
         <p>We read your program from the inside and collect market data from the outside before the first real meeting.</p>
       </div>
       <div class="outcome">
-        <span class="rule-amber"></span>
+        <span class="rule-accent"></span>
         <h3>Bid more of the work you want</h3>
         <p>We check your program against what GCs in your counties actually require, so you find out you are ineligible before you lose the job, not after.</p>
       </div>
       <div class="outcome">
-        <span class="rule-amber"></span>
+        <span class="rule-accent"></span>
         <h3>Move faster on certificates</h3>
         <p>Requests get read by someone who understands what the GC is asking for, instead of joining a queue.</p>
       </div>
       <div class="outcome">
-        <span class="rule-amber"></span>
+        <span class="rule-accent"></span>
         <h3>Go to market with a real story</h3>
         <p>Your operations translated into a submission underwriters can price properly, instead of a form that makes you look like everyone else.</p>
       </div>
       <div class="outcome">
-        <span class="rule-amber"></span>
+        <span class="rule-accent"></span>
         <h3>Run the renewal as a project, not a deadline</h3>
         <p>We start working on renewals at least a quarter out to get the best terms going forward. We also make sure coverage is designed around next year&rsquo;s work and a full understanding of your obligations and requirements.</p>
       </div>
       <div class="outcome">
-        <span class="rule-amber"></span>
+        <span class="rule-accent"></span>
         <h3>Know what you are actually paying for</h3>
         <p>Costs allocated to the vehicles, crews and projects that generate them, so the annual audit is not the first time you see it.</p>
       </div>
@@ -820,7 +936,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- 06 THE PLAN -->
 <section class="band band--light">
   <div class="shell">
-    <span class="rule-amber"></span>
+    <span class="rule-accent"></span>
     <h2 class="measure">Three steps. No commitment until you&rsquo;ve seen the work.</h2>
     <div class="steps">
       <div class="step">
@@ -847,7 +963,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- 07 SOCIAL PROOF -->
-<section class="band band--steel casestudy">
+<section class="band band--sunken casestudy">
   <div class="shell">
     <p class="eyebrow">Client story</p>
     <div class="case-grid">
@@ -891,7 +1007,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- 09 FAQ -->
 <section class="band band--light">
   <div class="shell">
-    <span class="rule-amber"></span>
+    <span class="rule-accent"></span>
     <h2>Questions about working with InFrame</h2>
     <div class="faq">
       <details>
@@ -939,7 +1055,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- 10 CLOSING CTA -->
 <section class="band band--dark band--tight closing">
   <div class="shell">
-    <span class="rule-amber"></span>
+    <span class="rule-accent"></span>
     <h2>See what a specialist notices about your business.</h2>
     <p class="copy">Send us what you have. We will tell you what we see.</p>
     <div class="cta-pair">
@@ -957,7 +1073,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="foot">
   <div class="shell">
     <div class="foot__top">
-      <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/inframe-logo-white.png" alt="InFrame" width="1300" height="306"></a>
+      <a class="logo-link" href="https://www.inframerisk.com" aria-label="InFrame Risk home"><img src="../assets/brand/logo/logotype_white.svg" alt="InFrame" width="3952" height="1000"></a>
       <nav class="foot__nav" aria-label="Legal">
         <a href="https://inframerisk.com/privacy">Privacy</a>
         <a href="https://inframerisk.com/terms">Terms</a>

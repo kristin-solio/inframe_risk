@@ -36,7 +36,10 @@ ad can override it if a campaign ever needs to.
 | Root Directory | *(leave blank)* |
 
 Nothing is built. Every page is one self-contained HTML file with its CSS
-inline. The only external request is Google Fonts.
+inline. Switzer is self-hosted from `public/assets/brand/fonts/`, so there
+is no Google Fonts request any more. What the pages still fetch from
+elsewhere is the Fillout embed, the Tag Manager container, and the
+licensed-states map on `inframerisk.com`.
 
 ## What each URL serves
 
@@ -125,4 +128,6 @@ set to `public`, which is the setting to fix.
 
 `public/` is the only copy. Edit the page in `public/<slug>/index.html`.
 Shared artwork lives once in `public/assets/` and every page reaches it as
-`../assets/`.
+`../assets/`. The brand assets — Switzer, the logo SVGs and the hero
+photography — sit under `public/assets/brand/`. See BRAND.md for what the
+palette and type rules are and where each asset came from.
